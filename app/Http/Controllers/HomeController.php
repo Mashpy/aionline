@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function index()
     {
         $quiz_topics = QuizTopic::orderBy('created_at','desc')->Paginate(10);
-        $tutorials = Tutorial::all();
+        $tutorials = Tutorial::Paginate(10);
         return view('home.index', compact('tutorials', 'quiz_topics'));
     }
 
