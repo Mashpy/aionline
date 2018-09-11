@@ -14,22 +14,20 @@
                                 <th>Title </th>
                                 <th>Category_name</th>
                                 <th>User</th>
-                                <th>description</th>
                             </tr>
                         </thead>
                     <tbody>
 
                     @foreach($tutorials as $tutorial)
+                        {{ csrf_field() }}
                         <tr>
                             <td>{{$tutorial->title}}</td>
                             <td>{{$tutorial->category->name}}</td>
                             <td>{{$tutorial->user->name}}</td>
-                            <td>{!! $tutorial->description !!}</td>
                             <td>
                                 <a href="{{ route('tutorial.show', $tutorial->slug) }}" class="btn btn-outline-primary">Views</a>
                                 <a href="{{ route('admin_tutorial.edit', $tutorial->slug) }}" class="btn btn-outline-warning">Edit</a>
                               <form method="POST" action="{{ route('admin_tutorial.destroy', $tutorial->slug) }}">
-                                  {{ csrf_field() }}
                                     <input name="_method" type="hidden" value="DELETE">
                                     <input type="submit" value="Delete" class="btn btn-danger">
                                 </form>
@@ -38,6 +36,10 @@
                     @endforeach
                     </tbody>
                     </table>
+                </div>
+
+                <div>
+                    {!! $tutorials->render() !!}
                 </div>
             </div>
         </div>

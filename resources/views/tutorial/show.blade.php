@@ -2,7 +2,7 @@
 @section('content')
     @include('includes.header')
 
-    <div class="container">
+    <div class="container top15">
         <div class="row">
             <div class="col-md-3">
                 <table class="table table-striped">
@@ -12,11 +12,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                        @foreach($category_tutorials as $category_tutorial)
-                            <tr>
-                                <td><a href="#">{{$category_tutorial->title}}</a> </td>
-                            </tr>
-                        @endforeach
+                        <div class="list-group">
+                            @foreach($category_tutorials as $category_tutorial)
+                                <div>
+                                    <a class="list-group-item list-group-item-action {{ Request::url() == route('tutorial.show', $category_tutorial->slug) ? 'active' : '' }}" href="{{ route('tutorial.show', $category_tutorial->slug) }}">{{$category_tutorial->title}}</a>
+                                </div>
+                            @endforeach
+                        </div>
                     </tbody>
                 </table>
             </div>
