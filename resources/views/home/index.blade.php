@@ -2,7 +2,7 @@
 @section('content')
 @include('includes.header')
     <div class="container">
-        <div class="text-center"> Tutorials </div>
+        <h2 class="text-center top20">Machine Learning Tutorials </h2>
         <div class="row">
             @foreach($tutorials as $tutorial)
                 <div class="col-md-6 col-lg-4">

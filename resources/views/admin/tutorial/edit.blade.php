@@ -67,7 +67,9 @@
 @section('run_custom_jquery')
     <script type="text/javascript">
         $(document).ready(function() {
-            $('.summernote').summernote();
+            $('.summernote').on('summernote.init', function () {
+                $('.summernote').summernote('codeview.activate');
+            }).summernote();
         });
     </script>
 @endsection
