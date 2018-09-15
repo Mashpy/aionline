@@ -1,4 +1,9 @@
 @extends('layouts.master')
+
+@section('title')
+    {{ $tutorial->title . ' | ' . $tutorial->category->name . ' | ' }}
+@endsection
+
 @section('content')
     @include('includes.header')
 

@@ -12,7 +12,7 @@
     <meta property="og:site_name" content="www.aisite.com">
     <meta property="og:image" content="">
     <meta property="og:url" content="{{ url()->current() }}">
-    <title>@yield('title','Learn AI | AI Site')</title>
+    <title>@yield('title') AI Online Course</title>
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="{{ asset('img/faviconN.ico')}}" type="image/x-icon">
