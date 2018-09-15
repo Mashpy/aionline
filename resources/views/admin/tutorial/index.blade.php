@@ -11,6 +11,7 @@
                     <table id="order-listing" class="table table-striped">
                         <thead>
                             <tr>
+                                <th>No.</th>
                                 <th>Title </th>
                                 <th>Category_name</th>
                                 <th>User</th>
@@ -18,18 +19,19 @@
                         </thead>
                     <tbody>
 
-                    @foreach($tutorials as $tutorial)
+                    @foreach($tutorials as $key => $tutorial)
                         {{ csrf_field() }}
                         <tr>
+                            <td>{{ $tutorial->id }}</td>
                             <td>{{$tutorial->title}}</td>
                             <td>{{$tutorial->category->name}}</td>
                             <td>{{$tutorial->user->name}}</td>
-                            <td>
-                                <a href="{{ route('tutorial.show', $tutorial->slug) }}" class="btn btn-outline-primary">Views</a>
-                                <a href="{{ route('admin_tutorial.edit', $tutorial->slug) }}" class="btn btn-outline-warning">Edit</a>
+                            <td width="5%">
+                                <a href="{{ route('tutorial.show', $tutorial->slug) }}" target="_blank" class="btn-sm btn-primary">Views</a>
+                                <a href="{{ route('admin_tutorial.edit', $tutorial->slug) }}" target="_blank" class="btn-sm btn-warning">Edit</a>
                               <form method="POST" action="{{ route('admin_tutorial.destroy', $tutorial->slug) }}">
                                     <input name="_method" type="hidden" value="DELETE">
-                                    <input type="submit" value="Delete" class="btn btn-danger">
+                                    <input type="submit" value="Delete" class="btn-sm btn-danger">
                                 </form>
                             </td>
                         </tr>
