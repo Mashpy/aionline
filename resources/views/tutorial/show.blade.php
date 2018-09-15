@@ -37,3 +37,9 @@
         </div>
     </div>
 @endsection
+
+@section('run_custom_jquery')
+    <script>
+        $("img").addClass("img-responsive");
+    </script>
+@endsection
