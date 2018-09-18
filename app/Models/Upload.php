@@ -18,8 +18,6 @@ class Upload extends Model
         $folder_path = $general_directory . $this->created_at->year . "/" . $this->created_at->format('m') . "/";
         $upload_url = $folder_path.$this->name;
 
-        dd();
-
         return $upload_url;
     }
 }
