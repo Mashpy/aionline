@@ -8,7 +8,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-success">
-                    <p class="alert-danger"></p>
+                    <div class="float-right"><a class="btn btn-success" target="_blank" href="{{ route('tutorial.show', $tutorial->slug) }}">View</a></div>
+                    <div class="clearfix"></div>
                     <form method="post" action="{{ route('admin_tutorial.update', $tutorial->slug) }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <input name="_method" type="hidden" value="PUT">
@@ -41,18 +42,21 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group float-right">
                             <button type="submit" class="btn btn-primary ">Submit</button>
                             <button type="button" class="btn btn-danger pull-right" id="clear">Clear</button>
                         </div>
+                        <div class="clearfix"></div>
 
                     </form>
 
-                    @if(!empty($uploads))
+                    @if(count($uploads) > 0)
                         <div>Uploaded images</div>
                         @foreach($uploads as $upload)
                                 <img style="width: 200px; height: auto" class="img-responsive" src="{{ $upload->upload_url }}">
                         @endforeach
+                    @else
+                        <div class="text-center">You have uploaded no images</div>
                     @endif
                 </div>
             </div>
@@ -67,9 +71,7 @@
 @section('run_custom_jquery')
     <script type="text/javascript">
         $(document).ready(function() {
-            $('.summernote').on('summernote.init', function () {
-                $('.summernote').summernote('codeview.activate');
-            }).summernote();
+            $('.summernote').summernote();
         });
     </script>
 @endsection
