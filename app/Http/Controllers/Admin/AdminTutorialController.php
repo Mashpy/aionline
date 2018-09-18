@@ -81,12 +81,12 @@ class AdminTutorialController extends Controller
     }
 
     public function mime_type_image_save($src,$img,$tutorial){
+        $general_directory = config('constants.tutorial_upload_directory');
         preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
         $mimetype = $groups['mime'];
         $filename = $img->getAttribute('data-filename');
         $filename = date("d") . '_' . $filename;
         $filename = str_replace(' ', '_', $filename);
-        $general_directory = '/uploads/blog_images/';
         $public_path = public_path() . $general_directory ;
         $year_folder = $public_path . date("Y");
         $month_folder = $year_folder . '/' . date("m");
@@ -120,12 +120,14 @@ class AdminTutorialController extends Controller
     
     public function edit($slug){
         $tutorial = Tutorial::where('slug', $slug)->first();
-        $upload = Upload::where('tutorial_id', $tutorial->id)->orderBy('created_at','desc')->get();
+        $uploads = Upload::where('tutorial_id', $tutorial->id)->orderBy('created_at','desc')->get();
         $image_exist = null;
+        $users = User::all();
+        $categories = Category::all();
         if(!empty($tutorial->thumbnail_id)){
             $image_exist = Upload::find($tutorial->thumbnail_id);
         }
-        return view ('admin.tutorial.edit', compact('tutorial'));
+        return view ('admin.tutorial.edit', compact('tutorial', 'uploads', 'users', 'categories'));
     }
     public function update(Request $request, $slug){
         $tutorial = Tutorial::where('slug', $slug)->first();

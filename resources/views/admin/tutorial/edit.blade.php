@@ -20,33 +20,26 @@
                         <div class="form-group">
                             <textarea class="summernote" name="description" placeholder="Description">{{ $tutorial->description }}</textarea>
                         </div>
-                        <div class="form-group"> <!-- Name field -->
-                            <label class="control-label " for="name">Category_id</label>
 
-                            <input class="form-control" name="category_id" type="number" value="{{$tutorial->category_id}}"  />
+                        <div class="form-group category-box">
+                            <div>Select category here:</div>
+                            <select class="form-control">
+                                <option value="">Select Category</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id}}" {{ $tutorial->category_id == $category->id ? 'selected'  : '' }}> {{ $category->name }} </option>
+                                @endforeach
+                            </select>
                         </div>
-                        <div class="form-group"> <!-- Name field -->
-                            <label class="control-label " for="name">User_id</label>
 
-                            <input class="form-control" name="user_id" type="number" value="{{$tutorial->user_id}}"  />
+                        <div class="form-group">
+                            <div>Select Username here:</div>
+                            <select class="form-control" name="user_id" data-value="1">
+                                <option value="">Select Username</option>
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->id}}" {{ $tutorial->user_id == $user->id ? 'selected'  : '' }} > {{ $user->name }} </option>
+                                @endforeach
+                            </select>
                         </div>
-                        {{--<input type="hidden" value="5" name="category_id" class="category_id_value">--}}
-
-                        {{--<div class="form-group category-box">--}}
-                        {{--<div>Select category here:</div>--}}
-                        {{--<select class="form-control category_select" data-value="1">--}}
-                        {{--<option value="">Select Category</option>--}}
-                        {{--@foreach ($categories as $category)--}}
-                        {{--<option value="{{ $category->id}}" data-browse-node-id="{{ $category->browse_node_id }}" > {{ $category->name }} </option>--}}
-                        {{--@endforeach--}}
-                        {{--</select>--}}
-                        {{--</div>--}}
-
-
-                        {{--<div class="form-group"> <!-- Message field -->--}}
-                        {{--<label class="control-label " for="message">Message</label>--}}
-                        {{--<textarea class="form-control" id="summernote" name="body" required></textarea>--}}
-                        {{--</div>--}}
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary ">Submit</button>
@@ -54,6 +47,13 @@
                         </div>
 
                     </form>
+
+                    @if(!empty($uploads))
+                        <div>Uploaded images</div>
+                        @foreach($uploads as $upload)
+                                <img style="width: 200px; height: auto" class="img-responsive" src="{{ $upload->upload_url }}">
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
