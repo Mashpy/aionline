@@ -124,9 +124,6 @@ class AdminTutorialController extends Controller
         $image_exist = null;
         $users = User::all();
         $categories = Category::all();
-        if(!empty($tutorial->thumbnail_id)){
-            $image_exist = Upload::find($tutorial->thumbnail_id);
-        }
         return view ('admin.tutorial.edit', compact('tutorial', 'uploads', 'users', 'categories'));
     }
     public function update(Request $request, $slug){
@@ -179,7 +176,7 @@ class AdminTutorialController extends Controller
         $tutorial->description = $dom->saveHTML();
         $tutorial->update();
         Session::flash('success','Tutorials updated successfully!!');
-        return redirect()->route('admin_tutorial.index');
+        return redirect()->route('admin_tutorial.edit', $tutorial->slug);
     }
     public function destroy($slug){
         $tutorial = Tutorial::where('slug', $slug)->first();
