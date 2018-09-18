@@ -23,7 +23,7 @@
 
                         <div class="form-group category-box">
                             <div>Select category here:</div>
-                            <select class="form-control">
+                            <select class="form-control" name="category_id">
                                 <option value="">Select Category</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id}}" {{ $tutorial->category_id == $category->id ? 'selected'  : '' }}> {{ $category->name }} </option>
