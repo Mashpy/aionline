@@ -20,7 +20,7 @@ use Carbon\Carbon;
 class AdminTutorialController extends Controller
 {
     public function index(){
-        $tutorials = Tutorial::where('status', true)->orderBy('created_at','desc')->Paginate(10);
+        $tutorials = Tutorial::where('status', true)->orderBy('created_at','desc')->Paginate(100);
         return view('admin.tutorial.index', compact('tutorials'));
     }
     public function create(){
