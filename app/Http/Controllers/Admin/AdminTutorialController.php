@@ -95,7 +95,7 @@ class AdminTutorialController extends Controller
         !file_exists($month_folder) && mkdir($month_folder, 0777, true);
         $folder_path = $general_directory . date('Y') . "/" . date('m') . "/";
         $img_md5_value = md5_file($src);
-        $image_exist = Upload::where([['name', '=', $filename], ['folder_path', '=', $folder_path]])->first();
+        $image_exist = Upload::where([['name', '=', $filename]])->first();
 
         if (!empty($image_exist)) {
             $filename =  Carbon::now()->timestamp . '_' . $filename;
@@ -103,7 +103,6 @@ class AdminTutorialController extends Controller
 
         $upload = new Upload();
         $upload->name = $filename;
-        $upload->folder_path = $folder_path;
         $upload->md5_hash = $img_md5_value;
         $upload->tutorial_id = $tutorial->id;
         $upload->save();
@@ -113,7 +112,7 @@ class AdminTutorialController extends Controller
             ->encode($mimetype, 100)// encode file to the specified mimetype
             ->save(public_path($folder_path.$filename));
 
-        $new_src = $folder_path.$filename;
+        $new_src = $upload->upload_url;
         $img->removeAttribute('src');
         $img->setAttribute('src', $new_src);
     }
@@ -168,7 +167,7 @@ class AdminTutorialController extends Controller
         if(!empty($unused_upload_names)){
             foreach($unused_upload_names as $unused_upload_name){
                 $unused_upload = Upload::where('name', $unused_upload_name)->first();
-                unlink(public_path($unused_upload->folder_path.$unused_upload->name));
+                unlink(public_path($unused_upload->upload_url));
                 $unused_upload->destroy($unused_upload->id);
             }
         }
@@ -184,7 +183,7 @@ class AdminTutorialController extends Controller
             return redirect()->route('admin_tutorial.index')->with(['fail' => 'Page not found !']);
         }
         foreach($tutorial->uploads as $upload){
-            unlink(public_path($upload->folder_path.$upload->name));
+            unlink(public_path($upload->upload_url));
             $upload->destroy($upload->id);
         }
         $tutorial->delete();
