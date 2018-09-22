@@ -7,15 +7,11 @@
 @section('content')
     @include('includes.header')
 
-    <div class="container top15">
+    <div class="container-fluid top15">
         <div class="row">
             <div class="col-md-3">
+                <h4>Tutorials</h4>
                 <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Tutorials</th>
-                    </tr>
-                    </thead>
                     <tbody>
                         <div class="list-group">
                             @foreach($category_tutorials as $category_tutorial)
@@ -28,11 +24,25 @@
                 </table>
             </div>
 
-            <div class="col-md-9 individual-article">
+            <div class="col-md-6 individual-article">
                 <h3>{{ $tutorial->title }}</h3>
                 <p class="category">{{$tutorial->category->name}}</p>
                 <p class="meta">{{ $tutorial->created_at->format('m-d-Y') }}</p>
                 <p>{!! $tutorial->description !!}</p>
+            </div>
+
+            <div class="col-md-3">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- aionlinecourse_rightsidebar -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-1505016841070170"
+                     data-ad-slot="7718620146"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
             </div>
         </div>
     </div>
