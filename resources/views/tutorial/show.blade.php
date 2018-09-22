@@ -33,7 +33,7 @@
             </div>
 
             <div class="col-md-3">
-                <div class="box-style">
+                <div>
                     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                     <!-- aionlinecourse_rightsidebar -->
                     <ins class="adsbygoogle"
