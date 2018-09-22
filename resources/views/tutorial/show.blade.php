@@ -28,7 +28,7 @@
                 </table>
             </div>
 
-            <div class="col-md-9">
+            <div class="col-md-9 individual-article">
                 <h3>{{ $tutorial->title }}</h3>
                 <p class="category">{{$tutorial->category->name}}</p>
                 <p class="meta">{{ $tutorial->created_at->format('m-d-Y') }}</p>

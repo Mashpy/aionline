@@ -585,3 +585,8 @@ code, pre {
     border: 1px solid #e1e1e8;
     border-radius: 4px;
 }
+
+.individual-article img {
+    max-width: 100%;
+    height: auto;
+}
