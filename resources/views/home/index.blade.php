@@ -1,6 +1,9 @@
 @extends('layouts.master')
 @section('content')
 @include('includes.header')
+<div>
+    <img src="/uploads/others/homepage_header2.jpg" class="img-responsive" width="100%"/>
+</div>
     <div class="container">
         <h2 class="text-center top20">Machine Learning Tutorials </h2>
         <div class="row">
