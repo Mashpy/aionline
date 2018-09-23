@@ -16,13 +16,10 @@
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="{{ asset('img/faviconN.ico')}}" type="image/x-icon">
-    <link rel="apple-touch-icon" type="image/x-icon" href="{{ asset('img/apple-touch-icon-57x57-precomposed.png')}}">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{{ asset('img/apple-touch-icon-72x72-precomposed.png')}}">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{{ asset('img/apple-touch-icon-114x114-precomposed.png')}}">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{{ asset('img/apple-touch-icon-144x144-precomposed.png')}}">
 
     <!-- BASE CSS -->
     <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.min.css')}}" rel="stylesheet">
     <!-- YOUR CUSTOM CSS -->
     <link href="{{ asset('css/custom.css')}}" rel="stylesheet">
 

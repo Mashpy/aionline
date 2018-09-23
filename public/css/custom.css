@@ -595,6 +595,7 @@ code, pre {
 }
 .box-style {
     padding: .75rem 1.25rem;
+    margin: 4px;
     background-color: #fff;
     border: 1px solid rgba(0,0,0,.125);
 }
@@ -602,3 +603,62 @@ code, pre {
     margin: 0;
     padding: 0;
 }
+.btn-group-xs > .btn, .btn-xs {
+    padding  : .25rem .4rem;
+    font-size  : .875rem;
+    line-height  : .5;
+    border-radius : .2rem;
+}
+a.custom-card,
+a.custom-card:hover {
+    color: inherit;
+    text-decoration: none;
+}
+.tutorial-title:hover{
+    text-decoration: underline;
+}
+.our-social .fa {
+    padding: 8px;
+    font-size: 20px;
+    width: 35px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 1px;
+    border-radius: 60%;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+}
+
+.fa-google {
+    background: #dd4b39;
+    color: white;
+}
+
+.fa-linkedin {
+    background: #007bb5;
+    color: white;
+}
+
+.fa-youtube {
+    background: #bb0000;
+    color: white;
+}
+
+.fa-pinterest {
+    background: #cb2027;
+    color: white;
+}
+
+

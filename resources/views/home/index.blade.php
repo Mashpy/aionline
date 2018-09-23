@@ -2,30 +2,41 @@
 @section('content')
 @include('includes.header')
 <div>
-    <img src="/uploads/others/homepage_header2.jpg" class="img-responsive" width="100%"/>
+    <img src="{{ asset('uploads/others/homepage_header.jpg') }}" class="img-responsive" width="100%"/>
 </div>
     <div class="container">
-        <h2 class="text-center top20">Machine Learning Tutorials </h2>
+        <h2 class="text-center top30 bottom10">Machine Learning Tutorials </h2>
         <div class="row">
-            @foreach($tutorials as $tutorial)
-                <div class="col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="image-wrap">
-                            <a href="#" ></a>
+            <div class="col-md-10">
+                <div class="row">
+                    @foreach($tutorials as $key => $tutorial)
+                        <div class="col-md-6 nopadding">
+                            <div class="box-style">
+                                <a href="{{ route('tutorial.show', $tutorial->slug) }}" class="custom-card">
+                                    <h4 class="tutorial-title">{{ $key + 1 }}. {{$tutorial->title}}</h4>
+                                    <p>{{ str_limit(strip_tags($tutorial->description), $limit = 130, $end = '...') }}</p>
+                                </a>
+
+                                <hr>
+                                <div class="float-left">
+                                    <span class="btn-xs btn-info"><i class="fa fa-tags"></i> {{$tutorial->category->name}}</span>
+                                </div>
+                                <div class="btn-wrap float-right">
+                                    <a class="btn-sm btn-success" href="{{ route('tutorial.show', $tutorial->slug) }}">Read more</a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
                         </div>
-                        <div class="text-wrap">
-                            <p class="category">{{$tutorial->category->name}}</p>
-                            <p class="meta">{{ $tutorial->created_at->format('m-d-Y') }}</p>
-                            <h4><a href="{{ route('tutorial.show', $tutorial->slug) }}">{{$tutorial->title}}</a></h4>
-                            <p>{{ str_limit(strip_tags($tutorial->description), $limit = 120, $end = '...') }}</p>
-                        </div>
-                        <div class="btn-wrap">
-                            <a class="btn btn-info" href="{{ route('tutorial.show', $tutorial->slug) }}">Read more</a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-            @endforeach
-            <div class="col-md-6">
+            </div>
+
+            <div class="col-md-2">
+                @include('includes/google_ad')
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="col-md-12">
                 <?php $category = [] ?>
                 @foreach($quiz_topics as $quiz_topic)
                     @if(!in_array($quiz_topic->category->name, $category))
@@ -52,4 +63,6 @@
         {{--<a href = "#">&raquo;</a>--}}
         {{--</div>--}}
     </div>
+@include('includes.footer')
+
 @endsection
