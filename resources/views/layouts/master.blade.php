@@ -14,6 +14,7 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <title>@yield('title') Artificial Intelligence Online Course</title>
 
+    <link href='https://fonts.googleapis.com/css?family=Poppins:400,600,700%7CRoboto:400,400i,700' rel='stylesheet'>
     <!-- Favicons-->
     <link rel="shortcut icon" href="{{ asset('favicon.ico')}}" type="image/x-icon">
 
