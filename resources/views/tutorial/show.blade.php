@@ -27,7 +27,25 @@
                 <div class="box-style">
                     <h3>{{ $tutorial->title }} | {{$tutorial->category->name}}</h3>
                     <hr>
-                    <p>{!! $tutorial->description !!}</p>
+                    <div>{!! $tutorial->description !!}</div>
+
+                    <div class="clearfix"></div>
+                    <br/>
+                    <div>
+                        @if(isset($previous_tutorial->tutorial_url))
+                            <div class="float-left">
+                                <a class="btn btn-primary" href="{{ $previous_tutorial->tutorial_url }}">Previous</a>
+                            </div>
+                        @endif
+
+                        @if(isset($next_tutorial->tutorial_url))
+                            <div class="float-right">
+                                <a class="btn btn-info" href="{{ $next_tutorial->tutorial_url }}">Next</a>
+                            </div>
+                        @endif
+                    </div>
+                    <br/>
+                    <br/>
                 </div>
 
                 <div id="disqus_thread"></div>
