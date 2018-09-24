@@ -25,9 +25,8 @@
 
             <div class="col-md-6 individual-article nopadding">
                 <div class="box-style">
-                    <h3>{{ $tutorial->title }}</h3>
-                    <p class="category">{{$tutorial->category->name}}</p>
-                    <p class="meta">{{ $tutorial->created_at->format('m-d-Y') }}</p>
+                    <h3>{{ $tutorial->title }} | {{$tutorial->category->name}}</h3>
+                    <hr>
                     <p>{!! $tutorial->description !!}</p>
                 </div>
 
