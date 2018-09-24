@@ -27,7 +27,7 @@
                             <td>{{$tutorial->category->name}}</td>
                             <td>{{$tutorial->user->name}}</td>
                             <td width="5%">
-                                <a href="{{ route('tutorial.show', $tutorial->slug) }}" target="_blank" class="btn-sm btn-primary">Views</a>
+                                <a href="{{ $tutorial->tutorial_url }}" target="_blank" class="btn-sm btn-primary">Views</a>
                                 <a href="{{ route('admin_tutorial.edit', $tutorial->slug) }}" target="_blank" class="btn-sm btn-warning">Edit</a>
                               <form method="POST" action="{{ route('admin_tutorial.destroy', $tutorial->slug) }}">
                                     <input name="_method" type="hidden" value="DELETE">

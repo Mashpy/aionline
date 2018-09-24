@@ -18,7 +18,7 @@ Route::get('/', [
     'as' => 'home.index'
 ]);
 
-Route::get('/tutorial/{slug}', [
+Route::get('/tutorial/{category}/{slug}', [
     'uses' => 'TutorialController@show',
     'as' => 'tutorial.show'
 ]);

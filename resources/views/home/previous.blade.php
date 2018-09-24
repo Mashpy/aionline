@@ -9,7 +9,7 @@
                <div class="col-md-6 news-text two">
                   @foreach($tutorials as $tutorial)
                      <tr>
-                        <h3> <a href="{{ route('tutorial.show', $tutorial->slug) }}"><td>{{$tutorial->title}}</td></a></h3>
+                        <h3> <a href="{{ $tutorial->tutorial_url }}"><td>{{$tutorial->title}}</td></a></h3>
                         <td>{{$tutorial->category_id}}</td>
                         <td>{{$tutorial->description}}</td>
                         <td>

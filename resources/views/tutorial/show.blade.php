@@ -15,7 +15,7 @@
                         <div class="list-group">
                             @foreach($category_tutorials as $category_tutorial)
                                 <div>
-                                    <a class="list-group-item list-group-item-action {{ Request::url() == route('tutorial.show', $category_tutorial->slug) ? 'active' : '' }}" href="{{ route('tutorial.show', $category_tutorial->slug) }}">{{$category_tutorial->title}}</a>
+                                    <a class="list-group-item list-group-item-action {{ Request::url() == $category_tutorial->tutorial_url ? 'active' : '' }}" href="{{ $category_tutorial->tutorial_url }}">{{$category_tutorial->title}}</a>
                                 </div>
                             @endforeach
                         </div>

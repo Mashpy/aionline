@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tutorial extends Model
 {
+    protected $appends = ['tutorial_url'];
 
     public function category()
     {
@@ -17,5 +18,10 @@ class Tutorial extends Model
     }
     public function uploads(){
         return $this->hasMany('App\Models\Upload');
+    }
+
+    public function getTutorialUrlAttribute(){
+        $tutorial_url = route('tutorial.show', [$this->category->category_slug, $this->slug]);
+        return $tutorial_url;
     }
 }

@@ -12,7 +12,7 @@
                     @foreach($tutorials as $key => $tutorial)
                         <div class="col-md-6 nopadding">
                             <div class="box-style">
-                                <a href="{{ route('tutorial.show', $tutorial->slug) }}" class="custom-card">
+                                <a href="{{ $tutorial->tutorial_url }}" class="custom-card">
                                     <h4 class="tutorial-title">{{ $key + 1 }}. {{$tutorial->title}}</h4>
                                     <p>{{ str_limit(strip_tags($tutorial->description), $limit = 130, $end = '...') }}</p>
                                 </a>
@@ -22,7 +22,7 @@
                                     <span class="btn-xs btn-info"><i class="fa fa-tags"></i> {{$tutorial->category->name}}</span>
                                 </div>
                                 <div class="btn-wrap float-right">
-                                    <a class="btn-sm btn-success" href="{{ route('tutorial.show', $tutorial->slug) }}">Read more</a>
+                                    <a class="btn-sm btn-success" href="{{ $tutorial->tutorial_url }}">Read more</a>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
