@@ -12,10 +12,10 @@
     <meta property="og:site_name" content="www.aisite.com">
     <meta property="og:image" content="">
     <meta property="og:url" content="{{ url()->current() }}">
-    <title>@yield('title') AI Online Course</title>
+    <title>@yield('title') Artificial Intelligence Online Course</title>
 
     <!-- Favicons-->
-    <link rel="shortcut icon" href="{{ asset('img/faviconN.ico')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico')}}" type="image/x-icon">
 
     <!-- BASE CSS -->
     <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
