@@ -7,7 +7,7 @@
 
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control" type="text" placeholder="Search">
-        <button class="btn btn-primary" type="button">Search</button>
+        <button class="btn btn-info" style="border: 1px dotted white" type="button">Submit</button>
 
         <span class="our-social pleft20">
             <a href="#" class="fa fa-facebook"></a>

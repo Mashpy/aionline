@@ -614,6 +614,9 @@ a.custom-card:hover {
     color: inherit;
     text-decoration: none;
 }
+.tutorial-title{
+    color: #086472
+}
 .tutorial-title:hover{
     text-decoration: underline;
 }

@@ -15,7 +15,7 @@
                         <div class="list-group">
                             @foreach($category_tutorials as $category_tutorial)
                                 <div>
-                                    <a class="list-group-item list-group-item-action {{ Request::url() == $category_tutorial->tutorial_url ? 'active' : '' }}" href="{{ $category_tutorial->tutorial_url }}">{{$category_tutorial->title}}</a>
+                                    <a class="list-group-item list-group-item-action {{ Request::url() == $category_tutorial->tutorial_url ? 'active btn-info' : '' }}" href="{{ $category_tutorial->tutorial_url }}">{{$category_tutorial->title}}</a>
                                 </div>
                             @endforeach
                         </div>
@@ -25,7 +25,7 @@
 
             <div class="col-md-6 individual-article nopadding">
                 <div class="box-style">
-                    <h3>{{ $tutorial->title }} | {{$tutorial->category->name}}</h3>
+                    <h3 class="tutorial-title">{{ $tutorial->title }} | {{$tutorial->category->name}}</h3>
                     <hr>
                     <div>{!! $tutorial->description !!}</div>
 
