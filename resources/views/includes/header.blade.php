@@ -10,11 +10,11 @@
         <button class="btn btn-info" style="border: 1px dotted white" type="button">Submit</button>
 
         <span class="our-social pleft20">
-            <a href="#" class="fa fa-facebook"></a>
-            <a href="#" class="fa fa-twitter"></a>
-            <a href="#" class="fa fa-google"></a>
-            <a href="#" class="fa fa-linkedin"></a>
-            <a href="#" class="fa fa-youtube"></a>
+            <a href="https://facebook.com/aionlinecourse" class="fa fa-facebook"></a>
+            <a href="https://twitter.com/aionlinecourse" class="fa fa-twitter"></a>
+            <a href="https://plus.google.com/b/117716147608852636539/" class="fa fa-google"></a>
+            <a href="https://www.linkedin.com/company/aionlinecourse/" class="fa fa-linkedin"></a>
+            <a href="https://www.youtube.com/channel/UC94LZMGRKqKn3rfaQtzH3Rg" class="fa fa-youtube"></a>
         </span>
     </form>
 </nav>
