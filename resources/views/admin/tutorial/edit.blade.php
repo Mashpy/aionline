@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-success">
-                    <div class="float-right"><a class="btn btn-success" target="_blank" href="{{ route('tutorial.show', $tutorial->slug) }}">View</a></div>
+                    <div class="float-right"><a class="btn btn-success" target="_blank" href="{{ route('admin_tutorial.show', $tutorial->slug) }}">View</a></div>
                     <div class="clearfix"></div>
                     <form method="post" action="{{ route('admin_tutorial.update', $tutorial->slug) }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
