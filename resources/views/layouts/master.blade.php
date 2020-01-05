@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="@yield('meta_description' , 'ai site description')">
+    <meta name="google-site-verification" content="jUW49wwiLLX6T2wYn35wtYFgisGIM8Y1liK6bnXrnsE" />
     <meta name="author" content="aisite">
     <meta name="keywords" content="@yield('meta_keyword', 'ais ite');">
     <meta property="og:type" content="website"/>
