@@ -45,6 +45,6 @@ Route::group(['middleware' => 'auth' , 'prefix' => 'admin'] , function() {
 		Route::resource('/admin_quiz_question','Admin\AdminQuizQuestionController');
 		Route::resource('/admin_quiz_answer','Admin\AdminQuizAnswerController');
 		Route::resource('/admin_quiz_topic','Admin\AdminQuizTopicController');
-		Route::resource('/alternative_software_category', 'AlternativeSoftware\SoftwareCategoryController');
+		Route::resource('/alternative_software_category', 'SoftwareCategoryController');
 
 	});

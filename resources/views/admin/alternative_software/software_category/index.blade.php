@@ -3,7 +3,7 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-12">
-                 <div class="alert text-center" style="background-color: #13C191 "><b>Alternative Software Category</b></div>
+                 <div class="alert text-center category-heading"><b>Alternative Software Category</b></div>
             </div>
             <div class="col-md-12">
                  @include('includes.message')
