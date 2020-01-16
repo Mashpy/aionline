@@ -42,7 +42,7 @@ class AdminTutorialController extends Controller
         $description = $request->input('description');
         $dom = new DomDocument();
         libxml_use_internal_errors(true);
-        $dom->loadHTML("<div>$description</div>");
+        $dom->loadHTML('<?xml encoding="utf-8" ?>' . "<div>$description</div>");
 
         $container = $dom->getElementsByTagName('div')->item(0);
         $container = $container->parentNode->removeChild($container);
@@ -139,7 +139,7 @@ class AdminTutorialController extends Controller
         $description = $request->input('description');
         $dom = new DomDocument();
         libxml_use_internal_errors(true);
-        $dom->loadHTML("<div>$description</div>");
+        $dom->loadHTML('<?xml encoding="utf-8" ?>' . "<div>$description</div>");
         $container = $dom->getElementsByTagName('div')->item(0);
         $container = $container->parentNode->removeChild($container);
         while ($dom->firstChild) {
