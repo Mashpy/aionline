@@ -22,7 +22,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <input class="btn btn-success text-white float-right" type="submit"></a>
+                                    <input class="btn btn-sm btn-success text-white float-right" type="submit">
                                 </td>
                             </tr>
                         </table>
@@ -47,8 +47,12 @@
                                     <td>{{ $category->name }}</td>
                                     <td>{{ $category->created_at->format('d/m/Y') }}</td>
                                     <td>
-                                       <a class="btn btn-sm btn-success text-white">Edit</a>
-                                       <a class="btn btn-sm btn-danger text-white">Delete</a>
+                                       <a class="btn btn-sm btn-success text-white" href="{{route('alternative_software_category.edit', $category->id)}}"><i class="fa fa-edit"></i></a>
+                                        @include('includes._confirm_delete',[
+                                                'id' => $category->id,
+                                                'url' => route('alternative_software_category.destroy', $category->id),
+                                                'message' => 'Are you sure to delete this category?',
+                                            ])
                                     </td>
                                 </tr>
                             @endforeach
