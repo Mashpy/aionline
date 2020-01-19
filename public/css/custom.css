@@ -734,4 +734,39 @@ ul.inline-list li{
     margin-bottom: 15px;
     font-weight: 700;
 }
-
+.view-card-background{
+    background: #355664;
+}
+.ai-tool-view-card-head{
+    font-weight: 700;
+    font-size: 40px;
+}
+.ai-tool-view-card-head:hover{
+    text-decoration: none;
+}
+.animated {
+    -webkit-transition: height 0.2s;
+    -moz-transition: height 0.2s;
+    transition: height 0.2s;
+}
+.display-none{
+    display:none;
+}
+.review-cancel-btn{
+    display:none;
+    margin-right: 10px;
+}
+.reviewer-profile-image{
+    height: 80px;
+    width: 80px;
+}
+.review-title{
+    color: #007bff;
+    font-weight: 500;
+}
+.review-text-color{
+    color: #dcdcdc;
+}
+.nav-tab-menu{
+    font-weight: 700;
+}
