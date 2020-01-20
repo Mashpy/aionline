@@ -16,6 +16,8 @@ class CreateSoftwareCategoriesTable extends Migration
         Schema::create('software_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('software_category_slug');
+            $table->integer('parent_id')->nullable();
             $table->timestamps();
         });
     }

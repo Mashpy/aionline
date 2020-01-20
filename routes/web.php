@@ -49,7 +49,7 @@ Route::group(['middleware' => 'auth' , 'prefix' => 'admin'] , function() {
 		Route::resource('/alternative_software', 'AlternativeSoftwareController');
 
 	});
-Route::group(['prefix' => 'ai-tools/software'] , function() {
+Route::group(['prefix' => 'ai-software'] , function() {
     Route::get('/', 'AiToolController@index')->name('ai-tool.index');
     Route::get('/{slug}', 'AiToolController@view')->name('ai-tool.view');
     Route::get('/{slug}/reviews', 'AiToolController@review')->name('ai-tool.reviews');

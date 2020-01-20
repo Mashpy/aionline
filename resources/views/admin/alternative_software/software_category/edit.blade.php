@@ -21,6 +21,17 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th>Parent Category</th>
+                                <td>
+                                    <select class="form-control" name="parent_id">
+                                        <option value="">Choose parent category</option>
+                                        @foreach($categories as $parent_category)
+                                            <option value="{{$parent_category->id}}" {{ $parent_category->id == $category->parent_id ? 'selected' : '' }} >{{$parent_category->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td colspan="2">
                                     <input class="btn btn-success text-white float-right" type="submit" value="update">
                                 </td>

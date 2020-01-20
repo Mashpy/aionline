@@ -33,6 +33,17 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th>Sub Category</th>
+                                <td>
+                                    <select class="form-control" name="software_category_id">
+                                        <option>Select Sub Category</option>
+                                        @foreach($software_categories as $software_category)
+                                            <option value="{{$software_category->id}}">{{$software_category->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
                                 <th>Description</th>
                                 <td>
                                     <textarea class="form-control" rows="6" name="description"></textarea>

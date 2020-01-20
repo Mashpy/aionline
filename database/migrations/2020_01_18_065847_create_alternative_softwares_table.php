@@ -16,6 +16,7 @@ class CreateAlternativeSoftwaresTable extends Migration
         Schema::create('alternative_softwares', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('software_category_id');
+            $table->integer('software_sub_category_id')->nullable();
             $table->string('name');
             $table->text('description');
             $table->integer('like')->nullable();

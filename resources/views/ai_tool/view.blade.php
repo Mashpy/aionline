@@ -26,7 +26,7 @@
                         <div class="col-md-4 mb-2">
                             <div class="card ai-tool-card-width">
                                 <div class="card-body">
-                                    <img src="{{$ai_tool->logo_url}}" class="ai-logo" alt="...">
+                                    <img src="{{$ai_tool_alternative->logo_url}}" class="ai-logo" alt="...">
                                     <h5 class="card-title text-center"><a class="ai-tool-card-head" href="{{route('ai-tool.view', $ai_tool_alternative->slug)}}">{{$ai_tool_alternative->name}}</a></h5>
                                     <p class="card-text text-center">
                                         <small class="text-secondary">{!! $ai_tool_alternative->like !== null ? $ai_tool_alternative->like : 0 !!} likes | {{ $ai_tool->alternate_software->count() }} alternatives</small>
