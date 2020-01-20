@@ -35,7 +35,7 @@
                             <tr>
                                 <th>Description</th>
                                 <td>
-                                    <textarea class="form-control" rows="6" name="description">value="{{$alternative_software->description}}"</textarea>
+                                    <textarea class="form-control" rows="6" name="description">{{$alternative_software->description}}"</textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -47,7 +47,7 @@
                                 <th>Logo</th>
                                 <td>
                                     <input type="hidden" value="{{$alternative_software->logo}}" name="old_logo">
-                                    <img class="alternative-software-logo" src="{{ asset('/' . $alternative_software->logo)}}" />
+                                    <img class="alternative-software-logo" src="{{$alternative_software->logo_url}}" />
                                     <input class="form-control" type="file" name="logo">
                                 </td>
                             </tr>

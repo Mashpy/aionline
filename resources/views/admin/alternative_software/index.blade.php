@@ -27,7 +27,7 @@
                             @foreach($alternative_softwares as $alternative_software)
                                 <tr>
                                     <td>{{$loop->index+1}}</td>
-                                    <td><img class="alternative-software-logo" src="{{ asset('/' . $alternative_software->logo)}}" /></td>
+                                    <td><img class="alternative-software-logo" src="{{ $alternative_software->logo_url }}"/></td>
                                     <td>{{$alternative_software->name}}</td>
                                     <td>{{$alternative_software->softwareCategoryName->name}}</td>
                                     <td>{{ str_limit($alternative_software->description, $limit = 80, $end = '...') }}</td>

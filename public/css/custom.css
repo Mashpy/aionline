@@ -740,9 +740,11 @@ ul.inline-list li{
 .ai-tool-view-card-head{
     font-weight: 700;
     font-size: 40px;
+    color: #ffffff;
 }
 .ai-tool-view-card-head:hover{
     text-decoration: none;
+    color: #ffffff;
 }
 .animated {
     -webkit-transition: height 0.2s;
@@ -769,4 +771,8 @@ ul.inline-list li{
 }
 .nav-tab-menu{
     font-weight: 700;
+}
+.official-link-button{
+    background: #63bda2;
+    border:#63bda2;
 }

@@ -1,8 +1,9 @@
 @extends('layouts.master')
 @section('content')
-    <div class="container mt-4">
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
+                Back to <a href="{{route('alternative_software_category.index')}}">Software Category</a>
                 <div class="alert text-center category-heading"><b>Alternative Software Category</b></div>
             </div>
             <div class="col-md-3"></div>

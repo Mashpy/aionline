@@ -34,10 +34,9 @@ class AlternativeSoftwareController extends Controller
 
         if ($request->file('logo')) {
             $image = $request->file('logo');
-            $imageName = time().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path(AlternativeSoftware::IMAGE_UPLOAD_PATH), $imageName);
-            $imgUrl = AlternativeSoftware::IMAGE_UPLOAD_PATH.$imageName;
-            $software->logo = $imgUrl;
+            $imageName = Str::slug($request->name).'.'.$image->getClientOriginalExtension();
+            $image->move(public_path(AlternativeSoftware::IMAGE_UPLOAD_PATH.'/'.date('Y').'/'.date('m')), $imageName);
+            $software->logo = $imageName;
         }
         if ($software->save()){
             return redirect()->route('alternative_software.index')->with(['success' => 'New Software added successfully']);
@@ -49,8 +48,8 @@ class AlternativeSoftwareController extends Controller
     public function destroy(AlternativeSoftware $alternative_software)
     {
         if ($alternative_software->delete()){
-            if (file_exists(public_path('/'. $alternative_software->logo))) {
-                unlink(public_path('/'. $alternative_software->logo));
+            if (file_exists(public_path(AlternativeSoftware::IMAGE_UPLOAD_PATH.'/'.$alternative_software->created_at->format('Y').'/'.$alternative_software->created_at->format('m')).'/'.$alternative_software->logo)) {
+                unlink(public_path(AlternativeSoftware::IMAGE_UPLOAD_PATH.'/'.$alternative_software->created_at->format('Y').'/'.$alternative_software->created_at->format('m')).'/'.$alternative_software->logo);
             }
             return back()->with(['success' => 'Software deleted successfully']);
         } else {
@@ -74,14 +73,13 @@ class AlternativeSoftwareController extends Controller
         $alternative_software->slug = Str::slug($request->name);
 
         if ($request->logo) {
-            unlink(public_path('/'. $alternative_software->logo));
+            unlink(public_path(AlternativeSoftware::IMAGE_UPLOAD_PATH.'/'.$alternative_software->created_at->format('Y').'/'.$alternative_software->created_at->format('m')).'/'.$alternative_software->logo);
             $image = $request->file('logo');
-            $imageName = time().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path(AlternativeSoftware::IMAGE_UPLOAD_PATH), $imageName);
-            $imgUrl = AlternativeSoftware::IMAGE_UPLOAD_PATH.$imageName;
-            $alternative_software->logo = $imgUrl;
+            $imageName = Str::slug($request->name).'.'.$image->getClientOriginalExtension();
+            $image->move(public_path(AlternativeSoftware::IMAGE_UPLOAD_PATH.'/'.$alternative_software->created_at->format('Y').'/'.$alternative_software->created_at->format('m')), $imageName);
+            $alternative_software->logo = $imageName;
         }else{
-            $alternative_software->logo = $alternative_software->logo;
+            $alternative_software->logo = $alternative_software->old_logo;
         }
         $alternative_software->save();
         return redirect()->route('alternative_software.index')->with(['success' => 'Software updated successfully']);
