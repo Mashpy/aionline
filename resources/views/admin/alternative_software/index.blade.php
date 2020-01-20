@@ -3,7 +3,7 @@
     <div class="container mt-2">
         <div class="row">
             <div class="col-md-12">
-                Here you will add new software. <a href="{{route('alternative_software.create')}}">Create new software</a>
+                Here you will add new software. <a href="{{route('ai_software.create')}}">Create new software</a>
                 <div class="alert text-center category-heading"><b>Alternative Software</b></div>
             </div>
             <div class="col-md-12">
@@ -33,10 +33,10 @@
                                     <td>{{ str_limit($alternative_software->description, $limit = 80, $end = '...') }}</td>
                                     <td>{{$alternative_software->official_link}}</td>
                                     <td>
-                                        <a class="btn btn-sm btn-success text-white" href="{{route('alternative_software.edit', $alternative_software->id)}}"><i class="fa fa-edit"></i></a>
+                                        <a class="btn btn-sm btn-success text-white" href="{{route('ai_software.edit', $alternative_software->id)}}"><i class="fa fa-edit"></i></a>
                                         @include('includes._confirm_delete',[
                                                 'id' => $alternative_software->id,
-                                                'url' => route('alternative_software.destroy', $alternative_software->id),
+                                                'url' => route('ai_software.destroy', $alternative_software->id),
                                                 'message' => 'Are you sure to delete this Software?',
                                             ])
                                     </td>

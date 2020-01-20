@@ -46,7 +46,7 @@ Route::group(['middleware' => 'auth' , 'prefix' => 'admin'] , function() {
 		Route::resource('/admin_quiz_answer','Admin\AdminQuizAnswerController');
 		Route::resource('/admin_quiz_topic','Admin\AdminQuizTopicController');
 		Route::resource('/alternative_software_category', 'SoftwareCategoryController');
-		Route::resource('/alternative_software', 'AlternativeSoftwareController');
+		Route::resource('/ai_software', 'AlternativeSoftwareController');
 
 	});
 Route::group(['prefix' => 'ai-software'] , function() {

@@ -5,22 +5,22 @@
 
 @section('content')
     @include('includes.header')
-    @include('ai_tool.ai_software_view_head')
+    @include('ai_software.ai_software_view_head')
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-9">
                 @include('includes.message')
                 <nav class="nav nav-tabs">
-                    <a href="{{route('ai_software.view', $ai_tool->slug)}}" class="nav-item nav-link nav-tab-menu">
+                    <a href="{{route('ai_software.view', $ai_softare->slug)}}" class="nav-item nav-link nav-tab-menu">
                         <i class="fa fa-home"></i> Alternatives
                     </a>
-                    <a href="{{route('ai_software.reviews', $ai_tool->slug)}}" class="nav-item nav-link nav-tab-menu active">
+                    <a href="{{route('ai_software.reviews', $ai_softare->slug)}}" class="nav-item nav-link nav-tab-menu active">
                         <i class="fa fa-user"></i> Reviews
                     </a>
                 </nav>
                 <div class="row">
                     <div class="col-md-12 mb-4 clearfix">
-                        <h3 class="ai-software-header float-left">{{$ai_tool->name}} Reviews</h3>
+                        <h3 class="ai-software-header float-left">{{$ai_softare->name}} Reviews</h3>
                         <a class="btn btn-success btn-green float-right mt-2" href="#reviews-anchor" id="open-review-box">Leave a Review</a>
                     </div>
                     <div class="row mb-4">
@@ -35,7 +35,7 @@
                                                     <th>Name</th>
                                                     <td>
                                                         <input type="text" class="form-control" name="review_by" placeholder="Enter your name" required>
-                                                        <input type="hidden" name="alternative_software_id" value="{{$ai_tool->id}}">
+                                                        <input type="hidden" name="alternative_software_id" value="{{$ai_softare->id}}">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -72,7 +72,7 @@
                                         <div class="col-md-10">
                                             <h5 class="review-title">{{$review->title}}</h5>
                                             <p>
-                                                <small class="float-left">by <strong>{{$review->review_by}}</strong> &bull; about {{$ai_tool->name}} &bull; {{$review->created_at}}</small><br>
+                                                <small class="float-left">by <strong>{{$review->review_by}}</strong> &bull; about {{$ai_softare->name}} &bull; {{$review->created_at}}</small><br>
                                             </p>
                                             <div class="clearfix"></div>
                                             <p>{{$review->description}}</p>

@@ -10,7 +10,7 @@ class SoftwareCategoryController extends Controller
 {
  	public function index(){
  		$categories = SoftwareCategory::with('children')->whereNull('parent_id')->latest()->paginate(15);
- 		return view('admin.alternative_software.software_category.index', compact('categories'));
+ 		return view('admin.ai_software.software_category.index', compact('categories'));
  	}
  	public function store(Request $request){
         $request->validate([
@@ -27,7 +27,7 @@ class SoftwareCategoryController extends Controller
  	public function edit($category_id){
         $categories = SoftwareCategory::with('children')->whereNull('parent_id')->latest()->paginate(15);
         $category = SoftwareCategory::find($category_id);
-        return view('admin.alternative_software.software_category.edit', compact('category', 'categories'));
+        return view('admin.ai_software.software_category.edit', compact('category', 'categories'));
     }
     public function update(Request $request, $category_id){
         $request->validate([
