@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\AiSoftware;
-use App\Models\SoftwareLikeCount;
-use App\Models\SoftwareReview;
+use App\Models\AiSoftwareLikeCount;
+use App\Models\AiSoftwareReview;
 use Illuminate\Http\Request;
 
 class AiSoftwareController extends Controller
@@ -25,7 +25,7 @@ class AiSoftwareController extends Controller
     }
     public function reviews($slug){
         $software_id = AiSoftware::where('slug', $slug)->pluck('id');
-        return $reviews = SoftwareReview::where('ai_software_id', $software_id)->latest()->get();
+        return $reviews = AiSoftwareReview::where('ai_software_id', $software_id)->latest()->get();
     }
     public function storeReview(Request $request){
         $request->validate([
@@ -34,7 +34,7 @@ class AiSoftwareController extends Controller
             'ai_software_id' => ['required'],
             'description' => ['required'],
         ]);
-        SoftwareReview::create([
+        AiSoftwareReview::create([
             'title'=> $request->title,
             'ai_software_id' =>$request->ai_software_id,
             'review_by' =>$request->review_by,
@@ -44,12 +44,12 @@ class AiSoftwareController extends Controller
         return back();
     }
     public function like(Request $request, $id){
-        $check_ip = SoftwareLikeCount::where('ai_software_id', $id)->where('client_ip', $request->ip())->first();
+        $check_ip = AiSoftwareLikeCount::where('ai_software_id', $id)->where('client_ip', $request->ip())->first();
         if(empty($check_ip)){
             $like = AiSoftware::find($id);
             $like->like++;
             $like->save();
-            SoftwareLikeCount::create([
+            AiSoftwareLikeCount::create([
                 'ai_software_id' => $id,
                 'client_ip' => $request->ip(),
             ]);
