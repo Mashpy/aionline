@@ -7,7 +7,7 @@ use App\Models\SoftwareLikeCount;
 use App\Models\SoftwareReview;
 use Illuminate\Http\Request;
 
-class AiToolController extends Controller
+class AiSoftwareController extends Controller
 {
     public function index(){
         $ai_tools = AlternativeSoftware::latest()->get();

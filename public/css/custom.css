@@ -720,16 +720,16 @@ ul.inline-list li{
     display: inline;
     margin-left: 4%;
 }
-.ai-tool-card-width{
+.ai-software-card-width{
     width:18rem;
 }
-.ai-tool-card-head{
+.ai-software-card-head{
     font-weight: 700;
 }
-.ai-tool-card-head:hover{
+.ai-software-card-head:hover{
     text-decoration: none;
 }
-.ai-tool-header{
+.ai-software-header{
     margin-top: 15px;
     margin-bottom: 15px;
     font-weight: 700;
@@ -737,12 +737,12 @@ ul.inline-list li{
 .view-card-background{
     background: #355664;
 }
-.ai-tool-view-card-head{
+.ai-software-view-card-head{
     font-weight: 700;
     font-size: 40px;
     color: #ffffff;
 }
-.ai-tool-view-card-head:hover{
+.ai-software-view-card-head:hover{
     text-decoration: none;
     color: #ffffff;
 }

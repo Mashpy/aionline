@@ -3,7 +3,7 @@
     <ul class="navbar-nav mr-auto">
         <li class="nav-item"><a class="nav-link" href="{{ route('home.index') }}">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('quiz_topic.index') }}">Quiz</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ route('ai-tool.index') }}">Alternate AI Tools</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('ai_software.index') }}">AI Software</a></li>
     </ul>
 
     <form class="form-inline my-2 my-lg-0">

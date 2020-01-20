@@ -11,16 +11,16 @@
             <div class="col-md-9">
                 @include('includes.message')
                 <nav class="nav nav-tabs">
-                    <a href="{{route('ai-tool.view', $ai_tool->slug)}}" class="nav-item nav-link nav-tab-menu">
+                    <a href="{{route('ai_software.view', $ai_tool->slug)}}" class="nav-item nav-link nav-tab-menu">
                         <i class="fa fa-home"></i> Alternatives
                     </a>
-                    <a href="{{route('ai-tool.reviews', $ai_tool->slug)}}" class="nav-item nav-link nav-tab-menu active">
+                    <a href="{{route('ai_software.reviews', $ai_tool->slug)}}" class="nav-item nav-link nav-tab-menu active">
                         <i class="fa fa-user"></i> Reviews
                     </a>
                 </nav>
                 <div class="row">
                     <div class="col-md-12 mb-4 clearfix">
-                        <h3 class="ai-tool-header float-left">{{$ai_tool->name}} Reviews</h3>
+                        <h3 class="ai-software-header float-left">{{$ai_tool->name}} Reviews</h3>
                         <a class="btn btn-success btn-green float-right mt-2" href="#reviews-anchor" id="open-review-box">Leave a Review</a>
                     </div>
                     <div class="row mb-4">
@@ -28,7 +28,7 @@
                             <div class="well well-sm">
                                 <div class="row display-none" id="post-review-box">
                                     <div class="col-md-12">
-                                        <form accept-charset="UTF-8" action="{{route('ai-tool.review.store')}}" method="post">
+                                        <form accept-charset="UTF-8" action="{{route('ai_software.review.store')}}" method="post">
                                             @csrf
                                             <table class="table">
                                                 <tr>
