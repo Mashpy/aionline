@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSoftwareReviewsTable extends Migration
+class CreateSoftwareLikeCountsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateSoftwareReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('software_reviews', function (Blueprint $table) {
+        Schema::create('ai_software_like_counts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('ai_software_id');
-            $table->string('title');
-            $table->string('review_by');
-            $table->text('description');
+            $table->string('client_ip');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateSoftwareReviewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('software_reviews');
+        Schema::dropIfExists('ai_software_like_counts');
     }
 }

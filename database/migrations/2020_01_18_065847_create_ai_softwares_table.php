@@ -15,8 +15,7 @@ class CreateAlternativeSoftwaresTable extends Migration
     {
         Schema::create('ai_softwares', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('software_category_id');
-            $table->integer('software_sub_category_id')->nullable();
+            $table->integer('category_id');
             $table->string('name');
             $table->text('description');
             $table->integer('like')->nullable();
@@ -34,6 +33,6 @@ class CreateAlternativeSoftwaresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('models_ai_softwares');
+        Schema::dropIfExists('ai_softwares');
     }
 }
