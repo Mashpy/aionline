@@ -15,7 +15,7 @@ class CreateSoftwareLikeCountsTable extends Migration
     {
         Schema::create('software_like_counts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('alternative_software_id');
+            $table->integer('ai_software_id');
             $table->string('client_ip');
             $table->timestamps();
         });

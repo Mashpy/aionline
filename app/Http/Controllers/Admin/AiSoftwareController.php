@@ -1,22 +1,25 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SoftwareCategory;
 use App\Models\AiSoftware;
 use Illuminate\Support\Str;
 
-class AlternativeSoftwareController extends Controller
+class AiSoftwareController extends Controller
 {
     public function index(){
-        $alternative_softwares = AiSoftware::orderBy('name')->get();
-        return view('admin.ai_software.index', compact('alternative_softwares'));
+        $ai_softwares = AiSoftware::orderBy('name')->get();
+        return view('admin.ai_software.index', compact('ai_softwares'));
     }
+
     public function create(){
         $software_categories = SoftwareCategory::orderBy('name')->get();
         return view('admin.ai_software.create', compact('software_categories'));
     }
+
     public function store(Request $request){
         $validatedData = $request->validate([
             'name' => ['required', 'max:255'],
@@ -45,43 +48,49 @@ class AlternativeSoftwareController extends Controller
         }
     }
 
-    public function destroy(AiSoftware $alternative_software)
+    public function destroy($id)
     {
-        if ($alternative_software->delete()){
-            if (file_exists(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$alternative_software->created_at->format('Y').'/'.$alternative_software->created_at->format('m')).'/'.$alternative_software->logo)) {
-                unlink(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$alternative_software->created_at->format('Y').'/'.$alternative_software->created_at->format('m')).'/'.$alternative_software->logo);
+        $ai_software = AiSoftware::find($id);
+        if ($ai_software->delete()){
+            if (file_exists(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo)) {
+                unlink(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo);
             }
             return back()->with(['success' => 'Software deleted successfully']);
         } else {
             return back()->with(['fail' => 'Something went wrong!!! Please try again']);
         }
     }
-    public function edit(AiSoftware $alternative_software){
+
+    public function edit($id){
+        $ai_software = AiSoftware::find($id);
         $software_categories = SoftwareCategory::orderBy('name')->get();
-        return view('admin.ai_software.edit', compact('alternative_software', 'software_categories'));
+        return view('admin.ai_software.edit', compact('ai_software', 'software_categories'));
     }
-    public function update(Request $request, AiSoftware $alternative_software){
+
+    public function update(Request $request, $id){
+        $ai_software = AiSoftware::find($id);
+
         $validatedData = $request->validate([
             'name' => ['required', 'max:255'],
             'software_category_id' => ['required'],
             'description' => ['required'],
         ]);
-        $alternative_software->name = $request->name;
-        $alternative_software->software_category_id = $request->software_category_id;
-        $alternative_software->description = $request->description;
-        $alternative_software->official_link = $request->official_link;
-        $alternative_software->slug = Str::slug($request->name);
+        $ai_software->name = $request->name;
+        $ai_software->software_category_id = $request->software_category_id;
+        $ai_software->description = $request->description;
+        $ai_software->official_link = $request->official_link;
+        $ai_software->slug = Str::slug($request->name);
 
         if ($request->logo) {
-            unlink(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$alternative_software->created_at->format('Y').'/'.$alternative_software->created_at->format('m')).'/'.$alternative_software->logo);
+            unlink(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo);
             $image = $request->file('logo');
             $imageName = Str::slug($request->name).'.'.$image->getClientOriginalExtension();
-            $image->move(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$alternative_software->created_at->format('Y').'/'.$alternative_software->created_at->format('m')), $imageName);
-            $alternative_software->logo = $imageName;
+            $image->move(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')), $imageName);
+            $ai_software->logo = $imageName;
         }else{
-            $alternative_software->logo = $alternative_software->old_logo;
+            $ai_software->logo = $ai_software->old_logo;
         }
-        $alternative_software->save();
+        $ai_software->save();
         return redirect()->route('ai_software.index')->with(['success' => 'Software updated successfully']);
     }
 }

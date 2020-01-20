@@ -11,7 +11,7 @@
             <div class="col-md-5">
                  <div class="alert alert-success">
                     <h5>Create new</h5>
-                    <form action="{{ route('alternative_software_category.store') }}" method="post">
+                    <form action="{{ route('ai_software_category.store') }}" method="post">
                         @csrf
                         <table id="order-listing" class="table table-striped">
                             <tr>
@@ -56,10 +56,10 @@
                                             {{ $category->name }}
                                         </span>
                                         <span class="float-right">
-                                            <a class="btn btn-sm btn-success text-white" href="{{route('alternative_software_category.edit', $category->id)}}"><i class="fa fa-edit"></i></a>
+                                            <a class="btn btn-sm btn-success text-white" href="{{route('ai_software_category.edit', $category->id)}}"><i class="fa fa-edit"></i></a>
                                             @include('includes._confirm_delete',[
                                                     'id' => $category->id,
-                                                    'url' => route('alternative_software_category.destroy', $category->id),
+                                                    'url' => route('ai_software_category.destroy', $category->id),
                                                     'message' => 'Are you sure to delete this category?',
                                                 ])
                                         </span>
@@ -80,10 +80,10 @@
                                                             <td>{{$loop->index+1}}</td>
                                                             <td>{{$children->name}}</td>
                                                             <td>
-                                                                <a class="btn btn-sm btn-success text-white" href="{{route('alternative_software_category.edit', $children->id)}}"><i class="fa fa-edit"></i></a>
+                                                                <a class="btn btn-sm btn-success text-white" href="{{route('ai_software_category.edit', $children->id)}}"><i class="fa fa-edit"></i></a>
                                                                 @include('includes._confirm_delete',[
                                                                         'id' => $children->id,
-                                                                        'url' => route('alternative_software_category.destroy', $children->id),
+                                                                        'url' => route('ai_software_category.destroy', $children->id),
                                                                         'message' => 'Are you sure to delete this category?',
                                                                     ])
                                                             </td>
@@ -110,10 +110,10 @@
                                     <td>{{ $category->name }}</td>
                                     <td>{{ $category->created_at->format('d/m/Y') }}</td>
                                     <td>
-                                       <a class="btn btn-sm btn-success text-white" href="{{route('alternative_software_category.edit', $category->id)}}"><i class="fa fa-edit"></i></a>
+                                       <a class="btn btn-sm btn-success text-white" href="{{route('ai_software_category.edit', $category->id)}}"><i class="fa fa-edit"></i></a>
                                         @include('includes._confirm_delete',[
                                                 'id' => $category->id,
-                                                'url' => route('alternative_software_category.destroy', $category->id),
+                                                'url' => route('ai_software_category.destroy', $category->id),
                                                 'message' => 'Are you sure to delete this category?',
                                             ])
                                     </td>

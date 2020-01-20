@@ -25,18 +25,18 @@ class AiSoftwareController extends Controller
     }
     public function reviews($slug){
         $software_id = AiSoftware::where('slug', $slug)->pluck('id');
-        return $reviews = SoftwareReview::where('alternative_software_id', $software_id)->latest()->get();
+        return $reviews = SoftwareReview::where('ai_software_id', $software_id)->latest()->get();
     }
     public function storeReview(Request $request){
         $request->validate([
             'title' => ['required'],
             'review_by' => ['required'],
-            'alternative_software_id' => ['required'],
+            'ai_software_id' => ['required'],
             'description' => ['required'],
         ]);
         SoftwareReview::create([
             'title'=> $request->title,
-            'alternative_software_id' =>$request->alternative_software_id,
+            'ai_software_id' =>$request->ai_software_id,
             'review_by' =>$request->review_by,
             'description' =>$request->description,
         ]);
@@ -44,13 +44,13 @@ class AiSoftwareController extends Controller
         return back();
     }
     public function like(Request $request, $id){
-        $check_ip = SoftwareLikeCount::where('alternative_software_id', $id)->where('client_ip', $request->ip())->first();
+        $check_ip = SoftwareLikeCount::where('ai_software_id', $id)->where('client_ip', $request->ip())->first();
         if(empty($check_ip)){
             $like = AiSoftware::find($id);
             $like->like++;
             $like->save();
             SoftwareLikeCount::create([
-                'alternative_software_id' => $id,
+                'ai_software_id' => $id,
                 'client_ip' => $request->ip(),
             ]);
             \Session::flash('success','Your liked this software!!');

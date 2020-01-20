@@ -35,7 +35,7 @@
                                                     <th>Name</th>
                                                     <td>
                                                         <input type="text" class="form-control" name="review_by" placeholder="Enter your name" required>
-                                                        <input type="hidden" name="alternative_software_id" value="{{$ai_softare->id}}">
+                                                        <input type="hidden" name="ai_software_id" value="{{$ai_softare->id}}">
                                                     </td>
                                                 </tr>
                                                 <tr>

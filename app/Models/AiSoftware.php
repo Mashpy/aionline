@@ -11,9 +11,11 @@ class AiSoftware extends Model{
     public function softwareCategoryName(){
         return $this->belongsTo(SoftwareCategory::class, 'software_category_id');
     }
+
     public function getAlternateSoftwareAttribute(){
         return AiSoftware::where('software_category_id', $this->software_category_id)->get();
     }
+
     public function getLogoUrlAttribute(){
         return asset(self::IMAGE_UPLOAD_PATH.'/'.$this->created_at->format('Y').'/'.$this->created_at->format('m').'/'.$this->logo);
     }

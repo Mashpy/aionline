@@ -15,7 +15,7 @@ class CreateSoftwareReviewsTable extends Migration
     {
         Schema::create('software_reviews', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('alternative_software_id');
+            $table->integer('ai_software_id');
             $table->string('title');
             $table->string('review_by');
             $table->text('description');

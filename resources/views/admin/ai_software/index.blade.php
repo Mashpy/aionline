@@ -3,7 +3,7 @@
     <div class="container mt-2">
         <div class="row">
             <div class="col-md-12">
-                Here you will add new software. <a href="{{route('ai_software.create')}}">Create new software</a>
+                Here you will add new software. <a href="{{route('admin_ai_software.create')}}">Create new software</a>
                 <div class="alert text-center category-heading"><b>Alternative Software</b></div>
             </div>
             <div class="col-md-12">
@@ -24,19 +24,19 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($alternative_softwares as $alternative_software)
+                            @foreach($ai_softwares as $ai_software)
                                 <tr>
                                     <td>{{$loop->index+1}}</td>
-                                    <td><img class="alternative-software-logo" src="{{ $alternative_software->logo_url }}"/></td>
-                                    <td>{{$alternative_software->name}}</td>
-                                    <td>{{$alternative_software->softwareCategoryName->name}}</td>
-                                    <td>{{ str_limit($alternative_software->description, $limit = 80, $end = '...') }}</td>
-                                    <td>{{$alternative_software->official_link}}</td>
+                                    <td><img class="alternative-software-logo" src="{{ $ai_software->logo_url }}"/></td>
+                                    <td>{{$ai_software->name}}</td>
+                                    <td>{{$ai_software->softwareCategoryName->name}}</td>
+                                    <td>{{ str_limit($ai_software->description, $limit = 80, $end = '...') }}</td>
+                                    <td>{{$ai_software->official_link}}</td>
                                     <td>
-                                        <a class="btn btn-sm btn-success text-white" href="{{route('ai_software.edit', $alternative_software->id)}}"><i class="fa fa-edit"></i></a>
+                                        <a class="btn btn-sm btn-success text-white" href="{{route('admin_ai_software.edit', $ai_software->id)}}"><i class="fa fa-edit"></i></a>
                                         @include('includes._confirm_delete',[
-                                                'id' => $alternative_software->id,
-                                                'url' => route('ai_software.destroy', $alternative_software->id),
+                                                'id' => $ai_software->id,
+                                                'url' => route('admin_ai_software.destroy', $ai_software->id),
                                                 'message' => 'Are you sure to delete this Software?',
                                             ])
                                     </td>

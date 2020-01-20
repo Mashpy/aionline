@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class SoftwareReview extends Model
 {
-    protected $fillable = ['title','alternative_software_id','title','review_by','description'];
+    protected $fillable = ['title','ai_software_id','title','review_by','description'];
 
 }

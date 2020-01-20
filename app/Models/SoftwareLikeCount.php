@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class SoftwareLikeCount extends Model
 {
-    protected $fillable = ['client_ip','alternative_software_id'];
+    protected $fillable = ['client_ip','ai_software_id'];
 }

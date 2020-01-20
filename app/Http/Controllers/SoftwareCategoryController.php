@@ -41,13 +41,13 @@ class SoftwareCategoryController extends Controller
         \Session::flash('success','Software category updated successfully!!');
         return back();
     }
-    public function destroy(SoftwareCategory $alternative_software_category)
+    public function destroy(SoftwareCategory $ai_software_category)
     {
-        $sub_category = SoftwareCategory::where('parent_id', $alternative_software_category->id)->get();
+        $sub_category = SoftwareCategory::where('parent_id', $ai_software_category->id)->get();
         foreach ($sub_category as $sub){
             $sub->delete();
         }
-        $alternative_software_category->delete();
+        $ai_software_category->delete();
         return back()->with(['success' => 'Category deleted successfully']);
     }
 }
