@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                Back to <a href="{{route('ai_software_category.index')}}">Software Category</a>
+                Back to <a href="{{route('admin_ai_software_category.index')}}">Software Category</a>
                 <div class="alert text-center category-heading"><b>Alternative Software Category</b></div>
             </div>
             <div class="col-md-3"></div>
@@ -11,7 +11,7 @@
                 @include('includes.message')
                 <div class="alert alert-success">
                     <h5>Update Category</h5>
-                    <form action="{{ route('ai_software_category.update', $category->id) }}" method="post">
+                    <form action="{{ route('admin_ai_software_category.update', $category->id) }}" method="post">
                         @csrf @method('put')
                         <table id="order-listing" class="table table-striped">
                             <tr>

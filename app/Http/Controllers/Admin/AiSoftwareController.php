@@ -48,19 +48,6 @@ class AiSoftwareController extends Controller
         }
     }
 
-    public function destroy($id)
-    {
-        $ai_software = AiSoftware::find($id);
-        if ($ai_software->delete()){
-            if (file_exists(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo)) {
-                unlink(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo);
-            }
-            return back()->with(['success' => 'Software deleted successfully']);
-        } else {
-            return back()->with(['fail' => 'Something went wrong!!! Please try again']);
-        }
-    }
-
     public function edit($id){
         $ai_software = AiSoftware::find($id);
         $software_categories = SoftwareCategory::orderBy('name')->get();
@@ -88,9 +75,22 @@ class AiSoftwareController extends Controller
             $image->move(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')), $imageName);
             $ai_software->logo = $imageName;
         }else{
-            $ai_software->logo = $ai_software->old_logo;
+            $ai_software->logo = $request->old_logo;
         }
         $ai_software->save();
-        return redirect()->route('ai_software.index')->with(['success' => 'Software updated successfully']);
+        return redirect()->route('admin_ai_software.index')->with(['success' => 'Software updated successfully']);
+    }
+
+    public function destroy($id)
+    {
+        $ai_software = AiSoftware::find($id);
+        if ($ai_software->delete()){
+            if (file_exists(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo)) {
+                unlink(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo);
+            }
+            return back()->with(['success' => 'Software deleted successfully']);
+        } else {
+            return back()->with(['fail' => 'Something went wrong!!! Please try again']);
+        }
     }
 }
