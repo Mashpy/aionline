@@ -6,8 +6,8 @@
                 Back to <a href="{{route('admin_ai_software_category.index')}}">Software Category</a>
                 <div class="alert text-center category-heading"><b>Alternative Software Category</b></div>
             </div>
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
                 @include('includes.message')
                 <div class="alert alert-success">
                     <h5>Update Category</h5>
@@ -23,12 +23,18 @@
                             <tr>
                                 <th>Parent Category</th>
                                 <td>
-                                    <select class="form-control" name="parent_id">
-                                        <option value="">Choose parent category</option>
-                                        @foreach($categories as $parent_category)
-                                            <option value="{{$parent_category->id}}" {{ $parent_category->id == $category->parent_id ? 'selected' : '' }} >{{$parent_category->name}}</option>
-                                        @endforeach
-                                    </select>
+                                    <span class="{{$category->parent_id !== null ? '' : 'display-none' }}">Already you have selected <strong>{{$category->parent_id !== null ? $category->parent->name : ''}}</strong>. If you want to change, please select again</span>
+                                    <div class="category-box">
+                                        <select class="form-control category_select" name="parent_id" data-value="1">
+                                            <option value="" data-browse-node-id="0">Choose parent category</option>
+                                            {{--value = 0 used for update as a main parent category--}}
+                                            <option data-browse-node-id="0" value="0">Main Category</option>
+                                            @foreach($patent_categories as $patent_category)
+                                                <option value="{{$patent_category->id}}" data-browse-node-id="{{ $patent_category->id }}">{{$patent_category->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <input type="hidden" value="{{$category->parent_id}}" name="old_parent_id">
                                 </td>
                             </tr>
                             <tr>
@@ -42,4 +48,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section('run_custom_js_file')
+    @include('admin.ai_software.software_category.sub_category_js')
 @endsection

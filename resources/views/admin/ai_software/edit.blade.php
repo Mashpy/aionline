@@ -24,12 +24,16 @@
                             <tr>
                                 <th>Category</th>
                                 <td>
-                                    <select class="form-control" name="software_category_id">
-                                        <option>Select Category</option>
-                                        @foreach($software_categories as $software_category)
-                                            <option value="{{$software_category->id}}" {{ $software_category->id == $ai_software->software_category_id ? 'Selected' : ' ' }}>{{$software_category->name}}</option>
-                                        @endforeach
-                                    </select>
+                                    <span class="">Already you have selected <strong>{{$ai_software->software_category_id !== null ? $ai_software->softwareCategoryName->name : ''}}</strong>. If you want to change, please select again</span>
+                                    <div class="category-box">
+                                        <select class="form-control category_select" name="parent_id" data-value="1">
+                                            <option value="" data-browse-node-id="0">Choose parent category</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{$category->id}}" data-browse-node-id="{{ $category->id }}">{{$category->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <input type="hidden" value="{{$ai_software->software_category_id}}" name="old_parent_id">
                                 </td>
                             </tr>
                             <tr>
@@ -62,4 +66,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section('run_custom_js_file')
+    @include('admin.ai_software.software_category.sub_category_js')
 @endsection

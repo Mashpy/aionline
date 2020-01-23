@@ -24,23 +24,14 @@
                             <tr>
                                 <th>Category</th>
                                 <td>
-                                    <select class="form-control" name="software_category_id">
-                                        <option>Select Category</option>
-                                        @foreach($software_categories as $software_category)
-                                        <option value="{{$software_category->id}}">{{$software_category->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Sub Category</th>
-                                <td>
-                                    <select class="form-control" name="software_category_id">
-                                        <option>Select Sub Category</option>
-                                        @foreach($software_categories as $software_category)
-                                            <option value="{{$software_category->id}}">{{$software_category->name}}</option>
-                                        @endforeach
-                                    </select>
+                                    <div class="category-box">
+                                        <select class="form-control category_select" name="software_category_id" data-value="1">
+                                            <option value="" data-browse-node-id="0">Choose parent category</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{$category->id}}" data-browse-node-id="{{ $category->id }}">{{$category->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -71,4 +62,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section('run_custom_js_file')
+    @include('admin.ai_software.software_category.sub_category_js')
 @endsection

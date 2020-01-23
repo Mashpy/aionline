@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\SoftwareCategory;
 use App\Models\AiSoftware;
@@ -16,8 +17,8 @@ class AiSoftwareController extends Controller
     }
 
     public function create(){
-        $software_categories = SoftwareCategory::orderBy('name')->get();
-        return view('admin.ai_software.create', compact('software_categories'));
+        $categories = Category::with('children')->whereNull('parent_id')->latest()->get();
+        return view('admin.ai_software.create', compact('categories'));
     }
 
     public function store(Request $request){
@@ -50,8 +51,8 @@ class AiSoftwareController extends Controller
 
     public function edit($id){
         $ai_software = AiSoftware::find($id);
-        $software_categories = SoftwareCategory::orderBy('name')->get();
-        return view('admin.ai_software.edit', compact('ai_software', 'software_categories'));
+        $categories = Category::with('children')->whereNull('parent_id')->latest()->get();
+        return view('admin.ai_software.edit', compact('ai_software', 'categories'));
     }
 
     public function update(Request $request, $id){
@@ -59,14 +60,17 @@ class AiSoftwareController extends Controller
 
         $validatedData = $request->validate([
             'name' => ['required', 'max:255'],
-            'software_category_id' => ['required'],
             'description' => ['required'],
         ]);
         $ai_software->name = $request->name;
-        $ai_software->software_category_id = $request->software_category_id;
         $ai_software->description = $request->description;
         $ai_software->official_link = $request->official_link;
         $ai_software->slug = Str::slug($request->name);
+        if($request->parent_id){
+            $ai_software->software_category_id = $request->parent_id;
+        }else{
+            $ai_software->software_category_id = $request->old_parent_id;
+        }
 
         if ($request->logo) {
             unlink(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo);

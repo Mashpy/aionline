@@ -23,16 +23,15 @@
                             <tr>
                                 <th>Parent Category</th>
                                 <td>
-                                    <select  onchange="getS(this.value)" class="form-control sub_category" name="parent_id" id="">
-                                        <option value="">Choose parent category</option>
-                                        @foreach($categories as $category)
-                                        <option value="{{$category->id}}">{{$category->name}}</option>
-                                        @endforeach
-                                    </select>
+                                    <div class="category-box">
+                                        <select class="form-control category_select" name="parent_id" data-value="1">
+                                            <option value="" data-browse-node-id="0">Choose parent category</option>
+                                            @foreach($categories as $category)
+                                            <option value="{{$category->id}}" data-browse-node-id="{{ $category->id }}">{{$category->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </td>
-                            </tr>
-                            <tr id="sub_category_list">
-
                             </tr>
                             <tr>
                                 <td colspan="2">
@@ -76,9 +75,8 @@
                                             @include('admin.ai_software.software_category.sub_category',['subcategories' => $category->children, 'dataParent' => $category->id , 'dataLevel' => 1])
                                         @endif
                                     @endforeach
-                                    </tbody>
-
-                                </table>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     {!! $categories->render() !!}
@@ -88,10 +86,7 @@
     </div>
 @endsection
 @section('run_custom_js_file')
-    <script src="{{asset('js/javascript.js')}}"></script>
-@endsection
-
-@section('run_custom_jquery')
+    <script src="{{asset('js/subcategory-plugin-javascript.js')}}"></script>
     <script>
         $(document).ready(function(){
             $("#category-col").click(function(){
@@ -102,47 +97,5 @@
             });
         });
     </script>
-
-    <script>
-       /* $(document).ready(function(){
-            $("#sub_category").change(function(){
-                var sub_category_id =  $("#sub_category").val();
-                var option= "";
-                $.get( "http://127.0.0.1:8000/admin/admin_ai_software_get_subcategory/"+sub_category_id, function( data ) {
-                    data = JSON.parse(data);
-                    console.log(data);
-                    data.forEach(function(element){
-                        option += "<option value=' "+ element.id +" ' >"+ element.name +"</option>";
-                    });
-                    $("#district_aria").html( option);
-                });
-            });
-        });*/
-       $.ajaxSetup({
-           headers: {
-               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-           }
-       });
-
-           function getS(sub_category_id){
-               // var sub_category_id =  val;
-
-               console.log(sub_category_id);
-               var option = '';
-               $.ajax({
-                   'url': '{{ route('admin.software_subcategory') }}',
-                   'type': "GET",
-                   'data': {id : sub_category_id},
-                   success: function (data) {
-                       console.log(data);
-                       data = JSON.parse(data);
-                           data.forEach(function(element){
-                               option += "<option value=' "+ element.id +" ' >"+ element.name +"</option>";
-                           });
-                           var select = '<td>Sub Category</td><td><select onchange="getS(this.value)" class="form-control sub_category">'+option+'</select></td>';
-                           $("#sub_category_list").append(select);
-                       }
-               });
-           }
-    </script>
+    @include('admin.ai_software.software_category.sub_category_js')
 @endsection

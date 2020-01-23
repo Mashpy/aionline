@@ -27,20 +27,53 @@ class AdminCategoryController extends Controller
     }
 
     public function edit($category_id){
-        $categories = Category::with('children')->whereNull('parent_id')->latest()->paginate(15);
+        $patent_categories = Category::with('children')->whereNull('parent_id')->latest()->paginate(15);
         $category = Category::find($category_id);
-        return view('admin.ai_software.software_category.edit', compact('category', 'categories'));
+        return view('admin.ai_software.software_category.edit', compact('category', 'patent_categories'));
     }
 
-    public function destroy($category_id){
+    public function update(Request $request, $category_id){
+        $request->validate([
+            'name' => ['required','unique:software_categories,name,'.$category_id],
+        ]);
         $category = Category::find($category_id);
-        $category->destroy();
-        Session::put('exception','Tutorial Delete successfully');
-        return redirect()->route('admin.tutorial.create');
+        $category->name = $request->name;
+
+        if($category->parent_id == null && $request->old_parent_id){
+            $category->parent_id = $request->old_parent_id;
+        }elseif($request->parent_id == 0){
+            $category->parent_id = null;
+        }else{
+            $category->parent_id = $request->parent_id;
+        }
+        $category->save();
+        \Session::flash('success','Software category updated successfully!!');
+        return back();
     }
+
+    public function destroy(SoftwareCategory $ai_software_category)
+    {
+        $sub_category = SoftwareCategory::where('parent_id', $ai_software_category->id)->get();
+        foreach ($sub_category as $sub){
+            $sub->delete();
+        }
+        $ai_software_category->delete();
+        return back()->with(['success' => 'Category deleted successfully']);
+    }
+
     public function getSubCategory(Request $request){
-        $sub_category = Category::where('parent_id', $request->id)->get();
-        return json_encode($sub_category);
+        $sub_categories = Category::where('parent_id', $request->id)->get();
+        $temp = [];
+        $category_json = null;
+
+        foreach ($sub_categories as $category) {
+            $temp['id'] = $category->id;
+            $temp['name'] = $category->name;
+            $temp['browse_node_id'] = $category->parent_id;
+            $category_json[] = $temp;
+        }
+
+        return response()->json($category_json);
     }
 
 }

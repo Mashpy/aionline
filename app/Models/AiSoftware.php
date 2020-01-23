@@ -9,7 +9,7 @@ class AiSoftware extends Model{
     protected $fillable = ['software_category_id','name','description','official_link','slug','logo'];
 
     public function softwareCategoryName(){
-        return $this->belongsTo(SoftwareCategory::class, 'software_category_id');
+        return $this->belongsTo(Category::class, 'software_category_id');
     }
 
     public function getAlternateSoftwareAttribute(){
