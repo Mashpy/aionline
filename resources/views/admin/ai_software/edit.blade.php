@@ -24,7 +24,7 @@
                             <tr>
                                 <th>Category</th>
                                 <td>
-                                    <span class="">Already you have selected <strong>{{$ai_software->software_category_id !== null ? $ai_software->softwareCategoryName->name : ''}}</strong>. If you want to change, please select again</span>
+                                    <span class="">Already you have selected <strong>{{$ai_software->category_id !== null ? $ai_software->softwareCategoryName->name : ''}}</strong>. If you want to change, please select again</span>
                                     <div class="category-box">
                                         <select class="form-control category_select" name="parent_id" data-value="1">
                                             <option value="" data-browse-node-id="0">Choose parent category</option>
@@ -33,7 +33,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <input type="hidden" value="{{$ai_software->software_category_id}}" name="old_parent_id">
+                                    <input type="hidden" value="{{$ai_software->category_id}}" name="old_parent_id">
                                 </td>
                             </tr>
                             <tr>

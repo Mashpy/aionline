@@ -24,14 +24,14 @@ class AiSoftwareController extends Controller
     public function store(Request $request){
         $validatedData = $request->validate([
             'name' => ['required', 'max:255'],
-            'software_category_id' => ['required'],
+            'category_id' => ['required'],
             'description' => ['required'],
             'logo' => ['required'],
         ]);
 
         $software = new AiSoftware;
         $software->name = $request->name;
-        $software->software_category_id = $request->software_category_id;
+        $software->category_id = $request->category_id;
         $software->description = $request->description;
         $software->official_link = $request->official_link;
         $software->slug = Str::slug($request->name);
@@ -67,9 +67,9 @@ class AiSoftwareController extends Controller
         $ai_software->official_link = $request->official_link;
         $ai_software->slug = Str::slug($request->name);
         if($request->parent_id){
-            $ai_software->software_category_id = $request->parent_id;
+            $ai_software->category_id = $request->parent_id;
         }else{
-            $ai_software->software_category_id = $request->old_parent_id;
+            $ai_software->category_id = $request->old_parent_id;
         }
 
         if ($request->logo) {

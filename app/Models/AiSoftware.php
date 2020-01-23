@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 class AiSoftware extends Model{
     protected $appends = ['logo_url'];
     const IMAGE_UPLOAD_PATH = '/uploads/ai_software/image/';
-    protected $fillable = ['software_category_id','name','description','official_link','slug','logo'];
+    protected $fillable = ['category_id','name','description','official_link','slug','logo'];
 
     public function softwareCategoryName(){
-        return $this->belongsTo(Category::class, 'software_category_id');
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function getAlternateSoftwareAttribute(){
-        return AiSoftware::where('software_category_id', $this->software_category_id)->get();
+        return AiSoftware::where('category_id', $this->category_id)->get();
     }
 
     public function getLogoUrlAttribute(){

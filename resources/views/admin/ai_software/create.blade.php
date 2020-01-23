@@ -25,7 +25,7 @@
                                 <th>Category</th>
                                 <td>
                                     <div class="category-box">
-                                        <select class="form-control category_select" name="software_category_id" data-value="1">
+                                        <select class="form-control category_select" name="category_id" data-value="1">
                                             <option value="" data-browse-node-id="0">Choose parent category</option>
                                             @foreach($categories as $category)
                                                 <option value="{{$category->id}}" data-browse-node-id="{{ $category->id }}">{{$category->name}}</option>
