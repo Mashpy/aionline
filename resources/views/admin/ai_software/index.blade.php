@@ -3,6 +3,7 @@
     <div class="container mt-2">
         <div class="row">
             <div class="col-md-12">
+                Here you will go main menu <a href="{{route('admin.index')}}">Main Menu</a>
                 Here you will add new software. <a href="{{route('admin_ai_software.create')}}">Create new software</a>
                 <div class="alert text-center category-heading"><b>Alternative Software</b></div>
             </div>

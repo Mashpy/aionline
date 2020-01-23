@@ -33,15 +33,16 @@ class AdminCategoryController extends Controller
     }
 
     public function update(Request $request, $category_id){
+
         $request->validate([
             'name' => ['required','unique:software_categories,name,'.$category_id],
         ]);
         $category = Category::find($category_id);
         $category->name = $request->name;
 
-        if($category->parent_id == null && $request->old_parent_id){
+        if($request->parent_id == null && !empty($request->old_parent_id)){
             $category->parent_id = $request->old_parent_id;
-        }elseif($request->parent_id == 0){
+        }else if($request->parent_id == 0){
             $category->parent_id = null;
         }else{
             $category->parent_id = $request->parent_id;
@@ -51,13 +52,14 @@ class AdminCategoryController extends Controller
         return back();
     }
 
-    public function destroy(SoftwareCategory $ai_software_category)
+    public function destroy($category_id)
     {
-        $sub_category = SoftwareCategory::where('parent_id', $ai_software_category->id)->get();
-        foreach ($sub_category as $sub){
+        $sub_category = Category::find($category_id);
+        $sub_categories = Category::where('parent_id', $category_id)->get();
+        foreach ($sub_categories as $sub){
             $sub->delete();
         }
-        $ai_software_category->delete();
+        $sub_category->delete();
         return back()->with(['success' => 'Category deleted successfully']);
     }
 
@@ -72,7 +74,6 @@ class AdminCategoryController extends Controller
             $temp['browse_node_id'] = $category->parent_id;
             $category_json[] = $temp;
         }
-
         return response()->json($category_json);
     }
 

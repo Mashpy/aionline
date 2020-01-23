@@ -97,7 +97,8 @@
                 $("#open-review-box").hide();
                 $("#post-review-box").slideDown("slow");
             });
-            $("#close-review-box").click(function(){
+            $("#close-review-box").click(function(e){
+                e.preventDefault();
                 $("#open-review-box").show();
                 $("#post-review-box").slideUp("slow");
             });

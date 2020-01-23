@@ -24,14 +24,14 @@ class AiSoftwareController extends Controller
     public function store(Request $request){
         $validatedData = $request->validate([
             'name' => ['required', 'max:255'],
-            'category_id' => ['required'],
+            'parent_id' => ['required'],
             'description' => ['required'],
-            'logo' => ['required'],
+            'logo' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ]);
 
         $software = new AiSoftware;
         $software->name = $request->name;
-        $software->category_id = $request->category_id;
+        $software->category_id = $request->parent_id;
         $software->description = $request->description;
         $software->official_link = $request->official_link;
         $software->slug = Str::slug($request->name);
