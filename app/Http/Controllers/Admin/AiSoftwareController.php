@@ -43,7 +43,7 @@ class AiSoftwareController extends Controller
             $software->logo = $imageName;
         }
         if ($software->save()){
-            return redirect()->route('ai_software.index')->with(['success' => 'New Software added successfully']);
+            return redirect()->route('admin_ai_software.index')->with(['success' => 'New Software added successfully']);
         } else {
             return back()->with(['error' => 'Something went wrong!!! Please try again']);
         }
