@@ -15,13 +15,13 @@ class CreateAiSoftwaresTable extends Migration
     {
         Schema::create('ai_softwares', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('category_id');
+            $table->integer('category_id')->nullable();
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->integer('like')->nullable();
             $table->string('official_link')->nullable();
             $table->string('slug');
-            $table->string('logo');
+            $table->string('logo')->nullable();
             $table->timestamps();
         });
     }

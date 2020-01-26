@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Models\SoftwareCategory;
 use App\Models\AiSoftware;
 use Illuminate\Support\Str;
+use Goutte\Client;
 
 class AiSoftwareController extends Controller
 {
@@ -23,18 +23,25 @@ class AiSoftwareController extends Controller
 
     public function store(Request $request){
         $validatedData = $request->validate([
-            'name' => ['required', 'max:255'],
-            'parent_id' => ['required'],
-            'description' => ['required'],
-            'logo' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'official_link' => ['required'],
         ]);
 
         $software = new AiSoftware;
-        $software->name = $request->name;
         $software->category_id = $request->parent_id;
         $software->description = $request->description;
-        $software->official_link = $request->official_link;
         $software->slug = Str::slug($request->name);
+        $official_link = $this->wash_link($request->official_link);
+
+        $client = new Client();
+        $crawler = $client->request('GET', 'https://hackernoon.com/');
+        $crawler->filter('title')->each(function ($node) {
+            dd($node->text());
+        });
+        if($request->name){
+            $software->name = $request->name;
+        }else{
+            $software->name = $title;
+        }
 
         if ($request->file('logo')) {
             $image = $request->file('logo');
@@ -96,5 +103,12 @@ class AiSoftwareController extends Controller
         } else {
             return back()->with(['fail' => 'Something went wrong!!! Please try again']);
         }
+    }
+
+    public function wash_link($link){
+        $replaced = Str::replaceArray('www.', [''], $link);
+        $replaced = Str::replaceArray('http://www.', [''], $replaced);
+        $replaced = Str::replaceArray('https://www.', [''], $replaced);
+        return $replaced = Str::replaceArray('http://', [''], $replaced);
     }
 }
