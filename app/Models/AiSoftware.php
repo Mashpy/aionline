@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AiSoftware extends Model{
     protected $appends = ['logo_url'];
-    const IMAGE_UPLOAD_PATH = '/uploads/ai_software/image';
+    const IMAGE_UPLOAD_PATH = '/uploads/ai_software/image/';
     protected $fillable = ['software_category_id','name','description','official_link','slug','logo'];
 
     public function softwareCategoryName(){

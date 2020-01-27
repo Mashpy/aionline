@@ -34,7 +34,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <input type="text" value="{{$category->parent_id}}" name="old_parent_id">
+                                    <input type="hidden" value="{{$category->parent_id}}" name="old_parent_id">
                                 </td>
                             </tr>
                             <tr>

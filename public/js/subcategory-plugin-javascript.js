@@ -13,7 +13,7 @@ $(function () {
 
         if (children.length) {
             var expander = $columnName.prepend('' +
-                '<span class="treegrid-expander glyphicon glyphicon-chevron-right"></span>' +
+                '<span class="treegrid-expander glyphicon glyphicon-chevron-down"></span>' +
                 '');
 
             children.hide();

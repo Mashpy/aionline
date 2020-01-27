@@ -24,7 +24,7 @@
                             <tr>
                                 <th>Category</th>
                                 <td>
-                                    <span class="">Already you have selected <strong>{{$ai_software->category_id !== null ? $ai_software->softwareCategoryName->name : ''}}</strong>. If you want to change, please select again</span>
+                                    <span class="{{$ai_software->category_id == null ? 'display-none' : ''}}">Already you have selected <strong>{{$ai_software->category_id !== null ? $ai_software->softwareCategoryName->name : ''}}</strong>. If you want to change, please select again</span>
                                     <div class="category-box">
                                         <select class="form-control category_select" name="parent_id" data-value="1">
                                             <option value="" data-browse-node-id="0">Choose parent category</option>
@@ -39,7 +39,7 @@
                             <tr>
                                 <th>Description</th>
                                 <td>
-                                    <textarea class="form-control" rows="6" name="description">{{$ai_software->description}}"</textarea>
+                                    <textarea class="form-control" rows="6" name="description">{{$ai_software->description}}</textarea>
                                 </td>
                             </tr>
                             <tr>

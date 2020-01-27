@@ -2,7 +2,6 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\SoftwareCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -35,7 +34,7 @@ class AdminCategoryController extends Controller
     public function update(Request $request, $category_id){
 
         $request->validate([
-            'name' => ['required','unique:software_categories,name,'.$category_id],
+            'name' => ['required','unique:categories,name,'.$category_id],
         ]);
         $category = Category::find($category_id);
         $category->name = $request->name;

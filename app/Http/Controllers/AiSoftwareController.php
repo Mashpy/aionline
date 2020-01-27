@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\AiSoftware;
-use App\Models\AiSoftwareLikeCount;
 use App\Models\AiSoftwareReview;
 
 class AiSoftwareController extends Controller

@@ -29,24 +29,26 @@ class AiSoftwareController extends Controller
         $software = new AiSoftware;
         $software->category_id = $request->parent_id;
         $software->description = $request->description;
-        $software->slug = Str::slug($request->name);
         $official_link = $this->wash_link($request->official_link);
+        $software->official_link = $official_link;
 
-        $client = new Client();
-        $crawler = $client->request('GET', 'https://hackernoon.com/');
-        $crawler->filter('title')->each(function ($node) {
-            dd($node->text());
-        });
         if($request->name){
             $software->name = $request->name;
+            $software->slug = Str::slug($request->name);
         }else{
-            $software->name = $title;
+            $client = new Client();
+            $crawler = $client->request('GET', 'https://'.$official_link);
+            $title = $crawler->filter('title')->each(function ($node) {
+                return $node->text();
+            });
+            $software->name = $title[0];
+            $software->slug = Str::slug($title[0]);
         }
 
         if ($request->file('logo')) {
             $image = $request->file('logo');
             $imageName = Str::slug($request->name).'.'.$image->getClientOriginalExtension();
-            $image->move(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.date('Y').'/'.date('m')), $imageName);
+            $image->move(public_path(AiSoftware::IMAGE_UPLOAD_PATH.date('Y').'/'.date('m')), $imageName);
             $software->logo = $imageName;
         }
         if ($software->save()){
@@ -63,15 +65,13 @@ class AiSoftwareController extends Controller
     }
 
     public function update(Request $request, $id){
-        $ai_software = AiSoftware::find($id);
-
         $validatedData = $request->validate([
             'name' => ['required', 'max:255'],
-            'description' => ['required'],
         ]);
+        $ai_software = AiSoftware::find($id);
         $ai_software->name = $request->name;
         $ai_software->description = $request->description;
-        $ai_software->official_link = $request->official_link;
+        $ai_software->official_link = $this->wash_link($request->official_link);
         $ai_software->slug = Str::slug($request->name);
         if($request->parent_id){
             $ai_software->category_id = $request->parent_id;
@@ -80,10 +80,12 @@ class AiSoftwareController extends Controller
         }
 
         if ($request->logo) {
-            unlink(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo);
+            if(!empty($request->old_logo)){
+                unlink(public_path(AiSoftware::IMAGE_UPLOAD_PATH.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo);
+            }
             $image = $request->file('logo');
             $imageName = Str::slug($request->name).'.'.$image->getClientOriginalExtension();
-            $image->move(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')), $imageName);
+            $image->move(public_path(AiSoftware::IMAGE_UPLOAD_PATH.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')), $imageName);
             $ai_software->logo = $imageName;
         }else{
             $ai_software->logo = $request->old_logo;
@@ -95,9 +97,10 @@ class AiSoftwareController extends Controller
     public function destroy($id)
     {
         $ai_software = AiSoftware::find($id);
-        if ($ai_software->delete()){
-            if (file_exists(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo)) {
-                unlink(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo);
+        $ai_software->delete();
+        if ($ai_software->logo !== null){
+            if (file_exists(public_path(AiSoftware::IMAGE_UPLOAD_PATH.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo)) {
+                unlink(public_path(AiSoftware::IMAGE_UPLOAD_PATH.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo);
             }
             return back()->with(['success' => 'Software deleted successfully']);
         } else {
@@ -107,8 +110,9 @@ class AiSoftwareController extends Controller
 
     public function wash_link($link){
         $replaced = Str::replaceArray('www.', [''], $link);
-        $replaced = Str::replaceArray('http://www.', [''], $replaced);
+        $replaced = Str::replaceArray('https://', [''], $replaced);
         $replaced = Str::replaceArray('https://www.', [''], $replaced);
+        $replaced = Str::replaceArray('http://www.', [''], $replaced);
         return $replaced = Str::replaceArray('http://', [''], $replaced);
     }
 }
