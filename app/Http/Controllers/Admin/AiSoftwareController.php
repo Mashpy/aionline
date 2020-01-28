@@ -23,7 +23,7 @@ class AiSoftwareController extends Controller
 
     public function store(Request $request){
         $validatedData = $request->validate([
-            'official_link' => ['required'],
+            'official_link' => ['required','unique:ai_softwares,official_link'],
         ]);
 
         $software = new AiSoftware;
