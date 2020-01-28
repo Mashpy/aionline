@@ -23,13 +23,17 @@ class AiSoftwareController extends Controller
 
     public function store(Request $request){
         $validatedData = $request->validate([
-            'official_link' => ['required','unique:ai_softwares,official_link'],
+            'official_link' => ['required'],
         ]);
 
         $software = new AiSoftware;
         $software->category_id = $request->parent_id;
         $software->description = $request->description;
         $official_link = $this->wash_link($request->official_link);
+        $check_official_link = AiSoftware::where('official_link', $official_link)->first();
+        if($check_official_link){
+            return back()->with(['error' => 'The official link has already been taken.']);
+        }
         $software->official_link = $official_link;
 
         if($request->name){
