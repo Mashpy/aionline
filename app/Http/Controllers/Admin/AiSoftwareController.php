@@ -12,7 +12,7 @@ use Goutte\Client;
 class AiSoftwareController extends Controller
 {
     public function index(){
-        $ai_softwares = AiSoftware::orderBy('name')->get();
+        $ai_softwares = AiSoftware::latest()->paginate(20);
         return view('admin.ai_software.index', compact('ai_softwares'));
     }
 
@@ -71,12 +71,13 @@ class AiSoftwareController extends Controller
     public function update(Request $request, $id){
         $validatedData = $request->validate([
             'name' => ['required', 'max:255'],
+            'slug' => ['required', 'unique:ai_softwares,slug,'.$id],
         ]);
         $ai_software = AiSoftware::find($id);
         $ai_software->name = $request->name;
         $ai_software->description = $request->description;
         $ai_software->official_link = $this->wash_link($request->official_link);
-        $ai_software->slug = Str::slug($request->name);
+        $ai_software->slug = $request->slug;
         if($request->parent_id){
             $ai_software->category_id = $request->parent_id;
         }else{

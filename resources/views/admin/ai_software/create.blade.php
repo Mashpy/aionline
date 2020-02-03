@@ -18,7 +18,7 @@
                             <tr>
                                 <th>Software Name</th>
                                 <td>
-                                    <input class="form-control" type="text" name="name">
+                                    <input class="form-control" type="text" name="name" placeholder="Enter software name">
                                 </td>
                             </tr>
                             <tr>
@@ -37,13 +37,13 @@
                             <tr>
                                 <th>Description</th>
                                 <td>
-                                    <textarea class="form-control" rows="6" name="description"></textarea>
+                                    <textarea class="form-control" rows="6" name="description" placeholder="Enter description"></textarea>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Official Link</th>
                                 <td>
-                                    <input class="form-control" type="text" name="official_link">
+                                    <input class="form-control" type="text" name="official_link" placeholder="Enter official link">
                                 </td>
                             </tr><tr>
                                 <th>Logo</th>

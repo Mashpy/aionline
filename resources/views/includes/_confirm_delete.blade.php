@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-{{ $id }}">
+<button type="button" class="btn btn-sm btn-danger" data-toggle="modal" title="delete" data-target="#modal-{{ $id }}">
     <i class="fa fa-trash"></i>
 </button>
 

@@ -21,7 +21,7 @@
                             <th>Category</th>
                             <th class="w-20">Description</th>
                             <th>Official Link</th>
-                            <th>Action</th>
+                            <th class="w-15">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -34,7 +34,8 @@
                                     <td>{{ str_limit($ai_software->description, $limit = 80, $end = '...') }}</td>
                                     <td>{{$ai_software->official_link}}</td>
                                     <td>
-                                        <a class="btn btn-sm btn-success text-white" href="{{route('admin_ai_software.edit', $ai_software->id)}}"><i class="fa fa-edit"></i></a>
+                                        <a class="btn btn-sm btn-info text-white" href="{{route('ai_software.view', $ai_software->slug)}}" target="_blank" title="view"><i class="fa fa-eye"></i></a>
+                                        <a class="btn btn-sm btn-success text-white" href="{{route('admin_ai_software.edit', $ai_software->id)}}" title="edit"><i class="fa fa-edit"></i></a>
                                         @include('includes._confirm_delete',[
                                                 'id' => $ai_software->id,
                                                 'url' => route('admin_ai_software.destroy', $ai_software->id),
@@ -45,6 +46,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $ai_softwares->links() }}
                 </div>
             </div>
         </div>

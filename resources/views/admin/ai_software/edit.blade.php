@@ -22,6 +22,12 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th>Slug</th>
+                                <td>
+                                    <input class="form-control" type="text" name="slug" value="{{$ai_software->slug}}">
+                                </td>
+                            </tr>
+                            <tr>
                                 <th>Category</th>
                                 <td>
                                     <span class="{{$ai_software->category_id == null ? 'display-none' : ''}}">Already you have selected <strong>{{$ai_software->category_id !== null ? $ai_software->softwareCategoryName->name : ''}}</strong>. If you want to change, please select again</span>
