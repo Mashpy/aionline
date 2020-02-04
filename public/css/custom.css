@@ -779,3 +779,14 @@ ul.inline-list li{
     background: #63bda2;
     border:#63bda2;
 }
+.social-button{
+    font-size: 40px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+.isDisabled {
+    color: currentColor;
+    pointer-events: none;
+    opacity: 0.5;
+}
+

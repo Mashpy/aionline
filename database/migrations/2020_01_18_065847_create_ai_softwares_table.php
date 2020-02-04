@@ -22,6 +22,10 @@ class CreateAiSoftwaresTable extends Migration
             $table->string('official_link')->nullable();
             $table->string('slug');
             $table->string('logo')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('youtube')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('twitter')->nullable();
             $table->timestamps();
         });
     }

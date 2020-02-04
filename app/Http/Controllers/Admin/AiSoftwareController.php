@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\AiSoftware;
 use Illuminate\Support\Str;
 use Goutte\Client;
+use Image;
 
 class AiSoftwareController extends Controller
 {
@@ -26,6 +27,7 @@ class AiSoftwareController extends Controller
             'official_link' => ['required'],
         ]);
 
+        $client = new Client();
         $software = new AiSoftware;
         $software->category_id = $request->parent_id;
         $software->description = $request->description;
@@ -40,7 +42,6 @@ class AiSoftwareController extends Controller
             $software->name = $request->name;
             $software->slug = Str::slug($request->name);
         }else{
-            $client = new Client();
             $crawler = $client->request('GET', 'https://'.$official_link);
             $title = $crawler->filter('title')->each(function ($node) {
                 return $node->text();
@@ -54,6 +55,15 @@ class AiSoftwareController extends Controller
             $imageName = Str::slug($request->name).'.'.$image->getClientOriginalExtension();
             $image->move(public_path(AiSoftware::IMAGE_UPLOAD_PATH.date('Y').'/'.date('m')), $imageName);
             $software->logo = $imageName;
+        }
+
+        $crawler = $client->request('GET', 'https://'.$official_link);
+        $links = $crawler->filter('a')->each(function($node) {
+            return $href  = $node->attr('href');
+        });
+        $social_links =  $this->social_link($links);
+        foreach ($social_links as $key => $value){
+            $software[$key] = $value;
         }
         if ($software->save()){
             return redirect()->route('admin_ai_software.index')->with(['success' => 'New Software added successfully']);
@@ -95,6 +105,18 @@ class AiSoftwareController extends Controller
         }else{
             $ai_software->logo = $request->old_logo;
         }
+        if($request->image_url){
+            if(!empty($request->old_logo)){
+                unlink(public_path(AiSoftware::IMAGE_UPLOAD_PATH.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo);
+            }
+            $path = $request->image_url;
+            $imageName  = $request->slug.'.jpg';
+            header('Content-Type: image/png');
+            //$img->save(public_path('uploads/'. $filename));
+            Image::make($path)->save(public_path(AiSoftware::IMAGE_UPLOAD_PATH.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'. $imageName);
+            $ai_software->logo = $imageName;
+        }
+
         $ai_software->save();
         return redirect()->route('admin_ai_software.index')->with(['success' => 'Software updated successfully']);
     }
@@ -119,5 +141,24 @@ class AiSoftwareController extends Controller
         $replaced = Str::replaceArray('https://www.', [''], $replaced);
         $replaced = Str::replaceArray('http://www.', [''], $replaced);
         return $replaced = Str::replaceArray('http://', [''], $replaced);
+    }
+
+    public function social_link($links){
+        $social = ['facebook', 'youtube', 'linkedin', 'twitter'];
+        $social_link = [];
+        foreach ($social as $social_item){
+            $matched_array_key = $this->array_search_partial($links, $social_item);
+            if($matched_array_key !== null){
+                $social_link[$social_item] = $links[$matched_array_key];
+            }
+        }
+        return $social_link;
+    }
+
+    public function array_search_partial($arr, $keyword) {
+        foreach($arr as $index => $string) {
+            if (strpos($string, $keyword) !== FALSE)
+                return $index;
+        }
     }
 }
