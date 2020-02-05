@@ -47,10 +47,11 @@
                                 <td>
                                     <textarea class="form-control" rows="6" name="description">{{$ai_software->description}}</textarea>
                                     <div class="text-center">
-                                        <a href="{{ $ai_software->facebook ? $ai_software->facebook : '' }}" title="facebook" class="{{ $ai_software->facebook ? '' : 'isDisabled' }}" target="_blank"><i class="fa fa-facebook-square social-button"></i></a>
-                                        <a href="{{ $ai_software->youtube ? $ai_software->youtube : '' }}" title="youtube" class="{{ $ai_software->youtube ? '' : 'isDisabled' }}" target="_blank"><i class="fa fa-youtube-square social-button"></i></a>
-                                        <a href="{{ $ai_software->linkedin ? $ai_software->linkedin : '' }}" title="linkedin" class="{{ $ai_software->linkedin ? '' : 'isDisabled' }}" target="_blank"><i class="fa fa-linkedin-square social-button"></i></a>
-                                        <a href="{{ $ai_software->twitter ? $ai_software->twitter : '' }}" title="twitter" class="{{ $ai_software->twitter ? '' : 'isDisabled' }} " target="_blank"><i class="fa fa-twitter-square social-button"></i></a>
+                                        @php $prefix = "http://"; @endphp
+                                        <a href="{{ $ai_software->facebook ? $prefix.$ai_software->facebook : '' }}" title="facebook" class="{{ $ai_software->facebook ? '' : 'isDisabled' }}" target="_blank"><i class="fa fa-facebook-square social-button"></i></a>
+                                        <a href="{{ $ai_software->youtube ? $prefix.$ai_software->youtube : '' }}" title="youtube" class="{{ $ai_software->youtube ? '' : 'isDisabled' }}" target="_blank"><i class="fa fa-youtube-square social-button"></i></a>
+                                        <a href="{{ $ai_software->linkedin ? $prefix.$ai_software->linkedin : '' }}" title="linkedin" class="{{ $ai_software->linkedin ? '' : 'isDisabled' }}" target="_blank"><i class="fa fa-linkedin-square social-button"></i></a>
+                                        <a href="{{ $ai_software->twitter ? $prefix.$ai_software->twitter : '' }}" title="twitter" class="{{ $ai_software->twitter ? '' : 'isDisabled' }} " target="_blank"><i class="fa fa-twitter-square social-button"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -66,7 +67,7 @@
                                     <img class="alternative-software-logo" src="{{$ai_software->logo_url}}" />
                                     <input class="form-control" type="file" name="logo">
                                     <strong>OR</strong>
-                                    <input class="form-control" type="text" name="image_url" placeholder="Ex- https://facebook.com/image.jpg">
+                                    <input class="form-control" type="text" name="logo_url" placeholder="Ex- https://facebook.com/image.jpg">
                                 </td>
                             </tr>
                             <tr>

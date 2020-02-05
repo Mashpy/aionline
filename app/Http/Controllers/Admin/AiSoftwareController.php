@@ -65,6 +65,7 @@ class AiSoftwareController extends Controller
         foreach ($social_links as $key => $value){
             $software[$key] = $value;
         }
+
         if ($software->save()){
             return redirect()->route('admin_ai_software.index')->with(['success' => 'New Software added successfully']);
         } else {
@@ -105,20 +106,18 @@ class AiSoftwareController extends Controller
         }else{
             $ai_software->logo = $request->old_logo;
         }
-        if($request->image_url){
+        if($request->logo_url){
             if(!empty($request->old_logo)){
                 unlink(public_path(AiSoftware::IMAGE_UPLOAD_PATH.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo);
             }
-            $path = $request->image_url;
+            $path = $request->logo_url;
             $imageName  = $request->slug.'.jpg';
             header('Content-Type: image/png');
-            //$img->save(public_path('uploads/'. $filename));
             Image::make($path)->save(public_path(AiSoftware::IMAGE_UPLOAD_PATH.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'. $imageName);
             $ai_software->logo = $imageName;
         }
-
         $ai_software->save();
-        return redirect()->route('admin_ai_software.index')->with(['success' => 'Software updated successfully']);
+        return back()->with(['success' => 'Software updated successfully']);
     }
 
     public function destroy($id)
@@ -137,10 +136,11 @@ class AiSoftwareController extends Controller
 
     public function wash_link($link){
         $replaced = Str::replaceArray('www.', [''], $link);
-        $replaced = Str::replaceArray('https://', [''], $replaced);
         $replaced = Str::replaceArray('https://www.', [''], $replaced);
+        $replaced = Str::replaceArray('https://', [''], $replaced);
         $replaced = Str::replaceArray('http://www.', [''], $replaced);
-        return $replaced = Str::replaceArray('http://', [''], $replaced);
+        $replaced = Str::replaceArray('http://', [''], $replaced);
+        return $replaced = Str::replaceArray('//', ['/'], $replaced);
     }
 
     public function social_link($links){
@@ -149,7 +149,11 @@ class AiSoftwareController extends Controller
         foreach ($social as $social_item){
             $matched_array_key = $this->array_search_partial($links, $social_item);
             if($matched_array_key !== null){
-                $social_link[$social_item] = $links[$matched_array_key];
+                if($social_item == 'twitter'){
+                    $social_link[$social_item] = $this->wash_link($links[$matched_array_key]);
+                }else{
+                    $social_link[$social_item] = $this->wash_link($links[$matched_array_key].'/about');
+                }
             }
         }
         return $social_link;
