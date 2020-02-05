@@ -25,9 +25,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($ai_softwares as $ai_software)
+                            @foreach($ai_softwares as $key => $ai_software)
                                 <tr>
-                                    <td>{{$loop->index+1}}</td>
+                                    <td>{{ ($ai_softwares->perPage()*$ai_softwares->currentPage() - $ai_softwares->perPage()) + $key + 1 }}</td>
                                     <td><img class="alternative-software-logo" src="{{ $ai_software->logo_url }}"/></td>
                                     <td>{{$ai_software->name}}</td>
                                     <td>{{$ai_software->softwareCategoryName ? $ai_software->softwareCategoryName->name : ''}}</td>

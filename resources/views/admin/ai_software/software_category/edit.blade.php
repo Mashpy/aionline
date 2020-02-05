@@ -26,9 +26,11 @@
                                     <span class="{{$category->parent_id !== null ? '' : 'display-none' }}">Already you have selected <strong>{{$category->parent_id !== null ? $category->parent->name : ''}}</strong>. If you want to change, please select again</span>
                                     <div class="category-box">
                                         <select class="form-control category_select" name="parent_id" data-value="1">
-                                            <option value="" data-browse-node-id="0">Choose parent category</option>
+                                            <option value="" data-browse-node-id="0">Select your option</option>
                                             {{--value = 0 used for update as a main parent category--}}
-                                            <option data-browse-node-id="0" value="0">Main Category</option>
+                                            @if($category->parent_id !== null)
+                                                <option data-browse-node-id="0" value="0">Parent Category</option>
+                                            @endif
                                             @foreach($patent_categories as $patent_category)
                                                 <option value="{{$patent_category->id}}" data-browse-node-id="{{ $patent_category->id }}">{{$patent_category->name}}</option>
                                             @endforeach

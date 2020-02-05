@@ -9,6 +9,7 @@ use App\Models\AiSoftware;
 use Illuminate\Support\Str;
 use Goutte\Client;
 use Image;
+use File;
 
 class AiSoftwareController extends Controller
 {
@@ -67,7 +68,7 @@ class AiSoftwareController extends Controller
         }
 
         if ($software->save()){
-            return redirect()->route('admin_ai_software.index')->with(['success' => 'New Software added successfully']);
+            return back()->with(['success' => 'New Software added successfully']);
         } else {
             return back()->with(['error' => 'Something went wrong!!! Please try again']);
         }
@@ -110,10 +111,14 @@ class AiSoftwareController extends Controller
             if(!empty($request->old_logo)){
                 unlink(public_path(AiSoftware::IMAGE_UPLOAD_PATH.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo);
             }
-            $path = $request->logo_url;
+            $logo_url = $request->logo_url;
             $imageName  = $request->slug.'.jpg';
             header('Content-Type: image/png');
-            Image::make($path)->save(public_path(AiSoftware::IMAGE_UPLOAD_PATH.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'. $imageName);
+            $path = AiSoftware::IMAGE_UPLOAD_PATH.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m');
+            if(!File::isDirectory($path)){
+                File::makeDirectory($path, 0777, true, true);
+            }
+            Image::make($logo_url)->save(public_path(AiSoftware::IMAGE_UPLOAD_PATH.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'. $imageName);
             $ai_software->logo = $imageName;
         }
         $ai_software->save();
@@ -140,7 +145,7 @@ class AiSoftwareController extends Controller
         $replaced = Str::replaceArray('https://', [''], $replaced);
         $replaced = Str::replaceArray('http://www.', [''], $replaced);
         $replaced = Str::replaceArray('http://', [''], $replaced);
-        return $replaced = Str::replaceArray('//', ['/'], $replaced);
+        return $replaced = rtrim($replaced, '/');
     }
 
     public function social_link($links){
@@ -152,7 +157,7 @@ class AiSoftwareController extends Controller
                 if($social_item == 'twitter'){
                     $social_link[$social_item] = $this->wash_link($links[$matched_array_key]);
                 }else{
-                    $social_link[$social_item] = $this->wash_link($links[$matched_array_key].'/about');
+                    $social_link[$social_item] = $this->wash_link($links[$matched_array_key]).'/about';
                 }
             }
         }
