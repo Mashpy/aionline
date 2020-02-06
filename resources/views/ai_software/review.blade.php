@@ -23,6 +23,11 @@
                         <h3 class="ai-software-header float-left">{{$ai_software->name}} Reviews</h3>
                         <a class="btn btn-success btn-green float-right mt-2" href="#reviews-anchor" id="open-review-box">Leave a Review</a>
                     </div>
+                    @if($reviews->count() < 1)
+                        <div class="alert alert-primary col-md-12" role="alert">
+                            No Review Found!
+                        </div>
+                    @endif
                     <div class="row mb-4">
                         <div class="col-md-6">
                             <div class="well well-sm">

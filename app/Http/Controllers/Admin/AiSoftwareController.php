@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use Goutte\Client;
 use Image;
 use File;
+use Exception;
 
 class AiSoftwareController extends Controller
 {
@@ -43,12 +44,16 @@ class AiSoftwareController extends Controller
             $software->name = $request->name;
             $software->slug = Str::slug($request->name);
         }else{
-            $crawler = $client->request('GET', 'https://'.$official_link);
-            $title = $crawler->filter('title')->each(function ($node) {
-                return $node->text();
-            });
-            $software->name = $title[0];
-            $software->slug = Str::slug($title[0]);
+            try {
+                $crawler = $client->request('GET', 'https://'.$official_link);
+                $title = $crawler->filter('title')->each(function ($node) {
+                    return $node->text();
+                });
+                $software->name = $title[0];
+                $software->slug = Str::slug($title[0]);
+            } catch (Exception $e) {
+                return back()->with(['error' => 'Something went wrong! Use a valid URL']);
+            }
         }
 
         if ($request->file('logo')) {
