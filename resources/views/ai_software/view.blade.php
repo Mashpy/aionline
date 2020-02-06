@@ -22,6 +22,11 @@
                     <div class="col-md-12 mb-4">
                         <h3 class="ai-software-header float-left">Alternative Software of {{$ai_software->name}} ...</h3>
                     </div>
+                    @if($ai_software->alternate_software->count() < 1)
+                        <div class="alert alert-primary col-md-12" role="alert">
+                            No Alternate Software Found!
+                        </div>
+                    @endif
                     @foreach($ai_software->alternate_software as $ai_softare_alternative)
                         <div class="col-md-4 mb-2">
                             <div class="card ai-software-card-width">

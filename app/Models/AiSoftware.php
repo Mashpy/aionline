@@ -13,7 +13,7 @@ class AiSoftware extends Model{
     }
 
     public function getAlternateSoftwareAttribute(){
-        return AiSoftware::where('category_id', $this->category_id)->get();
+        return self::where('category_id', $this->category_id)->where('id', '!=', $this->id)->get();
     }
 
     public function getLogoUrlAttribute(){
