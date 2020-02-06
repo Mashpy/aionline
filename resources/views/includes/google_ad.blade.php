@@ -1,3 +1,4 @@
+@if(env('APP_ENV') == 'production')
 <div>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!-- aionlinecourse_rightsidebar -->
@@ -11,3 +12,4 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
 </div>
+@endif

@@ -31,7 +31,6 @@
 </head>
 
 <body>
-
 @yield('content')
 
 @if (env('APP_ENV') == 'production' && empty(Auth::user()))
