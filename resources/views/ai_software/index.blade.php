@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
 @section('title')
-List of Artificial Intelegence Software
+List of Artificial Intelligence Software
 @endsection
 
 @section('content')
     @include('includes.header')
     <div class="container">
-        <h3 class="ai-software-header">Artificial Intelegence Softwares</h3>
+        <h3 class="ai-software-header">Artificial Intelligence Softwares</h3>
        <div class="row">
            <div class="col-md-9">
                @if($ai_softwares->count() < 1)

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="@yield('meta_description' , 'Aionlinecourse will provide you the best resource about artificial intelegence.
+    <meta name="description" content="@yield('meta_description' , 'Aionlinecourse will provide you the best resource about artificial Intelligence.
     You can learn about machine learning, data science, natural language processing etc.')">
     <meta name="google-site-verification" content="jUW49wwiLLX6T2wYn35wtYFgisGIM8Y1liK6bnXrnsE" />
     <meta name="author" content="aisite">
