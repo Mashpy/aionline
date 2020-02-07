@@ -2,7 +2,6 @@
     <a class="navbar-brand" href="{{ route('home.index') }}">AI ONLINE COURSE</a>
     <ul class="navbar-nav mr-auto">
         <li class="nav-item"><a class="nav-link" href="{{ route('home.index') }}">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ route('quiz_topic.index') }}">Quiz</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('ai_software.index') }}">AI Software</a></li>
     </ul>
 
