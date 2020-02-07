@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="@yield('meta_description' , 'ai site description')">
+    <meta name="description" content="@yield('meta_description' , 'Aionlinecourse will provide you the best resource about artificial intelegence.
+    You can learn about machine learning, data science, natural language processing etc.')">
     <meta name="google-site-verification" content="jUW49wwiLLX6T2wYn35wtYFgisGIM8Y1liK6bnXrnsE" />
     <meta name="author" content="aisite">
     <meta name="keywords" content="@yield('meta_keyword', 'ais ite');">
@@ -13,7 +14,8 @@
     <meta property="og:site_name" content="www.aisite.com">
     <meta property="og:image" content="">
     <meta property="og:url" content="{{ url()->current() }}">
-    <title>@yield('title') Artificial Intelligence Online Course</title>
+    
+    <title>@yield('title')</title>
 
     <link href='https://fonts.googleapis.com/css?family=Poppins:400,600,700%7CRoboto:400,400i,700' rel='stylesheet'>
     <!-- Favicons-->

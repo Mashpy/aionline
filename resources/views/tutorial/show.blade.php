@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    {{ $tutorial->title . ' | ' . $tutorial->category->name . ' | ' }}
+    {{ $tutorial->title . ' | ' . $tutorial->category->name . ' | Artificial Intelligence Online Course' }}
 @endsection
 
 @section('content')
