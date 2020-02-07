@@ -47,7 +47,7 @@
 @yield('run_custom_js_file')
 @yield('run_custom_jquery')
         <!-- Global site tag (gtag.js) - Google Analytics -->
-@if (env('APP_ENV') == 'production')
+@if (env('APP_ENV') == 'production' && empty(Auth::check()))
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126290142-1"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
