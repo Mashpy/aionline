@@ -1,4 +1,7 @@
 @extends('layouts.master')
+
+@section('title')Artificial Intelligence Online Course @endsection
+
 @section('content')
 @include('includes.header')
 <div>

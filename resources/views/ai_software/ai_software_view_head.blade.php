@@ -17,7 +17,10 @@
             </div>
         </div>
         <div class="col-md-3">
-            @include('includes/google_ad')
+            <div>
+                @include('includes/google_ad', ['ad_format' => 'rectangle'])        
+            </div>
+        
             @php $official_link = "http://".$ai_software->official_link ; @endphp
             <a href="{{ $official_link }}" class="btn btn-info float-right mt-2 official-link-button" target="_blank">Official Website</a>
 
