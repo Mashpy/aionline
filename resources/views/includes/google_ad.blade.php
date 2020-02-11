@@ -6,7 +6,7 @@
          style="display:block"
          data-ad-client="ca-pub-1505016841070170"
          data-ad-slot="7718620146"
-         data-ad-format="auto"
+         data-ad-format="{{ empty($ad_format)? 'auto': $ad_format }}"
          data-full-width-responsive="true"></ins>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
