@@ -789,4 +789,90 @@ ul.inline-list li{
     pointer-events: none;
     opacity: 0.5;
 }
+.highlight{
+    background-color: rgba(79,139,189,0.15);
+    box-sizing: border-box;
+    display: block;
+    margin-top: 0;
+    padding: 5px 0 30px 0;
+}
+.ai-software-head h3{
+    font-weight: 700;
+    font-size: 50px;
+    padding: 15px 15px 0 15px;
+}
+.ai-software-head h5{
+    font-size: 15px !important;
+    padding: 0 15px 15px 15px;
+}
 
+.feature-software{
+    box-sizing: border-box;
+    display: block;
+    margin-top: 0;
+    padding: 15px 0 30px 0;
+}
+.box{
+    border: 1px solid #e8e8e8;
+    border-radius: 5px;
+    box-shadow: 4px 4px 8px 0 rgba(0,0,0,.1);
+    background: #fff;
+    padding: 0;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.box-title {
+    margin: 0;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 12px 20px;
+    font-size: 20px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.box-title h2 {
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0;
+    display: inline-block;
+}
+.box-item{
+    border: 1px solid #e8e8e8;
+    text-align: center;
+    margin: 15px;
+}
+
+.box-item img{
+    height: 100px;
+    width: 100px;
+}
+.box-div{
+    padding: 5px 0px 15px 20px
+}
+.box-image-title{
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.recently-added-software-item{
+    border-bottom: 1px solid #e8e8e8;
+    padding: 5px;
+}
+
+.recently-added-software-item p{
+    font-size: 15px;
+}
+
+@media screen and (min-width: 601px) {
+    div.ai-software-head h3{
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    div.ai-software-head h3{
+        font-size: 21px;
+    }
+}
