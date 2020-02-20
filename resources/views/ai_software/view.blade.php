@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
- Alternative Software of {{$ai_software->name}} | 
+ Alternative Software of {{$ai_software->name}}
 @endsection
 
 @section('content')
