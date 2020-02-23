@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="col-md-12 mb-4 clearfix">
                         <h3 class="ai-software-header float-left">{{$ai_software->name}} Reviews</h3>
-                        <a class="btn btn-success btn-green float-right mt-2" href="#reviews-anchor" id="open-review-box">Leave a Review</a>
+                        <a class="btn btn-success btn-green float-right mt-2" href="#reviews-anchor" id="open-review-box">Write a Review</a>
                     </div>
                     @if($reviews->count() < 1)
                         <div class="alert alert-primary col-md-12" role="alert">

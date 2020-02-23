@@ -489,7 +489,8 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: "Roboto", sans-serif;
+    /*font-family: "Roboto", sans-serif;*/
+    font-family: "MuseoSans", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
     font-smoothing: antialiased;
@@ -806,7 +807,7 @@ ul.inline-list li{
     padding: 0 15px 15px 15px;
 }
 
-.feature-software{
+.software-box{
     box-sizing: border-box;
     display: block;
     margin-top: 0;
@@ -849,7 +850,7 @@ ul.inline-list li{
     width: 100px;
 }
 .box-div{
-    padding: 5px 0px 15px 20px
+    padding: 5px 0 15px 20px
 }
 .box-image-title{
     text-decoration: none;
@@ -865,14 +866,104 @@ ul.inline-list li{
     font-size: 15px;
 }
 
+.alternate-software-item{
+    border-bottom: 1px solid #e8e8e8;
+    padding: 5px;
+}
+
+.alternate-software-card-head{
+    font-weight: 600;
+    color: #000000;
+}
+.alternate-software-card-head:hover{
+    text-decoration: none;
+}
+
+.alternate-software-item p{
+    font-size: 15px;
+    color: #999999;
+}
+
+.alternate-software-item-icon{
+    font-size: 18px;
+}
+.alternate-software-count{
+    color: #070713;
+}
+
+.alternative-software-logo{
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alternate-seemore-btn{
+    background-color: #2690ce;
+    color: #ffffff
+}
+
+.software-view-panel{
+    box-sizing: border-box;
+    display: block;
+    padding: 5px 0 30px 0;
+    border: 1px solid #e8e8e8;
+}
+
+.software-view-logo{
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    border: 1px solid #e8e8e8;
+}
+.like-action-button{
+    color: red;
+}
+.like-review{
+    text-align: center;
+    margin-top: 5px;
+}
+
+.software-view-title{
+    font-weight: 600;
+    font-size: 30px;
+    color: #131313;
+}
+.software-view-title:hover{
+    text-decoration: none;
+    color: #007bff;
+}
+html {
+    scroll-behavior: smooth !important;
+}
+
 @media screen and (min-width: 601px) {
     div.ai-software-head h3{
         font-size: 50px;
+    }
+    .alternative-software-logo{
+        width: 100px;
+        height: 100px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
 @media screen and (max-width: 600px) {
     div.ai-software-head h3{
         font-size: 21px;
+    }
+    .alternative-software-logo{
+        width: 60px;
+        height: 60px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
     }
 }
