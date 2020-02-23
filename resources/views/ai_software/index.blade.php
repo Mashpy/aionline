@@ -23,7 +23,7 @@
             </div>
         </div>
     </section>
-    <section class="feature-software">
+    <section class="software-box">
         <div class="container">
             <div class="box">
                <div class="row box-title">
@@ -59,7 +59,7 @@
     <section class="recently-added-software">
         <div class="container">
             <div class="row">
-                <div class="col-md-7 col-sm-12 col-lg-7">
+                <div class="col-md-9 col-sm-12 col-lg-9">
                     <div class="box">
                         <div class="box-title">
                             <div class="row">
@@ -69,59 +69,25 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="row recently-added-software-item">
-                                <div class="col-md-2">
-                                    <img width="140" src="uploads/ai_software/image/2020/02/3m-health-care.jpg">
+                            @foreach($recently_added_software as $recently_added)
+                                <div class="row recently-added-software-item">
+                                    <div class="col-md-2">
+                                        <a class="ai-software-card-head" href="{{route('ai_software.view', $recently_added->slug)}}"><img src="{{$recently_added->logo !== null ? $recently_added->logo_url : '/uploads/default_photo/image_not_found1.png'}}" class="ai-logo" alt="..."></a>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div><a href="{{route('ai_software.view', $recently_added->slug)}}" class="box-image-title">{{$recently_added->name}}</a></div>
+                                        <p>{{str_limit($recently_added->description, $limit = 150, $end = '...')}}<a href="{{route('ai_software.view', $recently_added->slug)}}"><strong>see more</strong></a> </p>
+                                    </div>
                                 </div>
-                                <div class="col-md-10">
-                                    <div><a class="box-image-title">Title</a></div>
-                                    <p>Vidalytics is a video platform for marketers. It hosts, streams and plays your videos. It also comes wit... <a href="">read more</a></p>
-                                </div>
-                            </div>
-                            <div class="row recently-added-software-item">
-                                <div class="col-md-2">
-                                    <img width="140" src="uploads/ai_software/image/2020/02/3m-health-care.jpg">
-                                </div>
-                                <div class="col-md-10">
-                                    <div><a class="box-image-title">Title</a></div>
-                                    <p>Vidalytics is a video platform for marketers. It hosts, streams and plays your videos. It also comes wit... <a href="">read more</a></p>
-                                </div>
-                            </div>
-                            <div class="row recently-added-software-item">
-                                <div class="col-md-2">
-                                    <img width="140" src="uploads/ai_software/image/2020/02/3m-health-care.jpg">
-                                </div>
-                                <div class="col-md-10">
-                                    <div><a class="box-image-title">Title</a></div>
-                                    <p>Vidalytics is a video platform for marketers. It hosts, streams and plays your videos. It also comes wit... <a href="">read more</a></p>
-                                </div>
-                            </div>
-                            <div class="row recently-added-software-item">
-                                <div class="col-md-2">
-                                    <img width="140" src="uploads/ai_software/image/2020/02/3m-health-care.jpg">
-                                </div>
-                                <div class="col-md-10">
-                                    <div><a class="box-image-title">Title</a></div>
-                                    <p>Vidalytics is a video platform for marketers. It hosts, streams and plays your videos. It also comes wit... <a href="">read more</a></p>
-                                </div>
-                            </div>
-                            <div class="row recently-added-software-item">
-                                <div class="col-md-2">
-                                    <img width="140" src="uploads/ai_software/image/2020/02/3m-health-care.jpg">
-                                </div>
-                                <div class="col-md-10">
-                                    <div><a class="box-image-title">Title</a></div>
-                                    <p>Vidalytics is a video platform for marketers. It hosts, streams and plays your videos. It also comes wit... <a href="">read more</a></p>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
-                <div class="col-md-5 col-sm-12">For Ads</div>
+                <div class="col-md-3 col-sm-12">For Ads</div>
             </div>
         </div>
     </section>
-    <section class="feature-software">
+    <section class="software-box">
         <div class="container">
             <div class="box">
                 <div class="row box-title">
@@ -158,7 +124,7 @@
         </div>
     </section>
 
-    <section class="feature-software">
+    <section class="software-box">
         <div class="container">
             <div class="box">
                 <div class="row box-title">
@@ -195,7 +161,7 @@
         </div>
     </section>
 
-    <section class="feature-software">
+    <section class="software-box">
         <div class="container">
             <div class="box">
                 <div class="row box-title">
@@ -232,7 +198,7 @@
         </div>
     </section>
 
-    <section class="feature-software">
+    <section class="software-box">
         <div class="container">
             <div class="box">
                 <div class="row box-title">

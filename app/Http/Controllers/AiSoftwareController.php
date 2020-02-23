@@ -9,7 +9,8 @@ class AiSoftwareController extends Controller
 {
     public function index(){
         $ai_softwares = AiSoftware::latest()->get();
-        return view('ai_software.index', compact('ai_softwares'));
+        $recently_added_software = AiSoftware::latest()->take(5)->get();
+        return view('ai_software.index', compact('ai_softwares', 'recently_added_software'));
     }
     public function view($slug){
         $ai_software = AiSoftware::where('slug', $slug)->first();
