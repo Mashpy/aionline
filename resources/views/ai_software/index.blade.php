@@ -29,30 +29,16 @@
             <div class="box">
                <div class="row box-title">
                    <div class="col-md-12">
-                       <h2>Feature Software</h2>
+                       <h2>Featured Software</h2>
                    </div>
                </div>
                 <div class="row box-div">
-                   <div class="col-md-2 col-sm-6 col-lg-2 box-item">
-                       <img src="uploads/ai_software/image/2020/02/3m-health-care.jpg">
-                       <div><a class="box-image-title">Title</a></div>
-                   </div>
-                   <div class="col-md-2 col-sm-6 col-lg-2 box-item">
-                       <img src="uploads/ai_software/image/2020/02/3m-health-care.jpg">
-                       <div><a class="box-image-title">Title</a></div>
-                   </div>
-                   <div class="col-md-2 col-sm-6 col-lg-2 box-item">
-                       <img src="uploads/ai_software/image/2020/02/3m-health-care.jpg">
-                       <div><a class="box-image-title">Title</a></div>
-                   </div>
-                   <div class="col-md-2 col-sm-6 col-lg-2 box-item">
-                       <img src="uploads/ai_software/image/2020/02/3m-health-care.jpg">
-                       <div><a class="box-image-title">Title</a></div>
-                   </div>
-                    <div class="col-md-2 col-sm-6 col-lg-2 box-item">
-                        <img src="uploads/ai_software/image/2020/02/3m-health-care.jpg">
-                        <div><a class="box-image-title">Title</a></div>
-                    </div>
+                    @foreach($feature_softwares as $software)
+                       <div class="col-md-2 col-sm-6 col-lg-2 box-item">
+                           <a class="ai-software-card-head" href="{{route('ai_software.view', $software->slug)}}"><img src="{{$software->logo !== null ? $software->logo_url : '/uploads/default_photo/image_not_found1.png'}}" alt="..."></a>
+                           <div><a class="box-image-title">{{ $software->name }}</a></div>
+                       </div>
+                    @endforeach
                </div>
            </div>
         </div>
@@ -88,31 +74,31 @@
             </div>
         </div>
     </section>
-    @foreach($parent_category as $category)
-        <section class="software-box">
-            <div class="container">
-                <div class="box">
-                    <div class="row box-title">
-                        <div class="col-md-12">
-                            <h2 class="float-left">{{$category->name}}</h2>
-                            <span class="float-right">
-                                <button class="btn btn-secondary">view more</button>
-                            </span>
+    @foreach($category_parent as $category)
+        @if($category->softwares->count())
+            <section class="software-box">
+                <div class="container">
+                    <div class="box">
+                        <div class="row box-title">
+                            <div class="col-md-12">
+                                <h2 class="float-left">{{$category->name}}</h2>
+                                <span class="float-right">
+                                    <button class="btn btn-secondary">view more</button>
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row box-div">
-                        @foreach($category->children as $subcategory)
-                            @foreach($subcategory->softwares as $key => $software)
+                        <div class="row box-div">
+                            @foreach($category->softwares as $software)
                                 <div class="col-md-2 col-sm-6 col-lg-2 box-item">
-                                    <a class="ai-software-card-head" href="{{route('ai_software.view', $software->slug)}}"><img src="{{$software->logo !== null ? $software->logo_url : '/uploads/default_photo/image_not_found1.png'}}" class="ai-logo" alt="..."></a>
-                                    <div><a class="box-image-title"> {{$software->name}}</a></div>
+                                    <a class="ai-software-card-head" href="{{route('ai_software.view', $software->slug)}}"><img src="{{$software->logo !== null ? $software->logo_url : '/uploads/default_photo/image_not_found1.png'}}" alt="..."></a>
+                                    <div><a href="{{route('ai_software.view', $software->slug)}}" class="box-image-title"> {{$software->name}}</a></div>
                                 </div>
                             @endforeach
-                        @endforeach
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        @endif
     @endforeach
     @include('includes.footer')
 @endsection

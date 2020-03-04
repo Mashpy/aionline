@@ -20,8 +20,4 @@ class Category extends Model
     {
         return $this->belongsTo(Category::class, 'parent_id');
     }
-
-    public function softwares(){
-        return $this->hasMany(AiSoftware::class, 'category_id');
-    }
 }
