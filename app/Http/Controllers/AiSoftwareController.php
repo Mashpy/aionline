@@ -21,6 +21,12 @@ class AiSoftwareController extends Controller
         return view('ai_software.index', compact('ai_softwares', 'recently_added_software', 'category_parent', 'feature_softwares'));
     }
 
+    public function categorySoftwares($category_slug){
+        $category = Category::where('category_slug', $category_slug)->first();
+        $category_softwares = AiSoftware::whereIn('category_id', $this->subCategory($category->id))->latest()->get();
+        return view('ai_software.category_softwares', compact('category_softwares', 'category'));
+    }
+
     public function subCategory($children, $key_val = 0){
         if($key_val >0){
             $this->data =[];
