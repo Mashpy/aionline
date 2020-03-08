@@ -52,7 +52,7 @@ Route::group(['middleware' => ['auth', 'isAdmin'] , 'prefix' => 'admin'] , funct
 
 Route::group(['prefix' => 'ai-software'] , function() {
     Route::get('/', 'AiSoftwareController@index')->name('ai_software.index');
-    Route::get('/{slug}', 'AiSoftwareController@view')->name('ai_software.view');
+    Route::get('/{slug}', 'AiSoftwareController@show')->name('ai_software.view');
     Route::get('/{slug}/reviews', 'AiSoftwareReviewController@reviews')->name('ai_software.reviews');
     Route::post('/reviews_store', 'AiSoftwareReviewController@storeReview')->name('ai_software.review.store');
     Route::post('/hit_like/{id}', 'AiSoftwareReviewController@like')->name('ai_software.software.like');

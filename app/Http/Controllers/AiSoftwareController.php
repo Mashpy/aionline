@@ -39,7 +39,7 @@ class AiSoftwareController extends Controller
         return $this->data;
     }
 
-    public function view($slug){
+    public function show($slug){
         $ai_software = AiSoftware::where('slug', $slug)->first();
         $reviews = AiSoftwareReview::where('ai_software_id', $ai_software->id)->latest()->get();
         return view('ai_software.view', compact('ai_software', 'reviews'));
@@ -58,6 +58,6 @@ class AiSoftwareController extends Controller
                             ->orwhere('description','LIKE','%'.$request->software_search.'%')
                             ->orwhere('slug','LIKE','%'.$request->software_search.'%')
                             ->get();
-        return view('ai_software.search', compact('search_results', 'query', 'ai_softwares'));
+        return view('ai_software.search_result', compact('search_results', 'query', 'ai_softwares'));
     }
 }

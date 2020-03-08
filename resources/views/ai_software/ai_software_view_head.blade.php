@@ -9,7 +9,7 @@
                             <div class="like-review">
                                 <form action="{{route('ai_software.software.like', $ai_software->id)}}" method="post">
                                     @csrf
-                                    <button title="Love it" class="btn love-button love-button-counter" data-count="{{$ai_software->like ? $ai_software->like : 0}}"><span>&#x2764;</span> Like</button>
+                                    <button title="Love it" class="btn love-button love-button-counter" data-count="{{$ai_software->like ? $ai_software->like : 0}}"><span>&#x2764; </span>{!! !empty($ai_software->like_status) ? 'Liked' : 'Like' !!}</button>
                                 </form>
                             </div>
                         </div>
