@@ -1,5 +1,5 @@
 <!--Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark nav-background sticky-top">
+<nav class="navbar navbar-expand-xl navbar-dark nav-background sticky-top">
     <a class="navbar-brand mr-5 text-dark" href="{{ route('home.index') }}"><h3>AI Online Course</h3></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
             aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">

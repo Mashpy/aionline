@@ -38,7 +38,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 col-sm-6">
                     <h4>Follow Us</h4>
                     <ul class="social-network social-circle">
                         <li><a href="https://facebook.com/aionlinecourse" target="_blank" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>

@@ -14,9 +14,9 @@
                        <h2>Featured Software</h2>
                    </div>
                </div>
-                <div class="row box-div">
+                <div class="row box-div justify-content-center">
                     @foreach($feature_softwares as $software)
-                       <div class="col-md-2 col-sm-6 col-lg-2 box-item">
+                       <div class="col-md-2 col-sm-3 col-lg-2 box-item">
                            <a class="ai-software-card-head" href="{{route('ai_software.view', $software->slug)}}"><img src="{{$software->logo !== null ? $software->logo_url : '/uploads/default_photo/image_not_found1.png'}}" alt="..."></a>
                            <div><a href="{{route('ai_software.view', $software->slug)}}" class="box-image-title">{{ $software->name }}</a></div>
                        </div>
@@ -69,9 +69,9 @@
                                 <h2 class="float-left"><span class="d-none d-sm-block">{{$category->name}}</span><span class="d-block d-sm-none">{{str_limit($category->name, $limit = 27, $end = '...')}}</span></h2>
                             </div>
                         </div>
-                        <div class="row box-div">
+                        <div class="row box-div justify-content-center">
                             @foreach($category->softwares as $software)
-                                <div class="col-md-2 col-sm-6 col-lg-2 box-item">
+                                <div class="col-md-2 col-sm-3 col-lg-2 box-item">
                                     <a class="ai-software-card-head" href="{{route('ai_software.view', $software->slug)}}"><img src="{{$software->logo !== null ? $software->logo_url : '/uploads/default_photo/image_not_found1.png'}}" alt="..."></a>
                                     <div><a href="{{route('ai_software.view', $software->slug)}}" class="box-image-title"> {{$software->name}}</a></div>
                                 </div>
@@ -79,8 +79,7 @@
                         </div>
                         <div class="col-md-12 text-center mb-3">
                             <a href="{{route('ai_software.category-softwares', $category->category_slug)}}">
-                                <div class="d-none d-sm-block"><button class="btn view-more-btn">view more</button></div>
-                                <div class="d-block d-sm-none"><button class="btn btn-sm view-more-btn">view more</button></div>
+                                <button class="btn btn-sm view-more-btn">View more</button>
                             </a>
                         </div>
                     </div>
