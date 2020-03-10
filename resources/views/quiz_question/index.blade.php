@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+    @include('includes.header')
 
 <div class="container">
     <div class="row">
@@ -18,6 +19,8 @@
                             </label>
                         </div>
                     @endforeach
+                    <button type="button" onclick="showAnswer({{ $question->id }})">View Answer</button>
+                    <div id="question-{{ $question->id }}" class="d-none">view answer: {{ $question->quiz_correct_answer['answer_details'] }}</div>
                 @endforeach
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary ">Submit</button>
@@ -31,7 +34,19 @@
 @include('includes.footer')
 
 @endsection
-
+@section('run_custom_jquery')
+    <script>
+        function showAnswer(question_id) {
+            if ($('#question-' + question_id).hasClass('d-none')) {
+                $('#question-' + question_id).removeClass('d-none');
+                $('#question-' + question_id).addClass('d-block');
+            } else {
+                $('#question-' + question_id).removeClass('d-block');
+                $('#question-' + question_id).addClass('d-none');
+            }
+        }
+    </script>
+@endsection
 
 
 
