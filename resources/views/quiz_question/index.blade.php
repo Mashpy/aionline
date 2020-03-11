@@ -4,11 +4,12 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 mt-2">
+          <h3></h3>
             <form method="POST" action="{{ route('quiz_result.store') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 @foreach($quiz_questions as $key => $question)
-                    <div>{{ $key + 1 }}. {{$question->question_details}}</div>
+                    <div id="radio-button">{{ $key + 1 }}. {{$question->question_details}}</div>
                     <div>
                          {{$question->question}}
                     </div>
@@ -19,10 +20,10 @@
                             </label>
                         </div>
                     @endforeach
-                    <button type="button" onclick="showAnswer({{ $question->id }})">View Answer</button>
-                    <div id="question-{{ $question->id }}" class="d-none">view answer: {{ $question->quiz_correct_answer['answer_details'] }}</div>
+                    <button type="button" class="mb-2" onclick="showAnswer({{ $question->id }})">View Answer</button>
+                    <div id="question-{{ $question->id }}" class="d-none mb-2"><b class="text-success">view answer:</b> {{ $question->quiz_correct_answer['answer_details'] }}<br><b class="text-success">Explanation: </b>{{ $question->answer_explanation}}</div>
                 @endforeach
-                <div class="form-group">
+                <div class="form-group mt-5">
                     <button type="submit" class="btn btn-primary ">Submit</button>
                     <button type="button" class="btn btn-danger pull-right" id="clear">Clear</button>
                 </div>
@@ -45,6 +46,12 @@
                 $('#question-' + question_id).addClass('d-none');
             }
         }
+
+        $("#clear").click(function(){
+            $('#radio-button').each(function(){
+                $("input[type='radio']").prop("checked", false);
+            });
+        });
     </script>
 @endsection
 

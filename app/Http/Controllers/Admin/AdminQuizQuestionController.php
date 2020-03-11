@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Models\QuizAnswer;
 use App\Models\QuizQuestion;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -34,6 +35,7 @@ class AdminQuizQuestionController extends Controller
         $question->quiz_topic_id = $quiz_topic_id;
         $question->user_id = Auth::user()->id;
         $question->save();
+
         Session::flash('success','Question added successfully!!');
         return redirect()->route('admin_quiz_question.index', ['quiz_topic_id' => $quiz_topic_id]);
     }
