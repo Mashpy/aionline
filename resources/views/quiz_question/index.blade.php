@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 mt-2">
-          <h3></h3>
+          <h4>{{ $quiz_topic->topic_name }} Question and Answer </h4>
             <form method="POST" action="{{ route('quiz_result.store') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 @foreach($quiz_questions as $key => $question)
