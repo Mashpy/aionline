@@ -57,6 +57,26 @@
     gtag('config', 'UA-126290142-1');
 </script>
 @endif
+<a id="back2Top" title="Back to top" href="#"><i class="fa fa-arrow-up"></i></a>
+<script>
+    /*Scroll to top when arrow up clicked BEGIN*/
+    $(window).scroll(function() {
+        var height = $(window).scrollTop();
+        if (height > 100) {
+            $('#back2Top').fadeIn();
+        } else {
+            $('#back2Top').fadeOut();
+        }
+    });
+    $(document).ready(function() {
+        $("#back2Top").click(function(event) {
+            event.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            return false;
+        });
 
+    });
+    /*Scroll to top when arrow up clicked END*/
+</script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
+    Reviews of {{$ai_software->name}}
 @endsection
 
 @section('content')
@@ -72,7 +73,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <img src="{{asset('uploads/default_photo/reviewer.jpg')}}" class="img img-rounded img-fluid"/>
+                                            <img src="{{asset('uploads/default_photo/reviewer.jpg')}}" class="img img-rounded reviewer-default-img"/>
                                         </div>
                                         <div class="col-md-10">
                                             <h5 class="review-title">{{$review->title}}</h5>

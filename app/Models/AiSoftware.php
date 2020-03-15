@@ -2,6 +2,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\AiSoftwareLikeCount;
+use Request;
 
 class AiSoftware extends Model{
     protected $appends = ['logo_url'];
@@ -18,6 +20,10 @@ class AiSoftware extends Model{
 
     public function getLogoUrlAttribute(){
         return asset(self::IMAGE_UPLOAD_PATH.'/'.$this->created_at->format('Y').'/'.$this->created_at->format('m').'/'.$this->logo);
+    }
+
+    public function getLikeStatusAttribute(){
+       return  $status = AiSoftwareLikeCount::where(['ai_software_id' => $this->id, 'client_ip' => \Request::ip()])->first();
     }
 
 }

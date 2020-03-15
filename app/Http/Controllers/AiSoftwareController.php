@@ -21,6 +21,12 @@ class AiSoftwareController extends Controller
         return view('ai_software.index', compact('ai_softwares', 'recently_added_software', 'category_parent', 'feature_softwares'));
     }
 
+    public function categorySoftwares($category_slug){
+        $category = Category::where('category_slug', $category_slug)->first();
+        $category_softwares = AiSoftware::whereIn('category_id', $this->subCategory($category->id))->latest()->get();
+        return view('ai_software.category_softwares', compact('category_softwares', 'category'));
+    }
+
     public function subCategory($children, $key_val = 0){
         if($key_val >0){
             $this->data =[];
@@ -33,10 +39,14 @@ class AiSoftwareController extends Controller
         return $this->data;
     }
 
-    public function view($slug){
+    public function show($slug){
         $ai_software = AiSoftware::where('slug', $slug)->first();
-        $reviews = AiSoftwareReview::where('ai_software_id', $ai_software->id)->latest()->get();
-        return view('ai_software.view', compact('ai_software', 'reviews'));
+        if($ai_software){
+            $reviews = AiSoftwareReview::where('ai_software_id', $ai_software->id)->latest()->get();
+            return view('ai_software.view', compact('ai_software', 'reviews'));
+        }else{
+            return redirect()->route('ai_software.index');
+        }
     }
 
     public function softwareSearch(Request $request){
@@ -52,6 +62,6 @@ class AiSoftwareController extends Controller
                             ->orwhere('description','LIKE','%'.$request->software_search.'%')
                             ->orwhere('slug','LIKE','%'.$request->software_search.'%')
                             ->get();
-        return view('ai_software.search', compact('search_results', 'query', 'ai_softwares'));
+        return view('ai_software.search_result', compact('search_results', 'query', 'ai_softwares'));
     }
 }
