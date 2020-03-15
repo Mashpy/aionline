@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         $this->command->info('----- Running Role Type Data Seeder -----');
-        $this->call(CategorySeeder::class);
+        $this->call(RoleTypeSeeder::class);
+        $this->call(UserSeeder::class);
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         $this->command->info('----- Seeding Completed -----');
         Model::reguard();

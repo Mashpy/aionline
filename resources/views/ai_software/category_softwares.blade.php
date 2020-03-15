@@ -7,26 +7,32 @@
     @include('includes.header')
     <section class="software-box">
         <div class="container">
-            <div class="box">
-                <div class="row box-title">
-                    <div class="col-md-12">
-                        <h2>{{$category->name}} softwares</h2>
-                    </div>
-                </div>
-                @if($category_softwares->count() > 0)
-                    <div class="row box-div">
-                        @foreach($category_softwares as $category_software)
-                            <div class="col-md-2 col-sm-6 col-lg-2 box-item">
-                                <a class="ai-software-card-head" href="{{route('ai_software.view', $category_software->slug)}}"><img src="{{$category_software->logo !== null ? $category_software->logo_url : '/uploads/default_photo/image_not_found1.png'}}" class="ai-logo" alt="..."></a>
-                                <div><p><a class="alternate-software-card-head" href="{{route('ai_software.view', $category_software->slug)}}">{{$category_software->name}}</a></p></div>
+            <div class="row">
+                <div class="col-md-9 col-sm-12 col-lg-9">
+                    <div class="box">
+                        <div class="box-title d-block text-center">
+                            <h2 class="text-center">{{$category->name}} softwares</h2>
+                        </div>
+                        @if($category_softwares->count() > 0)
+                            <div class="col-md-12">
+                                @foreach($category_softwares as $category_software)
+                                    <div class="row recently-added-software-item pt-4">
+                                        <div class="col-md-2">
+                                            <a class="ai-software-card-head" href="{{route('ai_software.view', $category_software->slug)}}"><img src="{{$category_software->logo !== null ? $category_software->logo_url : '/uploads/default_photo/image_not_found1.png'}}" class="ai-category-software-logo" alt="..."></a>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div><a href="{{route('ai_software.view', $category_software->slug)}}" class="box-image-title">{{$category_software->name}}</a></div>
+                                            <p>{{str_limit($category_software->description, $limit = 150, $end = '...')}}<a href="{{route('ai_software.view', $category_software->slug)}}">see more</a> </p>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
-                        @endforeach
+                        @endif
                     </div>
-                @else
-                <div class="alert alert-danger col-md-12 mt-2" role="alert">
-                    No Software Found!!
                 </div>
-                @endif
+                <div class="col-md-3">
+                    @include('includes/google_ad')
+                </div>
             </div>
         </div>
     </section>

@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="row left5 right5">
+    <div class="row mt-1">
         <div class="col-md-9 mb-2 software-view-panel">
             <section>
                 <div class="container mt-4">
@@ -33,7 +33,7 @@
         </div>
         <div class="col-md-3">
             <div>
-                @include('includes/google_ad', ['ad_format' => 'rectangle'])        
+                @include('includes/google_ad', ['ad_format' => 'rectangle'])
             </div>
         </div>
     </div>

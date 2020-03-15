@@ -1,7 +1,7 @@
 <!--Navbar -->
 <nav class="navbar navbar-expand-xl navbar-dark nav-background">
     <a class="navbar-brand mr-5" href="{{ route('home.index') }}">
-        <img src="/ai-logo.png">
+        <img src="{{asset('ai-logo.png')}}">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
             aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,6 +12,9 @@
             <li class="nav-item nav-link {{ (request()->is('/')) ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('home.index') }}">Home</a>
             </li>
+            <li class="nav-item nav-link {{ (request()->is('tutorial')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('home.index') }}">Tutorial</a>
+            </li>
             <li class="nav-item nav-link {{ (request()->is('ai-software')) ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('ai_software.index') }}">Ai Software</a>
             </li>
@@ -19,7 +22,7 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <form class="form-inline my-2 my-lg-0 search-box">
-                    <input type="text"  aria-expanded="false" class="right-20">
+                    <input type="text"  aria-expanded="false" class="right-20" placeholder="Search">
                     <span class="our-social">
                         <a href="https://facebook.com/aionlinecourse" target="_blank" title="Facebook" class="fa fa-facebook"></a>
                         <a href="https://twitter.com/aionlinecourse" target="_blank" title="Twitter" class="fa fa-twitter"></a>
