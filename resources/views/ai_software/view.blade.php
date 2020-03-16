@@ -9,7 +9,7 @@
     @include('ai_software.ai_software_view_head')
     <div class="container mt-4">
         <div class="row">
-            <div class="col-sm-12 col-md-9 col-lg-9">
+            <div class="col-sm-12 col-md-9 col-lg-9 pl-0 pr-0">
                 @include('includes.message')
                 <nav class="nav nav-tabs mb-4">
                     <a href="{{route('ai_software.view', $ai_software->slug)}}" class="nav-item nav-link nav-tab-menu active">
@@ -69,7 +69,7 @@
                     @endif
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 top55">
                 @include('includes/google_ad')
             </div>
         </div>

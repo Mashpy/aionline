@@ -27,6 +27,13 @@
                                     </div>
                                 @endforeach
                             </div>
+                            @else
+                            <div class="col-md-12">
+                                <div class="alert alert-danger mt-2" role="alert">
+                                    No Software Found!
+                                </div>
+                            </div>
+
                         @endif
                     </div>
                 </div>

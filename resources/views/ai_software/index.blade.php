@@ -45,8 +45,10 @@
                                     </div>
                                     <div class="col-md-10">
                                         <div><a href="{{route('ai_software.view', $recently_added->slug)}}" class="box-image-title">{{$recently_added->name}}</a></div>
-                                        <div><a href="{{route('ai_software.category-softwares', $recently_added->softwareCategoryName->category_slug)}}"><button class="btn btn-xs btn-secondary"><small>{{$recently_added->softwareCategoryName->name}}</small></button></a></div>
-                                        <p>{{str_limit($recently_added->description, $limit = 150, $end = '...')}}<a href="{{route('ai_software.view', $recently_added->slug)}}">see more</a> </p>
+                                        @if($recently_added->category_id == !null)
+                                            <div><a href="{{route('ai_software.category-softwares', $recently_added->softwareCategoryName->category_slug)}}"><button class="btn btn-xs btn-secondary"><small>{{$recently_added->softwareCategoryName->name}}</small></button></a></div>
+                                            <p>{{str_limit($recently_added->description, $limit = 150, $end = '...')}}<a href="{{route('ai_software.view', $recently_added->slug)}}">see more</a> </p>
+                                        @endif
                                     </div>
                                 </div>
                             @endforeach

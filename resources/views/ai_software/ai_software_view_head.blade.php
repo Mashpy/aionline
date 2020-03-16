@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
     <div class="row mt-1">
         <div class="col-md-9 mb-2 software-view-panel">
             <section>
@@ -23,7 +23,7 @@
                             </p>
                             <small class="text-secondary">Social Links</small><br>
                             @php $official_link = "http://".$ai_software->official_link ; @endphp
-                            <a href="{{$official_link}}" class="btn btn-outline-warning mt-2 btn-sm" target="_blank"><i class="fa fa-link"></i> Official Website</a>
+                            <a href="{{$official_link}}" class="btn btn-outline-info mt-2 btn-sm" target="_blank"><i class="fa fa-link"></i> Official Website</a>
                             <a href="" class="btn btn-outline-primary mt-2 btn-sm" target="_blank"><i class="fa fa-facebook-square"></i> facebook</a>
                             <a href="" class="btn btn-outline-info mt-2 btn-sm" target="_blank"><i class="fa fa-twitter"></i> twitter</a>
                         </div>

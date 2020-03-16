@@ -20,7 +20,7 @@ class CreateRoleTypesTable extends Migration
         });
 
         Schema::table('users', function($table) {
-            $table->integer('role_type_id')->after('password')->nullable();
+            $table->integer('role_type_id')->after('password')->nullable()->default('2');
         });
     }
 
