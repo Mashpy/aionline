@@ -14,18 +14,32 @@
                             </div>
                         </div>
                         <div class="col-md-9">
-                            <h5><a class="software-view-title" href="{{route('ai_software.view', $ai_software->slug)}}">{{$ai_software->name}}</a></h5>
-                            <small class="text-secondary">Description</small>
-                            <p>{{$ai_software->description}}</p>
-                            <p>
-                                <button class="btn love-button love-button-counter" data-count="{{$ai_software->like ? $ai_software->like : 0}}"><span>&#x2764;</span> Loved it</button>
-                                <button class="btn love-button love-button-counter" data-count="{{$reviews->count()}}"><span><i class="fa fa-user" style="color: #566246"></i></span> Review</button>
-                            </p>
-                            <small class="text-secondary">Social Links</small><br>
-                            @php $official_link = "http://".$ai_software->official_link ; @endphp
-                            <a href="{{$official_link}}" class="btn btn-outline-info mt-2 btn-sm" target="_blank"><i class="fa fa-link"></i> Official Website</a>
-                            <a href="" class="btn btn-outline-primary mt-2 btn-sm" target="_blank"><i class="fa fa-facebook-square"></i> facebook</a>
-                            <a href="" class="btn btn-outline-info mt-2 btn-sm" target="_blank"><i class="fa fa-twitter"></i> twitter</a>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5><a class="software-view-title" href="{{route('ai_software.view', $ai_software->slug)}}">{{$ai_software->name}}</a></h5>
+                                    <small class="text-secondary">Description</small>
+                                    <p>{!! $ai_software->description !!}</p>
+                                    <p>
+                                        <button class="btn love-button love-button-counter" data-count="{{$ai_software->like ? $ai_software->like : 0}}"><span>&#x2764;</span> Loved it</button>
+                                        <button class="btn love-button love-button-counter" data-count="{{$reviews->count()}}"><span><i class="fa fa-user" style="color: #566246"></i></span> Review</button>
+                                    </p>
+                                    <hr>
+                                </div>
+                                <div class="col-md-12">
+                                    <small class="text-secondary">Vendor Details</small><br>
+                                    @php $official_link = "http://".$ai_software->official_link ; @endphp
+                                    <a href="{{$official_link}}" class="btn btn-outline-info btn-xs mt-2" target="_blank"><i class="fa fa-link"></i> Official Website</a><br>
+                                    <hr>
+                                </div>
+                                <div class="col-md-12">
+                                    <small class="text-secondary">Social Links</small><br>
+                                    <a href="" class="btn btn-outline-primary mt-2 btn-xs" target="_blank"><i class="fa fa-facebook-square"></i> facebook</a>
+                                    <a href="" class="btn btn-outline-info mt-2 btn-xs" target="_blank"><i class="fa fa-twitter"></i> twitter</a>
+                                </div>
+                                <div class="col-md-12">
+                                    
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

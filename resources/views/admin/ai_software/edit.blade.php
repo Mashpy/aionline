@@ -45,7 +45,7 @@
                             <tr>
                                 <th>Description</th>
                                 <td>
-                                    <textarea class="form-control" rows="6" name="description">{{$ai_software->description}}</textarea>
+                                    <textarea class="form-control summernote" rows="6" name="description">{{$ai_software->description}}</textarea>
                                     <div class="text-center">
                                         @php $prefix = "http://"; @endphp
                                         <a href="{{ $ai_software->facebook ? $prefix.$ai_software->facebook : '' }}" title="facebook" class="{{ $ai_software->facebook ? '' : 'isDisabled' }}" target="_blank"><i class="fa fa-facebook-square social-button"></i></a>
@@ -83,6 +83,23 @@
         </div>
     </div>
 @endsection
+@section('run_custom_css_file')
+    <link href="{{asset('summernote/summernote.css')}}" rel="stylesheet">
+@stop
 @section('run_custom_js_file')
     @include('admin.ai_software.software_category.sub_category_js')
+    <script src="{{asset('summernote/summernote.js')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.summernote').summernote({
+                height: 400,
+                dialogsInBody: true,
+                callbacks:{
+                    onInit:function(){
+                        $('body > .note-popover').hide();
+                    }
+                },
+            });
+        });
+    </script>
 @endsection

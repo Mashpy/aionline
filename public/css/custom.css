@@ -721,10 +721,16 @@ a.custom-card:hover {
 }
 
 .fa-twitter {
-    color: white;
+    color: #3c69ff;
+}
+nav .fa-twitter {
+    color: #ffffff;
+}
+nav .fa-twitter:hover {
+    color: #3c69ff;
 }
 .fa-twitter:hover {
-    color: #4894ff;
+    color: #ffffff;
 }
 
 .fa-google {

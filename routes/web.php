@@ -23,6 +23,11 @@ Route::get('/tutorial/{category}/{slug}', [
     'as' => 'tutorial.show'
 ]);
 
+Route::get('/sitemap.xml', [
+    'uses' => 'HomeController@xmlSitemap',
+    'as' => 'homepage.sitemap'
+]);
+
 Route::resource('/quiz_question','QuizQuestionController');
 Route::resource('/quiz_result','QuizResultController');
 Route::resource('/quiz_topic','QuizTopicController');
