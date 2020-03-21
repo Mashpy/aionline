@@ -10,7 +10,7 @@
                     <form action="{{route('ai_software.search')}}" method="post" class="ai-search-box">
                         @csrf
                         <input name="software_search" aria-expanded="false" placeholder="Search Your Software..." required>
-                        <div class="col-md-12"><button class="btn btn-danger mt-2 search-button">Search</button></div>
+                        <div class="col-md-12"><button class="btn btn-danger mt-2 search-button">Submit</button></div>
                     </form>
                 </div>
             </div>

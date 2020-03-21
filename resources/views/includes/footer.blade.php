@@ -19,22 +19,23 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-pad">
                         <h4>Top Category</h4>
-                        <ul class="list-unstyled">
-                            @foreach($categories as $category)
-                                 <li><a href="{{route('ai_software.category-softwares', $category->category_slug)}}">{{$category->name}}</a></li>
-                            @endforeach
-                        </ul>
+                        @if($categories->count() > 0)
+                            <ul class="list-unstyled">
+                                @foreach($categories as $category)
+                                     <li><a href="{{route('ai_software.category-softwares', $category->category_slug)}}">{{$category->name}}</a></li>
+                                @endforeach
+                            </ul>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-pad">
                         <h4>Important Links</h4>
                         <ul class="list-unstyled">
-                            <li><a href="#">Link1</a></li>
-                            <li><a href="#">Link2</a></li>
-                            <li><a href="#">Link3</a></li>
-                            <li><a href="#">Link4</a></li>
-                            <li><a href="#">Link5</a></li>
+                            <li><a href="{{route('home.index')}}">Artificial Intelligence Tutorial</a></li>
+                            <li><a href="{{route('ai_software.category-softwares', 'cloud-automation')}}">Cloud Automation</a></li>
+                            <li><a href="{{route('ai_software.category-softwares', 'home-automation')}}">Home Automation</a></li>
+                            <li><a href="{{route('ai_software.category-softwares', 'image-recognition')}}">Image Recognition</a></li>
                         </ul>
                     </div>
                 </div>

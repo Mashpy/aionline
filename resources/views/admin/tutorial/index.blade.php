@@ -25,7 +25,7 @@
                             <td>{{ $tutorial->id }}</td>
                             <td>{{$tutorial->title}}</td>
                             <td>{{$tutorial->category->name}}</td>
-                            <td>{{$tutorial->user->name}}</td>
+                            <td>{{ $tutorial->user ? $tutorial->user->name : ''}}</td>
                             <td width="5%">
                                 <a href="{{ $tutorial->tutorial_url }}" target="_blank" class="btn-sm btn-primary">Views</a>
                                 <a href="{{ route('admin_tutorial.edit', $tutorial->slug) }}" target="_blank" class="btn-sm btn-warning">Edit</a>

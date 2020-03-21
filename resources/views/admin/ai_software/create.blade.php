@@ -37,7 +37,7 @@
                             <tr>
                                 <th>Description</th>
                                 <td>
-                                    <textarea class="form-control" rows="6" name="description" placeholder="Enter description"></textarea>
+                                    <textarea class="form-control summernote" rows="6" name="description" placeholder="Enter description"></textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -63,6 +63,23 @@
         </div>
     </div>
 @endsection
+@section('run_custom_css_file')
+    <link href="{{asset('summernote/summernote.css')}}" rel="stylesheet">
+@stop
 @section('run_custom_js_file')
     @include('admin.ai_software.software_category.sub_category_js')
-@endsection
+    <script src="{{asset('summernote/summernote.js')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.summernote').summernote({
+                height: 400,
+                dialogsInBody: true,
+                callbacks:{
+                    onInit:function(){
+                        $('body > .note-popover').hide();
+                    }
+                },
+            });
+        });
+    </script>
+@stop

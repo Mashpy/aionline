@@ -63,14 +63,16 @@ class AiSoftwareController extends Controller
             $software->logo = $imageName;
         }
 
-        $crawler = $client->request('GET', 'https://'.$official_link);
-        $links = $crawler->filter('a')->each(function($node) {
-            return $href  = $node->attr('href');
-        });
-        $social_links =  $this->social_link($links);
-        foreach ($social_links as $key => $value){
-            $software[$key] = $value;
-        }
+        try {
+            $crawler = $client->request('GET', 'https://'.$official_link);
+            $links = $crawler->filter('a')->each(function($node) {
+                return $href  = $node->attr('href');
+            });
+            $social_links =  $this->social_link($links);
+            foreach ($social_links as $key => $value){
+                $software[$key] = $value;
+            }
+        } catch (Exception $e) { }
 
         if ($software->save()){
             return back()->with(['success' => 'New Software added successfully']);
