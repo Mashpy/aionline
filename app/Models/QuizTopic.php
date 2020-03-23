@@ -12,4 +12,9 @@ class QuizTopic extends Model
     {
         return $this->belongsTo('App\Models\Category');
     }
+
+    public function questions()
+    {
+        return $this->hasMany(QuizQuestion::class);
+    }
 }

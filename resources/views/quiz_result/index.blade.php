@@ -10,19 +10,25 @@
                         <table id="order-listing" class="table table-striped">
                         <thead>
                         <tr>
+                            <th>SI</th>
+                            <th>Date </th>
                             <th>User </th>
                             <th>Quiz_topic</th>
                             <th>Marks</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($quiz_results as $quiz_result)
-                        <tr>
-                            <td>{{$quiz_result->user->name}}</td>
-                            <td>{{$quiz_result->quiz_topic->topic_name}}</td>
-                            <td>{{$quiz_result->marks}}</td>
-                        </tr>
-                        @endforeach
+                        @if($quiz_results->count())
+                            @foreach($quiz_results as $key => $quiz_result)
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{$quiz_result->created_at}}</td>
+                                    <td>{{$quiz_result->user->name}}</td>
+                                    <td>{{$quiz_result->quiz_topic->topic_name}}</td>
+                                    <td>{{$quiz_result->marks}}</td>
+                                </tr>
+                            @endforeach
+                        @endif
                         </tbody>
                         </table>
 

@@ -4,8 +4,12 @@
         <div class="row">
             <div class="col-md-12">
                 <div>
-                    Here you will get tutorial. <a href="{{ route('admin_quiz_question.create', ['quiz_topic_id' =>  Request::get('quiz_topic_id')]) }}">Create Questions</a>
-
+                    @if(Request::get('quiz_topic_id'))
+                    Here you will get tutorial. <a href="{{ route('admin_quiz_question.create', ['quiz_topic_id' =>  Request::get('quiz_topic_id')??'']) }}">Create Questions</a>
+                    @else
+                        Here you will get tutorial. <a href="{{ url('admin/admin_quiz_topic') }}">Question Topic</a>
+                    @endif
+{{--                    Here you will get tutorial. <a href="{{ url('/admin_quiz_topic'}}">Create Questions</a>--}}
                 </div>
                 <div class="alert alert-success">
                     <table id="order-listing" class="table table-striped">
