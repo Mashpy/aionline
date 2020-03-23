@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
+    Reviews of {{$ai_software->name}}
 @endsection
 
 @section('content')

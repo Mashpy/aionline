@@ -23,6 +23,11 @@ Route::get('/tutorial/{category}/{slug}', [
     'as' => 'tutorial.show'
 ]);
 
+Route::get('/sitemap.xml', [
+    'uses' => 'HomeController@xmlSitemap',
+    'as' => 'homepage.sitemap'
+]);
+
 Route::resource('/quiz_question','QuizQuestionController');
 Route::resource('/quiz_result','QuizResultController');
 Route::resource('/quiz_topic','QuizTopicController');
@@ -57,5 +62,5 @@ Route::group(['prefix' => 'ai-software'] , function() {
     Route::post('/reviews_store', 'AiSoftwareReviewController@storeReview')->name('ai_software.review.store');
     Route::post('/hit_like/{id}', 'AiSoftwareReviewController@like')->name('ai_software.software.like');
     Route::any('/software/search', 'AiSoftwareController@softwareSearch')->name('ai_software.search');
-    Route::get('/{slug}/softwares', 'AiSoftwareController@categorySoftwares')->name('ai_software.category-softwares');
+    Route::get('/categories/{slug}', 'AiSoftwareController@categorySoftwares')->name('ai_software.category-softwares');
 });

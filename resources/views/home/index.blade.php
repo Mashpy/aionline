@@ -4,9 +4,6 @@
 
 @section('content')
 @include('includes.header')
-<div>
-    <img src="{{ asset('uploads/others/homepage_header.jpg') }}" class="img-responsive" width="100%"/>
-</div>
     <div class="container">
         <h2 class="text-center top30 bottom10">Machine Learning Tutorials</h2>
         <div class="row">

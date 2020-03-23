@@ -41,8 +41,12 @@ class AiSoftwareController extends Controller
 
     public function show($slug){
         $ai_software = AiSoftware::where('slug', $slug)->first();
-        $reviews = AiSoftwareReview::where('ai_software_id', $ai_software->id)->latest()->get();
-        return view('ai_software.view', compact('ai_software', 'reviews'));
+        if($ai_software){
+            $reviews = AiSoftwareReview::where('ai_software_id', $ai_software->id)->latest()->get();
+            return view('ai_software.view', compact('ai_software', 'reviews'));
+        }else{
+            return redirect()->route('ai_software.index');
+        }
     }
 
     public function softwareSearch(Request $request){
