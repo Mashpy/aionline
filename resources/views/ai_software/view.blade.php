@@ -8,7 +8,7 @@
     @include('includes.header')
     @include('ai_software.ai_software_view_head')
     <div class="container mt-4">
-        <div class="row">
+        <div class="row" id="alternate_software">
             <div class="col-sm-12 col-md-9 col-lg-9 pl-0 pr-0">
                 @include('includes.message')
                 <nav class="nav nav-tabs mb-4">
@@ -25,7 +25,6 @@
                             No Alternate Software Found!
                         </div>
                     @endif
-
                     @if($ai_software->alternate_software->count() > 0)
                     <section class="alternate-software">
                         <div class="container">

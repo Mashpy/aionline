@@ -520,7 +520,7 @@ video {
 
 }
 
-.nav-background{
+.top-nav-bar > .nav-background{
     background-image: linear-gradient(to bottom,#03C265 0,#03C265 100%);
 }
 
@@ -531,7 +531,7 @@ video {
     font-size: 26px;
     font-weight: 700;
 }
-.nav-background a{
+.top-nav-bar > .nav-background a{
     font-weight: 700;
     font-size: 18px;
 }
@@ -542,16 +542,16 @@ video {
     padding: 5px;
 }
 
-.nav-link {
+.top-nav-bar > .nav-link {
     display: block;
     padding-bottom: 2px;
 }
 
-.navbar-dark .navbar-nav .nav-link {
+.top-nav-bar > .navbar-dark .navbar-nav .nav-link {
     color: #ffffff;
 }
 
-.nav-background a {
+.top-nav-bar > .nav-background a {
     font-weight: 400;
 }
 
@@ -794,7 +794,7 @@ nav .fa-twitter:hover {
 }
 
 .carousel-item{
-    height: 300px;
+    height: 200px;
 }
 
 .typewriter h3 {
@@ -905,7 +905,7 @@ ul.inline-list li{
 .review-text-color{
     color: #dcdcdc;
 }
-.nav-tab-menu{
+.top-nav-bar > .nav-tab-menu{
     font-weight: 700;
 }
 .official-link-button{
@@ -1090,14 +1090,41 @@ ul.inline-list li{
 }
 
 .software-view-title{
-    font-weight: 600;
-    font-size: 30px;
     color: #131313;
 }
-.software-view-title:hover{
-    text-decoration: none;
-    color: #007bff;
+.write-review{
+    margin-top: .5rem;
+    margin-bottom: 1rem;
 }
+.write-review a{
+    font-weight: 700;
+}
+
+.buttons-links a {
+    display: inline-block;
+    border: 1px solid rgb(255, 93, 16);
+    border-radius: 1.5rem;
+    cursor: pointer;
+    padding: 0.4rem 4rem 0.5rem 4rem;
+    font-size: 19px;
+    margin-right: 1rem;
+    text-transform: uppercase;
+}
+
+.website{
+    background-color: rgb(255, 98, 0);
+    color: #ffffff !important;
+}
+
+.website:hover{
+    background-color: rgb(255, 74, 57);
+    border: 1px solid rgb(255, 93, 16);
+}
+
+.like{
+    color: #ffffff !important;
+}
+
 html {
     scroll-behavior: smooth !important;
 }
@@ -1304,6 +1331,73 @@ ul.social-network li {
 }
 
 
+#navbar {
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+#navbar a {
+    float: left;
+    display: block;
+    color: #000000;
+    text-align: center;
+    margin-right: 5px;
+    padding: 10px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+#navbar a:hover {
+    border-bottom: 4px solid rgb(255, 98, 0);
+}
+
+#navbar a.active {
+    border-bottom: 4px solid rgb(255, 98, 0);
+    font-weight: bold;
+}
+.carousel {
+    position: relative;
+}
+.carousel-item img {
+    object-fit: cover;
+}
+#carousel-thumbs {
+    background: rgba(255,255,255,.3);
+    bottom: 0;
+    left: 0;
+    /*padding: 0 50px;*/
+    right: 0;
+}
+#carousel-thumbs img {
+    border: 5px solid transparent;
+    cursor: pointer;
+}
+#carousel-thumbs img:hover {
+    border-color: rgba(255,255,255,.3);
+}
+#carousel-thumbs .selected img {
+    border-color: #fff;
+}
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+}
+@media all and (max-width: 767px) {
+    .carousel-container #carousel-thumbs img {
+        border-width: 3px;
+    }
+}
+@media all and (min-width: 576px) {
+    .carousel-container #carousel-thumbs {
+        position: absolute;
+    }
+}
+@media all and (max-width: 576px) {
+    .carousel-container #carousel-thumbs {
+        background: #ccccce;
+    }
+}
+
 @media screen and (min-width: 601px) {
     div.ai-software-head h3{
         font-size: 50px;
@@ -1351,7 +1445,7 @@ ul.social-network li {
         background-size: 1rem;
     }
 
-    .nav-background img{
+    .top-nav-bar > .nav-background img{
         width: 120px;
     }
 }

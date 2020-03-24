@@ -1,54 +1,195 @@
-<div class="container">
+<div class="container" data-spy="scroll" data-target=".navbar_secound" data-offset="50" style="position: relative; ">
     <div class="row mt-1">
-        <div class="col-md-9 mb-2 software-view-panel">
+        <div class="col-md-12 mb-2 software-view-panel">
             <section>
                 <div class="container mt-4">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <img src="{{$ai_software->logo_url}}" class="software-view-logo" alt="...">
-                            <div class="like-review">
-                                <form action="{{route('ai_software.software.like', $ai_software->id)}}" method="post">
-                                    @csrf
-                                    <button title="Love it" class="btn love-button love-button-counter" data-count="{{$ai_software->like ? $ai_software->like : 0}}"><span>&#x2764; </span>{!! !empty($ai_software->like_status) ? 'Liked' : 'Like' !!}</button>
-                                </form>
-                            </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-10">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h5><a class="software-view-title" href="{{route('ai_software.view', $ai_software->slug)}}">{{$ai_software->name}}</a></h5>
-                                    <small class="text-secondary">Description</small>
-                                    <p>{!! $ai_software->description !!}</p>
-                                    <p>
-                                        <button class="btn love-button love-button-counter" data-count="{{$ai_software->like ? $ai_software->like : 0}}"><span>&#x2764;</span> Loved it</button>
-                                        <button class="btn love-button love-button-counter" data-count="{{$reviews->count()}}"><span><i class="fa fa-user" style="color: #566246"></i></span> Review</button>
-                                    </p>
-                                    <hr>
+                                    <h2 class="software-view-title">{{$ai_software->name}}</h2>
+                                    <div class="write-review">
+                                        <a href="#">Write a Review</a>
+                                    </div>
+                                    <div class="d-inline buttons-links">
+                                        <a class="btn btn-danger like" onclick="event.preventDefault(); document.getElementById('like-form').submit();"><i class="fa fa-thumbs-up"></i> Like</a>
+                                        <a class="btn btn-primary website">Visit Website <i class="fa fa-external-link"></i></a>
+                                    </div>
+                                    <form id="like-form" action="{{route('ai_software.software.like', $ai_software->id)}}" method="post">
+                                        {{ csrf_field() }}
+                                    </form>
                                 </div>
-                                <div class="col-md-12">
-                                    <small class="text-secondary">Vendor Details</small><br>
-                                    @php $official_link = "http://".$ai_software->official_link ; @endphp
-                                    <a href="{{$official_link}}" class="btn btn-outline-info btn-xs mt-2" target="_blank"><i class="fa fa-link"></i> Official Website</a><br>
-                                    <hr>
-                                </div>
-                                <div class="col-md-12">
-                                    <small class="text-secondary">Social Links</small><br>
-                                    <a href="" class="btn btn-outline-primary mt-2 btn-xs" target="_blank"><i class="fa fa-facebook-square"></i> facebook</a>
-                                    <a href="" class="btn btn-outline-info mt-2 btn-xs" target="_blank"><i class="fa fa-twitter"></i> twitter</a>
-                                </div>
-                                <div class="col-md-12">
-                                    
-                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 navbar-software-view mt-4">
+                            <div id="navbar">
+                                <a href="#product_description" class="active">Product Description</a>
+                                <a href="#alternate_software">Alternatives</a>
+                                <a href="#contact">Review</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
-        <div class="col-md-3">
-            <div>
-                @include('includes/google_ad', ['ad_format' => 'rectangle'])
-            </div>
+        <div class="col-md-12 mb-2 software-view-panel">
+            <section id="product_description">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <small class="text-secondary">Description</small>
+                            <p>{!! $ai_software->description !!}</p>
+                            <p>
+                                <button class="btn love-button love-button-counter" data-count="{{$ai_software->like ? $ai_software->like : 0}}"><span>&#x2764;</span> Loved it</button>
+                                <button class="btn love-button love-button-counter" data-count="{{$reviews->count()}}"><span><i class="fa fa-user" style="color: #566246"></i></span> Review</button>
+                            </p>
+                            <hr>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="container mt-5">
+                                <div class="carousel-container position-relative row">
+                                    <!-- Sorry! Lightbox doesn't work - yet. -->
+                                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active" data-slide-number="0">
+                                                <img src="https://source.unsplash.com/Pn6iimgM-wo/1600x900/" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/Pn6iimgM-wo/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                                            </div>
+                                            <div class="carousel-item" data-slide-number="1">
+                                                <img src="https://source.unsplash.com/tXqVe7oO-go/1600x900/" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/tXqVe7oO-go/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                                            </div>
+                                            <div class="carousel-item" data-slide-number="2">
+                                                <img src="https://source.unsplash.com/qlYQb7B9vog/1600x900/" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/qlYQb7B9vog/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                                            </div>
+                                            <div class="carousel-item" data-slide-number="3">
+                                                <img src="https://source.unsplash.com/QfEfkWk1Uhk/1600x900/" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/QfEfkWk1Uhk/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                                            </div>
+                                            <div class="carousel-item" data-slide-number="4">
+                                                <img src="https://source.unsplash.com/CSIcgaLiFO0/1600x900/" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/CSIcgaLiFO0/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                                            </div>
+                                            <div class="carousel-item" data-slide-number="5">
+                                                <img src="https://source.unsplash.com/a_xa7RUKzdc/1600x900/" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/a_xa7RUKzdc/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                                            </div>
+                                            <div class="carousel-item" data-slide-number="6">
+                                                <img src="https://source.unsplash.com/uanoYn1AmPs/1600x900/" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/uanoYn1AmPs/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                                            </div>
+                                            <div class="carousel-item" data-slide-number="7">
+                                                <img src="https://source.unsplash.com/_snqARKTgoc/1600x900/" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/_snqARKTgoc/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                                            </div>
+                                            <div class="carousel-item" data-slide-number="8">
+                                                <img src="https://source.unsplash.com/M9F8VR0jEPM/1600x900/" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/M9F8VR0jEPM/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                                            </div>
+                                            <div class="carousel-item" data-slide-number="9">
+                                                <img src="https://source.unsplash.com/Q1p7bh3SHj8/1600x900/" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/Q1p7bh3SHj8/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Carousel Navigation -->
+                                    <div id="carousel-thumbs" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <div class="row mx-0">
+                                                    <div id="carousel-selector-0" class="thumb col-4 col-sm-2 px-1 py-2 selected" data-target="#myCarousel" data-slide-to="0">
+                                                        <img src="https://source.unsplash.com/Pn6iimgM-wo/600x400/" class="img-fluid" alt="...">
+                                                    </div>
+                                                    <div id="carousel-selector-1" class="thumb col-4 col-sm-2 px-1 py-2" data-target="#myCarousel" data-slide-to="1">
+                                                        <img src="https://source.unsplash.com/tXqVe7oO-go/600x400/" class="img-fluid" alt="...">
+                                                    </div>
+                                                    <div id="carousel-selector-2" class="thumb col-4 col-sm-2 px-1 py-2" data-target="#myCarousel" data-slide-to="2">
+                                                        <img src="https://source.unsplash.com/qlYQb7B9vog/600x400/" class="img-fluid" alt="...">
+                                                    </div>
+                                                    <div id="carousel-selector-3" class="thumb col-4 col-sm-2 px-1 py-2" data-target="#myCarousel" data-slide-to="3">
+                                                        <img src="https://source.unsplash.com/QfEfkWk1Uhk/600x400/" class="img-fluid" alt="...">
+                                                    </div>
+                                                    <div id="carousel-selector-4" class="thumb col-4 col-sm-2 px-1 py-2" data-target="#myCarousel" data-slide-to="4">
+                                                        <img src="https://source.unsplash.com/CSIcgaLiFO0/600x400/" class="img-fluid" alt="...">
+                                                    </div>
+                                                    <div id="carousel-selector-5" class="thumb col-4 col-sm-2 px-1 py-2" data-target="#myCarousel" data-slide-to="5">
+                                                        <img src="https://source.unsplash.com/a_xa7RUKzdc/600x400/" class="img-fluid" alt="...">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <a class="carousel-control-prev" href="#carousel-thumbs" role="button" data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carousel-thumbs" role="button" data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
+
+                                </div> <!-- /row -->
+                            </div> <!-- /container -->
+                        </div>
+
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 </div>
+@section('run_custom_jquery')
+    <script>
+        $('#myCarousel').carousel({
+            interval: false
+        });
+        $('#carousel-thumbs').carousel({
+            interval: false
+        });
+
+        $('[id^=carousel-selector-]').click(function() {
+            var id_selector = $(this).attr('id');
+            var id = parseInt( id_selector.substr(id_selector.lastIndexOf('-') + 1) );
+            $('#myCarousel').carousel(id);
+        });
+        // Only display 3 items in nav on mobile.
+        if ($(window).width() < 575) {
+            $('#carousel-thumbs .row div:nth-child(4)').each(function() {
+                var rowBoundary = $(this);
+                $('<div class="row mx-0">').insertAfter(rowBoundary.parent()).append(rowBoundary.nextAll().addBack());
+            });
+            $('#carousel-thumbs .carousel-item .row:nth-child(even)').each(function() {
+                var boundary = $(this);
+                $('<div class="carousel-item">').insertAfter(boundary.parent()).append(boundary.nextAll().addBack());
+            });
+        }
+        // Hide slide arrows if too few items.
+        if ($('#carousel-thumbs .carousel-item').length < 2) {
+            $('#carousel-thumbs [class^=carousel-control-]').remove();
+            $('.machine-carousel-container #carousel-thumbs').css('padding','0 5px');
+        }
+        // when the carousel slides, auto update
+        $('#myCarousel').on('slide.bs.carousel', function(e) {
+            var id = parseInt( $(e.relatedTarget).attr('data-slide-number') );
+            $('[id^=carousel-selector-]').removeClass('selected');
+            $('[id=carousel-selector-'+id+']').addClass('selected');
+        });
+        // when user swipes, go next or previous
+        $('#myCarousel').swipe({
+            fallbackToMouseEvents: true,
+            swipeLeft: function(e) {
+                $('#myCarousel').carousel('next');
+            },
+            swipeRight: function(e) {
+                $('#myCarousel').carousel('prev');
+            },
+            allowPageScroll: 'vertical',
+            preventDefaultEvents: false,
+            threshold: 75
+        });
+        /*
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+          event.preventDefault();
+          $(this).ekkoLightbox();
+        });
+        */
+
+        $('#myCarousel .carousel-item img').on('click', function(e) {
+            var src = $(e.target).attr('data-remote');
+            if (src) $(this).ekkoLightbox();
+        });
+    </script>
+@stop
