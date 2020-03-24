@@ -19,6 +19,12 @@ class QuizQuestion extends Model
     {
         return $this->hasMany('App\Models\QuizAnswer');
     }
+
+    public function quiz_correct_answer()
+    {
+        return $this->hasOne('App\Models\QuizAnswer')->where('is_correct', true);
+    }
+
     public function quiz_topic(){
         return $this->belongsTo('App\Models\QuizTopic');
     }

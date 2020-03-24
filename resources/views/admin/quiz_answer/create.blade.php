@@ -17,7 +17,11 @@
 
                         <div class="form-group"> <!-- Name field -->
                             <span>is correct:</span>
-                            <input name="is_correct" value="1" type="checkbox"/>
+                            <input name="is_correct" onclick="correctAnswer()" value="1" type="checkbox"/>
+                        </div>
+                        <div class="form-group d-none"id="answer_explain"> <!-- Name field -->
+                            <label class="control-label " for="name" >answer_explanation</label>
+                            <input class="form-control" name="answer_explanation" type="text" placeholder="answer_explanation"/>
                         </div>
 
                         <div class="form-group">
@@ -30,4 +34,16 @@
             </div>
         </div>
     </div>
+@endsection
+@section('run_custom_jquery')
+    <script>
+        function correctAnswer() {
+            if ($('#answer_explain').hasClass('d-none')) {
+                $('#answer_explain').removeClass('d-none')
+            }else {
+                $('#answer_explain').addClass('d-none')
+            }
+        }
+
+    </script>
 @endsection

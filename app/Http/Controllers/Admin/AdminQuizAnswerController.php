@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Quizanswer;
 use App\Models\Category;
+use App\Models\QuizQuestion;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
@@ -38,6 +39,11 @@ class AdminQuizAnswerController extends Controller
         $answer->answer_details = $request->answer_details;
         $answer->is_correct = $is_correct;
         $answer->save();
+
+        $question = QuizQuestion::findOrFail($request->quiz_question_id);
+        $question->answer_explanation = $request->answer_explanation;
+        $question->save();
+
         Session::flash('success','Question added successfully!!');
         return redirect()->route('admin_quiz_question.index');
     }
