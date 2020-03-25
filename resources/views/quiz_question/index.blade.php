@@ -6,27 +6,31 @@
     <div class="row">
         <div class="col-md-12 mt-2">
           <h4>{{ $quiz_topic->topic_name }} Question and Answer </h4>
+            <br>
             <form method="POST" action="{{ route('quiz_result.store') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 @foreach($quiz_questions as $key => $question)
                     <div id="radio-button">{{ $key + 1 }}. {{$question->question_details}}</div>
-                    <div>
+                    <div class="p-1">
                          {{$question->question}}
                     </div>
                     @foreach($question->quiz_answers as $quiz_answer)
-                        <div>
-                            <label>
-                                <input type="radio" name="selected_answers[question_id_{{ $question->id }}]" value="{{ $quiz_answer->id }}"> {{ $quiz_answer->answer_details }}<br>
+                        <div class="pl-3">
+                            <label class="answer-{{ $question->id }}" id="correct-ans-{{$quiz_answer->id}}">
+
+                                <input type="radio" name="selected_answers[question_id_{{ $question->id }}]"  onclick="checkAnswer({{$quiz_answer->id}}, {{$question->id}})"  value="{{ $quiz_answer->id}}"> {{ $quiz_answer->answer_details }}<br>
+
+
                             </label>
                         </div>
                     @endforeach
                     <button type="button" class="mb-2" onclick="showAnswer({{ $question->id }})">View Answer</button>
-                    <div id="question-{{ $question->id }}" class="d-none mb-2"><b class="text-success">view answer:</b> {{ $question->quiz_correct_answer['answer_details'] }}<br><b class="text-success">Explanation: </b>{{ $question->answer_explanation}}</div>
+                    <div id="question-{{ $question->id}}" class="d-none mb-2"><b class="text-success">view answer:</b> <span data-ans-id="{{$question->quiz_correct_answer['id']}}" id="ans-{{$question->id}}">{{ $question->quiz_correct_answer['answer_details'] }}</span><br><b class="text-success">Explanation: </b>{{ $question->answer_explanation}}</div>
                 @endforeach
-                <div class="form-group mt-5">
-                    <button type="submit" class="btn btn-primary ">Submit</button>
-                    <button type="button" class="btn btn-danger pull-right" id="clear">Clear</button>
-                </div>
+{{--                <div class="form-group mt-5">--}}
+{{--                    <button type="submit" class="btn btn-primary ">Submit</button>--}}
+{{--                    <button type="button" class="btn btn-danger pull-right" id="clear">Clear</button>--}}
+{{--                </div>--}}
             </form>
         </div>
     </div>
@@ -37,6 +41,32 @@
 @endsection
 @section('run_custom_jquery')
     <script>
+        function checkAnswer(answer_id, qus_id){
+            let ans_id = $("#ans-"+qus_id).data('ans-id');
+            $(".answer-"+qus_id).removeClass("text-success")
+            $(".answer-"+qus_id).removeClass("text-danger")
+            if(ans_id == answer_id){
+                $("#correct-ans-"+answer_id).addClass('text-success');
+                // {
+                //     if ($('#question-' + question_id).hasClass('d-none')) {
+                //         $('#question-' + question_id).removeClass('d-none');
+                //         $('#question-' + question_id).addClass('d-block');
+                //     } else {
+                //         $('#question-' + question_id).removeClass('d-block');
+                //         $('#question-' + question_id).addClass('d-none');
+                //     }
+                // }
+                showAnswer(qus_id);
+            }else{
+                $("#correct-ans-"+answer_id).addClass('text-danger');
+            }
+        }
+
+        $("checkAnswer").click(function(){
+            $('#radio-button').each(function(){
+                $("input[type='radio']").css("color", "red");
+            });
+        });
         function showAnswer(question_id) {
             if ($('#question-' + question_id).hasClass('d-none')) {
                 $('#question-' + question_id).removeClass('d-none');

@@ -31,7 +31,7 @@ Route::get('/sitemap.xml', [
 Route::resource('/quiz_question','QuizQuestionController');
 Route::resource('/quiz_result','QuizResultController');
 Route::resource('/quiz_topic','QuizTopicController');
-
+Route::get('/quiz_question', 'HomeController@index');
 Route::group(['middleware' => ['auth', 'isAdmin'] , 'prefix' => 'admin'] , function() {
 		Route::get('/', [
 		    'uses' => 'Admin\AdminController@index',

@@ -38,4 +38,5 @@ class QuizResultController extends Controller
         return redirect()->route('quiz_result.index');
     }
 
+
 }

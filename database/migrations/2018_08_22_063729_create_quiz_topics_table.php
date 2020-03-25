@@ -16,6 +16,7 @@ class CreateQuizTopicsTable extends Migration
         Schema::create('quiz_topics', function (Blueprint $table) {
             $table->increments('id');
             $table->string('topic_name');
+            $table->string('slug');
             $table->integer('category_id');
             $table->timestamps();
         });
