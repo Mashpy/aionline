@@ -44,10 +44,6 @@
 <script src="{{ asset('js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{asset('js/popper.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
-
-
-@yield('run_custom_js_file')
-@yield('run_custom_jquery')
         <!-- Global site tag (gtag.js) - Google Analytics -->
 @if (env('APP_ENV') == 'production' && empty(Auth::check()))
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126290142-1"></script>
@@ -80,5 +76,7 @@
     });
     /*Scroll to top when arrow up clicked END*/
 </script>
+@yield('run_custom_js_file')
+@yield('run_custom_jquery')
 </body>
 </html>

@@ -13,11 +13,11 @@ class AiSoftwareController extends Controller
     public function index(){
         $category_parent = Category::where('parent_id', null)->get();
         foreach ($category_parent as $key => $value) {
-            $category_parent[$key]['softwares'] = AiSoftware::whereIn('category_id',$this->subCategory($value->id, $key))->latest()->take(1)->get();
+            $category_parent[$key]['softwares'] = AiSoftware::whereIn('category_id',$this->subCategory($value->id, $key))->latest()->take(5)->get();
         }
-        $feature_softwares = AiSoftware::all()->random(1);
+        $feature_softwares = AiSoftware::all()->random(5);
         $ai_softwares = AiSoftware::latest()->get();
-        $recently_added_software = AiSoftware::latest()->take(1)->get();
+        $recently_added_software = AiSoftware::latest()->take(5)->get();
         return view('ai_software.index', compact('ai_softwares', 'recently_added_software', 'category_parent', 'feature_softwares'));
     }
 

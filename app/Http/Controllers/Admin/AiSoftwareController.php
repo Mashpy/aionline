@@ -33,6 +33,8 @@ class AiSoftwareController extends Controller
         $software = new AiSoftware;
         $software->category_id = $request->parent_id;
         $software->description = $request->description;
+        $software->feature = $request->feature;
+        $software->pricing = $request->pricing;
         $official_link = $this->wash_link($request->official_link);
         $check_official_link = AiSoftware::where('official_link', $official_link)->first();
         if($check_official_link){
@@ -95,6 +97,8 @@ class AiSoftwareController extends Controller
         $ai_software = AiSoftware::find($id);
         $ai_software->name = $request->name;
         $ai_software->description = $request->description;
+        $ai_software->feature = $request->feature;
+        $ai_software->pricing = $request->pricing;
         $ai_software->official_link = $this->wash_link($request->official_link);
         $ai_software->slug = $request->slug;
         if($request->parent_id){

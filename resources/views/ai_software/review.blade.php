@@ -11,14 +11,6 @@
         <div class="row">
             <div class="col-md-9">
                 @include('includes.message')
-                <nav class="nav nav-tabs">
-                    <a href="{{route('ai_software.view', $ai_software->slug)}}" class="nav-item nav-link nav-tab-menu">
-                        <i class="fa fa-home"></i> Alternatives
-                    </a>
-                    <a href="{{route('ai_software.reviews', $ai_software->slug)}}" class="nav-item nav-link nav-tab-menu active">
-                        <i class="fa fa-user"></i> Reviews
-                    </a>
-                </nav>
                 <div class="row">
                     <div class="col-md-12 mb-4 clearfix">
                         <h3 class="ai-software-header float-left">{{$ai_software->name}} Reviews</h3>
@@ -110,7 +102,7 @@
             });
         });
     </script>
-@endsection
+@stop
 
 @endsection
 

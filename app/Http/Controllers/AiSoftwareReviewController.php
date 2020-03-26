@@ -42,10 +42,10 @@ class AiSoftwareReviewController extends Controller
                 'ai_software_id' => $id,
                 'client_ip' => $request->ip(),
             ]);
-            \Session::flash('success','Your liked this software!!');
+            \Session::flash('success-like','You are liked this software!');
             return back();
         }
-        \Session::flash('error','Your already liked this software!!');
+        \Session::flash('error-like','You are already liked this software!');
         return back();
     }
 }

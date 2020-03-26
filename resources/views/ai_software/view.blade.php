@@ -11,14 +11,6 @@
         <div class="row" id="alternate_software">
             <div class="col-sm-12 col-md-9 col-lg-9 pl-0 pr-0">
                 @include('includes.message')
-                <nav class="nav nav-tabs mb-4">
-                    <a href="{{route('ai_software.view', $ai_software->slug)}}" class="nav-item nav-link nav-tab-menu active">
-                        <i class="fa fa-home"></i> Alternatives
-                    </a>
-                    <a href="{{route('ai_software.reviews', $ai_software->slug)}}" class="nav-item nav-tab-menu nav-link">
-                        <i class="fa fa-user"></i> Reviews
-                    </a>
-                </nav>
                 <div class="row">
                     @if($ai_software->alternate_software->count() < 1)
                         <div class="alert alert-primary col-md-12" role="alert">
