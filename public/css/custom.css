@@ -794,7 +794,7 @@ nav .fa-twitter:hover {
 }
 
 .carousel-view{
-    height: 210px;
+
 }
 .like-alert-error{
     background-color: red;
@@ -1092,6 +1092,13 @@ ul.inline-list li{
     border: 1px solid #e8e8e8;
 }
 
+.software-view-logo-after-scroll{
+    width: 50px;
+    height: 50px;
+    display: block;
+    margin-right: 25px;
+}
+
 .like-action-button{
     color: red;
 }
@@ -1356,8 +1363,19 @@ ul.social-network li {
 
 
 #navbar {
-    overflow: hidden;
     background-color: #ffffff;
+    position: fixed;
+    display: flex;
+    z-index: 1;
+}
+.navbar-after-scroll{
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 0 0 0.2rem 5.5rem;
+    border-bottom: 1px solid #03C265;
 }
 
 #navbar a {
@@ -1401,6 +1419,9 @@ ul.social-network li {
 }
 #carousel-thumbs .selected img {
     border-color: #999999;
+}
+.software-view-fix-hight{
+    height: 280px;
 }
 
 @media screen and (min-width: 601px) {
@@ -1478,5 +1499,18 @@ ul.social-network li {
     .software-view-logo{
         width: 100px;
         height: 100px;
+    }
+
+    .navbar-after-scroll{
+        width: 100vw;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        padding: 0 0 0.2rem .1rem;
+        border-bottom: 1px solid #03C265;
+    }
+    .software-view-fix-hight{
+        height: 400px;
     }
 }

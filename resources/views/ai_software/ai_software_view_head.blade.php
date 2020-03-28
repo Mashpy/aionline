@@ -1,6 +1,6 @@
 <div class="container" data-spy="scroll" data-target=".navbar_secound" data-offset="50" style="position: relative; ">
     <div class="row mt-1">
-        <div class="col-md-12 mb-2 software-view-panel">
+        <div class="col-md-12 mb-2 software-view-panel software-view-fix-hight">
             @if (Session::has('error-like'))
                 <div class="text-center like-alert-error">
                     <div id="flash-notice">{{ Session::get('error-like') }}</div>
@@ -22,8 +22,8 @@
                                 <div class="col-md-12">
                                     <h2 class="software-view-title">{{$ai_software->name}}</h2>
                                     <div class="write-review">
-                                        <span class="text-secondary">By Bons Ai Ltd</span>
-                                        <a href="{{route('ai_software.reviews', $ai_software->slug)}}">Write a Review!</a>
+                                        <span class="text-secondary">By {{$ai_software->name}}</span>
+                                        <a href="#reviews" id="write_review">Write a Review!</a>
                                     </div>
                                     <div class="d-inline buttons-links">
                                         <a class="btn btn-danger like" onclick="event.preventDefault(); document.getElementById('like-form').submit();"><i class="fa fa-thumbs-up"></i> Like</a>
@@ -36,12 +36,19 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12 navbar-software-view mt-4">
+                        <div class="col-md-12 mt-4">
                             <div id="navbar">
-                                <a href="#about" class="{{Route::is('ai_software.view') ? 'active' : ''}}">About</a>
-                                <a href="#features">Features</a>
-                                <a href="#pricing">Pricing</a>
-                                <a href="{{ Route::is('ai_software.reviews') ? '#reviews' : route('ai_software.reviews', $ai_software->slug)}}" class="{{Route::is('ai_software.reviews') ? 'active' : ''}}">Reviews</a>
+                               <div class="row">
+                                   <div class="col-md-12">
+                                       <span class="nav-after-scrolling display-none float-left">
+                                           <img src="{{$ai_software->logo_url}}" class="software-view-logo-after-scroll" alt="...">
+                                       </span>
+                                       <a href="#about" class="{{Route::is('ai_software.view') ? 'active' : ''}}">About</a>
+                                       <a href="#features">Features</a>
+                                       <a href="#pricing">Pricing</a>
+                                       <a href="#reviews" class="">Reviews</a>
+                                   </div>
+                               </div>
                             </div>
                         </div>
                     </div>
@@ -100,40 +107,43 @@
                 </div>
             </section>
         </div>
-        <div class="col-md-12 mb-2 software-view-panel">
-            <section id="features">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8 mt-4">
-                            <div>
-                                <h3 class="text-secondary">Features of {{$ai_software->name}}</h3>
-                                <p>{!! $ai_software->feature !!}</p>
+        @if(!empty($ai_software->feature))
+            <div class="col-md-12 mb-2 software-view-panel">
+                <section id="features">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 mt-4">
+                                <div>
+                                    <h3 class="text-secondary">Features of {{$ai_software->name}}</h3>
+                                    <p>{!! $ai_software->feature !!}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="container mt-5">
-                               ad
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-        <div class="col-md-12 mb-2 software-view-panel">
-            <section id="pricing">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 mt-4">
-                            <div>
-                                <h3 class="text-secondary">Pricing</h3>
-                                <p class="ml-3">{!! $ai_software->pricing ? $ai_software->pricing : 'Not provided by vendor
-' !!}</p>
+                            <div class="col-md-4">
+                                <div class="container mt-5">
+                                   ad
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </div>
+                </section>
+            </div>
+        @endif
+        @if(!empty($ai_software->pricing))
+            <div class="col-md-12 mb-2 software-view-panel">
+                <section id="pricing">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 mt-4">
+                                <div>
+                                    <h3 class="text-secondary">Pricing</h3>
+                                    <p class="ml-3">{!! $ai_software->pricing !!}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        @endif
     </div>
 </div>
 
@@ -156,5 +166,24 @@
             var src = $(e.target).attr('data-remote');
             if (src) $(this).ekkoLightbox();
         });
+    </script>
+    <script>
+        // When the user scrolls down 20px from the top of the document, slide down the navbar
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("navbar").style.top = "0";
+                $("#navbar").addClass('navbar-after-scroll');
+                $(".nav-after-scrolling").removeClass('display-none');
+            } else {
+                document.getElementById("navbar").style.top = "295px";
+                $("#navbar").removeClass('navbar-after-scroll');
+                $(".nav-after-scrolling").addClass('display-none');
+                if ($(window).width() < 600) {
+                    document.getElementById("navbar").style.top = "400px";
+                }
+            }
+        }
     </script>
 @stop

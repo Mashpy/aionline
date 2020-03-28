@@ -10,6 +10,50 @@
                 @include('includes.message')
             </div>
             <div class="col-md-12">
+                <div  class="aler alert-success">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading p-2 mb-2" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <span>Add Slider Screenshot(Click here to add)</span><span class="float-right"><i class="fa fa-arrow-down"></i> </span>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse mb-4" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body p-2">
+                                    <form class="form-horizontal" action="/action_page.php">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="homepage">Home Page url:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="homepage" placeholder="Enter software homepage url" name="home_page_url">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="pricing_page">Pricing Page url:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="pricing_page" placeholder="Enter software pricing page url" name="pricing_page_url">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="pricing_page">Other Page url:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="pricing_page" placeholder="Enter software other page url" name="other_page_url">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- panel-group -->
+                </div>
+            </div>
+            <div class="col-md-12">
                 <div class="alert alert-success">
                     <h5>Edit Software</h5>
                     <form action="{{route('admin_ai_software.update', $ai_software->id)}}" method="post" enctype="multipart/form-data">

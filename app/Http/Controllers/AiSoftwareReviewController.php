@@ -9,12 +9,6 @@ use Illuminate\Http\Request;
 
 class AiSoftwareReviewController extends Controller
 {
-    public function reviews($slug){
-        $ai_software = AiSoftware::where('slug', $slug)->first();
-        $reviews = AiSoftwareReview::where('ai_software_id', $ai_software->id)->latest()->get();
-        return view('ai_software.review', compact('ai_software', 'reviews'));
-    }
-
     public function storeReview(Request $request){
         $request->validate([
             'title' => ['required'],

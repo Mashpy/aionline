@@ -40,7 +40,7 @@
                                                         <div>
                                                             <h5><a class="alternate-software-card-head" href="{{route('ai_software.view', $ai_softare_alternative->slug)}}">{{$ai_softare_alternative->name}}</a></h5>
                                                         </div>
-                                                        <p>{!! str_limit($ai_softare_alternative->description, $limit = 170, $end = '...') !!}</p>
+                                                        <p>{!! str_limit(strip_tags($ai_softare_alternative->description), $limit = 170, $end = '...') !!}</p>
                                                     </div>
                                                     <div class="col-md-2"></div>
                                                     <div class="col-md-10">
@@ -65,6 +65,7 @@
             </div>
         </div>
     </div>
+    @include('ai_software.review')
     @include('includes.footer')
 @endsection
 
