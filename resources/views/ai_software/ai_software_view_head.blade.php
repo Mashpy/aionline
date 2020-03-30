@@ -1,4 +1,4 @@
-<div class="container" data-spy="scroll" data-target=".navbar_secound" data-offset="50" style="position: relative; ">
+<div class="container">
     <div class="row mt-1">
         <div class="col-md-12 mb-2 software-view-panel software-view-fix-hight">
             @if (Session::has('error-like'))
@@ -39,13 +39,13 @@
                         <div class="col-md-12 mt-4">
                             <div id="navbar">
                                <div class="row">
-                                   <div class="col-md-12">
+                                   <div class="col-md-12" id="top-menu">
                                        <span class="nav-after-scrolling display-none float-left">
                                            <img src="{{$ai_software->logo_url}}" class="software-view-logo-after-scroll" alt="...">
                                        </span>
                                        <a href="#about" class="{{Route::is('ai_software.view') ? 'active' : ''}}">About</a>
-                                       <a href="#features">Features</a>
-                                       <a href="#pricing">Pricing</a>
+                                       <a href="#features" class="">Features</a>
+                                       <a href="#pricing" class="">Pricing</a>
                                        <a href="#reviews" class="">Reviews</a>
                                    </div>
                                </div>
@@ -70,30 +70,22 @@
                                 <div class="carousel-container position-relative row">
                                     <div id="myCarousel" class="carousel carousel-view slide" data-ride="carousel">
                                         <div class="carousel-inner">
-                                            <div class="carousel-item active" data-slide-number="0">
-                                                <img src="{{asset('uploads/slider/slide-1.png')}}" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/Pn6iimgM-wo/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
-                                            </div>
-                                            <div class="carousel-item" data-slide-number="1">
-                                                <img src="{{asset('uploads/slider/slide-2.png')}}" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/tXqVe7oO-go/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
-                                            </div>
-                                            <div class="carousel-item" data-slide-number="2">
-                                                <img src="{{asset('uploads/slider/slide-1.png')}}" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/QfEfkWk1Uhk/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
-                                            </div>
+                                            @foreach($ai_software->softwareScreenshot as $key => $screenshot)
+                                                <div class="carousel-item {{ $key == 0 ? 'active' : ''}}" data-slide-number="{{$loop->index}}">
+                                                    <img src="{{$screenshot->screenshot_url}}" class="d-block w-100" alt="..." data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                                                </div>
+                                            @endforeach
                                         </div>
                                         <div class="carousel-thumb">
                                             <div id="carousel-thumbs" class="carousel slide" data-ride="carousel">
                                                 <div class="carousel-inner">
                                                     <div class="carousel-item active">
                                                         <div class="row mx-0">
-                                                            <div id="carousel-selector-0" class="thumb col-4 col-sm-2 px-1 py-2 selected" data-target="#myCarousel" data-slide-to="0">
-                                                                <img src="{{asset('uploads/slider/slide-1.png')}}" class="img-fluid" alt="...">
+                                                            @foreach($ai_software->softwareScreenshot as $key => $screenshot)
+                                                            <div id="carousel-selector-{{$loop->index}}" class="thumb col-4 col-sm-2 px-1 py-2 {{ $key == 0 ? 'selected' : ''}}" data-target="#myCarousel" data-slide-to="{{$loop->index}}">
+                                                                <img src="{{$screenshot->screenshot_url}}" class="img-fluid" alt="...">
                                                             </div>
-                                                            <div id="carousel-selector-1" class="thumb col-4 col-sm-2 px-1 py-2" data-target="#myCarousel" data-slide-to="1">
-                                                                <img src="{{asset('uploads/slider/slide-2.png')}}" class="img-fluid" alt="...">
-                                                            </div>
-                                                            <div id="carousel-selector-2" class="thumb col-4 col-sm-2 px-1 py-2" data-target="#myCarousel" data-slide-to="2">
-                                                                <img src="{{asset('uploads/slider/slide-1.png')}}" class="img-fluid" alt="...">
-                                                            </div>
+                                                            @endforeach
                                                         </div>
                                                     </div>
                                                 </div> <!-- /container -->
@@ -120,7 +112,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="container mt-5">
-                                   ad
+                                   <!--ad-->
                                 </div>
                             </div>
                         </div>
@@ -172,12 +164,12 @@
         window.onscroll = function() {scrollFunction()};
 
         function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
                 document.getElementById("navbar").style.top = "0";
                 $("#navbar").addClass('navbar-after-scroll');
                 $(".nav-after-scrolling").removeClass('display-none');
             } else {
-                document.getElementById("navbar").style.top = "295px";
+                document.getElementById("navbar").style.top = "300px";
                 $("#navbar").removeClass('navbar-after-scroll');
                 $(".nav-after-scrolling").addClass('display-none');
                 if ($(window).width() < 600) {
@@ -185,5 +177,62 @@
                 }
             }
         }
+    </script>
+    <script>
+        // Cache selectors
+        var lastId,
+            topMenu = $("#top-menu"),
+            topMenuHeight = topMenu.outerHeight()+50,
+            // All list items
+            menuItems = topMenu.find("a"),
+            // Anchors corresponding to menu items
+            scrollItems = menuItems.map(function(){
+                var item = $($(this).attr("href"));
+                if (item.length) { return item; }
+            });
+        // Bind click handler to menu items
+        // so we can get a fancy scroll animation
+        menuItems.click(function(e){
+            var href = $(this).attr("href"),
+                offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+1;
+            $('html, body').stop().animate({
+                scrollTop: offsetTop
+            }, 300);
+            e.preventDefault();
+        });
+
+        // Bind to scroll
+        $(window).scroll(function(){
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                document.getElementById("navbar").style.top = "0";
+                $("#navbar").addClass('navbar-after-scroll');
+                $(".nav-after-scrolling").removeClass('display-none');
+            } else {
+                document.getElementById("navbar").style.top = "300px";
+                $("#navbar").removeClass('navbar-after-scroll');
+                $(".nav-after-scrolling").addClass('display-none');
+                if ($(window).width() < 600) {
+                    document.getElementById("navbar").style.top = "400px";
+                }
+            }
+            // Get container scroll position
+            var fromTop = $(this).scrollTop()+topMenuHeight;
+
+            // Get id of current scroll item
+            var cur = scrollItems.map(function(){
+                if ($(this).offset().top < fromTop)
+                    return this;
+            });
+            // Get the id of the current element
+            cur = cur[cur.length-1];
+            var id = cur && cur.length ? cur[0].id : "";
+
+            if (lastId !== id) {
+                lastId = id;
+                // Set/remove active class
+                menuItems.removeClass("active");
+                menuItems.filter("[href='#"+id+"']").addClass("active");
+            }
+        });
     </script>
 @stop

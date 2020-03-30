@@ -12,11 +12,6 @@
             <div class="col-sm-12 col-md-9 col-lg-9 pl-0 pr-0">
                 @include('includes.message')
                 <div class="row">
-                    @if($ai_software->alternate_software->count() < 1)
-                        <div class="alert alert-primary col-md-12" role="alert">
-                            No Alternate Software Found!
-                        </div>
-                    @endif
                     @if($ai_software->alternate_software->count() > 0)
                     <section class="alternate-software">
                         <div class="container">

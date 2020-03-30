@@ -53,7 +53,8 @@ Route::group(['middleware' => ['auth', 'isAdmin'] , 'prefix' => 'admin'] , funct
 		Route::resource('/admin_ai_software', 'Admin\AiSoftwareController');
 		Route::resource('/admin_ai_software_category', 'Admin\AdminCategoryController');
 		Route::get('/admin_ai_software_get_subcategory', 'Admin\AdminCategoryController@getSubCategory')->name('admin.software_subcategory');
-	});
+        Route::post('/screenshot/{id}/store', 'Admin\AiSoftwareController@screenshot_store')->name('admin.ai_software.screenshot-store');
+});
 
 Route::group(['prefix' => 'ai-software'] , function() {
     Route::get('/', 'AiSoftwareController@index')->name('ai_software.index');

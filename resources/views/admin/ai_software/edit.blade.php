@@ -10,7 +10,7 @@
                 @include('includes.message')
             </div>
             <div class="col-md-12">
-                <div  class="aler alert-success">
+                <div  class="alert alert-success">
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
                             <div class="panel-heading p-2 mb-2" role="tab" id="headingOne">
@@ -22,7 +22,15 @@
                             </div>
                             <div id="collapseOne" class="panel-collapse collapse mb-4" role="tabpanel" aria-labelledby="headingOne">
                                 <div class="panel-body p-2">
-                                    <form class="form-horizontal" action="/action_page.php">
+                                    <div class="row">
+                                        <div class="col-md-12 d-inline">
+                                            @foreach($ai_software_screenshots as $screenshot)
+                                                <img width="150" src="{{$screenshot->screenshot_url}}">
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    <form class="form-horizontal" action="{{route('admin.ai_software.screenshot-store', $ai_software->id)}}" method="post">
+                                        {{csrf_field()}}
                                         <div class="form-group">
                                             <label class="control-label col-sm-2" for="homepage">Home Page url:</label>
                                             <div class="col-sm-10">

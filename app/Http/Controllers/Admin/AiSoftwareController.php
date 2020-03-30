@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AiSoftwareScreenshot;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\AiSoftware;
@@ -11,6 +12,7 @@ use Goutte\Client;
 use Image;
 use File;
 use Exception;
+use Illuminate\Support\Facades\Storage;
 
 class AiSoftwareController extends Controller
 {
@@ -85,8 +87,9 @@ class AiSoftwareController extends Controller
 
     public function edit($id){
         $ai_software = AiSoftware::find($id);
+        $ai_software_screenshots = AiSoftwareScreenshot::where('ai_software_id', $id)->get();
         $categories = Category::with('children')->whereNull('parent_id')->latest()->get();
-        return view('admin.ai_software.edit', compact('ai_software', 'categories'));
+        return view('admin.ai_software.edit', compact('ai_software', 'categories', 'ai_software_screenshots'));
     }
 
     public function update(Request $request, $id){
@@ -180,5 +183,44 @@ class AiSoftwareController extends Controller
             if (strpos($string, $keyword) !== FALSE)
                 return $index;
         }
+    }
+
+    public function screenshot_store(Request $request, $id){
+        $ai_software = AiSoftware::find($id);
+        if($request->home_page_url){
+            $image_name = $ai_software->slug.'-homepage.jpg';
+            $this->screenshot_store_process($request->home_page_url, $image_name, $id);
+        }
+        if($request->pricing_page_url){
+            $image_name_pricing = $ai_software->slug.'-pricingpage.jpg';
+            $this->screenshot_store_process($request->pricing_page_url, $image_name_pricing, $id);
+        }
+        if($request->other_page_url){
+            $image_name_other = $ai_software->slug.'-otherpage.jpg';
+            $this->screenshot_store_process($request->other_page_url, $image_name_other, $id);
+        }
+        return back();
+    }
+
+    public function screenshot_store_process($request_url, $image_name, $id){
+        $check_screenshot = AiSoftwareScreenshot::where(['ai_software_id' => $id, 'image' => $image_name])->first();
+        if(empty($check_screenshot)){
+            AiSoftwareScreenshot::create(['ai_software_id' => $id, 'image' => $image_name]);
+        }else{
+            $check_screenshot->update(['image' => $image_name]);
+            unlink(public_path(AiSoftwareScreenshot::SCREENSHOT_UPLOAD_PATH.$check_screenshot->created_at->format('Y').'/'.$check_screenshot->created_at->format('m').'/'.$image_name));
+        }
+        $this->screenshot_image_process($request_url, $image_name);
+    }
+
+    public function screenshot_image_process($url, $image_name){
+        $websiteURL = 'https://'.$this->wash_link($url);
+        $api_response = file_get_contents("https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=$websiteURL&screenshot=true");
+        $result = json_decode($api_response, true);
+        $screenshot = $result['screenshot']['data'];
+        $screenshot = str_replace(array('_','-'),array('/','+'),$screenshot);
+        $decoded_image = base64_decode($screenshot);
+        $path = AiSoftwareScreenshot::SCREENSHOT_UPLOAD_PATH.date('Y').'/'.date('m'.'/');
+        Storage::disk('uploads')->put($path.$image_name, $decoded_image);
     }
 }
