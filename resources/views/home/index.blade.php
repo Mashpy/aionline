@@ -43,7 +43,7 @@
                         <br/>
                         <h3>{{ $quiz_topic->category->name }}</h3>
                     @endif
-                    <div><a href="{{ route('quiz_question.index', ['quiz_topic_id' => $quiz_topic->id])}}">{{$quiz_topic->topic_name}}</a></div>
+                    <div><a href="{{ route('quiz-question.index', ['quiz_topic_id' => $quiz_topic->id])}}">{{$quiz_topic->topic_name}}</a></div>
                     <?php array_push($category, $quiz_topic->category->name); ?>
                 @endforeach
             </div>

@@ -35,7 +35,7 @@ class QuizResultController extends Controller
         $quiz_result->quiz_topic_id = $quiz_answer->quiz_question->quiz_topic->id;
         $quiz_result->save();
         Session::flash('success','Question added successfully!!');
-        return redirect()->route('quiz_result.index');
+        return redirect()->route('quiz-result.index');
     }
 
 

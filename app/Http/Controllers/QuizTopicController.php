@@ -20,6 +20,6 @@ class QuizTopicController extends Controller
         $quiz_topic->category_id = $request->category_id;
         $quiz_topic->save();
         Session::flash('success','Question added successfully!!');
-        return redirect()->route('quiz_topic.index');
+        return redirect()->route('quiz-topic.index');
     }
 }

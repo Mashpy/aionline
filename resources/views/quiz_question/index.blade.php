@@ -7,7 +7,7 @@
         <div class="col-md-12 mt-2">
           <h4>{{ $quiz_topic->topic_name }} Question and Answer </h4>
             <br>
-            <form method="POST" action="{{ route('quiz_result.store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('quiz-result.store') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 @foreach($quiz_questions as $key => $question)
                     <div id="radio-button">{{ $key + 1 }}. {{$question->question_details}}</div>
