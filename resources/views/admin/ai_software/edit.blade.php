@@ -1,10 +1,9 @@
-@extends('layouts.master')
+@extends('layouts.app')
 @section('content')
     <div class="container mt-2">
         <div class="row">
             <div class="col-md-12">
-                Here you will view all software. <a href="{{route('admin_ai_software.index')}}">view software</a>
-                <div class="alert text-center category-heading"><b>Alternative Software</b></div>
+                <div class="alert text-center text-white category-heading"><b>Update AI Alternative Software</b></div>
             </div>
             <div class="col-md-12">
                 @include('includes.message')

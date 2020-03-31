@@ -1,8 +1,9 @@
-@extends('layouts.master')
+@extends('layouts.app')
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                <div class="alert text-center category-heading text-white"><b>Create New Quiz</b></div>
                 <div class="alert alert-success">
                     <form method="post" action="{{ route('admin_quiz_topic.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}

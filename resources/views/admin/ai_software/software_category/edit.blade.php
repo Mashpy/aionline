@@ -1,10 +1,9 @@
-@extends('layouts.master')
+@extends('layouts.app')
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                Back to <a href="{{route('admin_ai_software_category.index')}}">Software Category</a>
-                <div class="alert text-center category-heading"><b>Alternative Software Category</b></div>
+                <div class="alert alert-success text-white text-center category-heading"><b>Alternative Software Category</b></div>
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-8">

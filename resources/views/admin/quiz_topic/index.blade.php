@@ -1,10 +1,10 @@
-@extends('layouts.master')
+@extends('layouts.app')
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div>
-                    Here you will get topic. <a href="{{ route('admin_quiz_topic.create') }}">Create topic</a>
+                    <div class="alert text-center category-heading text-white"><b>Quiz List</b></div>
                 </div>
                 <div class="alert alert-success">
                     <table id="order-listing" class="table table-striped">

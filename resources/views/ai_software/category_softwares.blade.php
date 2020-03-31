@@ -22,7 +22,7 @@
                                         </div>
                                         <div class="col-md-10">
                                             <div><a href="{{route('ai_software.view', $category_software->slug)}}" class="box-image-title">{{$category_software->name}}</a></div>
-                                            <p>{!! str_limit($category_software->description, $limit = 150, $end = '...') !!}<a href="{{route('ai_software.view', $category_software->slug)}}">See more</a> </p>
+                                            <p>{!! str_limit(strip_tags($category_software->description), $limit = 150, $end = '...') !!}<a href="{{route('ai_software.view', $category_software->slug)}}">See more</a> </p>
                                         </div>
                                     </div>
                                 @endforeach

@@ -1,10 +1,9 @@
-@extends('layouts.master')
+@extends('layouts.app')
 @section('content')
     <div class="container mt-2">
         <div class="row">
             <div class="col-md-12">
-                Here you will go main menu <a href="{{route('admin.index')}}">Main Menu</a>
-                <div class="alert text-center category-heading"><b>Ai Software Category</b></div>
+                <div class="alert text-white alert-success text-center category-heading"><b>Software Category</b></div>
             </div>
             <div class="col-md-12">
                  @include('includes.message')

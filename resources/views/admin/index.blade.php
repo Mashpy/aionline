@@ -1,13 +1,12 @@
-@extends('layouts.master')
+@extends('layouts.app')
 @section('content')
-  <a href="{{ route('admin_tutorial.index') }}">Tutorials Lists</a><br>
-  <a href="{{ route('admin_quiz_topic.index') }}">Topics Lists</a><br>
-  <a href="{{route('admin_ai_software_category.index')}}">Ai Software Category</a><br>
-  <a href="{{ route('admin_ai_software.index') }}">Ai Software</a><br>
-  <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-    Logout
-  </a>
-  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-    {{ csrf_field() }}
-  </form>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-2 text-center dashboard-title">AI ONLINE COURSE</h1>
+      <h1 class="display-4 text-center">Welcome To Admin Panel</h1>
+      <hr class="my-4">
+      <h3 >Hello, Admin({{Auth()->user()->name}})!</h3>
+      <p class="lead"></p>
+    </div>
+  </div>
 @endsection

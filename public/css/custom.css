@@ -1379,6 +1379,16 @@ ul.social-network li {
     background-color: #F9F9F9;
 }
 
+.admin-nav-bg{
+    background-color: #42cdc4;
+}
+
+.dashboard-title{
+    font-weight: 700;
+    color: white;
+    background: rgb(184,16,149);
+    background: linear-gradient(90deg, rgba(184,16,149,1) 20%, rgba(18,206,221,1) 59%, rgba(103,227,178,1) 92%);
+}
 
 #navbar {
     background-color: #ffffff;
@@ -1531,5 +1541,13 @@ ul.social-network li {
     }
     .software-view-fix-hight{
         height: 400px;
+    }
+
+    .dashboard-title{
+        font-weight: 500;
+        color: white;
+        font-size: 30px;
+        background: rgb(184,16,149);
+        background: linear-gradient(90deg, rgba(184,16,149,0.8715861344537815) 19%, rgba(18,206,221,1) 59%, rgba(103,227,178,1) 92%);
     }
 }

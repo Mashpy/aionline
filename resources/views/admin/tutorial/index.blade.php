@@ -1,12 +1,9 @@
-@extends('layouts.master')
+@extends('layouts.app')
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div>
-                    Here you will get tutorial. <a href="{{ route('admin_tutorial.create') }}">Create Tutorials</a>
-
-                </div>
+                <div class="alert alert-success text-center category-heading"><b>Ai Tutorial List</b></div>
                 <div class="alert alert-success">
                     <table id="order-listing" class="table table-striped">
                         <thead>

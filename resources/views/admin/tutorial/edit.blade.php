@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 @section('content')
 @section('run_custom_css_file')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
@@ -7,6 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                <div class="alert text-center category-heading"><b>Update Tutorial</b></div>
                 <div class="alert alert-success">
                     <div class="float-right"><a class="btn btn-success" target="_blank" href="{{ route('admin_tutorial.show', $tutorial->slug) }}">View</a></div>
                     <div class="clearfix"></div>
