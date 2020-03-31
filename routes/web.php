@@ -28,9 +28,9 @@ Route::get('/sitemap.xml', [
     'as' => 'homepage.sitemap'
 ]);
 
-Route::resource('/quiz_question','QuizQuestionController');
-Route::resource('/quiz_result','QuizResultController');
-Route::resource('/quiz_topic','QuizTopicController');
+Route::resource('/quiz-question','QuizQuestionController');
+Route::resource('/quiz-result','QuizResultController');
+Route::resource('/quiz-topic','QuizTopicController');
 
 Route::group(['middleware' => ['auth', 'isAdmin'] , 'prefix' => 'admin'] , function() {
 		Route::get('/', [

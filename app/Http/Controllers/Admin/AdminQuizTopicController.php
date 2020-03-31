@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use DB;
 use Session;
+use Illuminate\Support\Str;
 
 class AdminQuizTopicController extends Controller
 {
@@ -20,6 +21,7 @@ class AdminQuizTopicController extends Controller
     public function store(Request $request){
         $quiz_topic = new QuizTopic();
         $quiz_topic->topic_name = $request->topic_name;
+        $quiz_topic->slug = Str::slug($request->topic_name, '-');
         $quiz_topic->category_id = $request->category_id;
         $quiz_topic->save();
         Session::flash('success','Question added successfully!!');

@@ -20,7 +20,7 @@
                     <a class="nav-link" href="{{ route('ai_software.index') }}">Ai Software</a>
                 </li>
                 <li class="nav-item nav-link {{ (request()->is('quiz_topic')) ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('quiz_topic.index') }}">Quiz</a>
+                    <a class="nav-link" href="{{ route('quiz-topic.index') }}">Quiz</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
