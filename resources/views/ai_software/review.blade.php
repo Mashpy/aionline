@@ -1,24 +1,7 @@
-@extends('layouts.master')
-
-@section('title')
-    Reviews of {{$ai_software->name}}
-@endsection
-
-@section('content')
-    @include('includes.header')
-    @include('ai_software.ai_software_view_head')
-    <div class="container mt-4">
-        <div class="row">
+ <div class="container mt-4" id="reviews">
+    <div class="row">
             <div class="col-md-9">
                 @include('includes.message')
-                <nav class="nav nav-tabs">
-                    <a href="{{route('ai_software.view', $ai_software->slug)}}" class="nav-item nav-link nav-tab-menu">
-                        <i class="fa fa-home"></i> Alternatives
-                    </a>
-                    <a href="{{route('ai_software.reviews', $ai_software->slug)}}" class="nav-item nav-link nav-tab-menu active">
-                        <i class="fa fa-user"></i> Reviews
-                    </a>
-                </nav>
                 <div class="row">
                     <div class="col-md-12 mb-4 clearfix">
                         <h3 class="ai-software-header float-left">{{$ai_software->name}} Reviews</h3>
@@ -30,7 +13,7 @@
                         </div>
                     @endif
                     <div class="row mb-4">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="well well-sm">
                                 <div class="row display-none" id="post-review-box">
                                     <div class="col-md-12">
@@ -94,11 +77,14 @@
                 @include('includes/google_ad')
             </div>
         </div>
-    </div>
-@include('includes.footer')
+ </div>
 @section('run_custom_jquery')
     <script>
         $(document).ready(function(){
+            $("#write_review").click(function(){
+                $("#open-review-box").hide();
+                $("#post-review-box").slideDown("slow");
+            });
             $("#open-review-box").click(function(){
                 $("#open-review-box").hide();
                 $("#post-review-box").slideDown("slow");
@@ -110,8 +96,6 @@
             });
         });
     </script>
-@endsection
-
-@endsection
+@stop
 
 

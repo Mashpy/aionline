@@ -41,6 +41,18 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th>Features</th>
+                                <td>
+                                    <textarea class="form-control summernote" rows="6" name="feature" placeholder="Enter Features"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Pricing</th>
+                                <td>
+                                    <textarea class="form-control summernote" rows="6" name="pricing" placeholder="Enter Pricing"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
                                 <th>Official Link</th>
                                 <td>
                                     <input class="form-control" type="text" name="official_link" placeholder="Enter official link">
@@ -72,7 +84,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('.summernote').summernote({
-                height: 400,
+                height: 250,
                 dialogsInBody: true,
                 callbacks:{
                     onInit:function(){

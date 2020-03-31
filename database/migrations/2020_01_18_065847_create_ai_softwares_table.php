@@ -18,6 +18,8 @@ class CreateAiSoftwaresTable extends Migration
             $table->integer('category_id')->nullable();
             $table->string('name');
             $table->text('description')->nullable();
+            $table->text('feature')->nullable();
+            $table->text('pricing')->nullable();
             $table->integer('like')->nullable();
             $table->string('official_link')->nullable();
             $table->string('slug');

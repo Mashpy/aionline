@@ -9,12 +9,6 @@ use Illuminate\Http\Request;
 
 class AiSoftwareReviewController extends Controller
 {
-    public function reviews($slug){
-        $ai_software = AiSoftware::where('slug', $slug)->first();
-        $reviews = AiSoftwareReview::where('ai_software_id', $ai_software->id)->latest()->get();
-        return view('ai_software.review', compact('ai_software', 'reviews'));
-    }
-
     public function storeReview(Request $request){
         $request->validate([
             'title' => ['required'],
@@ -42,10 +36,10 @@ class AiSoftwareReviewController extends Controller
                 'ai_software_id' => $id,
                 'client_ip' => $request->ip(),
             ]);
-            \Session::flash('success','Your liked this software!!');
+            \Session::flash('success-like','You are liked this software!');
             return back();
         }
-        \Session::flash('error','Your already liked this software!!');
+        \Session::flash('error-like','You are already liked this software!');
         return back();
     }
 }
