@@ -46,8 +46,8 @@
                                     <div class="col-md-10">
                                         <div><a href="{{route('ai_software.view', $recently_added->slug)}}" class="box-image-title">{{$recently_added->name}}</a></div>
                                         @if($recently_added->category_id == !null)
-                                            <div><a href="{{route('ai_software.category-softwares', $recently_added->softwareCategoryName->category_slug)}}"><button class="btn btn-xs btn-secondary"><small>{{$recently_added->softwareCategoryName->name}}</small></button></a></div>
-                                            <p>{!! str_limit(strip_tags($recently_added->description), $limit = 150, $end = '...') !!}<a href="{{route('ai_software.view', $recently_added->slug)}}">see more</a> </p>
+                                            <div><a href="{{route('ai_software.category-softwares', $recently_added->softwareCategoryName->category_slug)}}"><span class="badge badge-info badge-pill border-0 line-height-15 text-10">{{$recently_added->softwareCategoryName->name}}</span></a></div>
+                                            <p>{!! str_limit(strip_tags($recently_added->description), $limit = 150, $end = '...') !!}<a href="{{route('ai_software.view', $recently_added->slug)}}">See more</a> </p>
                                         @endif
                                     </div>
                                 </div>
