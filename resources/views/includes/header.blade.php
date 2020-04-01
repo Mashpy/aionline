@@ -16,10 +16,10 @@
                 <li class="nav-item nav-link {{ (request()->is('tutorial')) ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('home.index') }}">Tutorial</a>
                 </li>
-                <li class="nav-item nav-link {{ (request()->is('ai-software')) ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('ai_software.index') }}">Ai Software</a>
+                <li class="nav-item nav-link {{ (Route::is('ai_software.index') || Route::is('ai_software.view')) ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('ai_software.index')}}">Ai Software</a>
                 </li>
-                <li class="nav-item nav-link {{ (request()->is('quiz_topic')) ? 'active' : '' }}">
+                <li class="nav-item nav-link {{ (Route::is('quiz-topic.index') || Route::is('quiz-question.show')) ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('quiz-topic.index') }}">Quiz</a>
                 </li>
             </ul>

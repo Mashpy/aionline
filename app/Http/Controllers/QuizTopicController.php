@@ -10,8 +10,9 @@ use Session;
 class QuizTopicController extends Controller
 {
     public function index(){
-        $quiz_topics = QuizTopic::orderBy('created_at','desc')->Paginate(10);
-        return view('quiz_topic.index', compact('quiz_topics'));
+        $quiz_topics = QuizTopic::orderBy('created_at','desc')->get();
+        $quiz_categories = QuizTopic::select('category_id')->distinct()->with('quiz_topics')->get();
+        return view('quiz_topic.index', compact('quiz_topics', 'quiz_categories'));
     }
 
     public function store(Request $request){

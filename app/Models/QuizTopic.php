@@ -17,4 +17,9 @@ class QuizTopic extends Model
     {
         return $this->hasMany(QuizQuestion::class);
     }
+
+    public function quiz_topics()
+    {
+        return $this->hasMany(self::class, 'category_id', 'category_id');
+    }
 }
