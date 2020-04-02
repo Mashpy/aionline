@@ -18,24 +18,29 @@
                     <div class="quiz-topics">
                         <h4>Quiz Topics</h4>
                         <ul>
+                            @if($quiz_topics->count() > 0)
                             @foreach($quiz_topics as $quiz_topic)
                                 <li>
                                     <a href="{{ route('quiz-question.show', $quiz_topic->slug)}}">{{$quiz_topic->topic_name}}</a>
                                 </li>
                             @endforeach
+                            @else
+                                <p class="text-dark text-center">Quiz topics not available!</p>
+                            @endif
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
         <section>
-            <div class="card p-4">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-7 p-4">
+            <div class="row">
+                <div class="col-md-7 p-4">
+                    <div class="card">
+                        <div class="card-body p-0">
                             <div class=" container category-topic accordion-body">
-                                <h5 class="card-title text-center mb-4">Quiz Category</h5>
+                                <h5 class="card-title text-center mb-4 text-danger">Quiz Category</h5>
                                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                    @if($quiz_categories->count() > 0)
                                     @foreach($quiz_categories as $key => $quiz_categorie)
                                         <div class="panel panel-default">
                                             <div class="panel-heading" role="tab" id="headingOne">
@@ -51,7 +56,7 @@
                                                     <ul>
                                                         @foreach($quiz_categorie->quiz_topics as $topics)
                                                             <a href="{{ route('quiz-question.show', $topics->slug)}}">
-                                                                <li class="bg-white">
+                                                                <li class="accordion-topic">
                                                                 {{$topics->topic_name}}
                                                                 <i class="fa fa-arrow-right float-right"></i>
                                                                 </li>
@@ -62,13 +67,15 @@
                                             </div>
                                         </div>
                                     @endforeach
-                                </div>
+                                    @else
+                                        <p class="text-dark text-center">No quiz category available!</p>
+                                    @endif
+                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-5 p-4">
-                            Ad
-                        </div>
                     </div>
+                </div>
+                <div class="col-md-5 p-4">
                 </div>
             </div>
         </section>

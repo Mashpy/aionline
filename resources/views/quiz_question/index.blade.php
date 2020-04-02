@@ -5,35 +5,43 @@
     <section>
         <div class="row">
             <div class="col-md-4">
-                 <div class="container category-topic accordion-body">
-                    <h5 class="card-title text-center mb-4">Quiz Category</h5>
-                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                        @foreach($quiz_categories as $key => $quiz_categorie)
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingOne">
-                                    <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{$key}}" aria-expanded="true" aria-controls="collapseOne">
-                                            {{$quiz_categorie->category->name}}
-                                            <i class="fa fa-plus float-right"></i>
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapse-{{$key}}" class="panel-collapse collapse {{$quiz_categorie->category_id == $quiz_topic->category_id ? 'show' : ''}}" role="tabpanel" aria-labelledby="headingOne">
-                                    <div class="panel-body">
-                                        <ul>
-                                            @foreach($quiz_categorie->quiz_topics as $topics)
-                                                <a href="{{ route('quiz-question.show', $topics->slug)}}">
-                                                    <li class="bg-white">
-                                                        {{$topics->topic_name}}
-                                                        <i class="fa fa-arrow-right float-right"></i>
-                                                    </li>
-                                                </a>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </div>
+                <div class="card">
+                    <div class="card-body p-0">
+                        <div class="container category-topic accordion-body">
+                            <h5 class="card-title text-center mb-4 text-danger">Quiz Category</h5>
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                @if($quiz_categories->count() > 0)
+                                    @foreach($quiz_categories as $key => $quiz_categorie)
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading" role="tab" id="headingOne">
+                                                <h4 class="panel-title">
+                                                    <a class="accordion-menu" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{$key}}" aria-expanded="true" aria-controls="collapseOne">
+                                                        {{$quiz_categorie->category->name}}
+                                                        <i class="fa fa-plus float-right"></i>
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapse-{{$key}}" class="panel-collapse collapse {{$quiz_categorie->category_id == $quiz_topic->category_id ? 'show' : ''}}" role="tabpanel" aria-labelledby="headingOne">
+                                                <div class="panel-body">
+                                                    <ul>
+                                                        @foreach($quiz_categorie->quiz_topics as $topics)
+                                                            <a href="{{ route('quiz-question.show', $topics->slug)}}">
+                                                                <li class="{{$topics->id == $quiz_topic->id ? 'selected-topic text-white' : 'accordion-topic'}}">
+                                                                    {{$topics->topic_name}}
+                                                                    <i class="fa fa-arrow-right float-right"></i>
+                                                                </li>
+                                                            </a>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <p class="text-dark text-center">No quiz category available!</p>
+                                @endif
                             </div>
-                        @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
@@ -71,7 +79,7 @@
                                         <!--end-->
                                         @if($question->answer_explanation)
                                             <div class="explanation">
-                                                <button class="btn btn-info btn-sm" type="button" class="mb-2" onclick="showAnswer({{ $question->id }})">View Explanation</button>
+                                                <button class="btn btn-danger btn-sm" type="button" class="mb-2" onclick="showAnswer({{ $question->id }})">View Explanation</button>
                                                 <div id="question-{{ $question->id}}" class="d-none mb-2">
                                                     <b class="text-success">Explanation: </b>{{ $question->answer_explanation}}
                                                 </div>
