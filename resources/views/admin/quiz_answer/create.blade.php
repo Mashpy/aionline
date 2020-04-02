@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            {{--<div class="col-md-12">
                 @include('includes.message')
                 <div class="alert alert-success">
                     <form method="post" action="{{ route('admin_quiz_answer.store') }}" enctype="multipart/form-data">
@@ -29,6 +29,70 @@
                             <button type="button" class="btn btn-danger pull-right" id="clear">Clear</button>
                         </div>
 
+                    </form>
+                </div>
+            </div>--}}
+            <div class="col-md-12">
+                <div class="alert alert-success">
+                    <form action="{{ route('admin_quiz_answer.store') }}" method="post">
+                        {{ csrf_field() }}
+                        <table class="table">
+                            <tr>
+                                <th>Option</th>
+                                <th>Correct Answer</th>
+                            </tr>
+                                <tr>
+                                    <input type="hidden" name="quiz_question_id" value="{{ $quiz_question_id }}">
+                                    <input type="hidden" name="quiz_topic_id" value="{{ Request::get('quiz_topic_id') }}">
+                                    <td>
+                                        <input type="text" name="answer_details[]" class="form-control" placeholder="Enter option Ex. A.option1" required>
+                                    </td>
+                                    <td>
+                                        <select class="form-control" name="is_correct[]">
+                                            <option value="0">Incorrect</option>
+                                            <option value="1">Correct</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" name="answer_details[]" class="form-control" placeholder="Enter option Ex. A.option1" required>
+                                </td>
+                                <td>
+                                    <select class="form-control" name="is_correct[]">
+                                        <option value="0">Incorrect</option>
+                                        <option value="1">Correct</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" name="answer_details[]" class="form-control" placeholder="Enter option Ex. A.option1" required>
+                                </td>
+                                <td>
+                                    <select class="form-control" name="is_correct[]">
+                                        <option value="0">Incorrect</option>
+                                        <option value="1">Correct</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" name="answer_details[]" class="form-control" placeholder="Enter option Ex. A.option1" required>
+                                </td>
+                                <td>
+                                    <select class="form-control" name="is_correct[]">
+                                        <option value="0">Incorrect</option>
+                                        <option value="1">Correct</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button class="btn btn-primary">Add Answer</button>
+                                </td>
+                            </tr>
+                        </table>
                     </form>
                 </div>
             </div>

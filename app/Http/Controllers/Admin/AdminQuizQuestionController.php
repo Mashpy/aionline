@@ -45,4 +45,18 @@ class AdminQuizQuestionController extends Controller
         Session::flash('success','Question delete successfully');
         return redirect()->route('admin_quiz_question.index');
     }
+
+    public function edit($id){
+        $question = QuizQuestion::find($id);
+        return view('admin.quiz_question.edit', compact('question'));
+    }
+
+    public function update(Request $request, $id){
+        $question = QuizQuestion::find($id);
+        $question->question_details = $request->question_details;
+        $question->answer_explanation = $request->answer_explanation;
+        $question->save();
+        Session::flash('success','Updated Successfully!');
+        return back();
+    }
 }

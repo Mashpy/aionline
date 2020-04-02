@@ -1126,6 +1126,10 @@ ul.inline-list li{
     text-align: center;
 }
 
+.quiz-topics ul{
+    margin-left: -16px;
+}
+
 .quiz-topics li{
     display: inline-block;
     text-align: center;

@@ -23,29 +23,15 @@ class AdminQuizAnswerController extends Controller
     }
 
     public function store(Request $request){
-        if(empty($request->is_correct)){
-            $is_correct = false;
-        } else {
-            $is_correct = true;
+        foreach($request->answer_details as  $key => $answer_details){
+            QuizAnswer::insert([
+                    'answer_details' => $answer_details,
+                    'quiz_question_id' => $request->quiz_question_id,
+                    'is_correct' => $request->is_correct[$key],
+                ]);
         }
-
-        if($request->is_correct == true){
-            $quiz_answers = QuizAnswer::where('quiz_question_id', $request->quiz_question_id);
-            $quiz_answers->update(['is_correct' => false ]);
-        }
-
-        $answer = new QuizAnswer();
-        $answer->quiz_question_id = $request->quiz_question_id;
-        $answer->answer_details = $request->answer_details;
-        $answer->is_correct = $is_correct;
-        $answer->save();
-
-        $question = QuizQuestion::findOrFail($request->quiz_question_id);
-        $question->answer_explanation = $request->answer_explanation;
-        $question->save();
-
-        Session::flash('success','Question added successfully!!');
-        return redirect()->route('admin_quiz_question.index');
+        Session::flash('success','Question answer added successfully!!');
+        return redirect()->route('admin_quiz_question.index', ['quiz_topic_id' => $request->quiz_topic_id]);
     }
 
     public function show($id){
@@ -58,5 +44,18 @@ class AdminQuizAnswerController extends Controller
         $answer->delete();
         Session::flash('success','Question delete successfully');
         return redirect()->route('admin_quiz_answer.index');
+    }
+
+    public function update(Request $request, $id){
+        foreach($request->option_id as  $key => $option_id){
+            QuizAnswer::where('id', $option_id)
+                ->where('quiz_question_id', $id)
+                ->update([
+                    'answer_details' => $request->option[$key],
+                    'is_correct' => $request->is_correct[$key],
+                ]);
+        }
+        Session::flash('success','Updated Successfully!');
+        return back();
     }
 }

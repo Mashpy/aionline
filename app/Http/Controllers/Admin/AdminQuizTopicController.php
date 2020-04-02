@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 class AdminQuizTopicController extends Controller
 {
     public function index(){
-        $quiz_topics = QuizTopic::orderBy('created_at','desc')->Paginate(10);
+        $quiz_topics = QuizTopic::orderBy('created_at','desc')->Paginate(30);
         return view('admin.quiz_topic.index', compact('quiz_topics'));
     }
     public function create(){

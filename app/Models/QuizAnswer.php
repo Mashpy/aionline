@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class QuizAnswer extends Model
 {
+    protected $fillable = ['answer_details'];
     public function category()
     {
         return $this->belongsTo('App\Models\Category');
