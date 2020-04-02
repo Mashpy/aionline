@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Models\Quizanswer;
+use App\Models\QuizAnswer;
 use App\Models\Category;
 use App\Models\QuizQuestion;
 use Illuminate\Http\Request;

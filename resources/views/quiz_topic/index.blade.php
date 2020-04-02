@@ -38,7 +38,7 @@
                     <div class="card">
                         <div class="card-body p-0">
                             <div class=" container category-topic accordion-body">
-                                <h5 class="card-title text-center mb-4 text-danger">Quiz Category</h5>
+                                <h5 class="card-title text-center mb-4 text-dark">Quiz Category</h5>
                                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                                     @if($quiz_categories->count() > 0)
                                     @foreach($quiz_categories as $key => $quiz_categorie)
