@@ -34,6 +34,7 @@ class AiSoftwareController extends Controller
         $client = new Client();
         $software = new AiSoftware;
         $software->category_id = $request->parent_id;
+        $software->meta_description = $request->meta_description;
         $software->description = $request->description;
         $software->feature = $request->feature;
         $software->pricing = $request->pricing;
@@ -99,6 +100,7 @@ class AiSoftwareController extends Controller
         ]);
         $ai_software = AiSoftware::find($id);
         $ai_software->name = $request->name;
+        $ai_software->meta_description = $request->meta_description;
         $ai_software->description = $request->description;
         $ai_software->feature = $request->feature;
         $ai_software->pricing = $request->pricing;

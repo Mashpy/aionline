@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('title')
+    Quiz Topics | Ai Online Quiz
+@endsection
 @section('content')
     @include('includes.header')
     <div class="container">

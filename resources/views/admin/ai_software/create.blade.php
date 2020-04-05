@@ -34,6 +34,12 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th>Meta Description</th>
+                                <td>
+                                    <textarea class="form-control" rows="3" name="meta_description" placeholder="Enter meta-description"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
                                 <th>Description</th>
                                 <td>
                                     <textarea class="form-control summernote" rows="6" name="description" placeholder="Enter description"></textarea>

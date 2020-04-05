@@ -8,11 +8,12 @@
     <meta name="description" content="@yield('meta_description' , 'Aionlinecourse will provide you the best resource about artificial Intelligence.
     You can learn about machine learning, data science, natural language processing etc.')">
     <meta name="google-site-verification" content="jUW49wwiLLX6T2wYn35wtYFgisGIM8Y1liK6bnXrnsE" />
-    <meta name="author" content="aisite">
+    <meta name="author" content="www.aionlinecourse.com">
+    <meta property="og:title" content="@yield('meta_title')" />
     <meta name="keywords" content="@yield('meta_keyword', 'ais ite');">
     <meta property="og:type" content="website"/>
-    <meta property="og:site_name" content="www.aisite.com">
-    <meta property="og:image" content="">
+    <meta property="og:site_name" content="www.aionlinecourse.com">
+    <meta property="og:image" content="@yield('meta_image', asset('ai-logo.png'))">
     <meta property="og:url" content="{{ url()->current() }}">
     
     <title>@yield('title')</title>

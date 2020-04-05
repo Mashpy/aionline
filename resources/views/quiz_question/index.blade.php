@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('title')
+    {{ $quiz_topic->topic_name }} - Quiz Topic
+@endsection
 @section('content')
     @include('includes.header')
 <div class="container mt-2">

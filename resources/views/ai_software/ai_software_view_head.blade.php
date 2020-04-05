@@ -1,3 +1,6 @@
+@section('meta_description'){!! $ai_software->meta_description ? strip_tags($ai_software->meta_description) : str_limit(strip_tags($ai_software->description), 250, $end ='...')!!}@endsection
+@section('meta_title'){!! $ai_software->name !!}@endsection
+@section('meta_image'){!! $ai_software->logo_url !!}@endsection
 <div class="container">
     <div class="row mt-1">
         <div class="col-md-12 mb-2 software-view-panel software-view-fix-hight">
