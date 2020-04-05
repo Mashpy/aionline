@@ -82,7 +82,6 @@
                                         <!--end-->
                                         @if($question->answer_explanation)
                                             <div class="explanation">
-                                                <button class="btn btn-danger btn-sm" type="button" class="mb-2" onclick="showAnswer({{ $question->id }})">View Explanation</button>
                                                 <div id="question-{{ $question->id}}" class="d-none mb-2">
                                                     <b class="text-success">Explanation: </b>{{ $question->answer_explanation}}
                                                 </div>

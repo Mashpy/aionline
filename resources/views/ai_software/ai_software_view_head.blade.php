@@ -103,28 +103,28 @@
             </section>
         </div>
         @if(!empty($ai_software->feature))
-            <div class="col-md-12 mb-2 software-view-panel">
+            <div class="col-md-9 mb-2 software-view-panel">
                 <section id="features">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-8 mt-4">
+                            <div class="col-md-12 mt-4">
                                 <div>
                                     <h3 class="text-secondary">Features of {{$ai_software->name}}</h3>
                                     <p>{!! $ai_software->feature !!}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="container mt-5">
-                                   <!--ad-->
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
             </div>
+            <div class="col-md-3">
+                <div class="container mt-5">
+                    @include('includes/google_ad')
+                </div>
+            </div>
         @endif
         @if(!empty($ai_software->pricing))
-            <div class="col-md-12 mb-2 software-view-panel">
+            <div class="col-md-9 mb-2 software-view-panel">
                 <section id="pricing">
                     <div class="container">
                         <div class="row">
@@ -137,6 +137,11 @@
                         </div>
                     </div>
                 </section>
+            </div>
+            <div class="col-md-3">
+                <div class="container mt-5">
+                    @include('includes/google_ad')
+                </div>
             </div>
         @endif
     </div>
@@ -211,12 +216,8 @@
                 $("#navbar").addClass('navbar-after-scroll');
                 $(".nav-after-scrolling").removeClass('display-none');
             } else {
-                document.getElementById("navbar").style.top = "300px";
                 $("#navbar").removeClass('navbar-after-scroll');
                 $(".nav-after-scrolling").addClass('display-none');
-                if ($(window).width() < 600) {
-                    document.getElementById("navbar").style.top = "400px";
-                }
             }
             // Get container scroll position
             var fromTop = $(this).scrollTop()+topMenuHeight;

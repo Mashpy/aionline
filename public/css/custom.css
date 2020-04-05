@@ -1567,9 +1567,6 @@ ul.social-network li {
 #carousel-thumbs .selected img {
     border-color: #999999;
 }
-.software-view-fix-hight{
-    height: 280px;
-}
 
 @media screen and (min-width: 601px) {
     div.ai-software-head h3{
@@ -1656,9 +1653,6 @@ ul.social-network li {
         margin-right: -50vw;
         padding: 0 0 0.2rem .1rem;
         border-bottom: 1px solid #03C265;
-    }
-    .software-view-fix-hight{
-        height: 400px;
     }
 
     .dashboard-title{

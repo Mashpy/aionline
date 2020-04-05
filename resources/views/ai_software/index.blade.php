@@ -17,7 +17,7 @@
                 <div class="row box-div justify-content-center">
                     @foreach($feature_softwares as $software)
                        <div class="col-md-2 col-sm-3 col-lg-2 box-item">
-                           <a class="ai-software-card-head" href="{{route('ai_software.view', $software->slug)}}"><img src="{{$software->logo !== null ? $software->logo_url : '/uploads/default_photo/image_not_found1.png'}}" alt="..."></a>
+                           <a class="ai-software-card-head" href="{{route('ai_software.view', $software->slug)}}"><img src="{{$software->logo !== null ? $software->logo_url : asset('no-image-found.jpg')}}" alt="..."></a>
                            <div><a href="{{route('ai_software.view', $software->slug)}}" class="box-image-title">{{ $software->name }}</a></div>
                        </div>
                     @endforeach
@@ -41,7 +41,7 @@
                             @foreach($recently_added_software as $recently_added)
                                 <div class="row recently-added-software-item pt-4">
                                     <div class="col-md-2">
-                                        <a class="ai-software-card-head" href="{{route('ai_software.view', $recently_added->slug)}}"><img src="{{$recently_added->logo !== null ? $recently_added->logo_url : '/uploads/default_photo/image_not_found1.png'}}" class="ai-logo" alt="..."></a>
+                                        <a class="ai-software-card-head" href="{{route('ai_software.view', $recently_added->slug)}}"><img src="{{$recently_added->logo !== null ? $recently_added->logo_url : asset('no-image-found.jpg')}}" class="ai-logo" alt="..."></a>
                                     </div>
                                     <div class="col-md-10">
                                         <div><a href="{{route('ai_software.view', $recently_added->slug)}}" class="box-image-title">{{$recently_added->name}}</a></div>
@@ -74,7 +74,7 @@
                         <div class="row box-div justify-content-center">
                             @foreach($category->softwares as $software)
                                 <div class="col-md-2 col-sm-3 col-lg-2 box-item">
-                                    <a class="ai-software-card-head" href="{{route('ai_software.view', $software->slug)}}"><img src="{{$software->logo !== null ? $software->logo_url : '/uploads/default_photo/image_not_found1.png'}}" alt="..."></a>
+                                    <a class="ai-software-card-head" href="{{route('ai_software.view', $software->slug)}}"><img src="{{$software->logo !== null ? $software->logo_url : asset('no-image-found.jpg')}}" alt="..."></a>
                                     <div><a href="{{route('ai_software.view', $software->slug)}}" class="box-image-title"> {{$software->name}}</a></div>
                                 </div>
                             @endforeach
