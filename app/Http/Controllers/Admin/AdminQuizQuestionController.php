@@ -15,9 +15,9 @@ class AdminQuizQuestionController extends Controller
         $quiz_topic_id = $request->quiz_topic_id;
 
         if(empty($quiz_topic_id)){
-            $quiz_questions = QuizQuestion::orderBy('created_at','desc')->Paginate(10);
+            $quiz_questions = QuizQuestion::orderBy('created_at','desc')->get();
         } else {
-            $quiz_questions = QuizQuestion::where('quiz_topic_id', $quiz_topic_id)->orderBy('created_at','desc')->Paginate(10);
+            $quiz_questions = QuizQuestion::where('quiz_topic_id', $quiz_topic_id)->orderBy('created_at','desc')->get();
         }
         return view('admin.quiz_question.index', compact('quiz_questions'));
     }

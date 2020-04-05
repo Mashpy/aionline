@@ -89,6 +89,7 @@
                                 </div>
                             @endforeach
                         </form>
+                        {{$quiz_questions->links()}}
                     </div>
                 </div>
             </div>
