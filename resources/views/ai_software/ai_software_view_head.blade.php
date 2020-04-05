@@ -86,7 +86,7 @@
                                                         <div class="row mx-0">
                                                             @foreach($ai_software->softwareScreenshot as $key => $screenshot)
                                                             <div id="carousel-selector-{{$loop->index}}" class="thumb col-4 col-sm-2 px-1 py-2 {{ $key == 0 ? 'selected' : ''}}" data-target="#myCarousel" data-slide-to="{{$loop->index}}">
-                                                                <img src="{{$screenshot->screenshot_url}}" class="img-fluid" alt="...">
+                                                                <img src="{{$screenshot->screenshot_url}}" class="img-fluid img-thumb-slider" alt="...">
                                                             </div>
                                                             @endforeach
                                                         </div>
@@ -166,25 +166,6 @@
             var src = $(e.target).attr('data-remote');
             if (src) $(this).ekkoLightbox();
         });
-    </script>
-    <script>
-        // When the user scrolls down 20px from the top of the document, slide down the navbar
-        window.onscroll = function() {scrollFunction()};
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                document.getElementById("navbar").style.top = "0";
-                $("#navbar").addClass('navbar-after-scroll');
-                $(".nav-after-scrolling").removeClass('display-none');
-            } else {
-                document.getElementById("navbar").style.top = "300px";
-                $("#navbar").removeClass('navbar-after-scroll');
-                $(".nav-after-scrolling").addClass('display-none');
-                if ($(window).width() < 600) {
-                    document.getElementById("navbar").style.top = "400px";
-                }
-            }
-        }
     </script>
     <script>
         // Cache selectors
