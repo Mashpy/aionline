@@ -1537,11 +1537,13 @@ ul.social-network li {
 #navbar a:hover {
     border-bottom: 4px solid rgb(255, 98, 0);
     color: rgb(255, 98, 0);
+    transition: .5s;
 }
 
 #navbar a.active {
     border-bottom: 4px solid rgb(255, 98, 0);
     font-weight: bold;
+    transition: .3s;
 }
 .carousel {
     position: relative;
