@@ -12,7 +12,8 @@ use Goutte\Client;
 use Image;
 use File;
 use Exception;
-use Illuminate\Support\Facades\Storage;
+use Screen\Capture;
+
 
 class AiSoftwareController extends Controller
 {
@@ -208,21 +209,27 @@ class AiSoftwareController extends Controller
         $check_screenshot = AiSoftwareScreenshot::where(['ai_software_id' => $id, 'image' => $image_name])->first();
         if(empty($check_screenshot)){
             AiSoftwareScreenshot::create(['ai_software_id' => $id, 'image' => $image_name]);
+            $screenCapture = $this->screenshot_image_process($request_url);
+            $fileLocation = public_path(AiSoftwareScreenshot::SCREENSHOT_UPLOAD_PATH.date('Y').'/'.date('m').'/');
+            $screenCapture->save($fileLocation.$image_name);
+
         }else{
+            $check_screenshot_status = false;
             $check_screenshot->update(['image' => $image_name]);
             unlink(public_path(AiSoftwareScreenshot::SCREENSHOT_UPLOAD_PATH.$check_screenshot->created_at->format('Y').'/'.$check_screenshot->created_at->format('m').'/'.$image_name));
+            $screenCapture = $this->screenshot_image_process($request_url);
+            $fileLocation = public_path(AiSoftwareScreenshot::SCREENSHOT_UPLOAD_PATH.$check_screenshot->created_at->format('Y').'/'.$check_screenshot->created_at->format('m').'/');
+            $screenCapture->save($fileLocation.$image_name);
+
         }
-        $this->screenshot_image_process($request_url, $image_name);
     }
 
-    public function screenshot_image_process($url, $image_name){
+    public function screenshot_image_process($url){
         $websiteURL = 'https://'.$this->wash_link($url);
-        $api_response = file_get_contents("https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=$websiteURL&screenshot=true");
-        $result = json_decode($api_response, true);
-        $screenshot = $result['screenshot']['data'];
-        $screenshot = str_replace(array('_','-'),array('/','+'),$screenshot);
-        $decoded_image = base64_decode($screenshot);
-        $path = AiSoftwareScreenshot::SCREENSHOT_UPLOAD_PATH.date('Y').'/'.date('m'.'/');
-        Storage::disk('uploads')->put($path.$image_name, $decoded_image);
+        $url = $websiteURL;
+        $screenCapture = new Capture($url);
+        $screenCapture->setClipWidth(1000);
+        $screenCapture->setClipHeight(600);
+        return $screenCapture->setImageType('jpg');
     }
 }
