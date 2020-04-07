@@ -161,6 +161,18 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('.summernote').summernote({
+                toolbar: [
+                    ['style', ['style']],
+                    ['fontsize', ['fontsize']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['insert', ['hr']],
+                    ['table', ['table']]
+                ],
+                fontSizes: ['8', '9', '10', '11', '12', '13', '14', '15', '16', '18', '20', '24', '36', '48' , '64'],
                 height: 250,
                 dialogsInBody: true,
                 callbacks:{
