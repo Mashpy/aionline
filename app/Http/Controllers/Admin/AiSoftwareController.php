@@ -209,17 +209,27 @@ class AiSoftwareController extends Controller
         $check_screenshot = AiSoftwareScreenshot::where(['ai_software_id' => $id, 'image' => $image_name])->first();
         if(empty($check_screenshot)){
             AiSoftwareScreenshot::create(['ai_software_id' => $id, 'image' => $image_name]);
-            $screenCapture = $this->screenshot_image_process($request_url);
-            $fileLocation = public_path(AiSoftwareScreenshot::SCREENSHOT_UPLOAD_PATH.date('Y').'/'.date('m').'/');
-            $screenCapture->save($fileLocation.$image_name);
-
+            try{
+                $screenCapture = $this->screenshot_image_process($request_url);
+                $fileLocation = public_path(AiSoftwareScreenshot::SCREENSHOT_UPLOAD_PATH.date('Y').'/'.date('m').'/');
+                $screenCapture->save($fileLocation.$image_name);
+            }catch(Exception $e){
+                AiSoftwareScreenshot::where(['ai_software_id' => $id, 'image' => $image_name])->delete();
+                return back();
+            }
         }else{
-            $check_screenshot_status = false;
             $check_screenshot->update(['image' => $image_name]);
-            unlink(public_path(AiSoftwareScreenshot::SCREENSHOT_UPLOAD_PATH.$check_screenshot->created_at->format('Y').'/'.$check_screenshot->created_at->format('m').'/'.$image_name));
-            $screenCapture = $this->screenshot_image_process($request_url);
-            $fileLocation = public_path(AiSoftwareScreenshot::SCREENSHOT_UPLOAD_PATH.$check_screenshot->created_at->format('Y').'/'.$check_screenshot->created_at->format('m').'/');
-            $screenCapture->save($fileLocation.$image_name);
+            $upload_path = public_path(AiSoftwareScreenshot::SCREENSHOT_UPLOAD_PATH.$check_screenshot->created_at->format('Y').'/'.$check_screenshot->created_at->format('m').'/');
+            if(file_exists($upload_path.$image_name)){
+                unlink($upload_path.$image_name);
+            }
+            try{
+                $screenCapture = $this->screenshot_image_process($request_url);
+                $screenCapture->save($upload_path.$image_name);
+            }catch(Exception $e){
+                $check_screenshot->delete();
+                return back();
+            }
 
         }
     }
