@@ -103,6 +103,41 @@ return [
      * the `Spatie\Backup\Events` classes.
      */
 
+    'notifications' => [
+
+        'notifications' => [
+            \Spatie\Backup\Notifications\Notifications\BackupHasFailed::class         => ['mail'],
+            \Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFound::class => ['mail'],
+            \Spatie\Backup\Notifications\Notifications\CleanupHasFailed::class        => ['mail'],
+            \Spatie\Backup\Notifications\Notifications\BackupWasSuccessful::class     => ['mail'],
+            \Spatie\Backup\Notifications\Notifications\HealthyBackupWasFound::class   => ['mail'],
+            \Spatie\Backup\Notifications\Notifications\CleanupWasSuccessful::class    => ['mail'],
+        ],
+
+        /*
+         * Here you can specify the notifiable to which the notifications should be sent. The default
+         * notifiable will use the variables specified in this config file.
+         */
+        'notifiable' => \Spatie\Backup\Notifications\Notifiable::class,
+
+        'mail' => [
+            'to' => 'mashpysays@gmail.com',
+        ],
+
+        'slack' => [
+            'webhook_url' => '',
+
+            /*
+             * If this is set to null the default channel of the webhook will be used.
+             */
+            'channel' => null,
+
+            'username' => null,
+
+            'icon' => null,
+
+        ],
+    ],
 
     /*
      * Here you can specify which backups should be monitored.
