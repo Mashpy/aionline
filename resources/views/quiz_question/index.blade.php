@@ -65,15 +65,15 @@
                                         </div>
                                         <hr>
                                         @foreach($question->quiz_answers as $quiz_answer)
-                                            <div class="pl-3">
+                                            <div class="pl-3 quiz-option">
                                                 <label class="answer-{{ $question->id }}" id="correct-ans-{{$quiz_answer->id}}">
-                                                    <input type="radio" name="selected_answers[question_id_{{ $question->id }}]"  onclick="checkAnswer({{$quiz_answer->id}}, {{$question->id}})"  value="{{ $quiz_answer->id}}"> {{ $quiz_answer->answer_details }}
+                                                    <input type="radio" name="selected_answers[question_id_{{ $question->id }}]"  onclick="checkAnswer({{$quiz_answer->id}}, {{$question->id}})"  value="{{ $quiz_answer->id}}"> <span>{{ $quiz_answer->answer_details }}</span>
                                                     <span class="text-success d-none" id="correct-{{$quiz_answer->id}}"><b><i class="fa fa-check"></i></b></span>
                                                     <span class="text-danger d-none" id="incorrect-{{$quiz_answer->id}}"><b><i class="fa fa-times"></i></b></span>
                                                 </label>
                                             </div>
                                         @endforeach
-                                        {{--use for checking ans alart--}}
+                                        {{--use for checking ans alert--}}
                                         <!--start-->
                                         <div class="d-none">
                                             <b class="text-success">view answer:</b>

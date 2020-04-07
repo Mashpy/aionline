@@ -31,7 +31,7 @@
                                     <h2 class="software-view-title">{{$ai_software->name}}</h2>
                                     <div class="write-review">
                                         <span class="text-secondary">By {{$ai_software->name}}</span>
-                                        <a href="#reviews" id="write_review">Write a Review!</a>
+                                        <a href="#reviews" id="write_review"><i class="fa fa-edit"></i> Write a Review!</a>
                                     </div>
                                     <div class="d-inline buttons-links">
                                         <a class="btn btn-danger like" onclick="event.preventDefault(); document.getElementById('like-form').submit();"><i class="fa fa-thumbs-up"></i> Like</a>

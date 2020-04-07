@@ -1154,6 +1154,11 @@ ul.inline-list li{
     color: #ffffff;
     text-decoration: none;
 }
+
+.quiz-option span:hover{
+    cursor: pointer;
+    color: rgba(26, 35, 11, 0.65);
+}
 .panel-group .panel {
     border-radius: 0;
     box-shadow: none;

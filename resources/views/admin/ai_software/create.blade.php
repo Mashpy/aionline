@@ -98,7 +98,8 @@
                     ['para', ['ul', 'ol', 'paragraph']],
                     ['height', ['height']],
                     ['insert', ['hr']],
-                    ['table', ['table']]
+                    ['table', ['table']],
+                    ['view', ['fullscreen', 'codeview', 'help']],
                 ],
                 fontSizes: ['8', '9', '10', '11', '12', '13', '14', '15', '16', '18', '20', '24', '36', '48' , '64'],
                 height: 250,
@@ -110,5 +111,6 @@
                 },
             });
         });
+
     </script>
 @stop
