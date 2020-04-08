@@ -15,6 +15,8 @@ class AiSoftwareScreenshot extends Model
     }
 
     public function getScreenshotUrlAttribute(){
-        return asset(self::SCREENSHOT_UPLOAD_PATH.$this->created_at->format('Y').'/'.$this->created_at->format('m').'/'.$this->image);
+        if(file_exists(public_path(self::SCREENSHOT_UPLOAD_PATH.$this->created_at->format('Y').'/'.$this->created_at->format('m').'/'.$this->image))){
+            return asset(self::SCREENSHOT_UPLOAD_PATH.$this->created_at->format('Y').'/'.$this->created_at->format('m').'/'.$this->image);
+        }
     }
 }

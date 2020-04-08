@@ -79,9 +79,11 @@
                                     <div id="myCarousel" class="carousel carousel-view slide" data-ride="carousel">
                                         <div class="carousel-inner">
                                             @foreach($ai_software->softwareScreenshot as $key => $screenshot)
-                                                <div class="carousel-item {{ $key == 0 ? 'active' : ''}}" data-slide-number="{{$loop->index}}">
-                                                    <img src="{{$screenshot->screenshot_url}}" class="d-block w-100" alt="..." data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
-                                                </div>
+                                                @if(!empty($screenshot->screenshot_url))
+                                                    <div class="carousel-item {{ $key == 0 ? 'active' : ''}}" data-slide-number="{{$loop->index}}">
+                                                        <img src="{{$screenshot->screenshot_url}}" class="d-block w-100" alt="..." data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                                                    </div>
+                                                @endif
                                             @endforeach
                                         </div>
                                         <div class="carousel-thumb">
@@ -90,9 +92,11 @@
                                                     <div class="carousel-item active">
                                                         <div class="row mx-0">
                                                             @foreach($ai_software->softwareScreenshot as $key => $screenshot)
+                                                                @if(!empty($screenshot->screenshot_url))
                                                                 <div id="carousel-selector-{{$loop->index}}" class="thumb col-4 col-sm-2 px-1 py-2 {{ $key == 0 ? 'selected' : ''}}" data-target="#myCarousel" data-slide-to="{{$loop->index}}">
                                                                     <img src="{{$screenshot->screenshot_url}}" class="img-fluid img-thumb-slider" alt="...">
                                                                 </div>
+                                                                @endif
                                                             @endforeach
                                                         </div>
                                                     </div>

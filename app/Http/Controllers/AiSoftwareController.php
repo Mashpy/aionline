@@ -64,4 +64,16 @@ class AiSoftwareController extends Controller
                             ->get();
         return view('ai_software.search_result', compact('search_results', 'query', 'ai_softwares'));
     }
+
+    public function indexOld(){
+        return redirect()->route('ai_software.index');
+    }
+
+    public function showOld($slug){
+        return redirect()->route('ai_software.view', $slug);
+    }
+
+    public function categorySoftwaresOld($category_slug){
+        return redirect()->route('ai_software.category-softwares', $category_slug);
+    }
 }

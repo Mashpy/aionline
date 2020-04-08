@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    {{ $quiz_topic->topic_name }} - Quiz Topic
+    {{ $quiz_topic->topic_name }} - Ai Quiz Questions
 @endsection
 @section('content')
     @include('includes.header')

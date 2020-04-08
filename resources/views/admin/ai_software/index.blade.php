@@ -29,7 +29,7 @@
                                     <td><img class="alternative-software-logo" src="{{ $ai_software->logo_url }}"/></td>
                                     <td>{{$ai_software->name}}</td>
                                     <td>{{$ai_software->softwareCategoryName ? $ai_software->softwareCategoryName->name : ''}}</td>
-                                    <td>{{ str_limit($ai_software->description, $limit = 80, $end = '...') }}</td>
+                                    <td>{!! str_limit($ai_software->description, $limit = 80, $end = '...') !!}</td>
                                     <td>{{$ai_software->official_link}}</td>
                                     <td>
                                         <a class="btn btn-sm btn-info text-white" href="{{route('ai_software.view', $ai_software->slug)}}" target="_blank" title="view"><i class="fa fa-eye"></i></a>

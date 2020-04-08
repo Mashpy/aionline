@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Quiz Topics | Ai Online Quiz
+    Ai Quiz Questions
 @endsection
 @section('content')
     @include('includes.header')
@@ -9,7 +9,7 @@
             <div class="row p-4">
                 <div class="col-md-12">
                     <div class="quiz-title">
-                        <h1 class="display-4">ONLINE <span>QUIZ</span></h1>
+                        <h1>ARTIFICIAL INTELLIGENCE QUIZ QUESTIONS</h1>
                         <p>We've got all the quizzes you love about AI ! Play thousands of free online quizzes. There is a fun quiz about AI every topic imaginable: Artificial Intelligence, Data Mining, Data Pre processing, Image Processing and more!</p>
                     </div>
                 </div>

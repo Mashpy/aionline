@@ -17,16 +17,16 @@
                     <a class="nav-link" href="{{ route('home.index') }}">Tutorial</a>
                 </li>
                 <li class="nav-item nav-link {{ (Route::is('ai_software.index') || Route::is('ai_software.view')) ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('ai_software.index')}}">Ai Software</a>
+                    <a class="nav-link" href="{{ route('ai_software.index')}}">Ai Softwares</a>
                 </li>
-                <li class="nav-item nav-link {{ (Route::is('quiz-topic.index') || Route::is('quiz-question.show')) ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('quiz-topic.index') }}">Quiz</a>
+                <li class="nav-item nav-link {{ (Route::is('ai-quiz-questions.index') || Route::is('quiz-question.show')) ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('ai-quiz-questions.index') }}">Quiz Questions</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <form class="form-inline my-2 my-lg-0 search-box">
-                        <input type="text"  aria-expanded="false" class="right-20" placeholder="Search">
+                        <input type="text" aria-expanded="false" class="right-20" placeholder="Search">
                         <span class="our-social">
                         <a href="https://facebook.com/aionlinecourse" target="_blank" title="Facebook" class="fa fa-facebook"></a>
                         <a href="https://twitter.com/aionlinecourse" target="_blank" title="Twitter" class="fa fa-twitter"></a>

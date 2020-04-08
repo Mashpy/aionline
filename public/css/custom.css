@@ -1118,6 +1118,8 @@ ul.inline-list li{
 .quiz-title h1{
     font-weight: 700;
     text-align: center;
+    font-size: 2.5rem;
+    line-height: 1.2;
 }
 
 .quiz-topics{
@@ -1681,5 +1683,12 @@ ul.social-network li {
 
     .quiz-topics li {
         margin: 4px;
+    }
+
+    .quiz-title h1{
+        font-weight: 700;
+        text-align: center;
+        font-size: 1.5rem;
+        line-height: 1.2;
     }
 }

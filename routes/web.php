@@ -30,7 +30,7 @@ Route::get('/sitemap.xml', [
 
 Route::resource('/quiz-question','QuizQuestionController');
 Route::resource('/quiz-result','QuizResultController');
-Route::resource('/quiz-topic','QuizTopicController');
+Route::resource('/ai-quiz-questions','QuizTopicController');
 
 Route::group(['middleware' => ['auth', 'isAdmin'] , 'prefix' => 'admin'] , function() {
 		Route::get('/', [
@@ -56,11 +56,18 @@ Route::group(['middleware' => ['auth', 'isAdmin'] , 'prefix' => 'admin'] , funct
         Route::post('/screenshot/{id}/store', 'Admin\AiSoftwareController@screenshot_store')->name('admin.ai_software.screenshot-store');
 });
 
-Route::group(['prefix' => 'ai-software'] , function() {
+Route::group(['prefix' => 'ai-softwares'] , function() {
     Route::get('/', 'AiSoftwareController@index')->name('ai_software.index');
     Route::get('/{slug}', 'AiSoftwareController@show')->name('ai_software.view');
     Route::post('/reviews_store', 'AiSoftwareReviewController@storeReview')->name('ai_software.review.store');
     Route::post('/hit_like/{id}', 'AiSoftwareReviewController@like')->name('ai_software.software.like');
     Route::any('/software/search', 'AiSoftwareController@softwareSearch')->name('ai_software.search');
     Route::get('/categories/{slug}', 'AiSoftwareController@categorySoftwares')->name('ai_software.category-softwares');
+});
+
+/*Old routes*/
+Route::group(['prefix' => 'ai-software'] , function() {
+    Route::get('/', 'AiSoftwareController@indexOld')->name('ai_software.index.old');
+    Route::get('/{slug}', 'AiSoftwareController@showOld')->name('ai_software.view.old');
+    Route::get('/categories/{slug}', 'AiSoftwareController@categorySoftwaresOld')->name('ai_software.category-softwares.old');
 });
