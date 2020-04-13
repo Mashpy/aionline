@@ -28,7 +28,9 @@ Route::get('/sitemap.xml', [
     'as' => 'homepage.sitemap'
 ]);
 
-Route::resource('/quiz-question','QuizQuestionController');
+//old route
+Route::get('/quiz-question/{slug}','QuizQuestionController@oldShow');
+Route::get('/ai-quiz-questions/{category}/{slug}','QuizQuestionController@show')->name('quiz-question.show');
 Route::resource('/quiz-result','QuizResultController');
 Route::resource('/ai-quiz-questions','QuizTopicController');
 

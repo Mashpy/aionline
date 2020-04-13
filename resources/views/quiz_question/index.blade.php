@@ -28,7 +28,7 @@
                                                 <div class="panel-body">
                                                     <ul>
                                                         @foreach($quiz_categorie->quiz_topics as $topics)
-                                                            <a href="{{ route('quiz-question.show', $topics->slug)}}">
+                                                            <a href="{{ route('quiz-question.show', [$quiz_categorie->category->category_slug, $topics->slug])}}">
                                                                 <li class="{{$topics->id == $quiz_topic->id ? 'selected-topic text-white' : 'accordion-topic'}}">
                                                                     {{$topics->topic_name}}
                                                                     <i class="fa fa-arrow-right float-right"></i>

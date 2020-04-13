@@ -24,7 +24,7 @@
                             @if($quiz_topics->count() > 0)
                             @foreach($quiz_topics as $quiz_topic)
                                 <li>
-                                    <a href="{{ route('quiz-question.show', $quiz_topic->slug)}}">{{$quiz_topic->topic_name}}</a>
+                                    <a href="{{ route('quiz-question.show', [$quiz_topic->category->category_slug, $quiz_topic->slug])}}">{{$quiz_topic->topic_name}}</a>
                                 </li>
                             @endforeach
                             @else
@@ -58,7 +58,7 @@
                                                 <div class="panel-body">
                                                     <ul>
                                                         @foreach($quiz_categorie->quiz_topics as $topics)
-                                                            <a href="{{ route('quiz-question.show', $topics->slug)}}">
+                                                            <a href="{{ route('quiz-question.show', [$quiz_topic->category->category_slug, $quiz_topic->slug])}}">
                                                                 <li class="accordion-topic">
                                                                 {{$topics->topic_name}}
                                                                 <i class="fa fa-arrow-right float-right"></i>
