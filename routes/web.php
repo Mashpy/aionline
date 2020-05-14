@@ -56,6 +56,7 @@ Route::group(['middleware' => ['auth', 'isAdmin'] , 'prefix' => 'admin'] , funct
 		Route::resource('/admin_ai_software_category', 'Admin\AdminCategoryController');
 		Route::get('/admin_ai_software_get_subcategory', 'Admin\AdminCategoryController@getSubCategory')->name('admin.software_subcategory');
         Route::post('/screenshot/{id}/store', 'Admin\AiSoftwareController@screenshot_store')->name('admin.ai_software.screenshot-store');
+        Route::post('/admin_quiz_topic_update','Admin\AdminQuizTopicController@update')->name('admin.quiz-topic-update');
 });
 
 Route::group(['prefix' => 'ai-softwares'] , function() {

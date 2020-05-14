@@ -23,8 +23,26 @@ class AdminQuizTopicController extends Controller
         $quiz_topic->topic_name = $request->topic_name;
         $quiz_topic->slug = Str::slug($request->topic_name, '-');
         $quiz_topic->category_id = $request->category_id;
+        $quiz_topic->meta_description = $request->meta_description;
+        $quiz_topic->keyword = $request->keyword;
         $quiz_topic->save();
         Session::flash('success','Question added successfully!!');
         return redirect()->route('admin_quiz_topic.index');
+    }
+
+    public function edit($id){
+        $topic = QuizTopic::find($id);
+        return $topic;
+    }
+
+    public function update(Request $request){
+        $quiz_topic = QuizTopic::find($request->id);
+        $quiz_topic->topic_name = $request->topic_name;
+        $quiz_topic->slug = Str::slug($request->topic_name, '-');
+        $quiz_topic->category_id = $request->category_id;
+        $quiz_topic->meta_description = $request->meta_description;
+        $quiz_topic->keyword = $request->keyword;
+        $quiz_topic->save();
+        return back()->with('success', 'Quiz Topic Updated Successfully!');
     }
 }
