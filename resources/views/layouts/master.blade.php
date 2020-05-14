@@ -10,7 +10,7 @@
     <meta name="google-site-verification" content="jUW49wwiLLX6T2wYn35wtYFgisGIM8Y1liK6bnXrnsE" />
     <meta name="author" content="www.aionlinecourse.com">
     <meta property="og:title" content="@yield('meta_title')" />
-    <meta name="keywords" content="@yield('meta_keyword', 'ais ite');">
+    <meta name="keywords" content="@yield('meta_keyword', 'ais ite')">
     <meta property="og:type" content="website"/>
     <meta property="og:site_name" content="www.aionlinecourse.com">
     <meta property="og:image" content="@yield('meta_image', asset('ai-logo.png'))">
