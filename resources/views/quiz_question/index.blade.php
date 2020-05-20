@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title'){{ $quiz_topic->topic_name }} - Ai Quiz Questions @endsection
-@section('meta_description'){{$quiz_topic->meta_description}} @endsection
-@section('meta_keyword'){{$quiz_topic->keyword}} @endsection
+@section('meta_description'){{$quiz_topic->meta_description}}@endsection
+@section('meta_keyword'){{$quiz_topic->keyword}}@endsection
 @section('content')
     @include('includes.header')
 <div class="container mt-2">

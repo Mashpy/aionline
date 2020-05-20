@@ -40,10 +40,16 @@
                                 @endforeach
                             </select>
                         </div>
-
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary ">Submit</button>
-                            <button type="button" class="btn btn-danger pull-right" id="clear">Clear</button>
+                            <label class="control-label" for="meta_description">Meta Description</label>
+                            <textarea class="form-control" name="meta_description" rows="5" placeholder="Enter meta description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="keyword">Meta Keyword</label>
+                            <input class="form-control" name="keyword" type="text" placeholder="Enter keyword" />
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary ">Create Tutorial</button>
                         </div>
 
                     </form>

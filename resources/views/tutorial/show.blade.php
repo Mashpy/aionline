@@ -3,7 +3,9 @@
 @section('title')
     {{ $tutorial->title . ' | ' . $tutorial->category->name . ' | Artificial Intelligence Online Course' }}
 @endsection
-
+@section('meta_description'){{$tutorial->meta_description}}@endsection
+@section('meta_keyword'){{$tutorial->keyword}}@endsection
+@section('meta_title'){{$tutorial->title}}@endsection
 @section('content')
     @include('includes.header')
 

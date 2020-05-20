@@ -42,12 +42,17 @@
                                 @endforeach
                             </select>
                         </div>
-
-                        <div class="form-group float-right">
-                            <button type="submit" class="btn btn-primary ">Submit</button>
-                            <button type="button" class="btn btn-danger pull-right" id="clear">Clear</button>
+                        <div class="form-group">
+                            <label class="control-label" for="meta_description">Meta Description</label>
+                            <textarea class="form-control" name="meta_description" rows="5" placeholder="Enter meta description">{{$tutorial->meta_description}}</textarea>
                         </div>
-                        <div class="clearfix"></div>
+                        <div class="form-group">
+                            <label class="control-label" for="keyword">Meta Keyword</label>
+                            <input class="form-control" value="{{$tutorial->keyword}}" name="keyword" type="text" placeholder="Enter keyword" />
+                        </div>
+                        <div class="form-group mt-5">
+                            <button type="submit" class="btn btn-primary ">Update Tutorial</button>
+                        </div>
 
                     </form>
 

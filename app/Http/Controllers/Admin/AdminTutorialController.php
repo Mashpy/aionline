@@ -37,6 +37,8 @@ class AdminTutorialController extends Controller
         $tutorial->slug = $slug;
         $tutorial->category_id = $request->category_id;
         $tutorial->user_id = Auth::user()->id;
+        $tutorial->meta_description = $request->meta_description;
+        $tutorial->keyword = $request->keyword;
         $tutorial->save();
 
         $description = $request->input('description');
@@ -131,6 +133,8 @@ class AdminTutorialController extends Controller
         $tutorial->description = $request->description;
         $tutorial->category_id = $request->category_id;
         $tutorial->user_id = Auth::user()->id;
+        $tutorial->meta_description = $request->meta_description;
+        $tutorial->keyword = $request->keyword;
         $tutorial->save();
 
         if(!empty(Input::file('image'))){
