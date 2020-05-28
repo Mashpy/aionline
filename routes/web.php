@@ -23,6 +23,11 @@ Route::get('/tutorial/{category}/{slug}', [
     'as' => 'tutorial.show'
 ]);
 
+Route::group(['prefix' => 'blog'] , function() {
+    Route::get('/', 'BlogController@index')->name('blog.index');
+    Route::get('/{slug}', 'BlogController@show')->name('blog.show');
+});
+
 Route::get('/sitemap.xml', [
     'uses' => 'HomeController@xmlSitemap',
     'as' => 'homepage.sitemap'

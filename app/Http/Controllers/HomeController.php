@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\AiSoftware;
+use App\Models\Category;
 use App\Models\Tutorial;
 use App\Models\QuizTopic;
 use Illuminate\Http\Request;
@@ -24,9 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $tutorials = Tutorial::Paginate(100);
-        $quiz_topics = QuizTopic::orderBy('created_at','desc')->Paginate(10);
-        return view('home.index', compact('tutorials', 'quiz_topics'));
+        //get only machine learning category tutorial
+        $category_id = Category::where('category_slug', 'machine-learning')->first()->id;
+        $tutorials = Tutorial::where('category_id', $category_id)->Paginate(100);
+        return view('home.index', compact('tutorials'));
     }
 
     public function xmlSitemap(){

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title') Alternative Software of {{$ai_software->name}} @endsection
+@section('title') {{$ai_software->name}} | Alternative Software of {{$ai_software->name}} @endsection
 @section('meta_description'){!! $ai_software->meta_description ? strip_tags($ai_software->meta_description) : str_limit(strip_tags($ai_software->description), 250, $end ='...')!!}@endsection
 @section('meta_title'){!! $ai_software->name !!}@endsection
 @section('meta_image'){!! $ai_software->logo_url !!}@endsection

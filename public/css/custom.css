@@ -1692,3 +1692,15 @@ ul.social-network li {
         line-height: 1.2;
     }
 }
+
+.blog-alert-box{
+    background: #F08A24;
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+}
+
+.blog-page-main-heading{
+    padding: 30px;
+    background: #ffffff;
+}

@@ -22,6 +22,9 @@
                 <li class="nav-item nav-link {{ (Route::is('ai-quiz-questions.index') || Route::is('quiz-question.show')) ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('ai-quiz-questions.index') }}">Quiz Questions</a>
                 </li>
+                <li class="nav-item nav-link {{ Route::is('blog.index') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('blog.index') }}">Blog</a>
+                </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
