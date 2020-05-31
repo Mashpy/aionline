@@ -22,6 +22,7 @@ class Tutorial extends Model
 
     public function getTutorialUrlAttribute(){
         $tutorial_url = route('tutorial.show', [$this->category->category_slug, $this->slug]);
-        return $tutorial_url;
+        $blog_url = route('blog.show', [$this->slug]);
+        return $this->category->category_slug == 'blog' ? $blog_url : $tutorial_url;
     }
 }
