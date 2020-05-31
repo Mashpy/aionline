@@ -49,7 +49,7 @@
                     <br/>
                     <br/>
                 </div>
-
+                @include('includes._image_show_modal')
                 <div id="disqus_thread"></div>
                 <script>
 
@@ -89,5 +89,13 @@
 @section('run_custom_jquery')
     <script>
         $("img").addClass("img-responsive");
+    </script>
+    <script>
+        $( document ).ready(function() {
+            $("p, img").click(function() {
+                $('#imageShowModal').modal('show')
+                $('#imageShowModal img').attr("src", $(this).attr('src'))
+            })
+        });
     </script>
 @endsection

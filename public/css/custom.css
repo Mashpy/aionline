@@ -1704,3 +1704,15 @@ ul.social-network li {
     padding: 30px;
     background: #ffffff;
 }
+
+.blog-tutorial-description p img{
+    cursor: pointer;
+}
+
+.blog-tutorial-description p img:hover{
+    opacity: .6;
+}
+
+#imageShowModal .modal-header{
+    padding: .3rem;
+}

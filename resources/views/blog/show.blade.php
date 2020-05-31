@@ -7,7 +7,7 @@
 @section('meta_keyword'){{$blog_tutorial->keyword}}@endsection
 @section('meta_title'){{$blog_tutorial->title}}@endsection
 @section('content')
-    @include('includes.header')
+@include('includes.header')
 
     <div class="container-fluid top15">
         <div class="row">
@@ -29,7 +29,7 @@
                 <div class="box-style">
                     <h3 class="tutorial-title">{{ $blog_tutorial->title }}</h3>
                     <hr>
-                    <div>{!! $blog_tutorial->description !!}</div>
+                    <div class="blog-tutorial-description">{!! $blog_tutorial->description !!}</div>
 
                     <div class="clearfix"></div>
                     <br/>
@@ -49,7 +49,7 @@
                     <br/>
                     <br/>
                 </div>
-
+                @include('includes._image_show_modal')
                 <div id="disqus_thread"></div>
                 <script>
 
@@ -89,5 +89,13 @@
 @section('run_custom_jquery')
     <script>
         $("img").addClass("img-responsive");
+    </script>
+    <script>
+        $( document ).ready(function() {
+            $("p, img").click(function() {
+                $('#imageShowModal').modal('show')
+                $('#imageShowModal img').attr("src", $(this).attr('src'))
+            })
+        });
     </script>
 @endsection
