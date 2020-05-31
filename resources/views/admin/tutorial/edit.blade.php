@@ -23,6 +23,11 @@
                             <textarea class="summernote" name="description" placeholder="Description">{{ $tutorial->description }}</textarea>
                         </div>
 
+                        <div class="form-group">
+                            <label class="control-label " for="name">Slug</label>
+                            <input class="form-control" name="slug" type="text"  value="{{$tutorial->slug}}" />
+                        </div>
+
                         <div class="form-group category-box">
                             <div>Select category here:</div>
                             <select class="form-control" name="category_id">

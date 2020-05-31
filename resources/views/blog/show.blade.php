@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('title')
-    {{$blog->title}} | Ai Online Course
+    {{$blog_tutorial->title}} | Ai Online Course
 @endsection
-@section('meta_description'){{$blog->meta_description}}@endsection
-@section('meta_keyword'){{$blog->keyword}}@endsection
-@section('meta_title'){{$blog->title}}@endsection
+@section('meta_description'){{$blog_tutorial->meta_description}}@endsection
+@section('meta_keyword'){{$blog_tutorial->keyword}}@endsection
+@section('meta_title'){{$blog_tutorial->title}}@endsection
 @section('content')
     @include('includes.header')
 
@@ -27,9 +27,9 @@
 
             <div class="col-md-6 individual-article nopadding">
                 <div class="box-style">
-                    <h3 class="tutorial-title">{{ $blog->title }}</h3>
+                    <h3 class="tutorial-title">{{ $blog_tutorial->title }}</h3>
                     <hr>
-                    <div>{!! $blog->description !!}</div>
+                    <div>{!! $blog_tutorial->description !!}</div>
 
                     <div class="clearfix"></div>
                     <br/>

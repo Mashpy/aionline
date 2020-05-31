@@ -130,6 +130,7 @@ class AdminTutorialController extends Controller
     public function update(Request $request, $slug){
         $tutorial = Tutorial::where('slug', $slug)->first();
         $tutorial->title = $request->title;
+        $tutorial->slug = $request->slug;
         $tutorial->description = $request->description;
         $tutorial->category_id = $request->category_id;
         $tutorial->user_id = Auth::user()->id;
@@ -181,10 +182,10 @@ class AdminTutorialController extends Controller
         Session::flash('success','Tutorials updated successfully!!');
         return redirect()->route('admin_tutorial.edit', $tutorial->slug);
     }
-    public function destroy($slug){
-        $tutorial = Tutorial::where('slug', $slug)->first();
+    public function destroy($id){
+        $tutorial = Tutorial::find($id);
         if(!$tutorial){
-            return redirect()->route('admin_tutorial.index')->with(['fail' => 'Page not found !']);
+            return redirect()->route('admin_tutorial.index')->with(['fail' => 'Tutorial not found !']);
         }
         foreach($tutorial->uploads as $upload){
             unlink(public_path($upload->upload_url));

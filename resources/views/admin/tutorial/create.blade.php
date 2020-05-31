@@ -34,7 +34,7 @@
                         <div class="form-group category-box">
                             <div>Select User here:</div>
                             <select name="user_id" class="form-control category_select" data-value="1">
-                                <option value="">Select Category</option>
+                                <option value="">Select User</option>
                                 @foreach ($users as $user)
                                     <option value="{{ $user->id}}"> {{ $user->name }} </option>
                                 @endforeach

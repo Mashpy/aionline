@@ -26,10 +26,11 @@
                             <td width="5%">
                                 <a href="{{ $tutorial->tutorial_url }}" target="_blank" class="btn-sm btn-primary">Views</a>
                                 <a href="{{ route('admin_tutorial.edit', $tutorial->slug) }}" target="_blank" class="btn-sm btn-warning">Edit</a>
-                              <form method="POST" action="{{ route('admin_tutorial.destroy', $tutorial->slug) }}">
-                                    <input name="_method" type="hidden" value="DELETE">
-                                    <input type="submit" value="Delete" class="btn-sm btn-danger">
-                                </form>
+                                @include('includes._confirm_delete',[
+                                                            'id' => $tutorial->id,
+                                                            'url' => route('admin_tutorial.destroy', $tutorial->id),
+                                                            'message' => 'Are you sure to delete ?',
+                                ])
                             </td>
                         </tr>
                     @endforeach
