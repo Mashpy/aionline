@@ -92,7 +92,7 @@
     </script>
     <script>
         $( document ).ready(function() {
-            $("p, img").click(function() {
+            $(".blog-tutorial-description p img").click(function() {
                 $('#imageShowModal').modal('show')
                 $('#imageShowModal img').attr("src", $(this).attr('src'))
             })

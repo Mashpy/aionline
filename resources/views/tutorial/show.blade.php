@@ -29,7 +29,7 @@
                 <div class="box-style">
                     <h3 class="tutorial-title">{{ $tutorial->title }} | {{$tutorial->category->name}}</h3>
                     <hr>
-                    <div>{!! $tutorial->description !!}</div>
+                    <div class="blog-tutorial-description">{!! $tutorial->description !!}</div>
 
                     <div class="clearfix"></div>
                     <br/>
@@ -92,7 +92,7 @@
     </script>
     <script>
         $( document ).ready(function() {
-            $("p, img").click(function() {
+            $(".blog-tutorial-description p img").click(function() {
                 $('#imageShowModal').modal('show')
                 $('#imageShowModal img').attr("src", $(this).attr('src'))
             })
