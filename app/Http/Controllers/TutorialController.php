@@ -9,6 +9,13 @@ use App\Models\Category;
 
 class TutorialController extends Controller
 {
+    public function index(){
+        //get only machine learning category tutorial
+        $category_id = Category::where('category_slug', 'machine-learning')->first()->id;
+        $tutorials = Tutorial::where('category_id', $category_id)->Paginate(100);
+        return view('tutorial.index', compact('tutorials'));
+    }
+
     public function show($category, $slug){
         if($category == 'machine-learning'){
             $tutorial = Tutorial::where('slug', $slug)->first();

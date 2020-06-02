@@ -23,12 +23,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //get only machine learning category tutorial
-        $category_id = Category::where('category_slug', 'machine-learning')->first()->id;
-        $tutorials = Tutorial::where('category_id', $category_id)->Paginate(100);
-        return view('home.index', compact('tutorials'));
+    public function index(){
+        return view('home.index');
     }
 
     public function xmlSitemap(){
