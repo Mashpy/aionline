@@ -6,7 +6,7 @@
 @include('includes.header')
     <div class="container">
         <div class="row mt-3">
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="row">
                     <div class="col-md-12>">
                         <div class="left-side-home-menu">
@@ -57,8 +57,65 @@
                         </div>
                     </div>
                 </div>
+                <div class="row left-side-trending-tag mt-2">
+                    <p>Trending Tags</p>
+                    <div class="col-md-12">
+                        <ul>
+                            <li>
+                                <a href="#">Deep Learning</a>
+                            </li>
+                            <li>
+                                <a href="#">Natural Lang..</a>
+                            </li>
+                            <li>
+                                <a href="#">Clusterning</a>
+                            </li>
+                            <li>
+                                <a href="#">Recognition</a>
+                            </li>
+                            <li>
+                                <a href="#">Data Pre Processing</a>
+                            </li>
+                            <li>
+                                <a href="#">Classification</a>
+                            </li>
+                        </ul>
+                        <a class="float-right see-more-trending" href="">more...</a>
+                    </div>
+                </div>
+                <div class="row left-side-info mt-2">
+                    <div class="col-md-12">
+                        <ul>
+                            <li>
+                                <a href="#">About</a>
+                            </li>
+                            <li>
+                                <a href="#">Press</a>
+                            </li>
+                            <li>
+                                <a href="#">ContactUs</a>
+                            </li>
+                            <li>
+                                <a href="#">Developers</a>
+                            </li>
+                            <li>
+                                <a href="#">Copyright</a>
+                            </li>
+                            <li>
+                                <a href="#">Privacy policy Terms</a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <b>&copy; <script type="text/JavaScript">
+                                        document.write(new Date().getFullYear());
+                                        </script> NamespaceIT  All rights reserved.</b>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-10">
                 <div class="row">
                     <div class="col-md-8">
                         <div class="blog-lg-container">
@@ -154,6 +211,49 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-4 tutorial-item">
+                                    <div class="card home-tutorial-card">
+                                        <h5 class="card-title">2. Data Pre Processing Tutorial</h5>
+                                        <img class="card-img-top" src="/images/icons/test.jpg">
+                                        <div class="card-body" style="padding: .1rem">
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. build on the card title and make up the bulk of the card's content.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 tutorial-item">
+                                    <div class="card home-tutorial-card">
+                                        <h5 class="card-title">2. Data Pre Processing Tutorial</h5>
+                                        <img class="card-img-top" src="/images/icons/test.jpg">
+                                        <div class="card-body" style="padding: .1rem">
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. build on the card title and make up the bulk of the card's content.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 tutorial-item">
+                                    <div class="card home-tutorial-card">
+                                        <h5 class="card-title">2. Data Pre Processing Tutorial</h5>
+                                        <img class="card-img-top" src="/images/icons/test.jpg">
+                                        <div class="card-body" style="padding: .1rem">
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. build on the card title and make up the bulk of the card's content.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 ml-3">
+                        <div class="row">
+                            <div class="col-md-6 quiz-home-section">
+                                <h1>Test Your Knowledge With AI QUIZ</h1>
+                                <p>Choose a category in which to play the AI Online Quiz from  Artificial Intelligence,  Machine Learning, Natural Language Processing, Data Science and more.</p>
+                                <div class="form-button text-center">
+                                    <button id="submit" type="submit" class="ibtn">Get started</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="{{ asset('/images/icons/quiz.svg') }}">
                             </div>
                         </div>
                     </div>

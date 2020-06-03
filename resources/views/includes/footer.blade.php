@@ -2,45 +2,50 @@
     <div class="footer-middle">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <!--Column1-->
-                    <div class="footer-pad">
-                        <h4>Company</h4>
-                        <ul class="list-unstyled">
-                            <li><a href="#"></a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">News and Updates</a></li>
-                            <li><a href="#">FAQs</a></li>
-                        </ul>
+                <div class="col-md-2">
+                    <img src="{{ asset('images/icons/footer_logo.png') }}">
+                </div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 col-sm-6">
+                            <!--Column1-->
+                            <div class="footer-pad">
+                                <ul class="list-unstyled">
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="#">Careers</a></li>
+                                    <li><a href="#">News and Updates</a></li>
+                                    <li><a href="#">FAQs</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-6">
+                            <!--Column1-->
+                            <div class="footer-pad">
+                                <ul class="list-unstyled">
+                                    <li><a href="#">Help</a></li>
+                                    <li><a href="#">Advertise</a></li>
+                                    <li><a href="#">Developers</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-6">
+                            <!--Column1-->
+                            <div class="footer-pad">
+                                <ul class="list-unstyled">
+                                    <li><a href="#">Copyright Policy</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Sitemap</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="footer-pad">
-                        <h4>Top Category</h4>
-                        @if($categories->count() > 0)
-                            <ul class="list-unstyled">
-                                @foreach($categories as $category)
-                                     <li><a href="{{route('ai_software.category-softwares', $category->category_slug)}}">{{$category->name}}</a></li>
-                                @endforeach
-                            </ul>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="footer-pad">
-                        <h4>Important Links</h4>
-                        <ul class="list-unstyled">
-                            <li><a href="{{route('home.index')}}">Artificial Intelligence Tutorial</a></li>
-                            <li><a href="{{route('ai_software.category-softwares', 'cloud-automation')}}">Cloud Automation</a></li>
-                            <li><a href="{{route('ai_software.category-softwares', 'home-automation')}}">Home Automation</a></li>
-                            <li><a href="{{route('ai_software.category-softwares', 'image-recognition')}}">Image Recognition</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 mb-4">
-                    <h4>Follow Us</h4>
+            </div>
+            <div class="row">
+                <div class="col-md-12 social-icon-footer">
                     <ul class="social-network social-circle">
                         <li><a href="https://facebook.com/aionlinecourse" target="_blank" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="https://www.linkedin.com/company/aionlinecourse" target="_blank" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
@@ -50,15 +55,12 @@
                     </ul>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12 copy">
-                    <p class="text-center">&copy; Copyright <script type="text/JavaScript">
-                            document.write(new Date().getFullYear());
-                        </script> - aionlinecourse.com.  All rights reserved.</p>
-                </div>
-            </div>
-
-
         </div>
     </div>
 </footer>
+<div class="col-md-12 copy">
+    <p class="text-center">&copy; <script type="text/JavaScript">
+            document.write(new Date().getFullYear());
+        </script> aionlinecourse.com  All rights reserved.
+    </p>
+</div>

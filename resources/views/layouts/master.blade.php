@@ -19,7 +19,7 @@
     <title>@yield('title')</title>
 
     <link href='https://fonts.googleapis.com/css?family=Poppins:400,600,700%7CRoboto:400,400i,700' rel='stylesheet'>
-    <!-- Favicons-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">    <!-- Favicons-->
     <link rel="shortcut icon" href="{{ asset('favicon.ico')}}" type="image/x-icon">
 
     <!-- BASE CSS -->
