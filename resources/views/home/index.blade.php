@@ -14,43 +14,43 @@
                                 <li class="active">
                                     <a href="#">
                                         <img src="{{ asset('images/icons/home.png') }}">
-                                        Home
+                                        <span>Home</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <img src="{{ asset('images/icons/browse_tutorial.png') }}">
-                                        Browse Tutorials
+                                        <span>Browse Tutorials</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <img src="{{ asset('images/icons/ai_software.png') }}">
-                                        Ai Softwares
+                                        <span>Ai Softwares</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <img src="{{ asset('images/icons/quiz.png') }}">
-                                        Quiz
+                                        <span>Quiz</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <img src="{{ asset('images/icons/blog.png') }}">
-                                        Blog
+                                        <span>Blog</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <img src="{{ asset('images/icons/help.png') }}">
-                                        Help
+                                        <span>Help</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <img src="{{ asset('images/icons/feedback.png') }}">
-                                        Send Feedback
+                                        <span>Send Feedback</span>
                                     </a>
                                 </li>
                             </ul>

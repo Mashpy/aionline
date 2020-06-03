@@ -8,7 +8,7 @@
                 <div class="col-md-10">
                     <div class="row">
                         <div class="col-md-1"></div>
-                        <div class="col-md-2 col-sm-6">
+                        <div class="col-md-2 col-sm-4">
                             <!--Column1-->
                             <div class="footer-pad">
                                 <ul class="list-unstyled">
@@ -20,7 +20,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-2 col-sm-6">
+                        <div class="col-md-2 col-sm-4">
                             <!--Column1-->
                             <div class="footer-pad">
                                 <ul class="list-unstyled">
@@ -31,7 +31,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-2 col-sm-6">
+                        <div class="col-md-2 col-sm-4">
                             <!--Column1-->
                             <div class="footer-pad">
                                 <ul class="list-unstyled">
