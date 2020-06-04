@@ -1,26 +1,25 @@
-<footer class="mainfooter" role="contentinfo">
+<footer class="mainfooter mt-3" role="contentinfo">
     <div class="footer-middle">
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-2 text-sm-center">
                     <img src="{{ asset('images/icons/footer_logo.png') }}">
                 </div>
                 <div class="col-md-10">
                     <div class="row">
                         <div class="col-md-1"></div>
-                        <div class="col-md-2 col-sm-4">
+                        <div class="col-md-2 col-4">
                             <!--Column1-->
                             <div class="footer-pad">
                                 <ul class="list-unstyled">
                                     <li><a href="#">About</a></li>
                                     <li><a href="#">Blog</a></li>
                                     <li><a href="#">Careers</a></li>
-                                    <li><a href="#">News and Updates</a></li>
                                     <li><a href="#">FAQs</a></li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-2 col-sm-4">
+                        <div class="col-md-2 col-4">
                             <!--Column1-->
                             <div class="footer-pad">
                                 <ul class="list-unstyled">
@@ -31,7 +30,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-2 col-sm-4">
+                        <div class="col-md-2 col-4">
                             <!--Column1-->
                             <div class="footer-pad">
                                 <ul class="list-unstyled">

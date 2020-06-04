@@ -117,7 +117,7 @@
             </div>
             <div class="col-md-10">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-8 blog-lg-section">
                         <div class="blog-lg-container">
                             <img src="/images/icons/test.jpg">
                             <div class="blog-lg-content">
@@ -128,47 +128,47 @@
                     </div>
                     <div class="col-md-4">
                         <div class="row blog-sm-container">
-                            <div class="col-md-5">
+                            <div class="col-5 col-md-5">
                                 <img src="/images/icons/test.jpg">
                             </div>
-                            <div class="col-md-7 blog-sm-content">Lorem ipsum dolor sit amet, an his etiam torquatos.</div>
+                            <div class="col-7 col-md-7 blog-sm-content">Lorem ipsum dolor sit amet, an his etiam torquatos.</div>
                         </div>
                         <div class="row blog-sm-container">
-                            <div class="col-md-5">
+                            <div class="col-5 col-md-5">
                                 <img src="/images/icons/test.jpg">
                             </div>
-                            <div class="col-md-7 blog-sm-content">Lorem ipsum dolor sit amet, an his etiam torquatos.</div>
+                            <div class="col-7 col-md-7 blog-sm-content">Lorem ipsum dolor sit amet, an his etiam torquatos.</div>
                         </div>
                         <div class="row blog-sm-container">
-                            <div class="col-md-5">
+                            <div class="col-5 col-md-5">
                                 <img src="/images/icons/test.jpg">
                             </div>
-                            <div class="col-md-7 blog-sm-content">Lorem ipsum dolor sit amet, an his etiam torquatos.</div>
+                            <div class="col-7 col-md-7 blog-sm-content">Lorem ipsum dolor sit amet, an his etiam torquatos.</div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12 pr-0">
+                    <div class="col-md-12 pr-0 feature-soft-section">
                         <div class="feature-soft">
                             <div class="row feature-soft-title">
                                 <div class="col-md-12">
                                     <p>Featured Software</p>
                                 </div>
                             </div>
-                            <div class="row box-div justify-content-center">
-                                <div class="col-md-2 col-sm-3 col-lg-2 feature-soft-item">
+                            <div class="row feature-box-div justify-content-center">
+                                <div class="col-3 col-md-2 feature-soft-home">
                                     <a href="https://www.aionlinecourse.com/ai-softwares/vox-neural"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/vox-neural.jpg" alt="..."></a>
                                 </div>
-                                <div class="col-md-2 col-sm-3 col-lg-2 feature-soft-item">
+                                <div class="col-3 col-md-2 feature-soft-home">
                                     <a href="https://www.aionlinecourse.com/ai-softwares/rapidminer"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/rapidminer.jpg" alt="..."></a>
                                 </div>
-                                <div class="col-md-2 col-sm-3 col-lg-2 feature-soft-item">
+                                <div class="col-3 col-md-2 feature-soft-home">
                                     <a href="https://www.aionlinecourse.com/ai-softwares/routeenet"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/routeenet.jpg" alt="..."></a>
                                 </div>
-                                <div class="col-md-2 col-sm-3 col-lg-2 feature-soft-item">
+                                <div class="col-3 col-md-2 feature-soft-item">
                                     <a href="https://www.aionlinecourse.com/ai-softwares/ebbyco"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/ebbyco.jpg" alt="..."></a>
                                 </div>
-                                <div class="col-md-2 col-sm-3 col-lg-2 feature-soft-item">
+                                <div class="col-3 col-md-2 feature-soft-item feature-soft-home">
                                     <a class="ai-software-card-head" href="https://www.aionlinecourse.com/ai-softwares/sestek"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/sestek.jpg" alt="..."></a>
                                 </div>
                             </div>
@@ -176,7 +176,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12 pr-0">
+                    <div class="col-md-12 pr-0 feature-soft-section">
                         <div class="feature-soft">
                             <div class="row feature-soft-title">
                                 <div class="col-md-12">
@@ -184,7 +184,7 @@
                                 </div>
                             </div>
                             <div class="row tutorial-home-section">
-                               <div class="col-md-4 tutorial-item">
+                               <div class="col-md-4 col-6 tutorial-item">
                                    <div class="card home-tutorial-card">
                                        <h5 class="card-title">1. Introduction of Machine Learning</h5>
                                        <img class="card-img-top" src="/images/icons/test.jpg">
@@ -193,7 +193,7 @@
                                        </div>
                                    </div>
                                </div>
-                                <div class="col-md-4 tutorial-item">
+                                <div class="col-md-4 col-6 tutorial-item">
                                     <div class="card home-tutorial-card">
                                         <h5 class="card-title">2. Data Pre Processing Tutorial</h5>
                                         <img class="card-img-top" src="/images/icons/test.jpg">
@@ -202,7 +202,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4 tutorial-item">
+                                <div class="col-md-4 col-6 tutorial-item">
                                     <div class="card home-tutorial-card">
                                         <h5 class="card-title">2. Data Pre Processing Tutorial</h5>
                                         <img class="card-img-top" src="/images/icons/test.jpg">
@@ -211,7 +211,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4 tutorial-item">
+                                <div class="col-md-4 col-6 tutorial-item">
                                     <div class="card home-tutorial-card">
                                         <h5 class="card-title">2. Data Pre Processing Tutorial</h5>
                                         <img class="card-img-top" src="/images/icons/test.jpg">
@@ -220,7 +220,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4 tutorial-item">
+                                <div class="col-md-4 col-6 tutorial-item">
                                     <div class="card home-tutorial-card">
                                         <h5 class="card-title">2. Data Pre Processing Tutorial</h5>
                                         <img class="card-img-top" src="/images/icons/test.jpg">
@@ -229,7 +229,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4 tutorial-item">
+                                <div class="col-md-4 col-6 tutorial-item">
                                     <div class="card home-tutorial-card">
                                         <h5 class="card-title">2. Data Pre Processing Tutorial</h5>
                                         <img class="card-img-top" src="/images/icons/test.jpg">
@@ -243,16 +243,16 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12 ml-3">
+                    <div class="col-md-12 ml-3 quiz-home-container">
                         <div class="row">
                             <div class="col-md-6 quiz-home-section">
-                                <h1>Test Your Knowledge With AI QUIZ</h1>
-                                <p>Choose a category in which to play the AI Online Quiz from  Artificial Intelligence,  Machine Learning, Natural Language Processing, Data Science and more.</p>
+                                <h1>Test Your Knowledge with AI QUIZ</h1>
+                                <p>Choose a category in which to play the AI Online Quiz from Artificial Intelligence,  Machine Learning, Natural Language Processing, Data Science and more.</p>
                                 <div class="form-button text-center">
                                     <button id="submit" type="submit" class="ibtn">Get started</button>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 quiz-right-side-image">
                                 <img src="{{ asset('/images/icons/quiz.svg') }}">
                             </div>
                         </div>
