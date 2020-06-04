@@ -27,13 +27,14 @@
     <link href="{{ asset('css/font-awesome.min.css')}}" rel="stylesheet">
     <!-- YOUR CUSTOM CSS -->
     <link href="{{ asset('css/custom.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/swiper.min.css')}}" rel="stylesheet">
 
     @yield('run_custom_css_file')
     @yield('run_custom_css')
 
 </head>
 
-<body>
+<body onload="myFunction()">
 @yield('content')
 
 @if (env('APP_ENV') == 'production' && empty(Auth::user()))
@@ -77,6 +78,7 @@
     });
     /*Scroll to top when arrow up clicked END*/
 </script>
+<script src="{{ asset('js/swiper.min.js')}}"></script>
 @yield('run_custom_js_file')
 @yield('run_custom_jquery')
 </body>

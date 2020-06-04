@@ -536,7 +536,7 @@ video {
 }
 
 .nav-background img {
-    width: 150px;
+    width: 165px;
 }
 
 .nav-background h3 {
@@ -580,7 +580,7 @@ video {
     border-radius: 2rem;
     font-size: .9rem;
     line-height: 2rem;
-    padding: 0 8.5rem 0 2rem;
+    padding: 0 13.5rem 0 2rem;
     outline: none;
     transition: all .2s ease;
     position: relative;
@@ -1963,7 +1963,6 @@ ul.social-network li {
 }
 
 .feature-soft-home {
-    border: 1px solid #e8e8e8;
     text-align: center;
     margin: 10px;
     padding: 0 0 8px 0;
@@ -1971,6 +1970,7 @@ ul.social-network li {
     cursor: pointer;
     -webkit-transition: background .5s; /* For Safari 3.0 to 6.0 */
     transition: background .5s;
+    height: 125px !important;
 }
 
 .feature-soft-home:hover {
@@ -1983,12 +1983,53 @@ ul.social-network li {
 .feature-soft-home img {
     height: 100px;
     width: 100px;
-    padding: 15px;
 }
 
 .quiz-right-side-image img{
     max-height: 470px;
 }
+
+/*slider*/
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.home-navbar-icon .navbar-toggler {
+    color: #02B544;
+    border-color: rgba(255,255,255,.1);
+    font-size: 30px;
+}
+
+@media (max-width: 760px) {
+    .swiper-button-next {
+        right: 20px;
+    }
+
+    .swiper-button-prev {
+        left: 50px;
+    }
+}
+/*end slider*/
 
 @media screen and (min-width: 601px) {
     div.ai-software-head h3 {
@@ -2037,7 +2078,8 @@ ul.social-network li {
     }
 
     .ai-search-box input {
-        padding: 0 8.5rem 0 2rem;
+        padding: .5rem 0 0.5rem 2.5rem;
+        width: 18rem;
     }
 
     .carousel-thumb {
@@ -2274,6 +2316,10 @@ ul.social-network li {
 
     .left-side-trending-tag {
         margin-bottom: 10px;
+    }
+
+    .search-box input {
+        padding: 0 8.5rem 0 2rem;
     }
     /*home menu responsive End*/
 

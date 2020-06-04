@@ -155,22 +155,34 @@
                                     <p>Featured Software</p>
                                 </div>
                             </div>
-                            <div class="row feature-box-div justify-content-center">
-                                <div class="col-3 col-md-2 feature-soft-home">
-                                    <a href="https://www.aionlinecourse.com/ai-softwares/vox-neural"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/vox-neural.jpg" alt="..."></a>
-                                </div>
-                                <div class="col-3 col-md-2 feature-soft-home">
-                                    <a href="https://www.aionlinecourse.com/ai-softwares/rapidminer"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/rapidminer.jpg" alt="..."></a>
-                                </div>
-                                <div class="col-3 col-md-2 feature-soft-home">
-                                    <a href="https://www.aionlinecourse.com/ai-softwares/routeenet"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/routeenet.jpg" alt="..."></a>
-                                </div>
-                                <div class="col-3 col-md-2 feature-soft-item">
-                                    <a href="https://www.aionlinecourse.com/ai-softwares/ebbyco"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/ebbyco.jpg" alt="..."></a>
-                                </div>
-                                <div class="col-3 col-md-2 feature-soft-item feature-soft-home">
-                                    <a class="ai-software-card-head" href="https://www.aionlinecourse.com/ai-softwares/sestek"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/sestek.jpg" alt="..."></a>
-                                </div>
+                            <div class="row">
+                              <div class="col-md-12">
+                                  <!-- Swiper -->
+                                  <div class="swiper-container">
+                                      <div class="swiper-wrapper feature-box-div">
+                                          <div class="swiper-slide feature-soft-home" style="width: 100px">
+                                              <a href="https://www.aionlinecourse.com/ai-softwares/vox-neural"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/vox-neural.jpg" alt="..."></a>
+                                          </div>
+                                          <div class="swiper-slide feature-soft-home">
+                                              <a href="https://www.aionlinecourse.com/ai-softwares/rapidminer"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/rapidminer.jpg" alt="..."></a>
+                                          </div>
+                                          <div class="swiper-slide feature-soft-home">
+                                              <a href="https://www.aionlinecourse.com/ai-softwares/routeenet"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/routeenet.jpg" alt="..."></a>
+                                          </div>
+                                          <div class="swiper-slide feature-soft-home">
+                                              <a href="https://www.aionlinecourse.com/ai-softwares/ebbyco"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/ebbyco.jpg" alt="..."></a>
+                                          </div>
+                                          <div class="swiper-slide feature-soft-home">
+                                              <a class="ai-software-card-head" href="https://www.aionlinecourse.com/ai-softwares/sestek"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/sestek.jpg" alt="..."></a>
+                                          </div>
+                                          <div class="swiper-slide feature-soft-home">
+                                              <a href="https://www.aionlinecourse.com/ai-softwares/rapidminer"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/rapidminer.jpg" alt="..."></a>
+                                          </div>
+                                      </div>
+                                      <div class="swiper-button-next"></div>
+                                      <div class="swiper-button-prev"></div>
+                                  </div>
+                              </div>
                             </div>
                         </div>
                     </div>
@@ -263,3 +275,26 @@
     </div>
 @include('includes.footer')
 @endsection
+@section('run_custom_js_file')
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: getItem(),
+            direction: 'horizontal',
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+        });
+
+        function getItem() {
+            var windowWidth = window.innerWidth;
+            var item = window.innerWidth <= 760 ? '4' : '5';
+            return item;
+        }
+    </script>
+@stop

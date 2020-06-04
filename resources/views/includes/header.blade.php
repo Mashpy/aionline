@@ -1,14 +1,14 @@
 <!--Navbar -->
 <div class="top-nav-bar">
     <p class="top-notification"><marquee direction="left">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs.</marquee></p>
-    <nav class="navbar navbar-expand-xl navbar-dark nav-background">
+    <nav class="navbar navbar-expand-xl navbar-dark nav-background home-navbar-icon">
        <div class="container">
            <a class="navbar-brand mr-5" href="{{ route('home.index') }}">
                <img src="{{asset('ai-logo.png')}}">
            </a>
            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
                    aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
+               <span class="navbar-toggler-icon">&#9776;</span>
            </button>
            <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
                <ul class="navbar-nav m-auto">
