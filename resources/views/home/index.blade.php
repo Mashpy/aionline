@@ -12,31 +12,31 @@
                         <div class="left-side-home-menu">
                             <ul>
                                 <li class="active">
-                                    <a href="#">
+                                    <a href="{{ route('home.index') }}">
                                         <img src="{{ asset('images/icons/home.png') }}">
                                         <span>Home</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ route('tutorial.index') }}">
                                         <img src="{{ asset('images/icons/browse_tutorial.png') }}">
                                         <span>Browse Tutorials</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ route('ai_software.index') }}">
                                         <img src="{{ asset('images/icons/ai_software.png') }}">
                                         <span>Ai Softwares</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ route('ai-quiz-questions.index') }}">
                                         <img src="{{ asset('images/icons/quiz.png') }}">
                                         <span>Quiz</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ route('blog.index') }}">
                                         <img src="{{ asset('images/icons/blog.png') }}">
                                         <span>Blog</span>
                                     </a>
@@ -116,35 +116,29 @@
                 </div>
             </div>
             <div class="col-md-10">
-                <div class="row">
+                <div class="row mb-2">
                     <div class="col-md-8 blog-lg-section">
+                        <a href="{{ route('blog.show', $single_blog_post->slug) }}" title="{{ $single_blog_post->title }}">
                         <div class="blog-lg-container">
-                            <img src="/images/icons/test.jpg">
+                            <img src="{{ $single_blog_post->tutorial_cover }}">
                             <div class="blog-lg-content">
-                                <h4>Lorem ipsum dolor sit amet, an his etiam torquatos.</h4>
-                                <p>By mohaimen on May 2020 in Machine Learning</p>
+                                <h4>{{ $single_blog_post->title }}</h4>
+                                <p>By {{ $single_blog_post->user ? $single_blog_post->user->name : '' }} on {{ $single_blog_post->created_at->toFormattedDateString() }}</p>
                             </div>
                         </div>
+                        </a>
                     </div>
                     <div class="col-md-4">
-                        <div class="row blog-sm-container">
-                            <div class="col-5 col-md-5">
-                                <img src="/images/icons/test.jpg">
-                            </div>
-                            <div class="col-7 col-md-7 blog-sm-content">Lorem ipsum dolor sit amet, an his etiam torquatos.</div>
-                        </div>
-                        <div class="row blog-sm-container">
-                            <div class="col-5 col-md-5">
-                                <img src="/images/icons/test.jpg">
-                            </div>
-                            <div class="col-7 col-md-7 blog-sm-content">Lorem ipsum dolor sit amet, an his etiam torquatos.</div>
-                        </div>
-                        <div class="row blog-sm-container">
-                            <div class="col-5 col-md-5">
-                                <img src="/images/icons/test.jpg">
-                            </div>
-                            <div class="col-7 col-md-7 blog-sm-content">Lorem ipsum dolor sit amet, an his etiam torquatos.</div>
-                        </div>
+                        @foreach($blogs as $blog)
+                            <a href="{{route('blog.show', $blog->slug)}}" class="blog-sm-section" title="{{ $blog->title }}">
+                                <div class="row blog-sm-container">
+                                    <div class="col-5 col-md-5">
+                                        <img src="{{ $blog->tutorial_cover }}">
+                                    </div>
+                                    <div class="col-7 col-md-7 blog-sm-content">{{ str_limit(strip_tags($blog->title), $limit = 60, $end = '...') }}</div>
+                                </div>
+                            </a>
+                        @endforeach
                     </div>
                 </div>
                 <div class="row">
@@ -160,24 +154,11 @@
                                   <!-- Swiper -->
                                   <div class="swiper-container">
                                       <div class="swiper-wrapper feature-box-div">
-                                          <div class="swiper-slide feature-soft-home" style="width: 100px">
-                                              <a href="https://www.aionlinecourse.com/ai-softwares/vox-neural"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/vox-neural.jpg" alt="..."></a>
-                                          </div>
-                                          <div class="swiper-slide feature-soft-home">
-                                              <a href="https://www.aionlinecourse.com/ai-softwares/rapidminer"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/rapidminer.jpg" alt="..."></a>
-                                          </div>
-                                          <div class="swiper-slide feature-soft-home">
-                                              <a href="https://www.aionlinecourse.com/ai-softwares/routeenet"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/routeenet.jpg" alt="..."></a>
-                                          </div>
-                                          <div class="swiper-slide feature-soft-home">
-                                              <a href="https://www.aionlinecourse.com/ai-softwares/ebbyco"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/ebbyco.jpg" alt="..."></a>
-                                          </div>
-                                          <div class="swiper-slide feature-soft-home">
-                                              <a class="ai-software-card-head" href="https://www.aionlinecourse.com/ai-softwares/sestek"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/sestek.jpg" alt="..."></a>
-                                          </div>
-                                          <div class="swiper-slide feature-soft-home">
-                                              <a href="https://www.aionlinecourse.com/ai-softwares/rapidminer"><img src="https://www.aionlinecourse.com/uploads/ai_software/image/2020/02/rapidminer.jpg" alt="..."></a>
-                                          </div>
+                                          @foreach($feature_softwares as $software)
+                                              <div class="swiper-slide feature-soft-home">
+                                                  <a href="{{route('ai_software.view', $software->slug)}}"><img src="{{$software->logo !== null ? $software->logo_url : asset('no-image-found.jpg')}}" alt="{{ $software->name }}"></a>
+                                              </div>
+                                          @endforeach
                                       </div>
                                       <div class="swiper-button-next"></div>
                                       <div class="swiper-button-prev"></div>
@@ -196,60 +177,23 @@
                                 </div>
                             </div>
                             <div class="row tutorial-home-section">
-                               <div class="col-md-4 col-6 tutorial-item">
-                                   <div class="card home-tutorial-card">
-                                       <h5 class="card-title">1. Introduction of Machine Learning</h5>
-                                       <img class="card-img-top" src="/images/icons/test.jpg">
-                                       <div class="card-body" style="padding: .1rem">
-                                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. build on the card title and make up the bulk of the card's content.</p>
+                                @foreach($tutorials as $key => $tutorial)
+                                <div class="col-md-4 col-6 tutorial-item">
+                                    <a href="{{ $tutorial->tutorial_url }}">
+                                       <div class="card home-tutorial-card">
+                                           <h5 class="card-title">{{ $key + 1 }}. {{ $tutorial->title }}</h5>
+                                           <div class="tutorial-img-home">
+                                               <img class="card-img-top" src="{{ $tutorial->tutorial_cover }}">
+                                           </div>
+                                           <div class="card-body" style="padding: .1rem">
+                                               <p class="card-text">
+                                                   {{ str_limit(strip_tags($tutorial->description), $limit = 130, $end = '...') }}
+                                               </p>
+                                           </div>
                                        </div>
-                                   </div>
+                                    </a>
                                </div>
-                                <div class="col-md-4 col-6 tutorial-item">
-                                    <div class="card home-tutorial-card">
-                                        <h5 class="card-title">2. Data Pre Processing Tutorial</h5>
-                                        <img class="card-img-top" src="/images/icons/test.jpg">
-                                        <div class="card-body" style="padding: .1rem">
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. build on the card title and make up the bulk of the card's content.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-6 tutorial-item">
-                                    <div class="card home-tutorial-card">
-                                        <h5 class="card-title">2. Data Pre Processing Tutorial</h5>
-                                        <img class="card-img-top" src="/images/icons/test.jpg">
-                                        <div class="card-body" style="padding: .1rem">
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. build on the card title and make up the bulk of the card's content.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-6 tutorial-item">
-                                    <div class="card home-tutorial-card">
-                                        <h5 class="card-title">2. Data Pre Processing Tutorial</h5>
-                                        <img class="card-img-top" src="/images/icons/test.jpg">
-                                        <div class="card-body" style="padding: .1rem">
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. build on the card title and make up the bulk of the card's content.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-6 tutorial-item">
-                                    <div class="card home-tutorial-card">
-                                        <h5 class="card-title">2. Data Pre Processing Tutorial</h5>
-                                        <img class="card-img-top" src="/images/icons/test.jpg">
-                                        <div class="card-body" style="padding: .1rem">
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. build on the card title and make up the bulk of the card's content.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-6 tutorial-item">
-                                    <div class="card home-tutorial-card">
-                                        <h5 class="card-title">2. Data Pre Processing Tutorial</h5>
-                                        <img class="card-img-top" src="/images/icons/test.jpg">
-                                        <div class="card-body" style="padding: .1rem">
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. build on the card title and make up the bulk of the card's content.</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -261,7 +205,7 @@
                                 <h1>Test Your Knowledge with AI QUIZ</h1>
                                 <p>Choose a category in which to play the AI Online Quiz from Artificial Intelligence,  Machine Learning, Natural Language Processing, Data Science and more.</p>
                                 <div class="form-button text-center">
-                                    <button id="submit" type="submit" class="ibtn">Get started</button>
+                                    <a href="{{ route('ai-quiz-questions.index') }}" class="ibtn">Get started</a>
                                 </div>
                             </div>
                             <div class="col-md-6 quiz-right-side-image">
@@ -274,7 +218,7 @@
         </div>
     </div>
 @include('includes.footer')
-@endsection
+@stop
 @section('run_custom_js_file')
     <!-- Initialize Swiper -->
     <script>

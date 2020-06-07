@@ -1760,6 +1760,11 @@ ul.social-network li {
     vertical-align: middle;
     width: 100%;
     max-height: 300px;
+    min-height: 300px;
+}
+
+.blog-lg-content p {
+    font-size: 14px;
 }
 
 .blog-lg-container .blog-lg-content {
@@ -1778,9 +1783,21 @@ ul.social-network li {
     margin-bottom: .7rem;
 }
 
+.blog-sm-content {
+    font-size: 14px;
+    text-decoration: none;
+    color: #2d2d2d;
+    font-weight: 500;
+}
+
+.blog-sm-section:hover{
+    text-decoration: none;
+}
+
 .blog-sm-container img {
     vertical-align: middle;
     width: 100%;
+    min-height: 63px;
 }
 
 .feature-soft {
@@ -1831,11 +1848,21 @@ ul.social-network li {
 
 .home-tutorial-card img {
     height: 130px;
+    transition: transform .25s, visibility .25s ease-in;
+}
+
+.tutorial-img-home{
+    overflow: hidden;
+}
+
+.home-tutorial-card img:hover {
+    transform: scale(1.5);
 }
 
 .home-tutorial-card p {
     font-size: 14px;
     text-align: justify;
+    color: #2d2d2d;
 }
 
 .home-tutorial-card{
@@ -1846,12 +1873,24 @@ ul.social-network li {
     box-shadow: 0px 1px 5px -3px rgba(0,0,0,1);
 }
 
+.home-tutorial-card:hover{
+    cursor: pointer;
+    transition: transform .25s, visibility .25s ease-in;
+    -webkit-box-shadow: 0px 1px 9px -3px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 1px 9px -3px rgba(0,0,0,1);
+    box-shadow: 0px 1px 9px -3px rgba(0,0,0,1);
+}
+
 .home-tutorial-card h5{
     color: #02B544;
 }
 
 .feature-soft .tutorial-item{
     padding: .4rem;
+}
+
+.feature-soft .tutorial-item a{
+    text-decoration: none;
 }
 
 .tutorial-home-section{
@@ -1870,14 +1909,14 @@ ul.social-network li {
 
 .left-side-trending-tag ul li a{
     text-decoration: none;
-    color: #000000;
-    font-size: 14px;
+    color: #2d2d2d;
+    font-size: 13px;
 }
 
 .left-side-trending-tag ul li a:hover{
     color: #02B544;
     transition: .2s;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .left-side-trending-tag p {
@@ -1910,8 +1949,8 @@ ul.social-network li {
 
 .left-side-info ul li a{
     text-decoration: none;
-    color: #000000;
-    font-size: 14px;
+    color: #2d2d2d;
+    font-size: 13px;
 }
 
 .quiz-home-section{
@@ -1946,7 +1985,7 @@ ul.social-network li {
     border: 0;
     padding: 10px 60px;
     background-color: #fff;
-    color: #02B544;
+    color: #02B544 !important;
     font-size: 25px;
     font-weight: 700;
     text-decoration: none;
@@ -2054,6 +2093,11 @@ ul.social-network li {
 }
 
 @media screen and (max-width: 600px) {
+
+    .blog-lg-container img{
+        min-height: 250px;;
+    }
+
     div.ai-software-head h3 {
         font-size: 25px;
     }
@@ -2241,7 +2285,7 @@ ul.social-network li {
      }
 
     .blog-lg-container p{
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .blog-lg-container .blog-lg-content {

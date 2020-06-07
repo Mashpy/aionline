@@ -13,7 +13,7 @@
                             <div class="footer-pad">
                                 <ul class="list-unstyled">
                                     <li><a href="#">About</a></li>
-                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="{{ route('blog.index') }}">Blog</a></li>
                                     <li><a href="#">Careers</a></li>
                                     <li><a href="#">FAQs</a></li>
                                 </ul>

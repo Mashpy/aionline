@@ -16,7 +16,6 @@
                                     <h4 class="tutorial-title">{{ $key + 1 }}. {{$tutorial->title}}</h4>
                                     <p>{{ str_limit(strip_tags($tutorial->description), $limit = 130, $end = '...') }}</p>
                                 </a>
-
                                 <hr>
                                 <div class="float-left">
                                     <span class="btn-xs btn-info"><i class="fa fa-tags"></i> {{$tutorial->category->name}}</span>

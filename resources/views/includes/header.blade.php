@@ -20,7 +20,7 @@
                </ul>
                <ul class="navbar-nav ml-auto">
                    <span class="our-social">
-                       <a href="" class="btn btn-sm btn-success take-quiz">Take a Quiz Test</a>
+                       <a href="{{ route('ai-quiz-questions.index') }}" class="btn btn-sm btn-success take-quiz">Take a Quiz Test</a>
                         <a href="https://www.linkedin.com/company/aionlinecourse/" title="Linkedin" target="_blank">
                             <img src="{{asset('images/icons/linkedin.png')}}">
                         </a>
