@@ -16,7 +16,7 @@ Auth::routes();
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home.index']);
 Route::get('/tutorial', 'TutorialController@index')->name('tutorial.index');
 Route::get('/tutorial/{category}/{slug}', ['uses' => 'TutorialController@show', 'as' => 'tutorial.show']);
-
+Route::get('/search', 'HomeController@search')->name('home.search');
 Route::group(['prefix' => 'blog'] , function() {
     Route::get('/', 'BlogController@index')->name('blog.index');
     Route::get('/{slug}', 'BlogController@show')->name('blog.show');

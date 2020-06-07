@@ -36,6 +36,30 @@ class HomeController extends Controller
         return view('home.index', compact('tutorials', 'feature_softwares', 'blogs', 'single_blog_post'));
     }
 
+    public function search(Request $request){
+        $query = $request->keyword;
+        $blog_category = Category::where('category_slug', 'blog')->first();
+        $software_search_results = AiSoftware::where('name', 'LIKE', '%'.$query.'%')
+            ->orWhere('description', 'LIKE', '%'.$query.'%')
+            ->orWhere('slug', 'LIKE', '%'.$query.'%')
+            ->get();
+
+         $tutorial_post = Tutorial::where('category_id', '!=', $blog_category->id);
+         $tutorial_search_results = $tutorial_post->where('title', 'LIKE', '%'.$query.'%')
+            ->orWhere('description', 'LIKE', '%'.$query.'%')
+            ->orWhere('slug', 'LIKE', '%'.$query.'%')
+            ->get();
+
+         $blog_post = Tutorial::where('category_id', $blog_category->id);
+          $blog_search = Tutorial::where('title', 'LIKE', '%'.$query.'%')
+            ->orWhere('description', 'LIKE', '%'.$query.'%')
+            ->orWhere('slug', 'LIKE', '%'.$query.'%')
+              ->get();
+        $collection = collect($blog_search);
+        $blog_search_results = $collection->where('category_id', $blog_category->id);
+         return view('home.search', compact('query', 'software_search_results', 'tutorial_search_results', 'blog_search_results'));
+    }
+
     public function xmlSitemap(){
         $ai_softwares = AiSoftware::get();
         return response()->view('other.sitemap', compact('ai_softwares'))->header('Content-Type', 'text/xml');

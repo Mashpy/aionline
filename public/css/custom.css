@@ -580,12 +580,13 @@ video {
     border-radius: 2rem;
     font-size: .9rem;
     line-height: 2rem;
-    padding: 0 13.5rem 0 2rem;
+    padding: 0.2rem 0.5rem 0.2rem 2rem;
+    width: 25rem;
     outline: none;
     transition: all .2s ease;
     position: relative;
     vertical-align: top;
-    background: #ffffff url(/search-icon.svg) .6rem .5rem no-repeat;
+    background: #ffffff url(/search-icon.svg) .6rem .8rem no-repeat;
     background-size: 1rem;
 }
 
@@ -2059,6 +2060,14 @@ ul.social-network li {
     font-size: 30px;
 }
 
+
+.left-bar-search-result ul{
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+    font-size: 15px;
+}
+
 @media (max-width: 760px) {
     .swiper-button-next {
         right: 20px;
@@ -2363,7 +2372,8 @@ ul.social-network li {
     }
 
     .search-box input {
-        padding: 0 8.5rem 0 2rem;
+        width: 20rem;
+        padding: 0.2rem .5rem 0.2rem 2rem;
     }
     /*home menu responsive End*/
 
