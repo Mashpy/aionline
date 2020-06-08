@@ -7,56 +7,7 @@
     <div class="container">
         <div class="row mt-3">
             <div class="col-md-2">
-                <div class="row">
-                    <div class="col-md-12>">
-                        <div class="left-side-home-menu">
-                            <ul>
-                                <li class="active">
-                                    <a href="{{ route('home.index') }}">
-                                        <img src="{{ asset('images/icons/home.png') }}">
-                                        <span>Home</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('tutorial.index') }}">
-                                        <img src="{{ asset('images/icons/browse_tutorial.png') }}">
-                                        <span>Browse Tutorials</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('ai_software.index') }}">
-                                        <img src="{{ asset('images/icons/ai_software.png') }}">
-                                        <span>Ai Softwares</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('ai-quiz-questions.index') }}">
-                                        <img src="{{ asset('images/icons/quiz.png') }}">
-                                        <span>Quiz</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('blog.index') }}">
-                                        <img src="{{ asset('images/icons/blog.png') }}">
-                                        <span>Blog</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="{{ asset('images/icons/help.png') }}">
-                                        <span>Help</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="{{ asset('images/icons/feedback.png') }}">
-                                        <span>Send Feedback</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+               @include('home.left_sidebar')
                 <div class="row left-side-trending-tag mt-2">
                     <p>Trending Tags</p>
                     <div class="col-md-12">
@@ -108,7 +59,7 @@
                                 <a href="#">
                                     <b>&copy; <script type="text/JavaScript">
                                         document.write(new Date().getFullYear());
-                                        </script> NamespaceIT  All rights reserved.</b>
+                                        </script> aionlinecourse.com  All rights reserved.</b>
                                 </a>
                             </li>
                         </ul>

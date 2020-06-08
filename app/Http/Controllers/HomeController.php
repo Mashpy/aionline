@@ -38,6 +38,9 @@ class HomeController extends Controller
 
     public function search(Request $request){
         $query = $request->keyword;
+        if(empty($query)){
+            return back();
+        }
         $blog_category = Category::where('category_slug', 'blog')->first();
         $software_search_results = AiSoftware::where('name', 'LIKE', '%'.$query.'%')
             ->orWhere('description', 'LIKE', '%'.$query.'%')

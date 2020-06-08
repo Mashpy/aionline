@@ -14,7 +14,7 @@
                <ul class="navbar-nav m-auto">
                    <li class="nav-item">
                        <form class="form-inline my-2 my-lg-0 search-box" action="{{ route('home.search') }}" method="get">
-                           <input type="text" name="keyword" aria-expanded="false" class="right-20" placeholder="Search" required>
+                           <input type="text" value="{{isset($query) ? $query : ''}}" name="keyword" aria-expanded="false" class="right-20" placeholder="Search for tutorial, blog, ai software" required>
                        </form>
                    </li>
                </ul>

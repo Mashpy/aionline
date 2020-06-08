@@ -10,22 +10,9 @@
         </div>
        <div class="row">
            <div class="col-md-2">
-               <div class="row">
-                   <div class="col-md-12">
-                       <div class="card left-bar-search-result" style="width: 12rem">
-                           <div class="card-body">
-                               <h5 class="card-title">Search result</h5>
-                               <ul>
-                                   <li><a href="#tutorial">Tutorial Found ({{$tutorial_search_results->count()}})</a></li>
-                                   <li><a href="#blog">Blog Found ({{ $blog_search_results->count() }})</a></li>
-                                   <li><a href="#aisoftware">Ai Software Found ({{$software_search_results->count()}})</a></li>
-                               </ul>
-                           </div>
-                       </div>
-                   </div>
-               </div>
+               @include('home.left_sidebar')
            </div>
-           <div class="col-md-10">
+           <div class="col-md-8">
                <div class="col-md-12" id="tutorial">
                    <div class="card">
                        <h5 class="card-header">Tutorial Found ({{$tutorial_search_results->count()}}) </h5>
@@ -37,7 +24,6 @@
                            </div>
                        @endforeach
                    </div>
-
                    <div class="card mt-2" id="blog">
                        <h5 class="card-header">Blog Found ({{ $blog_search_results->count() }}) </h5>
                        @foreach($blog_search_results as $blog)
@@ -62,6 +48,22 @@
                                </div>
                            </div>
                        @endforeach
+                   </div>
+               </div>
+           </div>
+           <div class="col-md-2">
+               <div class="row">
+                   <div class="col-md-12">
+                       <div class="card left-bar-search-result" style="width: 12rem">
+                           <div class="card-body">
+                               <h5 class="card-title">Search result</h5>
+                               <ul>
+                                   <li><a href="#tutorial">Tutorial Found ({{$tutorial_search_results->count()}})</a></li>
+                                   <li><a href="#blog">Blog Found ({{ $blog_search_results->count() }})</a></li>
+                                   <li><a href="#aisoftware">Ai Software Found ({{$software_search_results->count()}})</a></li>
+                               </ul>
+                           </div>
+                       </div>
                    </div>
                </div>
            </div>
