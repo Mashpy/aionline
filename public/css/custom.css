@@ -2069,6 +2069,18 @@ ul.social-network li {
     font-size: 15px;
 }
 
+.tutorial-item a {
+    color: #02B544;
+}
+
+#tutorial .tutorial-item:last-child hr{
+   display: none;
+}
+
+#blog .blog-item:last-child hr{
+   display: none;
+}
+
 @media (max-width: 760px) {
     .swiper-button-next {
         right: 20px;

@@ -5,7 +5,7 @@
                 @if(Request::routeIs('home.search'))
                 <li class="{{Request::routeIs('home.search') ? 'active' : ''}}">
                     <a href="{{ route('home.search') }}">
-                        <img src="{{ asset('images/icons/browse_tutorial.png') }}">
+                        <img src="{{ asset('images/icons/search.png') }}">
                         <span>Search Result</span>
                     </a>
                 </li>

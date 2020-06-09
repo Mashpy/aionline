@@ -17,24 +17,31 @@
                    <div class="card">
                        <h5 class="card-header">Tutorial Found ({{$tutorial_search_results->count()}}) </h5>
                        @foreach($tutorial_search_results as $tutorial)
+                           <div class="tutorial-item">
                            <div class="card-body">
                                <h5 class="card-title"><a href="{{ $tutorial->tutorial_url }}">{{ $tutorial->title }}</a></h5>
                                <p class="card-text">{{ str_limit(strip_tags($tutorial->description), $limit = 160, $end = '...') }}</p>
-                               <a href="{{ $tutorial->tutorial_url }}" class="btn btn-success btn-sm">view tutorial</a>
+                               <p class="float-left">- <small>Published on {{$tutorial->created_at->toFormattedDateString()}}</small></p>
+                               <a href="{{ $tutorial->tutorial_url }}" class="btn btn-outline-success btn-sm float-right">Read More</a>
+                           </div>
+                           <hr>
                            </div>
                        @endforeach
                    </div>
                    <div class="card mt-2" id="blog">
                        <h5 class="card-header">Blog Found ({{ $blog_search_results->count() }}) </h5>
                        @foreach($blog_search_results as $blog)
+                           <div class="blog-item">
                            <div class="card-body">
                                <h5 class="card-title"><a href="{{ $blog->tutorial_url }}">{{ $blog->title }}</a></h5>
                                <p class="card-text">{{ str_limit(strip_tags($blog->description), $limit = 160, $end = '...') }}</p>
-                               <a href="{{ $blog->tutorial_url }}" class="btn btn-success btn-sm">view tutorial</a>
+                               <p class="float-left">- <small>Published on {{$blog->created_at->toFormattedDateString()}}</small></p>
+                               <a href="{{ $blog->tutorial_url }}" class="btn btn-outline-success btn-sm float-right">Read More</a>
+                           </div>
+                           <hr>
                            </div>
                        @endforeach
                    </div>
-
                    <div class="card mt-2" id="aisoftware">
                        <h5 class="card-header">Ai Software Found ({{$software_search_results->count()}}) </h5>
                        @foreach($software_search_results as $recently_added)
