@@ -145,6 +145,9 @@
                                     </a>
                                </div>
                                 @endforeach
+                                    <div class="more-tutorial justify-content-center text-center">
+                                        <a href="{{ route('tutorial.index') }}" class="btn btn-outline-success btn-sm">More Tutorial <i class="fa fa-angle-double-right"></i></a>
+                                    </div>
                             </div>
                         </div>
                     </div>

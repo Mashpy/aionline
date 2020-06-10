@@ -2077,6 +2077,17 @@ ul.social-network li {
    display: none;
 }
 
+.mobile-search-bar{
+    margin: 1.5rem;
+}
+
+.more-tutorial {
+    display: flex;
+    flex-flow: row;
+    flex: auto;
+    margin-top: 20px;
+}
+
 @media (max-width: 760px) {
     .swiper-button-next {
         right: 20px;

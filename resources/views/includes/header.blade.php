@@ -1,6 +1,5 @@
 <!--Navbar -->
 <div class="top-nav-bar">
-    <p class="top-notification"><marquee direction="left">Welcome to AiOnelineCourse! </marquee></p>
     <nav class="navbar navbar-expand-xl navbar-dark nav-background home-navbar-icon">
        <div class="container">
            <a class="navbar-brand mr-5" href="{{ route('home.index') }}">
@@ -14,7 +13,7 @@
                <ul class="navbar-nav m-auto">
                    <li class="nav-item">
                        <form class="form-inline my-2 my-lg-0 search-box" action="{{ route('home.search') }}" method="get">
-                           <input type="text" value="{{isset($query) ? $query : ''}}" name="keyword" aria-expanded="false" class="right-20" placeholder="Search for tutorial, blog, ai software" required>
+                           <input type="text" value="{{isset($query) ? $query : ''}}" name="keyword" aria-expanded="false" class="right-20" placeholder="Search for tutorial, blog, software" required>
                        </form>
                    </li>
                </ul>
@@ -38,5 +37,10 @@
            </div>
        </div>
     </nav>
+</div>
+<div class="mobile-search-bar d-block d-sm-none">
+    <form class="form-inline my-2 my-lg-0 search-box" action="{{ route('home.search') }}" method="get">
+        <input type="text" value="{{isset($query) ? $query : ''}}" name="keyword" aria-expanded="false" class="right-20" placeholder="Search for tutorial, blog, software" required>
+    </form>
 </div>
 <!--/.Navbar -->
