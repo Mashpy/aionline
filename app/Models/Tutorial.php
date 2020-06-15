@@ -38,6 +38,6 @@ class Tutorial extends Model
 
     public static function machineLearningTutorials() {
         $category_id = Category::where('category_slug', 'machine-learning')->first()->id;
-        return Tutorial::where('category_id', $category_id)->take(6)->get();
+        return Tutorial::where('category_id', $category_id)->take(12)->get();
     }
 }

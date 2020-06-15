@@ -15,13 +15,10 @@
     <meta property="og:site_name" content="www.aionlinecourse.com">
     <meta property="og:image" content="@yield('meta_image', asset('ai-logo.png'))">
     <meta property="og:url" content="{{ url()->current() }}">
-    
     <title>@yield('title')</title>
-
-    <link href='https://fonts.googleapis.com/css?family=Poppins:400,600,700%7CRoboto:400,400i,700' rel='stylesheet'>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">    <!-- Favicons-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Favicons-->
     <link rel="shortcut icon" href="{{ asset('favicon.ico')}}" type="image/x-icon">
-
     <!-- BASE CSS -->
     <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css')}}" rel="stylesheet">
@@ -31,7 +28,6 @@
 
     @yield('run_custom_css_file')
     @yield('run_custom_css')
-
 </head>
 
 <body onload="myFunction()">
