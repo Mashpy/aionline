@@ -1,7 +1,7 @@
 <!--Navbar -->
 <div class="top-nav-bar">
     <nav class="navbar navbar-expand-xl navbar-dark nav-background home-navbar-icon">
-       <div class="container">
+       <div class="container-fluid">
            <a class="navbar-brand mr-5" href="{{ route('home.index') }}">
                <img src="{{asset('ai-logo.png')}}">
            </a>

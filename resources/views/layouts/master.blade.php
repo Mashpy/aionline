@@ -30,7 +30,7 @@
     @yield('run_custom_css')
 </head>
 
-<body onload="myFunction()">
+<body>
 @yield('content')
 
 @if (env('APP_ENV') == 'production' && empty(Auth::user()))

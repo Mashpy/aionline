@@ -4,8 +4,8 @@
 
 @section('content')
 @include('includes.header')
-    <div class="container">
-        <div class="row mt-3">
+    <div class="container-fluid ml-2">
+        <div class="row mt-2">
             <div class="col-md-2">
                @include('home.left_sidebar')
                 <div class="row left-side-trending-tag mt-2">
@@ -67,8 +67,8 @@
                 </div>
             </div>
             <div class="col-md-10">
-                <div class="row mb-2">
-                    <div class="col-md-8 blog-lg-section">
+                <div class="row">
+                    <div class="col-md-7 blog-lg-section">
                         <a href="{{ route('blog.show', $single_blog_post->slug) }}" title="{{ $single_blog_post->title }}">
                         <div class="blog-lg-container">
                             <img src="{{ $single_blog_post->tutorial_cover }}">
@@ -79,14 +79,14 @@
                         </div>
                         </a>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-5">
                         @foreach($blogs as $blog)
                             <a href="{{route('blog.show', $blog->slug)}}" class="blog-sm-section" title="{{ $blog->title }}">
                                 <div class="row blog-sm-container">
                                     <div class="col-5 col-md-5">
                                         <img src="{{ $blog->tutorial_cover }}">
                                     </div>
-                                    <div class="col-7 col-md-7 blog-sm-content">{{ str_limit(strip_tags($blog->title), $limit = 60, $end = '...') }}</div>
+                                    <div class="col-7 col-md-7 blog-sm-content">{{ str_limit(strip_tags($blog->title), $limit = 90, $end = '...') }}</div>
                                 </div>
                             </a>
                         @endforeach

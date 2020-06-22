@@ -1671,7 +1671,9 @@ ul.social-network li {
 .take-quiz {
     border-radius: 2rem;
     width: 10rem;
-    font-size: 14px !important;
+    padding: .4rem;
+    font-size: 15px !important;
+    font-weight: 500 !important;
 }
 
 .top-notification {
@@ -1760,8 +1762,8 @@ ul.social-network li {
 .blog-lg-container img {
     vertical-align: middle;
     width: 100%;
-    max-height: 300px;
-    min-height: 300px;
+    max-height: 352px;
+    min-height: 352px;
 }
 
 .blog-lg-content p {
@@ -1798,8 +1800,8 @@ ul.social-network li {
 .blog-sm-container img {
     vertical-align: middle;
     width: 100%;
-    min-height: 63px;
-    max-height: 63px;
+    min-height: 90px;
+    max-height: 90px;
 }
 
 .feature-soft {
@@ -1862,7 +1864,7 @@ ul.social-network li {
 }
 
 .home-tutorial-card p {
-    font-size: 14px;
+    font-size: 15px;
     text-align: justify;
     color: #2d2d2d;
 }
@@ -1870,7 +1872,7 @@ ul.social-network li {
 .home-tutorial-card{
     padding: 1rem;
     border: 0;
-    min-height: 310px;
+    min-height: 295px;
     -webkit-box-shadow: 0px 1px 5px -3px rgba(0,0,0,1);
     -moz-box-shadow: 0px 1px 5px -3px rgba(0,0,0,1);
     box-shadow: 0px 1px 5px -3px rgba(0,0,0,1);
@@ -2089,6 +2091,141 @@ ul.social-network li {
     margin-top: 20px;
 }
 
+@media (min-width: 1400px) and (max-width: 2068px) {
+    .blog-sm-container img {
+        min-height: 115px;
+        max-height: 115px;
+    }
+
+    .blog-sm-content {
+        font-size: 18px;
+    }
+
+    .blog-lg-container img {
+        max-height: 425px;
+        min-height: 425px;
+    }
+
+    .left-side-home-menu ul li a {
+        padding: 20px 22px;
+        font-size: 17px;
+    }
+
+    .nav-background img {
+        width: 195px;
+    }
+
+    .take-quiz {
+        padding: .7rem;
+        font-size: 18px !important;
+        font-weight: 500 !important;
+    }
+
+    .search-box input {
+
+        font-size: 1.2rem;
+        padding: 0.5rem 0.5rem 0.5rem 3rem;
+        width: 25rem;
+        background: #ffffff url(/search-icon.svg) .9rem .8rem no-repeat;
+        background-size: 1.4rem;
+    }
+
+    .feature-soft-title p {
+        margin-bottom: .3rem;
+        font-size: 25px;
+    }
+
+    .home-tutorial-card h5 {
+        font-size: 26px;
+    }
+
+    .home-tutorial-card img {
+        height: 195px;
+    }
+
+    .home-tutorial-card p {
+        font-size: 18px !important;
+    }
+
+    .home-tutorial-card {
+        min-height: 395px;
+    }
+
+    .more-tutorial a {
+        padding: 1rem;
+        font-size: 20px;
+    }
+
+    .quiz-home-section p {
+        font-size: 28px;
+    }
+
+    .quiz-home-section h1 {
+        font-size: 55px;
+    }
+
+    .quiz-home-section {
+        padding: 3rem;
+    }
+
+    .form-button .ibtn {
+        padding: 10px 60px;
+        font-size: 35px;
+    }
+    footer ul li a {
+        font-size: 18px;
+    }
+
+    footer img {
+        width: 128px;
+    }
+
+    .social-circle li a {
+        width: 40px;
+        height: 40px;
+        font-size: 25px;
+    }
+
+    #back2Top {
+        width: 55px;
+        line-height: 54px;
+        font-size: 28px;
+    }
+
+    .left-side-trending-tag p {
+        font-size: 20px;
+    }
+
+    .left-side-trending-tag ul li a {
+        font-size: 18px;
+    }
+
+    .left-side-info ul li a {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 885px) {
+    .blog-sm-container img {
+        min-height: 65px;
+        max-height: 65px;
+    }
+
+    .blog-lg-container img {
+        max-height: 355px;
+        min-height: 355px;
+    }
+
+    .home-tutorial-card {
+        min-height: 375px;
+    }
+
+    .left-side-home-menu > ul > li > a > img {
+        width: 1rem;
+        margin-right: 0.2rem;
+    }
+}
+
 @media (max-width: 760px) {
     .swiper-button-next {
         right: 20px;
@@ -2109,6 +2246,10 @@ ul.social-network li {
         font-size: 16px !important;
     }
 
+    .home-tutorial-card p {
+        font-size: 14px;
+    }
+
     .alternative-software-logo {
         width: 80px;
         height: 80px;
@@ -2119,6 +2260,18 @@ ul.social-network li {
 
     .reviewer-default-img {
         width: 80px;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 768px) {
+    .blog-sm-container img {
+        min-height: 120px;
+        max-height: 120px;
+    }
+
+    .left-side-home-menu ul li a {
+        width: 30%;
+        font-size: 15px;
     }
 }
 
