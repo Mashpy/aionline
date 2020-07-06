@@ -5,13 +5,17 @@
 @section('content')
     @include('includes.header')
     <div class="container">
-        <h2 class="text-center top30 bottom10 blog-page-main-heading">Latest Blog Post</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center top30 bottom10 blog-page-main-heading">Latest Blog Post</h2>
+            </div>
+        </div>
         <div class="row">
         <div class="col-md-10">
                <div class="row">
                    @if($blog->count() > 0)
                        @foreach($blog as $key => $blog_post)
-                           <div class="col-md-6 nopadding">
+                           <div class="col-md-6">
                                <div class="box-style">
                                    <a href="{{route('blog.show', $blog_post->slug)}}" class="custom-card">
                                        <h4 class="tutorial-title">{{$blog_post->title}}</h4>
