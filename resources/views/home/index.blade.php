@@ -34,22 +34,16 @@
                     <div class="col-md-12">
                         <ul>
                             <li>
-                                <a href="#">About</a>
+                                <a href="{{ route('about') }}">About</a>
                             </li>
                             <li>
-                                <a href="#">Press</a>
+                                <a href="{{ route('contact') }}">ContactUs</a>
                             </li>
                             <li>
-                                <a href="#">ContactUs</a>
+                                <a href="{{ route('terms') }}">Copyright</a>
                             </li>
                             <li>
-                                <a href="#">Developers</a>
-                            </li>
-                            <li>
-                                <a href="#">Copyright</a>
-                            </li>
-                            <li>
-                                <a href="#">Privacy policy Terms</a>
+                                <a href="{{ route('privacy') }}">Privacy policy Terms</a>
                             </li>
                             <li>
                                 <a href="#">
