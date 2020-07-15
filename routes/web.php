@@ -73,3 +73,7 @@ Route::group(['prefix' => 'ai-software'] , function() {
     Route::get('/{slug}', 'AiSoftwareController@showOld')->name('ai_software.view.old');
     Route::get('/categories/{slug}', 'AiSoftwareController@categorySoftwaresOld')->name('ai_software.category-softwares.old');
 });
+Route::get('/about', 'HomeController@about')->name('about');
+Route::get('/contact', 'HomeController@contact')->name('contact');
+Route::get('/privacy', 'HomeController@privacy')->name('privacy');
+Route::get('/terms', 'HomeController@terms')->name('terms');

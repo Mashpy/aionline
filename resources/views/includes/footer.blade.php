@@ -1,4 +1,4 @@
-<footer class="mainfooter mt-3" role="contentinfo">
+<footer class="mainfooter mt-1" role="contentinfo">
     <div class="footer-middle">
         <div class="container">
             <div class="row">
@@ -12,10 +12,10 @@
                             <!--Column1-->
                             <div class="footer-pad">
                                 <ul class="list-unstyled">
-                                    <li><a href="#">About</a></li>
+                                    <li><a href="{{ route('about') }}">About</a></li>
+                                    <li><a href="{{ route('contact') }}">Help</a></li>
+                                    <li><a href="{{ route('contact') }}">Contact</a></li>
                                     <li><a href="{{ route('blog.index') }}">Blog</a></li>
-                                    <li><a href="#">Careers</a></li>
-                                    <li><a href="#">FAQs</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -23,20 +23,9 @@
                             <!--Column1-->
                             <div class="footer-pad">
                                 <ul class="list-unstyled">
-                                    <li><a href="#">Help</a></li>
-                                    <li><a href="#">Advertise</a></li>
-                                    <li><a href="#">Developers</a></li>
-                                    <li><a href="#">Contact</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-4">
-                            <!--Column1-->
-                            <div class="footer-pad">
-                                <ul class="list-unstyled">
-                                    <li><a href="#">Copyright Policy</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Sitemap</a></li>
+                                    <li><a href="{{ route('terms') }}">Copyright</a></li>
+                                    <li><a href="{{ route('terms') }}">Terms & Condition</a></li>
+                                    <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
                                 </ul>
                             </div>
                         </div>

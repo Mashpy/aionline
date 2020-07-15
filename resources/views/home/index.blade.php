@@ -13,25 +13,21 @@
                     <div class="col-md-12">
                         <ul>
                             <li>
-                                <a href="#">Deep Learning</a>
+                                <a href="{{ route('home.search',['keyword' => 'Machine Learning'])}}">Machine Learning</a>
                             </li>
                             <li>
-                                <a href="#">Natural Lang..</a>
+                                <a href="{{ route('home.search',['keyword' => 'Artificial Intelligence']) }}">Artificial Intelligence</a>
                             </li>
                             <li>
-                                <a href="#">Clusterning</a>
+                                <a href="{{ route('home.search',['keyword' => 'Recognition']) }}">Recognition</a>
                             </li>
                             <li>
-                                <a href="#">Recognition</a>
+                                <a href="{{ route('home.search',['keyword' => 'Data Science']) }}">Data Science</a>
                             </li>
                             <li>
-                                <a href="#">Data Pre Processing</a>
-                            </li>
-                            <li>
-                                <a href="#">Classification</a>
+                                <a href="{{ route('home.search',['keyword' => 'automation']) }}">Automation</a>
                             </li>
                         </ul>
-                        <a class="float-right see-more-trending" href="">more...</a>
                     </div>
                 </div>
                 <div class="row left-side-info mt-2">

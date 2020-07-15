@@ -41,13 +41,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('contact') }}">
                         <img src="{{ asset('images/icons/help.png') }}">
                         <span>Help</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('contact') }}">
                         <img src="{{ asset('images/icons/feedback.png') }}">
                         <span>Send Feedback</span>
                     </a>

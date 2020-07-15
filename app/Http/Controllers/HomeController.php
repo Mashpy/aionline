@@ -68,4 +68,24 @@ class HomeController extends Controller
         return response()->view('other.sitemap', compact('ai_softwares'))->header('Content-Type', 'text/xml');
     }
 
+    public function about(){
+        return view('about');
+    }
+
+    public function faq(){
+        return view('faq');
+    }
+
+    public function contact(){
+        return view('contact');
+    }
+
+    public function privacy(){
+        return view('privacy');
+    }
+
+    public function terms(){
+        return view('terms');
+    }
+
 }
