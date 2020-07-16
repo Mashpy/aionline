@@ -14,6 +14,7 @@
         "laravel/tinker": "^1.0",
         "league/flysystem-aws-s3-v3": "~1.0",
         "microweber/screen": "^1.0",
+        "nadaft/contactme": "^1.3",
         "spatie/laravel-backup": "^5.0.0",
         "symfony/css-selector": "^4.4"
     },

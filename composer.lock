@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "75021846f2ecdfaaf6e9ace684fdf036",
+    "content-hash": "f1eb40ed276cad8d79b295055169c259",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1608,6 +1608,56 @@
                 "jsonpath"
             ],
             "time": "2019-12-30T18:03:34+00:00"
+        },
+        {
+            "name": "nadaft/contactme",
+            "version": "v1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nadaft/contactme.git",
+                "reference": "a27a43d3b048c978d366b6df2832e60dfd201c70"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nadaft/contactme/zipball/a27a43d3b048c978d366b6df2832e60dfd201c70",
+                "reference": "a27a43d3b048c978d366b6df2832e60dfd201c70",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Nadaft\\ContactMe\\ContactMeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nadaft\\ContactMe\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nadaft",
+                    "email": "mail@nadaft.com"
+                }
+            ],
+            "description": "Laravel contact us form package to send email and save to database",
+            "keywords": [
+                "contact",
+                "contact form",
+                "contact us",
+                "contactme",
+                "email",
+                "form",
+                "laravel",
+                "nadaft"
+            ],
+            "time": "2019-02-18T17:37:50+00:00"
         },
         {
             "name": "nesbot/carbon",

@@ -7,38 +7,29 @@
     <div class="row mt-5">
         <div class="col-md-10 offset-md-1">
             <div class="row">
-                <div class="col-md-6">
-                    <h3>CONTACT INFO</h3>
-                    <small>Welcome to our website. We are glade to have around</small>
-                    <div class="email-address">
-                        <i class="fa fa-envelope"></i><span class="title-contact">EMAIL</span>
-                        <p>aionlinecourse@gmail.com</p>
+                <div class="col-md-6 offset-md-3">
+                    @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?php echo e(session('success')); ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div class="email-address">
-                        <i class="fa fa-location-arrow"></i><span class="title-contact">ADDRESS</span>
-                        <p>NamespaceIT</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <h3>SEND MESSAGE</h3>
+                    @endif
+                    <h3>CONTACT WITH US</h3>
                     <small>Welcome to our website. We are glade to have around</small>
-                    <form class="mt-2">
+                    <form class="mt-2" action="{{ route('contactme.submit') }}" method="POST">
+                        @csrf
                         <div class="form-group row">
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Name*">
-                            </div>
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="Email*">
+                                <input type="text" name="name" class="form-control" placeholder="Name*" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="inputAddress" placeholder="Phone*">
+                            <input type="text" name="email" class="form-control" id="email" placeholder="Email*" required>
                          </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="inputAddress" placeholder="Subject*">
-                         </div>
-                        <div class="form-group">
-                           <textarea class="form-control" placeholder="Message*" rows="6"></textarea>
+                           <textarea name="message" class="form-control" placeholder="Message*" rows="6" required></textarea>
                          </div>
                         <div class="form-group">
                             <button class="btn btn-secondary contact-form-btn">SUBMIT</button>
