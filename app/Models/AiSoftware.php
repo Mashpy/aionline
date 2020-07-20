@@ -25,6 +25,11 @@ class AiSoftware extends Model{
     public function getLikeStatusAttribute(){
        return  $status = AiSoftwareLikeCount::where(['ai_software_id' => $this->id, 'client_ip' => \Request::ip()])->first();
     }
+    
+    public function likes()
+    {
+        return $this->hasMany(AiSoftwareLikeCount::class);
+    }
 
     public function softwareScreenshot(){
         return $this->hasMany(AiSoftwareScreenshot::class, 'ai_software_id');

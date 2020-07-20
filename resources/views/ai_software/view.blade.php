@@ -34,7 +34,17 @@
                                         <a href="#reviews" id="write_review"><i class="fa fa-edit"></i> Write a Review!</a>
                                     </div>
                                     <div class="d-inline buttons-links">
-                                        <a class="btn btn-danger like" onclick="event.preventDefault(); document.getElementById('like-form').submit();"><i class="fa fa-thumbs-up"></i> Like</a>
+                                        @if($ai_software->like_status)
+                                            <a class="btn btn-danger active" onclick="event.preventDefault(); document.getElementById('like-form').submit();">
+                                                <span class="badge badge-light text-danger"><strong>{{ $ai_software->likes->count() }}</strong></span>
+                                                <i class="fa fa-thumbs-up"></i> Liked
+                                            </a>
+                                        @else
+                                            <a class="btn btn-danger like" onclick="event.preventDefault(); document.getElementById('like-form').submit();">
+                                                <span class="badge badge-danger text-white"><strong>{{ $ai_software->likes->count() }}</strong></span>
+                                                <i class="fa fa-thumbs-up"></i> Like
+                                            </a>
+                                        @endif
                                         @php $official_link = "http://".$ai_software->official_link ; @endphp
                                         <a class="btn btn-primary website" href="{{$official_link}}" target="_blank">Visit Website <i class="fa fa-external-link"></i></a>
                                     </div>
