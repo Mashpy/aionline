@@ -1987,7 +1987,7 @@ ul.social-network li {
     cursor: pointer;
     -webkit-transition: background .5s; /* For Safari 3.0 to 6.0 */
     transition: background .5s;
-    height: 125px !important;
+    height: auto !important;
 }
 
 .feature-soft-home:hover {

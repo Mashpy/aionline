@@ -97,7 +97,11 @@
                                       <div class="swiper-wrapper feature-box-div">
                                           @foreach($feature_softwares as $software)
                                               <div class="swiper-slide feature-soft-home">
-                                                  <a href="{{route('ai_software.view', $software->slug)}}"><img src="{{$software->logo !== null ? $software->logo_url : asset('no-image-found.jpg')}}" alt="{{ $software->name }}"></a>
+                                                  <a href="{{route('ai_software.view', $software->slug)}}">
+                                                      <img src="{{$software->logo !== null ? $software->logo_url : asset('no-image-found.jpg')}}" alt="{{ $software->name }}">
+                                                      <br>
+                                                      <span>{{ $software->name }}</span>
+                                                  </a>
                                               </div>
                                           @endforeach
                                       </div>
