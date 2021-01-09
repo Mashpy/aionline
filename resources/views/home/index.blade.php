@@ -124,7 +124,7 @@
                                        <div class="card home-tutorial-card">
                                            <h5 class="card-title">{{ $key + 1 }}. {{ $tutorial->title }}</h5>
                                            <div class="tutorial-img-home">
-                                               <img class="card-img-top" src="{{ $tutorial->tutorial_cover }}">
+                                               <img class="card-img-top card-cover-img" src="{{ $tutorial->tutorial_cover }}">
                                            </div>
                                            <div class="card-body" style="padding: .1rem">
                                                <p class="card-text">

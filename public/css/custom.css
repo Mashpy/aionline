@@ -617,6 +617,11 @@ video {
     max-width: 385px;
 }
 
+.card-cover-img {
+     display: flex;
+     margin: 0 auto;
+     width: auto !important;
+}
 
 /*!*#wrapper.toggled {*!*/
 /*!*padding-left: 250px;*!*/
@@ -2322,6 +2327,12 @@ ul.social-network li {
     .left-side-info ul li a {
         font-size: 18px;
     }
+
+    .card-cover-img {
+        display: flex;
+        margin: 0 auto;
+        width: auto !important;
+    }
 }
 
 @media (max-width: 885px) {
@@ -2345,16 +2356,6 @@ ul.social-network li {
     }
 }
 
-@media (max-width: 760px) {
-    .swiper-button-next {
-        right: 20px;
-    }
-
-    .swiper-button-prev {
-        left: 50px;
-    }
-}
-/*end slider*/
 
 @media screen and (min-width: 601px) {
     div.ai-software-head h3 {
@@ -2677,6 +2678,18 @@ ul.social-network li {
 
 @media screen and (max-width: 765px) {
     /*home menu responsive start*/
+    .card-cover-img {
+        display: flex;
+        margin: 0 auto;
+    }
+
+    .swiper-button-next {
+        right: 20px;
+    }
+
+    .swiper-button-prev {
+        left: 50px;
+    }
 
     .left-side-home-menu ul li {
         display: inline;
@@ -2787,7 +2800,7 @@ ul.social-network li {
     }
 
     .home-tutorial-card img {
-        width: 100%;
+        width: 100% !important;
         height: 100%;
     }
 
