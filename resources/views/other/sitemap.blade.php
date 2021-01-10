@@ -15,4 +15,21 @@
             <loc>{{ route('ai_software.view', $ai_software->slug) }}</loc>
         </url>
     @endforeach
+    
+    @foreach($tutorials as $tutorial)
+        <url>
+            <loc>{{ $tutorial->tutorial_url }}</loc>
+        </url>
+    @endforeach
+    
+    @foreach($blog as $blog_post)
+        <url>
+            <loc> {{route('blog.show', $blog_post->slug)}} </loc>
+        </url>
+    @endforeach
+    
+    <url>
+        <loc> {{route('ai-quiz-questions.index')}} </loc>
+    </url>
+    
 </urlset>

@@ -65,7 +65,13 @@ class HomeController extends Controller
 
     public function xmlSitemap(){
         $ai_softwares = AiSoftware::get();
-        return response()->view('other.sitemap', compact('ai_softwares'))->header('Content-Type', 'text/xml');
+        $category_id = Category::where('category_slug', 'machine-learning')->first()->id;
+        $tutorials = Tutorial::where('category_id', $category_id)->get();
+        $blog_category = Category::where('category_slug', 'blog')->first();
+        if($blog_category){
+        $blog = Tutorial::where('category_id', $blog_category->id)->latest()->get();
+        }
+        return response()->view('other.sitemap', compact('ai_softwares','tutorials','blog'))->header('Content-Type', 'text/xml');
     }
 
     public function about(){
