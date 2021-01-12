@@ -1,6 +1,10 @@
 ##Requirements
 
 Composer version: 1.9.2
+composer self-update 1.9.2  (if u use version 2, it will not work)
+ 
+composer -v (to check really composer updated or not. Sometimes composer updated properly but
+u can't see. That time turn off terminal and turn on.)
 
 ##Setup .env file
 
