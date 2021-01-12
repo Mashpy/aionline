@@ -121,7 +121,7 @@ return [
         'notifiable' => \Spatie\Backup\Notifications\Notifiable::class,
 
         'mail' => [
-            'to' => 'mashpysays@gmail.com',
+           // 'to' => 'mashpysays@gmail.com',
         ],
 
         'slack' => [
