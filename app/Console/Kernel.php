@@ -24,8 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('backup:clean')->daily();
-        $schedule->command('backup:run')->daily();
+        $schedule->command('backup:clean');
+        $schedule->command('backup:run');
     }
 
     /**
