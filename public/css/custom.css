@@ -2215,6 +2215,14 @@ ul.social-network li {
     margin-left: 2rem;
 }
 
+#imageShowModal .modal-lg {
+    max-width: 70% !important;
+}
+
+#imageShowModal img {
+    width: 100%;
+}
+
 @media screen and (min-width: 1400px) and (max-width: 2068px) {
     .blog-sm-container img {
         min-height: 115px;
