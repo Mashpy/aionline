@@ -6,6 +6,7 @@ use App\Models\AiSoftwareLikeCount;
 use Request;
 
 class AiSoftware extends Model{
+    protected $table = 'ai_softwares';
     protected $appends = ['logo_url', 'short_description'];
     const IMAGE_UPLOAD_PATH = 'uploads/ai_software/image';
     protected $fillable = ['software_category_id','name','description','official_link','slug','logo'];
