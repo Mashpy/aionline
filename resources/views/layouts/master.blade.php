@@ -89,5 +89,6 @@
 <script src="{{ asset('js/swiper.min.js')}}"></script>
 @yield('run_custom_js_file')
 @yield('run_custom_jquery')
+@stack('custom_jQuery')
 </body>
 </html>
