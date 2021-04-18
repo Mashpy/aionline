@@ -83,7 +83,8 @@
 
 @section('run_custom_js_file')
     <script id="dsq-count-scr" src="//www-aionlinecourse-com.disqus.com/count.js" async></script>
-    <!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ba75bceb97e9318"></script>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+{{--    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ba75bceb97e9318"></script>--}}
 @endsection
 
 @section('run_custom_jquery')
