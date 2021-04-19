@@ -65,7 +65,7 @@ class AiSoftwareController extends Controller
         if ($request->file('logo')) {
             $image = $request->file('logo');
             $imageName = Str::slug($request->name).'.'.$image->getClientOriginalExtension();
-            $image->move(public_path(AiSoftware::IMAGE_UPLOAD_PATH.date('Y').'/'.date('m')), $imageName);
+            $image->move(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.date('Y').'/'.date('m')), $imageName);
             $software->logo = $imageName;
         }
 
@@ -115,27 +115,27 @@ class AiSoftwareController extends Controller
 
         if ($request->logo) {
             if(!empty($request->old_logo)){
-                unlink(public_path(AiSoftware::IMAGE_UPLOAD_PATH.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo);
+                unlink(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo);
             }
             $image = $request->file('logo');
             $imageName = Str::slug($request->name).'.'.$image->getClientOriginalExtension();
-            $image->move(public_path(AiSoftware::IMAGE_UPLOAD_PATH.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')), $imageName);
+            $image->move(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')), $imageName);
             $ai_software->logo = $imageName;
         }else{
             $ai_software->logo = $request->old_logo;
         }
         if($request->logo_url){
             if(!empty($request->old_logo)){
-                unlink(public_path(AiSoftware::IMAGE_UPLOAD_PATH.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo);
+                unlink(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo);
             }
             $logo_url = $request->logo_url;
             $imageName  = $request->slug.'.jpg';
             header('Content-Type: image/png');
-            $path = AiSoftware::IMAGE_UPLOAD_PATH.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m');
+            $path = AiSoftware::IMAGE_UPLOAD_PATH.'/'.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m');
             if(!File::isDirectory($path)){
                 File::makeDirectory($path, 0777, true, true);
             }
-            Image::make($logo_url)->save(public_path(AiSoftware::IMAGE_UPLOAD_PATH.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'. $imageName);
+            Image::make($logo_url)->save(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'. $imageName);
             $ai_software->logo = $imageName;
         }
         $ai_software->save();
@@ -147,8 +147,8 @@ class AiSoftwareController extends Controller
         $ai_software = AiSoftware::find($id);
         $ai_software->delete();
         if ($ai_software->logo !== null){
-            if (file_exists(public_path(AiSoftware::IMAGE_UPLOAD_PATH.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo)) {
-                unlink(public_path(AiSoftware::IMAGE_UPLOAD_PATH.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo);
+            if (file_exists(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo)) {
+                unlink(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.$ai_software->created_at->format('Y').'/'.$ai_software->created_at->format('m')).'/'.$ai_software->logo);
             }
             return back()->with(['success' => 'Software deleted successfully']);
         } else {
