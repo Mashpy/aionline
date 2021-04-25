@@ -39,7 +39,12 @@
                                                         <textarea class="form-control animated" cols="100" id="new-review" name="description" required placeholder="Enter your review here..." rows="5"></textarea>
                                                     </td>
                                                 </tr>
-                                                {!! NoCaptcha::renderJs() !!}
+                                                <tr>
+                                                    <th></th>
+                                                    <td>
+                                                        {!! NoCaptcha::display() !!}
+                                                    </td>
+                                                </tr>
                                             </table>
                                             <div class="text-right mr-2">
                                                 <button class="btn btn-danger btn-sm" id="close-review-box">Cancel</button>
