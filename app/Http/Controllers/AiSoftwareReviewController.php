@@ -15,6 +15,7 @@ class AiSoftwareReviewController extends Controller
             'review_by' => ['required'],
             'ai_software_id' => ['required'],
             'description' => ['required'],
+            'g-recaptcha-response' => ['required|captcha']
         ]);
         AiSoftwareReview::create([
             'title'=> $request->title,
