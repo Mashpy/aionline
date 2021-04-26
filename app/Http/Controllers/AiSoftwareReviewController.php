@@ -11,13 +11,19 @@ use Illuminate\Support\Facades\Validator;
 class AiSoftwareReviewController extends Controller
 {
     public function storeReview(Request $request){
-        $validate = Validator::make($request->all(), [
-            'title' => ['required'],
-            'review_by' => ['required'],
-            'ai_software_id' => ['required'],
-            'description' => ['required'],
-            'g-recaptcha-response' => ['required|captcha']
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'review_by' => 'required',
+            'ai_software_id' => 'required',
+            'description' => 'required',
+            'g-recaptcha-response' => 'required|captcha'
         ]);
+
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         AiSoftwareReview::create([
             'title'=> $request->title,
