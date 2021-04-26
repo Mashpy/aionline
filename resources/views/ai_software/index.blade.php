@@ -34,6 +34,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <h2>Recently Added Software</h2>
+                                    <a href="{{ route('ai_software.request_new_software') }}" class="btn btn-success">Request a new software</a>
                                 </div>
                             </div>
                         </div>

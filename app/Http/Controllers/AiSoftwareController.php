@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\AiSoftware;
 use App\Models\AiSoftwareReview;
 use App\Models\Category;
+use Goutte\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AiSoftwareController extends Controller
 {
@@ -19,6 +21,72 @@ class AiSoftwareController extends Controller
         $ai_softwares = AiSoftware::latest()->get();
         $recently_added_software = AiSoftware::latest()->take(5)->get();
         return view('ai_software.index', compact('ai_softwares', 'recently_added_software', 'category_parent', 'feature_softwares'));
+    }
+
+    public function requestNewSoftware() {
+        $ai_softwares = AiSoftware::latest()->get();
+        $categories = Category::with('children')->whereNull('parent_id')->latest()->get();
+        return view('ai_software.request_new_software', compact('ai_softwares', 'categories'));
+    }
+
+    public function requestNewSoftwareStore(Request $request) {
+        $validatedData = $request->validate([
+            'official_link' => ['required'],
+        ]);
+
+        $client = new Client();
+        $software = new AiSoftware;
+        $software->category_id = $request->parent_id;
+        $software->meta_description = $request->meta_description;
+        $software->description = $request->description;
+        $software->feature = $request->feature;
+        $software->pricing = $request->pricing;
+        $official_link = $this->wash_link($request->official_link);
+        $check_official_link = AiSoftware::where('official_link', $official_link)->first();
+        if($check_official_link){
+            return back()->with(['error' => 'The official link has already been taken.']);
+        }
+        $software->official_link = $official_link;
+
+        if($request->name){
+            $software->name = $request->name;
+            $software->slug = Str::slug($request->name);
+        }else{
+            try {
+                $crawler = $client->request('GET', 'https://'.$official_link);
+                $title = $crawler->filter('title')->each(function ($node) {
+                    return $node->text();
+                });
+                $software->name = $title[0];
+                $software->slug = Str::slug($title[0]);
+            } catch (Exception $e) {
+                return back()->with(['error' => 'Something went wrong! Use a valid URL']);
+            }
+        }
+
+        if ($request->file('logo')) {
+            $image = $request->file('logo');
+            $imageName = Str::slug($request->name).'.'.$image->getClientOriginalExtension();
+            $image->move(public_path(AiSoftware::IMAGE_UPLOAD_PATH.'/'.date('Y').'/'.date('m')), $imageName);
+            $software->logo = $imageName;
+        }
+
+        try {
+            $crawler = $client->request('GET', 'https://'.$official_link);
+            $links = $crawler->filter('a')->each(function($node) {
+                return $href  = $node->attr('href');
+            });
+            $social_links =  $this->social_link($links);
+            foreach ($social_links as $key => $value){
+                $software[$key] = $value;
+            }
+        } catch (Exception $e) { }
+
+        if ($software->save()){
+            return back()->with(['success' => 'New Software added successfully']);
+        } else {
+            return back()->with(['error' => 'Something went wrong!!! Please try again']);
+        }
     }
 
     public function categorySoftwares($category_slug){
