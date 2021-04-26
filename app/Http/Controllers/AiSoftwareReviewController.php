@@ -6,17 +6,19 @@ use App\Models\AiSoftware;
 use App\Models\AiSoftwareLikeCount;
 use App\Models\AiSoftwareReview;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AiSoftwareReviewController extends Controller
 {
     public function storeReview(Request $request){
-        $request->validate([
+        $validate = Validator::make($request->all(), [
             'title' => ['required'],
             'review_by' => ['required'],
             'ai_software_id' => ['required'],
             'description' => ['required'],
             'g-recaptcha-response' => ['required|captcha']
         ]);
+
         AiSoftwareReview::create([
             'title'=> $request->title,
             'ai_software_id' =>$request->ai_software_id,
