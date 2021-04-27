@@ -31,10 +31,10 @@
                 <div class="col-md-9 col-sm-12 col-lg-9">
                     <div class="box">
                         <div class="box-title">
-                            <div class="row">
-                                <div class="col-md-12">
+                            <div class="row w-100">
+                                <div class="col-md-12 d-flex justify-content-between">
                                     <h2>Recently Added Software</h2>
-                                    <a href="{{ route('ai_software.request_new_software') }}" class="btn btn-success">Request a new software</a>
+                                    <a href="{{ route('ai_software.request_new_software') }}" class="btn btn-success request-software">Request a new software</a>
                                 </div>
                             </div>
                         </div>

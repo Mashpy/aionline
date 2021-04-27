@@ -130,7 +130,18 @@
                                 <td>
                                     <input class="form-control" type="text" name="official_link" value="{{$ai_software->official_link}}">
                                 </td>
-                            </tr><tr>
+                            </tr>
+                            <tr>
+                                <th>Status</th>
+                                <td>
+                                    <select class="form-control" name="published" required>
+                                        <option value="" disabled selected>Select your option</option>
+                                        <option value="{{ \App\Models\AiSoftware::PUBLISHED }}" {{ $ai_software->published == \App\Models\AiSoftware::PUBLISHED? 'selected' : ''}} >Published</option>
+                                        <option value="{{ \App\Models\AiSoftware::UNPUBLISHED }}" {{ $ai_software->published == \App\Models\AiSoftware::UNPUBLISHED? 'selected' : ''}} >Unpublished</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
                                 <th>Logo</th>
                                 <td>
                                     <input type="hidden" value="{{$ai_software->logo}}" name="old_logo">

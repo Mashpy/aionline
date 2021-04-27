@@ -12,14 +12,40 @@ use Illuminate\Support\Str;
 class AiSoftwareController extends Controller
 {
     private $data =[];
+
+    private function wash_link($link){
+        $replaced = Str::replaceArray('www.', [''], $link);
+        $replaced = Str::replaceArray('https://www.', [''], $replaced);
+        $replaced = Str::replaceArray('https://', [''], $replaced);
+        $replaced = Str::replaceArray('http://www.', [''], $replaced);
+        $replaced = Str::replaceArray('http://', [''], $replaced);
+        return $replaced = rtrim($replaced, '/');
+    }
+
+    private function social_link($links){
+        $social = ['facebook', 'youtube', 'linkedin', 'twitter'];
+        $social_link = [];
+        foreach ($social as $social_item){
+            $matched_array_key = $this->array_search_partial($links, $social_item);
+            if($matched_array_key !== null){
+                if($social_item == 'twitter'){
+                    $social_link[$social_item] = $this->wash_link($links[$matched_array_key]);
+                }else{
+                    $social_link[$social_item] = $this->wash_link($links[$matched_array_key]).'/about';
+                }
+            }
+        }
+        return $social_link;
+    }
+
     public function index(){
         $category_parent = Category::where('parent_id', null)->get();
         foreach ($category_parent as $key => $value) {
-            $category_parent[$key]['softwares'] = AiSoftware::whereIn('category_id',$this->subCategory($value->id, $key))->latest()->take(5)->get();
+            $category_parent[$key]['softwares'] = AiSoftware::whereIn('category_id',$this->subCategory($value->id, $key))->where('published', true)->latest()->take(5)->get();
         }
-        $feature_softwares = AiSoftware::all()->random(5);
-        $ai_softwares = AiSoftware::latest()->get();
-        $recently_added_software = AiSoftware::latest()->take(5)->get();
+        $feature_softwares = AiSoftware::all()->where('published', true)->random(5);
+        $ai_softwares = AiSoftware::latest()->where('published', true)->get();
+        $recently_added_software = AiSoftware::latest()->where('published', true)->take(5)->get();
         return view('ai_software.index', compact('ai_softwares', 'recently_added_software', 'category_parent', 'feature_softwares'));
     }
 
@@ -41,6 +67,7 @@ class AiSoftwareController extends Controller
         $software->description = $request->description;
         $software->feature = $request->feature;
         $software->pricing = $request->pricing;
+        $software->published = AiSoftware::UNPUBLISHED;
         $official_link = $this->wash_link($request->official_link);
         $check_official_link = AiSoftware::where('official_link', $official_link)->first();
         if($check_official_link){
@@ -59,7 +86,7 @@ class AiSoftwareController extends Controller
                 });
                 $software->name = $title[0];
                 $software->slug = Str::slug($title[0]);
-            } catch (Exception $e) {
+            } catch (\Exception $e) {
                 return back()->with(['error' => 'Something went wrong! Use a valid URL']);
             }
         }
@@ -80,10 +107,10 @@ class AiSoftwareController extends Controller
             foreach ($social_links as $key => $value){
                 $software[$key] = $value;
             }
-        } catch (Exception $e) { }
+        } catch (\Exception $e) { }
 
         if ($software->save()){
-            return back()->with(['success' => 'New Software added successfully']);
+            return back()->with(['success' => 'New Software add request successfully']);
         } else {
             return back()->with(['error' => 'Something went wrong!!! Please try again']);
         }

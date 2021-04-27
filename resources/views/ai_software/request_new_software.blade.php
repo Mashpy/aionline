@@ -8,6 +8,7 @@
     @include('ai_software.search_panel')<br>
     <section class="recently-added-software">
         <div class="container">
+            @include('includes.message')
             <div class="row">
                 <div class="col-md-9 col-sm-12 col-lg-9">
                     <div class="box">
@@ -25,44 +26,31 @@
                                     <tr>
                                         <th>Software Name</th>
                                         <td>
-                                            <input class="form-control" type="text" name="name" placeholder="Enter software name">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Category</th>
-                                        <td>
-                                            <div class="category-box">
-                                                <select class="form-control category_select" name="parent_id" data-value="1">
-                                                    <option value="" data-browse-node-id="0">Choose parent category</option>
-                                                    @foreach($categories as $category)
-                                                        <option value="{{$category->id}}" data-browse-node-id="{{ $category->id }}">{{$category->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                            <input class="form-control" type="text" name="name" placeholder="Enter software name" value="{{ old('name') }}">
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>Description</th>
                                         <td>
-                                            <textarea class="form-control summernote" rows="6" name="description" placeholder="Enter description"></textarea>
+                                            <textarea class="form-control summernote" rows="6" name="description" placeholder="Enter description">{{ old('description') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>Features</th>
                                         <td>
-                                            <textarea class="form-control summernote" rows="6" name="feature" placeholder="Enter Features"></textarea>
+                                            <textarea class="form-control summernote" rows="6" name="feature" placeholder="Enter Features">{{ old('feature') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>Pricing</th>
                                         <td>
-                                            <textarea class="form-control summernote" rows="6" name="pricing" placeholder="Enter Pricing"></textarea>
+                                            <textarea class="form-control summernote" rows="6" name="pricing" placeholder="Enter Pricing">{{ old('pricing') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>Official Link</th>
                                         <td>
-                                            <input class="form-control" type="text" name="official_link" placeholder="Enter official link">
+                                            <input class="form-control" type="text" name="official_link" placeholder="Enter official link" value="{{ old('official_link') }}">
                                         </td>
                                     </tr><tr>
                                         <th>Logo</th>
@@ -92,7 +80,6 @@
     <link href="{{asset('summernote/summernote.css')}}" rel="stylesheet">
 @stop
 @section('run_custom_jquery')
-    @include('admin.ai_software.software_category.sub_category_js')
     <script src="{{asset('summernote/summernote.js')}}"></script>
     <script type="text/javascript">
         $(document).ready(function() {

@@ -86,6 +86,10 @@
     });
     /*Scroll to top when arrow up clicked END*/
 </script>
+<!-- Auto close flash message -->
+<script>
+    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+</script>
 <script src="{{ asset('js/swiper.min.js')}}"></script>
 @yield('run_custom_js_file')
 @yield('run_custom_jquery')

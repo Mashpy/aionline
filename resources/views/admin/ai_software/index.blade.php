@@ -19,7 +19,8 @@
                             <th>Category</th>
                             <th class="w-20">Description</th>
                             <th>Official Link</th>
-                            <th class="w-15">Action</th>
+                            <th>Status</th>
+                            <th class="w-20">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -31,6 +32,13 @@
                                     <td>{{$ai_software->softwareCategoryName ? $ai_software->softwareCategoryName->name : ''}}</td>
                                     <td>{!! str_limit($ai_software->description, $limit = 80, $end = '...') !!}</td>
                                     <td>{{$ai_software->official_link}}</td>
+                                    <td>
+                                        @if($ai_software->published)
+                                            <p class="text-success">Published</p>
+                                        @else
+                                            <p class="text-danger">Pending</p>
+                                        @endif
+                                    </td>
                                     <td>
                                         <a class="btn btn-sm btn-info text-white" href="{{route('ai_software.view', $ai_software->slug)}}" target="_blank" title="view"><i class="fa fa-eye"></i></a>
                                         <a class="btn btn-sm btn-success text-white" href="{{route('admin_ai_software.edit', $ai_software->id)}}" title="edit"><i class="fa fa-edit"></i></a>

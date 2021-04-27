@@ -9,6 +9,8 @@ class AiSoftware extends Model{
     protected $table = 'ai_softwares';
     protected $appends = ['logo_url', 'short_description'];
     const IMAGE_UPLOAD_PATH = 'uploads/ai_software/image';
+    const PUBLISHED = 1;
+    const UNPUBLISHED = 0;
     protected $fillable = ['software_category_id','name','description','official_link','slug','logo'];
 
     public function softwareCategoryName(){

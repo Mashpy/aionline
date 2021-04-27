@@ -1655,6 +1655,12 @@ ul.social-network li {
     font-weight: 500 !important;
 }
 
+.request-software {
+    border-radius: 2rem;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+}
+
 .top-notification {
     background-color: #02B544;
     color: #ffffff;

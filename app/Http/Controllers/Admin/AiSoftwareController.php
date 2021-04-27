@@ -107,6 +107,7 @@ class AiSoftwareController extends Controller
         $ai_software->pricing = $request->pricing;
         $ai_software->official_link = $this->wash_link($request->official_link);
         $ai_software->slug = $request->slug;
+        $ai_software->published = $request->published;
         if($request->parent_id){
             $ai_software->category_id = $request->parent_id;
         }else{
