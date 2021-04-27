@@ -7,112 +7,113 @@
     {!! NoCaptcha::renderJs() !!}
 @endsection
 @section('content')
-@include('includes.header')
-<div class="container">
-    <div class="row mt-1">
-        <div class="col-md-12 mb-2 software-view-panel software-view-fix-hight">
-            @if (Session::has('error-like'))
-                <div class="text-center like-alert-error">
-                    <div id="flash-notice">{{ Session::get('error-like') }}</div>
-                </div>
-            @endif
-            @if(Session::has('success-like'))
-                <div class="text-center like-alert-success">
-                    <div id="flash-notice">{{ Session::get('success-like') }}</div>
-                </div>
-            @endif
-            <section>
-                <div class="container mt-4">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <img src="{{$ai_software->logo_url}}" class="software-view-logo" alt="...">
-                        </div>
-                        <div class="col-md-10">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h2 class="software-view-title">{{$ai_software->name}}</h2>
-                                    <div class="write-review">
-                                        <span class="text-secondary">By {{$ai_software->name}}</span>
-                                        <a href="#reviews" id="write_review"><i class="fa fa-edit"></i> Write a Review!</a>
+    @include('includes.header')
+    <div class="container">
+        <div class="row mt-1">
+            <div class="col-md-12 mb-2 software-view-panel software-view-fix-hight">
+                @if (Session::has('error-like'))
+                    <div class="text-center like-alert-error">
+                        <div id="flash-notice">{{ Session::get('error-like') }}</div>
+                    </div>
+                @endif
+                @if(Session::has('success-like'))
+                    <div class="text-center like-alert-success">
+                        <div id="flash-notice">{{ Session::get('success-like') }}</div>
+                    </div>
+                @endif
+                <section>
+                    <div class="container mt-4">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <img src="{{$ai_software->logo_url}}" class="software-view-logo" alt="...">
+                            </div>
+                            <div class="col-md-10">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h2 class="software-view-title">{{$ai_software->name}}</h2>
+                                        <div class="write-review">
+                                            <span class="text-secondary">By {{$ai_software->name}}</span>
+                                            <a href="#reviews" id="write_review"><i class="fa fa-edit"></i> Write a Review!</a>
+                                        </div>
+                                        <div class="d-inline buttons-links">
+                                            @if($ai_software->like_status)
+                                                <a class="btn btn-danger active" onclick="event.preventDefault(); document.getElementById('like-form').submit();">
+                                                    <span class="badge badge-light text-danger"><strong>{{ $ai_software->likes->count() }}</strong></span>
+                                                    <i class="fa fa-thumbs-up"></i> Liked
+                                                </a>
+                                            @else
+                                                <a class="btn btn-danger like" onclick="event.preventDefault(); document.getElementById('like-form').submit();">
+                                                    <span class="badge badge-danger text-white"><strong>{{ $ai_software->likes->count() }}</strong></span>
+                                                    <i class="fa fa-thumbs-up"></i> Like
+                                                </a>
+                                            @endif
+                                            @php $official_link = "http://".$ai_software->official_link ; @endphp
+                                            <a class="btn btn-primary website" href="{{$official_link}}" target="_blank">Visit Website <i class="fa fa-external-link"></i></a>
+                                        </div>
+                                        <form id="like-form" action="{{route('ai_software.software.like', $ai_software->id)}}" method="post">
+                                            {{ csrf_field() }}
+                                        </form>
                                     </div>
-                                    <div class="d-inline buttons-links">
-                                        @if($ai_software->like_status)
-                                            <a class="btn btn-danger active" onclick="event.preventDefault(); document.getElementById('like-form').submit();">
-                                                <span class="badge badge-light text-danger"><strong>{{ $ai_software->likes->count() }}</strong></span>
-                                                <i class="fa fa-thumbs-up"></i> Liked
-                                            </a>
-                                        @else
-                                            <a class="btn btn-danger like" onclick="event.preventDefault(); document.getElementById('like-form').submit();">
-                                                <span class="badge badge-danger text-white"><strong>{{ $ai_software->likes->count() }}</strong></span>
-                                                <i class="fa fa-thumbs-up"></i> Like
-                                            </a>
-                                        @endif
-                                        @php $official_link = "http://".$ai_software->official_link ; @endphp
-                                        <a class="btn btn-primary website" href="{{$official_link}}" target="_blank">Visit Website <i class="fa fa-external-link"></i></a>
-                                    </div>
-                                    <form id="like-form" action="{{route('ai_software.software.like', $ai_software->id)}}" method="post">
-                                        {{ csrf_field() }}
-                                    </form>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-12 mt-4">
-                            <div id="navbar">
-                                <div class="row">
-                                    <div class="col-md-12" id="top-menu">
+                            <div class="col-md-12 mt-4">
+                                <div id="navbar">
+                                    <div class="row">
+                                        <div class="col-md-12" id="top-menu">
                                        <span class="nav-after-scrolling display-none float-left">
                                            <img src="{{$ai_software->logo_url}}" class="software-view-logo-after-scroll" alt="...">
                                        </span>
-                                        <a href="#about" class="{{Route::is('ai_software.view') ? 'active' : ''}}">About</a>
-                                        <a href="#features" class="">Features</a>
-                                        <a href="#pricing" class="">Pricing</a>
-                                        <a href="#reviews" class="">Reviews</a>
+                                            <a href="#about" class="{{Route::is('ai_software.view') ? 'active' : ''}}">About</a>
+                                            <a href="#features" class="">Features</a>
+                                            <a href="#pricing" class="">Pricing</a>
+                                            <a href="#reviews" class="">Reviews</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </div>
-        <div class="col-md-12 mb-2 software-view-panel">
-            <section  id="about">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div>
-                                <h3 class="text-secondary mt-4">Product Details</h3>
-                                <p>{!! $ai_software->description !!}</p>
+                </section>
+            </div>
+            <div class="col-md-12 mb-2 software-view-panel">
+                <section  id="about">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div>
+                                    <h3 class="text-secondary mt-4">Product Details</h3>
+                                    <p>{!! $ai_software->description !!}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-5">
-                            <div class="container mt-5">
-                                <div class="carousel-container position-relative row">
-                                    <div id="myCarousel" class="carousel carousel-view slide" data-ride="carousel">
-                                        <div class="carousel-inner">
-                                            @foreach($ai_software->softwareScreenshot as $key => $screenshot)
-                                                @if(!empty($screenshot->screenshot_url))
-                                                    <div class="carousel-item {{ $key == 0 ? 'active' : ''}}" data-slide-number="{{$loop->index}}">
-                                                        <img src="{{$screenshot->screenshot_url}}" class="d-block w-100" alt="..." data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
-                                                    </div>
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                        <div class="carousel-thumb">
-                                            <div id="carousel-thumbs" class="carousel slide" data-ride="carousel">
-                                                <div class="carousel-inner">
-                                                    <div class="carousel-item active">
-                                                        <div class="row mx-0">
-                                                            @foreach($ai_software->softwareScreenshot as $key => $screenshot)
-                                                                @if(!empty($screenshot->screenshot_url))
-                                                                <div id="carousel-selector-{{$loop->index}}" class="thumb col-4 col-sm-2 px-1 py-2 {{ $key == 0 ? 'selected' : ''}}" data-target="#myCarousel" data-slide-to="{{$loop->index}}">
-                                                                    <img src="{{$screenshot->screenshot_url}}" class="img-fluid img-thumb-slider" alt="...">
-                                                                </div>
-                                                                @endif
-                                                            @endforeach
+                            <div class="col-md-5">
+                                <div class="container mt-5">
+                                    <div class="carousel-container position-relative row">
+                                        <div id="myCarousel" class="carousel carousel-view slide" data-ride="carousel">
+                                            <div class="carousel-inner">
+                                                @foreach($ai_software->softwareScreenshot as $key => $screenshot)
+                                                    @if(!empty($screenshot->screenshot_url))
+                                                        <div class="carousel-item {{ $key == 0 ? 'active' : ''}}" data-slide-number="{{$loop->index}}">
+                                                            <img src="{{$screenshot->screenshot_url}}" class="d-block w-100" alt="..." data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
                                                         </div>
-                                                    </div>
-                                                </div> <!-- /container -->
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                            <div class="carousel-thumb">
+                                                <div id="carousel-thumbs" class="carousel slide" data-ride="carousel">
+                                                    <div class="carousel-inner">
+                                                        <div class="carousel-item active">
+                                                            <div class="row mx-0">
+                                                                @foreach($ai_software->softwareScreenshot as $key => $screenshot)
+                                                                    @if(!empty($screenshot->screenshot_url))
+                                                                        <div id="carousel-selector-{{$loop->index}}" class="thumb col-4 col-sm-2 px-1 py-2 {{ $key == 0 ? 'selected' : ''}}" data-target="#myCarousel" data-slide-to="{{$loop->index}}">
+                                                                            <img src="{{$screenshot->screenshot_url}}" class="img-fluid img-thumb-slider" alt="...">
+                                                                        </div>
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div> <!-- /container -->
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -120,59 +121,67 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </div>
-        <div class="row">
-            <div class="col-md-9">
-                @if(!empty($ai_software->feature))
-                    <div class="col-md-12 mb-2 software-view-panel">
-                        <section id="features">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12 mt-4">
-                                        <div>
-                                            <h3 class="text-secondary">Features of {{$ai_software->name}}</h3>
-                                            <p>{!! $ai_software->feature !!}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                @endif
-
-                @if(!empty($ai_software->pricing))
-                    <div class="col-md-12 mb-2 software-view-panel">
-                        <section id="pricing">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12 mt-4">
-                                        <div>
-                                            <h3 class="text-secondary">Pricing</h3>
-                                            <p class="ml-3">{!! $ai_software->pricing !!}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                @endif
-                @include('ai_software.ai_alternative_software')
+                </section>
             </div>
-            @if(!empty($ai_software->feature) || $ai_software->alternate_software->count() > 0)
+            <div class="row">
+                <div class="col-md-9">
+                    @if(!empty($ai_software->feature))
+                        <div class="col-md-12 mb-2 software-view-panel">
+                            <section id="features">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12 mt-4">
+                                            <div>
+                                                <h3 class="text-secondary">Features of {{$ai_software->name}}</h3>
+                                                <p>{!! $ai_software->feature !!}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    @endif
+
+                    @if(!empty($ai_software->pricing))
+                        <div class="col-md-12 mb-2 software-view-panel">
+                            <section id="pricing">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12 mt-4">
+                                            <div>
+                                                <h3 class="text-secondary">Pricing</h3>
+                                                <p class="ml-3">{!! $ai_software->pricing !!}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    @endif
+                    @include('ai_software.ai_alternative_software')
+                </div>
                 <div class="col-md-3">
                     <div class="container">
-                        @include('includes/google_ad')
+                        @foreach($category_parent as $category)
+                            <div class="box">
+                                <div class="row box-title">
+                                    <div class="col-md-12">
+                                        <h2 class="float-left"><a href="{{route('ai_software.category-softwares', $category->category_slug)}}"><span class="d-none d-sm-block">{{$category->name}}</span></a><span class="d-block d-sm-none">{{str_limit($category->name, $limit = 27, $end = '...')}}</span></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                        @if(!empty($ai_software->feature) || $ai_software->alternate_software->count() > 0)
+                            @include('includes/google_ad')
+                        @endif
                     </div>
                 </div>
-            @endif
+            </div>
         </div>
     </div>
-</div>
 
-@include('ai_software.review')
-@include('includes.footer')
+    @include('ai_software.review')
+    @include('includes.footer')
 
 @section('run_custom_js_file')
     <script>

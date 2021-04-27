@@ -135,10 +135,11 @@ class AiSoftwareController extends Controller
     }
 
     public function show($slug){
-        $ai_software = AiSoftware::where('slug', $slug)->first();
+       $ai_software = AiSoftware::where('slug', $slug)->first();
         if($ai_software){
+            $category_parent = Category::where('parent_id', null)->get();
             $reviews = AiSoftwareReview::where('ai_software_id', $ai_software->id)->latest()->get();
-            return view('ai_software.view', compact('ai_software', 'reviews'));
+            return view('ai_software.view', compact('ai_software', 'reviews', 'category_parent'));
         }else{
             return redirect()->route('ai_software.index');
         }
