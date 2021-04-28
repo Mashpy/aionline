@@ -161,20 +161,42 @@
                     @include('ai_software.ai_alternative_software')
                 </div>
                 <div class="col-md-3">
-                    <div class="container">
-                        @foreach($category_parent as $category)
-                            <div class="box">
-                                <div class="row box-title">
+                    @foreach($category_parent as $category)
+                        @if($category->softwares->count() > 0)
+                            <div class="container">
+                                <div class="row">
                                     <div class="col-md-12">
-                                        <h2 class="float-left"><a href="{{route('ai_software.category-softwares', $category->category_slug)}}"><span class="d-none d-sm-block">{{$category->name}}</span></a><span class="d-block d-sm-none">{{str_limit($category->name, $limit = 27, $end = '...')}}</span></h2>
+                                        <div class="box">
+                                            <div class="row box-title">
+                                                <div class="col-md-12">
+                                                    <h2 class="float-left"><span class="d-none d-sm-block">{{$category->name}}</span><span class="d-block d-sm-none">{{str_limit($category->name, $limit = 27, $end = '...')}}</span></h2>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                @foreach($category->softwares as $software)
+                                                    <div class="row alternate-software-item">
+                                                        <div class="col-md-12">
+                                                            <div>
+                                                                <p><a class="alternate-software-card-head" href="{{route('ai_software.view', $software->slug)}}">{{$software->name}}</a></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            <div class="col-md-12 text-center mt-2 mb-2">
+                                                <a href="{{route('ai_software.category-softwares', $category->category_slug)}}">
+                                                    <button class="btn btn-sm view-more-btn">View more</button>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
-                        @if(!empty($ai_software->feature) || $ai_software->alternate_software->count() > 0)
-                            @include('includes/google_ad')
                         @endif
-                    </div>
+                    @endforeach
+                    {{--                    @if(!empty($ai_software->feature) || $ai_software->alternate_software->count() > 0)--}}
+                    {{--                        @include('includes/google_ad')--}}
+                    {{--                    @endif--}}
                 </div>
             </div>
         </div>
