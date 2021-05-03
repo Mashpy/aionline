@@ -139,7 +139,7 @@ class AiSoftwareController extends Controller
         if($ai_software){
             $category_parent = Category::where('parent_id', null)->get();
             foreach ($category_parent as $key => $value) {
-                $category_parent[$key]['softwares'] = AiSoftware::whereIn('category_id',$this->subCategory($value->id, $key))->where('published', true)->latest()->take(3)->get();
+                $category_parent[$key]['softwares'] = AiSoftware::inRandomOrder()->whereIn('category_id',$this->subCategory($value->id, $key))->where('published', true)->latest()->take(3)->get();
             }
             $reviews = AiSoftwareReview::where('ai_software_id', $ai_software->id)->latest()->get();
             return view('ai_software.view', compact('ai_software', 'reviews', 'category_parent'));

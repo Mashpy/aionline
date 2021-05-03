@@ -86,6 +86,7 @@
                                 </div>
                             </div>
                             <div class="col-md-5">
+                                <a href="{{ route('ai_software.request_new_software') }}" class="pull-right">Add a new software</a>
                                 <div class="container mt-5">
                                     <div class="carousel-container position-relative row">
                                         <div id="myCarousel" class="carousel carousel-view slide" data-ride="carousel">
